@@ -909,7 +909,53 @@ body::after{display:none!important;}
 }
 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+/* ===================== SUPABASE SDK MULTI-CDN LOADER ===================== */
+window.__supabaseSdkReady = new Promise(function(resolve){
+  function loadScript(src, onOk, onFail){
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = onOk;
+    s.onerror = onFail;
+    document.head.appendChild(s);
+  }
+
+  function done(){
+    if(window.supabase && window.supabase.createClient){
+      console.log('Supabase SDK 加载成功');
+      resolve(true);
+    }else{
+      console.warn('Supabase SDK 脚本已加载，但 window.supabase 不存在');
+      resolve(false);
+    }
+  }
+
+  loadScript(
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',
+    done,
+    function(){
+      console.warn('jsdelivr 加载失败，尝试 unpkg');
+      loadScript(
+        'https://unpkg.com/@supabase/supabase-js@2',
+        done,
+        function(){
+          console.warn('unpkg 加载失败，尝试 esm.sh');
+          loadScript(
+            'https://esm.sh/@supabase/supabase-js@2?bundle',
+            done,
+            function(){
+              console.error('所有 Supabase CDN 都加载失败。请检查网络，或先部署到 GitHub Pages 后测试。');
+              resolve(false);
+            }
+          );
+        }
+      );
+    }
+  );
+});
+</script>
+
 </head>
 <body>
 
@@ -1823,13 +1869,19 @@ let cloudSyncEnabled = true;
 let cloudSyncTimer = null;
 
 function initSupabaseClient() {
-  if (!window.supabase) {
-    console.warn('Supabase SDK 未加载，当前为本地模式');
+    const supabaseUrl = 'https://kkacparxwpfiwbnskmav.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrYWNwYXJ4d3BmaXdibnNrbWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTI1NzEsImV4cCI6MjA5NzM2ODU3MX0.E-eYCmdTyMuvXDzJOsf66LdfHozY5LjuM8sN51uZxYU';
+
+    if (window.supabase && window.supabase.createClient) {
+        supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+        cloudSyncEnabled = true;
+        console.log('Supabase 已连接成功');
+        return true;
+    }
+
+    console.warn('Supabase SDK 未加载，等待 CDN 加载完成...');
     cloudSyncEnabled = false;
-    return null;
-  }
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  return supabaseClient;
+    return false;
 }
 
 function getGroupCode() {
@@ -3282,7 +3334,15 @@ function initOnlineApp(){
   });
   if(isAccountLoggedIn && onlineAccount && travelGroupCode) syncFromCloud(false);
 }
-initOnlineApp();
+
+if(window.__supabaseSdkReady){
+  window.__supabaseSdkReady.then(function(){
+    initOnlineApp();
+  });
+}else{
+  initOnlineApp();
+}
+
 </script>
 
 
@@ -3309,7 +3369,13 @@ initOnlineApp();
   };
 
   document.addEventListener('DOMContentLoaded', function(){
-    setTimeout(window.forceInitSupabase, 300);
+    
+if(window.__supabaseSdkReady){
+  window.__supabaseSdkReady.then(function(){ window.forceInitSupabase(); });
+}else{
+  setTimeout(window.forceInitSupabase, 300);
+}
+
   });
 })();
 </script>
