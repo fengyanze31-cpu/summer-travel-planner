@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鏆戞湡鍑鸿鍐崇瓥鍔╂墜</title>
+<title>暑期出行决策助手</title>
 <style>
 :root {
   --lake-blue:#5BBEE8;
@@ -51,7 +51,7 @@ body::before{
   background-size:18px 18px,100% 100%;
 }
 body::after{
-  content:"鉁堬笌";
+  content:"✈︎";
   position:fixed; right:7vw; top:86px; z-index:-1;
   font-size:76px; color:rgba(37,109,133,.12);
   transform:rotate(-12deg);
@@ -93,7 +93,7 @@ body::after{
   -webkit-background-clip:text;background-clip:text;color:transparent;
   text-shadow:0 8px 0 rgba(255,230,154,.42);
 }
-.app-header h1::before{content:"鈽€锔� PAPER CUT POSTER";display:block;margin-bottom:8px;font-size:.76rem;color:#FFB26B;letter-spacing:.26em;font-weight:900;text-shadow:none;}
+.app-header h1::before{content:"☀︎ PAPER CUT POSTER";display:block;margin-bottom:8px;font-size:.76rem;color:#FFB26B;letter-spacing:.26em;font-weight:900;text-shadow:none;}
 .header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;z-index:1;}
 .user-badge,.btn-reset-all,.tab-badge{border-radius:999px;background:#fff;border:2px solid rgba(255,255,255,.9);box-shadow:0 8px 18px rgba(37,109,133,.12);}
 .user-badge{padding:9px 18px;color:var(--deep);font-weight:700;}
@@ -128,7 +128,7 @@ body::after{
 .card:nth-child(even)::after{left:auto;right:42px;transform:rotate(5deg);background:rgba(127,216,255,.55);}
 .card:hover,.sidebar-card:hover,.map-container:hover{transform:translateY(-5px) rotate(.2deg);box-shadow:0 24px 54px rgba(37,109,133,.17),0 3px 0 rgba(255,255,255,.9) inset;}
 .card h2,.map-container h2,.sidebar-card h3{font-size:1.18rem;margin-bottom:16px;color:var(--deep);font-weight:900;letter-spacing:.03em;}
-.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"馃寠";margin-right:8px;}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"🌊";margin-right:8px;}
 .card h3{font-size:1rem;margin-bottom:12px;color:var(--forest);}
 .preset-users{display:flex;flex-wrap:wrap;gap:10px;}
 .preset-chip,.tag,.user-list-item,.recommendation-card,.rank-badge{
@@ -196,8 +196,8 @@ body::after{
 
 
 /* ===================== BOLDER PAPERCUT COLLAGE OVERRIDE =====================
-   鏂瑰悜锛氬噺灏戔€滅櫧鍗＄墖鍚庡彴鎰熲€濓紝鎶婇〉闈㈡敼鎴愪竴鏁村紶澶忔棩鍓垏鐢绘捣鎶ャ€�
-   鍙鐩栬瑙夋牱寮忥紝涓嶆敼浠讳綍 JS 琛屼负涓� DOM 灞傜骇銆�
+   方向：减少“白卡片后台感”，把页面改成一整张夏日剪切画海报。
+   只覆盖视觉样式，不改任何 JS 行为与 DOM 层级。
 ============================================================================ */
 body{
   background:
@@ -212,7 +212,7 @@ body::before{
   opacity:.8;
 }
 body::after{
-  content:"鉁堬笌  summer route";
+  content:"✈︎  summer route";
   right:4vw;top:74px;font-size:28px;font-weight:900;letter-spacing:.08em;
   color:rgba(37,109,133,.25);background:rgba(255,255,255,.45);
   padding:12px 18px;border-radius:999px;border:3px dashed rgba(255,255,255,.9);
@@ -244,7 +244,7 @@ body::after{
   backdrop-filter:none;
 }
 .app-header h1{font-size:clamp(2.9rem,7vw,6.2rem);line-height:.86;max-width:760px;text-transform:uppercase;text-shadow:5px 5px 0 rgba(255,230,154,.65);}
-.app-header h1::after{content:"  鉁傦笌";font-size:.5em;color:#FFB26B;vertical-align:top;}
+.app-header h1::after{content:"  ✂︎";font-size:.5em;color:#FFB26B;vertical-align:top;}
 .app-header::after{bottom:22px;color:rgba(78,201,176,.18);font-size:clamp(2.4rem,8vw,6.7rem);}
 .header-right{align-self:flex-start;background:#fff;border:4px solid #F8F7F2;border-radius:30px;padding:12px;box-shadow:0 16px 0 rgba(255,178,107,.14),0 20px 35px rgba(37,109,133,.12);transform:rotate(2deg);}
 .user-badge{background:#FFE69A;color:#256D85;border:3px solid #fff;box-shadow:0 7px 0 rgba(37,109,133,.08);font-weight:900;}
@@ -279,7 +279,7 @@ body::after{
   font-size:1.08rem;box-shadow:0 9px 0 rgba(37,109,133,.14);transform:rotate(-1.5deg);text-shadow:0 2px 0 rgba(37,109,133,.12);
 }
 .card:nth-child(even) h2,.sidebar-card h3{background:#4EC9B0;transform:rotate(1.5deg);}
-.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"鉁傦笍";}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"✂️";}
 .card h3{background:#FFE69A;color:#256D85;border-radius:16px;padding:6px 12px;display:inline-block;transform:rotate(-1deg);}
 .card p,.sidebar-card p{background:rgba(255,255,255,.55);border-radius:18px;padding:8px 12px;display:inline-block;}
 .name-input-row input,.date-input-row input[type=date],.unavail-period input[type=date]{background:#fff;border:4px solid #DDF6F7;border-radius:22px;box-shadow:0 7px 0 rgba(91,190,232,.10);}
@@ -331,8 +331,8 @@ body::after{
 
 
 /* ===================== FINAL: POSTER-LIKE SUMMER PAPERCUT REPRODUCTION =====================
-   澶嶇幇鍙傝€冨浘锛氭暣灞忓壀璐寸敾娴锋姤銆佸僵鑹插ぇ鏍囬銆佷赴瀵屽鏃ユ梾琛岃创绾歌儗鏅€�
-   涓嶆敼鍘熸湁鍔熻兘閫昏緫锛屽彧瑕嗙洊瑙嗚琛ㄧ幇銆�
+   复现参考图：整屏剪贴画海报、彩色大标题、丰富夏日旅行贴纸背景。
+   不改原有功能逻辑，只覆盖视觉表现。
 ========================================================================================== */
 :root{--poster-blue:#54C6F0;--poster-blue-2:#8EE4FF;--poster-orange:#F06E19;--poster-green:#55A94F;--poster-yellow:#FFD84A;--poster-paper:#FFF9EA;}
 html,body{background:#63C9EF!important;}
@@ -375,7 +375,7 @@ body::after{display:none!important;}
 .balloon-cut::after{content:"";position:absolute;left:24px;bottom:-24px;width:22px;height:22px;background:#B06A28;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);}
 .suitcase-cut{right:9vw;bottom:112px;width:150px;height:205px;background:#F7C52D;border:8px solid #fff;border-radius:26px;box-shadow:inset 15px 0 rgba(255,255,255,.15),inset -13px 0 rgba(142,95,0,.10);}
 .suitcase-cut::before{content:"";position:absolute;left:48px;top:-42px;width:54px;height:45px;border:13px solid #333;border-bottom:0;border-radius:18px 18px 0 0;background:transparent;}
-.suitcase-cut::after{content:"馃尨\A 馃摲";white-space:pre;position:absolute;inset:38px 0 auto 0;text-align:center;font-size:34px;line-height:1.6;}
+.suitcase-cut::after{content:"🌴\A 📷";white-space:pre;position:absolute;inset:38px 0 auto 0;text-align:center;font-size:34px;line-height:1.6;}
 .signpost-cut{right:1.3vw;width:145px;height:42px;display:grid!important;place-items:center;color:white;font-weight:900;letter-spacing:.08em;border:5px solid #fff;border-radius:8px;clip-path:polygon(0 0,82% 0,100% 50%,82% 100%,0 100%,9% 50%);text-shadow:0 2px rgba(37,109,133,.22);}
 .sign-a{top:292px;background:#55C6E8;transform:rotate(-2deg);}.sign-b{top:345px;background:#55B95F;transform:rotate(2deg);}.sign-c{top:398px;background:#FF9A3E;transform:rotate(-1deg);}
 .sign-a::before{content:"";position:absolute;left:64px;top:40px;width:12px;height:140px;background:#9A642F;z-index:-1;filter:drop-shadow(0 5px 0 rgba(255,255,255,.5));}
@@ -396,41 +396,41 @@ body::after{display:none!important;}
   clip-path:polygon(2% 10%,8% 0,18% 5%,30% 0,43% 6%,55% 2%,68% 7%,82% 0,96% 8%,100% 22%,96% 38%,100% 55%,96% 75%,100% 92%,88% 100%,75% 94%,61% 100%,47% 94%,32% 100%,18% 93%,4% 100%,0 85%,4% 64%,0 45%,4% 28%)!important;
   box-shadow:0 12px 0 rgba(255,255,255,.58),0 22px 0 rgba(91,190,232,.20),0 32px 48px rgba(37,109,133,.22)!important;
 }
-.app-header::after{content:"杞绘澗瑙勫垝 路 鐜╄浆涓€澶�"!important;left:50%!important;bottom:28px!important;transform:translateX(-50%) rotate(-3deg)!important;background:#FFD84A!important;color:#13688B!important;font-size:clamp(1rem,2.1vw,1.85rem)!important;line-height:1!important;padding:14px 48px!important;border:6px solid #fff!important;border-radius:6px!important;letter-spacing:.18em!important;box-shadow:0 10px 0 rgba(215,139,24,.18),0 18px 28px rgba(37,109,133,.15)!important;z-index:2!important;white-space:nowrap!important;}
+.app-header::after{content:"轻松规划 · 玩转一夏"!important;left:50%!important;bottom:28px!important;transform:translateX(-50%) rotate(-3deg)!important;background:#FFD84A!important;color:#13688B!important;font-size:clamp(1rem,2.1vw,1.85rem)!important;line-height:1!important;padding:14px 48px!important;border:6px solid #fff!important;border-radius:6px!important;letter-spacing:.18em!important;box-shadow:0 10px 0 rgba(215,139,24,.18),0 18px 28px rgba(37,109,133,.15)!important;z-index:2!important;white-space:nowrap!important;}
 .app-header h1{position:relative;z-index:3;display:flex!important;flex-direction:column;gap:4px;align-items:center;justify-content:center;margin:0 auto!important;max-width:none!important;font-size:clamp(4rem,8vw,7.8rem)!important;line-height:.86!important;letter-spacing:.04em!important;background:none!important;color:transparent!important;text-shadow:none!important;}
 .app-header h1::before{content:""!important;position:absolute;left:-70px;top:18px;width:62px;height:72px;background:#FF7E2F;border:8px solid #fff;clip-path:polygon(0 12%,100% 0,72% 100%,28% 100%);transform:rotate(-14deg);filter:drop-shadow(0 8px 0 rgba(37,109,133,.13));}
 .app-header h1::after{content:""!important;position:absolute;right:-72px;top:72px;width:62px;height:72px;background:#55B95F;border:8px solid #fff;clip-path:polygon(0 0,100% 20%,60% 100%,0 70%);transform:rotate(18deg);filter:drop-shadow(0 8px 0 rgba(37,109,133,.13));}
 .title-line{display:block;color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:2px rgba(255,255,255,.15);filter:drop-shadow(7px 7px 0 rgba(37,109,133,.12));}
 .title-orange{background-image:linear-gradient(180deg,#FF8A21,#E95B0B);text-shadow:4px 4px 0 rgba(255,213,97,.38);}
 .title-green{background-image:linear-gradient(180deg,#67C55D,#318B40);text-shadow:4px 4px 0 rgba(255,213,97,.38);}
-.title-orange::after{content:"鍑鸿";background:linear-gradient(180deg,#157BDF,#075BB3);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:.18em;text-shadow:4px 4px 0 rgba(255,213,97,.28);}
-/* hide duplicate 鍑鸿 because h1 line contains 鏆戞湡鍑鸿; visually split by overlaying blue word */
+.title-orange::after{content:"出行";background:linear-gradient(180deg,#157BDF,#075BB3);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:.18em;text-shadow:4px 4px 0 rgba(255,213,97,.28);}
+/* hide duplicate 出行 because h1 line contains 暑期出行; visually split by overlaying blue word */
 .title-orange{font-size:.76em;}
 .title-orange{letter-spacing:.05em;}
 .header-right{position:absolute!important;right:5vw!important;bottom:28px!important;z-index:4;transform:rotate(2deg)!important;background:rgba(255,255,255,.92)!important;border:6px solid #fff!important;border-radius:24px!important;padding:9px!important;}
 .tab-nav{margin-top:-10px!important;padding:10px 5vw 24px!important;justify-content:center!important;}
 .tab-nav::before{left:8vw!important;right:8vw!important;height:56px!important;background:#FFF9EA!important;border:5px solid #fff;box-shadow:0 10px 0 rgba(37,109,133,.08),0 18px 26px rgba(37,109,133,.12)!important;}
 .tab-btn{font-size:1rem!important;padding:14px 22px!important;background:#FFF9EA!important;border:5px solid #fff!important;color:#265C70!important;}
-.tab-btn:nth-child(1)::before{content:"馃彔 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(2)::before{content:"馃搷 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(3)::before{content:"馃尨 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(4)::before{content:"馃摲 ";position:static;opacity:1;border:0;}
+.tab-btn:nth-child(1)::before{content:"🏠 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(2)::before{content:"📍 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(3)::before{content:"🌴 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(4)::before{content:"📷 ";position:static;opacity:1;border:0;}
 .tab-btn.active{background:#FF7E2F!important;color:#fff!important;}
 .container{max-width:1400px!important;padding-top:18px!important;}
 .card::before,.sidebar-card::before,.map-container::before,.modal::before{background:#FFF9EA!important;border:0!important;box-shadow:0 14px 0 rgba(255,255,255,.55),0 26px 42px rgba(37,109,133,.16),inset 0 0 0 7px rgba(255,255,255,.88)!important;}
-.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"馃尨"!important;}.map-container h2::before{content:"馃搷"!important;}.card:nth-child(2n) h2::before{content:"馃寠"!important;}.results-grid .card h2::before{content:"馃摲"!important;}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"🌴"!important;}.map-container h2::before{content:"📍"!important;}.card:nth-child(2n) h2::before{content:"🌊"!important;}.results-grid .card h2::before{content:"📷"!important;}
 .card h2,.map-container h2,.sidebar-card h3{background:#20A88A!important;border:5px solid #fff!important;color:#fff!important;box-shadow:0 9px 0 rgba(37,109,133,.13)!important;}
 .map-container h2{background:#138ED1!important;}.sidebar-card h3{background:#FFD84A!important;color:#256D85!important;}.results-grid .card h2{background:#FF8A21!important;}
 .name-input-row button,.btn-save,button[onclick="saveVacationDates()"],button[onclick="saveUnavailPeriods()"]{background:#21B58E!important;color:#fff!important;}
 .btn-add-period{background:#FFD84A!important;color:#256D85!important;}.btn-reset-all,.btn-clear{background:#FF8A21!important;color:#fff!important;}.btn-cancel{background:#E7F8FF!important;color:#256D85!important;}
 .map-container svg{background:linear-gradient(180deg,#C9F0FF,#F5FDFF)!important;border:20px solid #fff!important;border-bottom-width:58px!important;border-radius:12px!important;filter:drop-shadow(0 18px 0 rgba(37,109,133,.10));}
 .province-shape{stroke:#fff!important;stroke-width:2.5!important;filter:drop-shadow(0 4px 0 rgba(37,109,133,.10));}.province-shape:hover{fill:#54C6F0!important;stroke:#fff!important;stroke-width:4!important;}
-.preset-chip::before{margin-right:6px}.preset-chip:nth-child(4n+1)::before{content:"馃寠"}.preset-chip:nth-child(4n+2)::before{content:"馃崏"}.preset-chip:nth-child(4n+3)::before{content:"鉀憋笍"}.preset-chip:nth-child(4n)::before{content:"鉁堬笍"}
-.empty-state::before{content:"馃尨 ";}.recommendation-card h4::before{content:"馃彇锔� ";}.rating-summary-item::before{content:"馃搶";margin-right:6px;}
+.preset-chip::before{margin-right:6px}.preset-chip:nth-child(4n+1)::before{content:"🌊"}.preset-chip:nth-child(4n+2)::before{content:"🍉"}.preset-chip:nth-child(4n+3)::before{content:"⛱️"}.preset-chip:nth-child(4n)::before{content:"✈️"}
+.empty-state::before{content:"🌴 ";}.recommendation-card h4::before{content:"🏖️ ";}.rating-summary-item::before{content:"📌";margin-right:6px;}
 @media(max-width:900px){.app-header{min-height:250px!important}.app-header::before{inset:36px 6vw 58px!important}.app-header h1{font-size:clamp(3rem,11vw,5rem)!important}.header-right{position:relative!important;right:auto!important;bottom:auto!important;margin-top:10px}.plane-cut,.route-cut,.balloon-cut,.signpost-cut,.suitcase-cut{display:none!important}.tab-nav{justify-content:flex-start!important}.tab-nav::before{display:none}.title-orange::after{display:none}.title-orange{font-size:1em}}
 @media(max-width:520px){.app-header{min-height:225px!important;padding:28px 14px 58px!important}.app-header::after{font-size:.95rem!important;padding:10px 20px!important;bottom:20px!important}.sun-cut{width:95px!important;height:95px!important}.cloud-a{display:none!important}.tab-btn{font-size:.84rem!important;padding:10px 14px!important}.app-header h1::before,.app-header h1::after{display:none!important}.paper-scene .surfboard-cut,.paper-scene .lifebuoy-cut,.paper-scene .camera-cut,.paper-scene .sunglasses-cut{display:none!important}}
 @keyframes wave{from{transform:translateX(-18px)}to{transform:translateX(18px)}}
 
 
 .map-loading,.map-error{min-height:520px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#256D85;font-weight:800;letter-spacing:.08em;position:relative;z-index:3;}
-.map-loading:before{content:'馃寠';font-size:54px;display:block;animation:floating 1.4s ease-in-out infinite;margin-bottom:12px;}
+.map-loading:before{content:'🌊';font-size:54px;display:block;animation:floating 1.4s ease-in-out infinite;margin-bottom:12px;}
 .map-error{gap:10px;color:#2E6F57;background:rgba(255,255,255,.48);border:2px dashed rgba(37,109,133,.22);border-radius:30px;margin:18px;padding:24px;}
 .map-error p{font-size:14px;font-weight:600;letter-spacing:0;color:#256D85;opacity:.8;}
 .map-error button{border:0;border-radius:999px;padding:10px 22px;background:#FFE69A;color:#256D85;font-weight:900;box-shadow:0 8px 0 rgba(37,109,133,.14);cursor:pointer;}
@@ -453,7 +453,7 @@ body::after{display:none!important;}
 /* ===================== Destination List Picker ===================== */
 .destination-picker{margin-top:26px;position:relative;z-index:2;}
 .destination-picker-title{margin-top:20px!important;margin-bottom:14px!important;}
-.destination-picker-title::before{content:"馃С"!important;}
+.destination-picker-title::before{content:"🧳"!important;}
 .destination-tools{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;}
 .destination-tools input,.destination-tools select{
   width:100%;padding:12px 14px;border:4px solid #fff;border-radius:22px;background:#fff;color:var(--deep);
@@ -555,8 +555,8 @@ body::after{display:none!important;}
 
 
 /* ===================== FINAL TITLE REPRODUCTION FROM REFERENCE IMAGE =====================
-   鐩爣锛氬鍒诲浘鐗囦腑鐨勨€滄殤鏈熷嚭琛屽喅绛栧姪鎵嬧€濈焊闆曞ぇ鏍囬
-   璇存槑锛氱函 HTML + CSS锛屼笉浣跨敤鍥剧墖鎶犲浘锛屽搷搴斿紡鏇存竻鏅�
+   目标：复刻图片中的“暑期出行决策助手”纸雕大标题
+   说明：纯 HTML + CSS，不使用图片抠图，响应式更清晰
 ===================================================================================== */
 .app-header{
   min-height:330px!important;
@@ -586,7 +586,7 @@ body::after{display:none!important;}
 }
 
 .app-header::after{
-  content:"杞绘澗瑙勫垝 路 鐜╄浆涓€澶�"!important;
+  content:"轻松规划 · 玩转一夏"!important;
   left:50%!important;
   bottom:31px!important;
   transform:translateX(-50%) rotate(-3deg)!important;
@@ -706,7 +706,7 @@ body::after{display:none!important;}
   transform:rotate(1.6deg);
 }
 
-/* 瑕嗙洊鏃ц鍒欙細鏃х増 title-orange 浼氱敤 ::after 鍐嶇敓鎴愪竴涓€滃嚭琛屸€濓紝杩欓噷蹇呴』鍏虫帀 */
+/* 覆盖旧规则：旧版 title-orange 会用 ::after 再生成一个“出行”，这里必须关掉 */
 .title-orange::after,
 .title-line::after{
   content:none!important;
@@ -914,56 +914,56 @@ body::after{display:none!important;}
 
 <div id="groupLoginOverlay" class="group-login-overlay">
   <div class="group-login-card">
-    <h1 class="group-login-title">鏆戞湡鍑鸿鍐崇瓥鍔╂墜</h1>
-    <p class="group-login-subtitle">鍏堟敞鍐屾垨鐧诲綍璐﹀彿锛屽啀鍒涘缓/鍔犲叆鏃呰鍥€€傛樀绉拌繘鍏ユ梾琛屽洟鍚庡彲鍦ㄢ€滄梾琛屽洟淇℃伅鈥濅腑淇敼銆�</p>
+    <h1 class="group-login-title">暑期出行决策助手</h1>
+    <p class="group-login-subtitle">先注册或登录账号，再创建/加入旅行团。昵称进入旅行团后可在“旅行团信息”中修改。</p>
 
     <div class="group-login-form">
       <div class="group-login-section">
-        <h3>鈶� 璐﹀彿</h3>
-        <label for="loginAccount">璐﹀彿</label>
-        <input id="loginAccount" type="text" placeholder="渚嬪锛歠engyanze / zhangsan">
+        <h3>① 账号</h3>
+        <label for="loginAccount">账号</label>
+        <input id="loginAccount" type="text" placeholder="例如：fengyanze / zhangsan">
 
-        <label for="loginPassword">瀵嗙爜</label>
-        <input id="loginPassword" type="password" placeholder="娉ㄥ唽鏃惰缃紝鐧诲綍鏃惰緭鍏�">
+        <label for="loginPassword">密码</label>
+        <input id="loginPassword" type="password" placeholder="注册时设置，登录时输入">
         <div class="group-login-actions">
-          <button class="btn-create-group" type="button" onclick="registerAccount()">娉ㄥ唽璐﹀彿</button>
-          <button class="btn-join-group" type="button" onclick="loginAccountOnly()">鐧诲綍璐﹀彿</button>
+          <button class="btn-create-group" type="button" onclick="registerAccount()">注册账号</button>
+          <button class="btn-join-group" type="button" onclick="loginAccountOnly()">登录账号</button>
         </div>
-        <p id="accountLoginStatus" style="color:#6E8991;font-weight:800;margin-top:12px;">鐘舵€侊細鏈櫥褰�</p>
+        <p id="accountLoginStatus" style="color:#6E8991;font-weight:800;margin-top:12px;">状态：未登录</p>
       </div>
 
       <div class="group-login-section">
-        <h3>鈶� 鏃呰鍥�</h3>
-        <label for="loginGroupCode">鏃呰鍥唬鐮�</label>
-        <input id="loginGroupCode" type="text" placeholder="渚嬪锛歴ummer2026">
+        <h3>② 旅行团</h3>
+        <label for="loginGroupCode">旅行团代码</label>
+        <input id="loginGroupCode" type="text" placeholder="例如：summer2026">
         <div class="group-login-actions">
-          <button class="btn-random-code" type="button" onclick="generateTravelGroupCode()">闅忔満鐢熸垚浠ｇ爜</button>
+          <button class="btn-random-code" type="button" onclick="generateTravelGroupCode()">随机生成代码</button>
         </div>
         <p style="color:#6E8991;font-weight:700;line-height:1.7;margin-top:14px">
-          鐧诲綍璐﹀彿鍚庢墠鑳藉垱寤烘垨鍔犲叆鏃呰鍥€€�<br>
-          鍒涘缓鏃呰鍥細鐢熸垚浠ｇ爜鍙戠粰鏈嬪弸銆傚姞鍏ユ梾琛屽洟锛氳緭鍏ユ湅鍙嬪彂鏉ョ殑浠ｇ爜銆�
+          登录账号后才能创建或加入旅行团。<br>
+          创建旅行团：生成代码发给朋友。加入旅行团：输入朋友发来的代码。
         </p>
         <div class="group-login-actions">
-          <button class="btn-create-group" type="button" onclick="enterTravelGroup('create')">鍒涘缓鏃呰鍥�</button>
-          <button class="btn-join-group" type="button" onclick="enterTravelGroup('join')">鍔犲叆鏃呰鍥�</button>
+          <button class="btn-create-group" type="button" onclick="enterTravelGroup('create')">创建旅行团</button>
+          <button class="btn-join-group" type="button" onclick="enterTravelGroup('join')">加入旅行团</button>
         </div>
       </div>
     </div>
 
     <div class="group-login-tip">
-      鍚屼竴涓处鍙峰彧鑳界敤鑷繁鐨勫瘑鐮佺櫥褰曪紱瀵嗙爜閿欒鏃犳硶杩涘叆銆傛梾琛屽洟鏄电О杩涘叆鍚庡湪鈥滄梾琛屽洟淇℃伅鈥濋噷淇敼銆�
+      同一个账号只能用自己的密码登录；密码错误无法进入。旅行团昵称进入后在“旅行团信息”里修改。
     </div>
   </div>
 </div>
 
     <div class="group-login-tip">
-      鍚屼竴涓梾琛屽洟浠ｇ爜涓嬬殑鏁版嵁浼氳涓€璧风粺璁★紱璐﹀彿鐢ㄤ簬鍥哄畾韬唤锛岄伩鍏嶅悓涓€涓汉鍙嶅鎹㈢敤鎴峰悕閫犳垚缁熻娣蜂贡銆�
+      同一个旅行团代码下的数据会被一起统计；账号用于固定身份，避免同一个人反复换用户名造成统计混乱。
     </div>
   </div>
 </div>
 
     <div class="group-login-tip">
-      灏忔彁绀猴細鍚屼竴涓梾琛屽洟浠ｇ爜涓嬬殑鏁版嵁浼氳涓€璧风粺璁★紱涓嶅悓鏃呰鍥唬鐮佺殑鏁版嵁浜掍笉褰卞搷銆�
+      小提示：同一个旅行团代码下的数据会被一起统计；不同旅行团代码的数据互不影响。
     </div>
   </div>
 </div>
@@ -986,9 +986,9 @@ body::after{display:none!important;}
   <span class="route-cut"></span>
   <span class="balloon-cut"></span>
   <span class="suitcase-cut"></span>
-  <span class="signpost-cut sign-a">娴疯竟搴﹀亣</span>
-  <span class="signpost-cut sign-b">鑷劧鎺㈢储</span>
-  <span class="signpost-cut sign-c">鍩庡競椋庢儏</span>
+  <span class="signpost-cut sign-a">海边度假</span>
+  <span class="signpost-cut sign-b">自然探索</span>
+  <span class="signpost-cut sign-c">城市风情</span>
   <span class="surfboard-cut"></span>
   <span class="lifebuoy-cut"></span>
   <span class="camera-cut"></span>
@@ -997,24 +997,24 @@ body::after{display:none!important;}
   <span class="shell-cut"></span>
   <span class="starfish-cut"></span>
   <span class="hibiscus-cut"></span>
-  <span class="birds-cut">鈱� 鈱� 鈱�</span>
+  <span class="birds-cut">⌁ ⌁ ⌁</span>
 </div>
 
 
 <header class="app-header">
-  <h1><span class="title-line title-orange">鏆戞湡鍑鸿</span><span class="title-line title-green">鍐崇瓥鍔╂墜</span></h1>
+  <h1><span class="title-line title-orange">暑期出行</span><span class="title-line title-green">决策助手</span></h1>
   <div class="header-right">
     <span id="currentGroupPill" class="current-group-pill" style="display:none;"></span>
-    <button class="btn-reset-all" onclick="resetAllData()">閲嶇疆鍏ㄩ儴鏁版嵁</button>
-    <span class="user-badge" id="currentUserBadge">鏈€夋嫨鐢ㄦ埛</span>
+    <button class="btn-reset-all" onclick="resetAllData()">重置全部数据</button>
+    <span class="user-badge" id="currentUserBadge">未选择用户</span>
   </div>
 </header>
 
 <nav class="tab-nav">
-  <button class="tab-btn active" data-tab="setup">1. 鏃呰鍥俊鎭�</button>
-  <button class="tab-btn" data-tab="map">2. 鐩殑鍦伴€夋嫨</button>
-  <button class="tab-btn" data-tab="time">3. 鏃堕棿鍗忚皟</button>
-  <button class="tab-btn" data-tab="results">4. 缁撴灉姹囨€� <span class="tab-badge" id="resultsBadge" style="display:none">0/9</span></button>
+  <button class="tab-btn active" data-tab="setup">1. 旅行团信息</button>
+  <button class="tab-btn" data-tab="map">2. 目的地选择</button>
+  <button class="tab-btn" data-tab="time">3. 时间协调</button>
+  <button class="tab-btn" data-tab="results">4. 结果汇总 <span class="tab-badge" id="resultsBadge" style="display:none">0/9</span></button>
 </nav>
 
 <div class="container">
@@ -1023,21 +1023,21 @@ body::after{display:none!important;}
 <div class="tab-content active" id="tab-setup">
   <div class="setup-grid">
     <div class="card">
-      <h2>鏃呰鍥俊鎭�</h2>
+      <h2>旅行团信息</h2>
       <div id="groupInfoPanel"></div>
       <div class="name-input-row" style="margin-top:16px">
-        <input type="text" id="nicknameEditInput" placeholder="淇敼浣犲湪鏃呰鍥㈤噷鐨勬樀绉�..." maxlength="20">
-        <button onclick="updateMyNickname()">淇濆瓨鏄电О</button>
+        <input type="text" id="nicknameEditInput" placeholder="修改你在旅行团里的昵称..." maxlength="20">
+        <button onclick="updateMyNickname()">保存昵称</button>
       </div>
       <p style="color:var(--text-light);font-size:0.86rem;margin-top:10px">
-        褰撳墠璐﹀彿鐢ㄤ簬璇嗗埆浣犵殑鏁版嵁锛涜繖閲屽彲浠ヤ慨鏀逛綘鍦ㄦ梾琛屽洟鍐呮樉绀虹殑鏄电О銆�
+        当前账号用于识别你的数据；这里可以修改你在旅行团内显示的昵称。
       </p>
     </div>
 
     <div class="card">
-      <h2>鏃呰鍥㈡垚鍛樹笌濉啓杩涘害</h2>
+      <h2>旅行团成员与填写进度</h2>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">杩涘害锛�<strong id="progressText">0/9</strong></p>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/9</strong></p>
       <div class="user-list" id="userList"></div>
     </div>
   </div>
@@ -1047,36 +1047,36 @@ body::after{display:none!important;}
 <div class="tab-content" id="tab-map">
   <div class="map-layout">
     <div class="map-container">
-      <h2>鐐瑰嚮鐪佷唤鏌ョ湅璇︽儏骞惰瘎鍒嗭紙鍏� 34 涓渷绾ц鏀垮尯锛�</h2>
+      <h2>点击省份查看详情并评分（共 34 个省级行政区）</h2>
       <div class="map-legend">
-        <span><span class="legend-dot" style="background:#cbd5e0"></span>鏈瘎鍒�</span>
-        <span><span class="legend-dot" style="background:#68d391"></span>楂樺垎(7-10)</span>
-        <span><span class="legend-dot" style="background:#f6e05e"></span>涓瓑(4-6)</span>
-        <span><span class="legend-dot" style="background:#fc8181"></span>浣庡垎(1-3)</span>
-        <span><span class="legend-dot" style="background:#e2e8f0;border:1px solid #cbd5e0"></span>涓嶆兂鍘�</span>
+        <span><span class="legend-dot" style="background:#cbd5e0"></span>未评分</span>
+        <span><span class="legend-dot" style="background:#68d391"></span>高分(7-10)</span>
+        <span><span class="legend-dot" style="background:#f6e05e"></span>中等(4-6)</span>
+        <span><span class="legend-dot" style="background:#fc8181"></span>低分(1-3)</span>
+        <span><span class="legend-dot" style="background:#e2e8f0;border:1px solid #cbd5e0"></span>不想去</span>
       </div>
       <svg viewBox="0 0 660 430" id="chinaMap"></svg>
     </div>
     <div class="sidebar-card">
-      <h3 id="sidebarUserName">璇勫垎鎽樿</h3>
-      <div id="ratingSummary"><div class="empty-state">璇峰厛鍦�"鐢ㄦ埛璁剧疆"涓€夋嫨鐢ㄦ埛</div></div>
+      <h3 id="sidebarUserName">评分摘要</h3>
+      <div id="ratingSummary"><div class="empty-state">请先在"用户设置"中选择用户</div></div>
 
       <div class="destination-picker">
-        <h3 class="destination-picker-title">鎸夊垪琛ㄩ€夋嫨鐩殑鍦�</h3>
+        <h3 class="destination-picker-title">按列表选择目的地</h3>
         <div class="destination-tools">
-          <input type="text" id="destinationSearch" placeholder="鎼滅储鐪佷唤 / 鏅偣 / 缇庨..." oninput="renderDestinationList()">
+          <input type="text" id="destinationSearch" placeholder="搜索省份 / 景点 / 美食..." oninput="renderDestinationList()">
           <select id="destinationFilter" onchange="renderDestinationList()">
-            <option value="all">鍏ㄩ儴鐩殑鍦�</option>
-            <option value="unrated">鏈瘎鍒�</option>
-            <option value="rated">宸茶瘎鍒�</option>
-            <option value="high">楂樺垎 7-10</option>
-            <option value="mid">涓瓑 4-6</option>
-            <option value="low">浣庡垎 1-3</option>
-            <option value="notInterested">涓嶆兂鍘�</option>
+            <option value="all">全部目的地</option>
+            <option value="unrated">未评分</option>
+            <option value="rated">已评分</option>
+            <option value="high">高分 7-10</option>
+            <option value="mid">中等 4-6</option>
+            <option value="low">低分 1-3</option>
+            <option value="notInterested">不想去</option>
           </select>
         </div>
         <div class="destination-list" id="destinationList">
-          <div class="empty-state">璇峰厛閫夋嫨鐢ㄦ埛</div>
+          <div class="empty-state">请先选择用户</div>
         </div>
       </div>
     </div>
@@ -1087,33 +1087,33 @@ body::after{display:none!important;}
 <div class="tab-content" id="tab-time">
   <div class="time-layout">
     <div class="card">
-      <h2>鍋囨湡鏃堕棿璁剧疆</h2>
-      <div class="date-input-row"><label>鏀惧亣鏃ユ湡锛�</label><input type="date" id="vacationStart"></div>
-      <div class="date-input-row"><label>寮€瀛︽棩鏈燂細</label><input type="date" id="vacationEnd"></div>
-      <button onclick="saveVacationDates()" style="margin-top:8px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit">淇濆瓨鍋囨湡鏃堕棿</button>
+      <h2>假期时间设置</h2>
+      <div class="date-input-row"><label>放假日期：</label><input type="date" id="vacationStart"></div>
+      <div class="date-input-row"><label>开学日期：</label><input type="date" id="vacationEnd"></div>
+      <button onclick="saveVacationDates()" style="margin-top:8px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit">保存假期时间</button>
     </div>
     <div class="card">
-      <h2>鏃犳硶鍑鸿鏃堕棿娈�</h2>
-      <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:12px">娣诲姞鏆戝亣鏈熼棿浣犳棤娉曞嚭琛岀殑鏃ユ湡鍖洪棿</p>
+      <h2>无法出行时间段</h2>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:12px">添加暑假期间你无法出行的日期区间</p>
       <div id="unavailPeriods"></div>
-      <button class="btn-add-period" onclick="addUnavailPeriod()">+ 娣诲姞鏃堕棿娈�</button>
-      <button onclick="saveUnavailPeriods()" style="margin-top:12px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit;width:100%">淇濆瓨鏃堕棿娈�</button>
+      <button class="btn-add-period" onclick="addUnavailPeriod()">+ 添加时间段</button>
+      <button onclick="saveUnavailPeriods()" style="margin-top:12px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit;width:100%">保存时间段</button>
     </div>
   </div>
   <div class="card" style="margin-top:20px">
-    <h2>涓汉鏃堕棿鍙鍖�</h2>
-    <div id="timelineViz"><div class="empty-state">璇峰厛璁剧疆鍋囨湡鏃ユ湡</div></div>
+    <h2>个人时间可视化</h2>
+    <div id="timelineViz"><div class="empty-state">请先设置假期日期</div></div>
   </div>
 </div>
 
 <!-- TAB 4: Results -->
 <div class="tab-content" id="tab-results">
   <div class="results-grid">
-    <div class="card"><h2>鐩殑鍦版帓鍚�</h2><div id="rankingTableContainer"><div id="rankingTable"></div></div></div>
-    <div class="card"><h2>璇勫垎鍒嗗竷鍥�</h2><div class="bar-chart" id="barChart"></div></div>
+    <div class="card"><h2>目的地排名</h2><div id="rankingTableContainer"><div id="rankingTable"></div></div></div>
+    <div class="card"><h2>评分分布图</h2><div class="bar-chart" id="barChart"></div></div>
   </div>
-  <div class="card"><h2>鏃堕棿浜ら泦鍒嗘瀽</h2><div id="timeOverlapAnalysis"></div></div>
-  <div class="card"><h2>缁煎悎鎺ㄨ崘 Top 5</h2><div id="recommendations"></div></div>
+  <div class="card"><h2>时间交集分析</h2><div id="timeOverlapAnalysis"></div></div>
+  <div class="card"><h2>综合推荐 Top 5</h2><div id="recommendations"></div></div>
 </div>
 
 </div>
@@ -1123,24 +1123,24 @@ body::after{display:none!important;}
   <div class="modal">
     <h2 id="modalTitle"></h2>
     <p class="province-subtitle" id="modalSubtitle"></p>
-    <div class="modal-section"><h4>鐑棬 / 灏忎紬鏃呮父鍦�</h4><div class="dest-grid" id="modalDestinations"></div></div>
-    <div class="modal-section"><h4>鐗硅壊缇庨</h4><div class="tag-list" id="modalFoods"></div></div>
+    <div class="modal-section"><h4>热门 / 小众旅游地</h4><div class="dest-grid" id="modalDestinations"></div></div>
+    <div class="modal-section"><h4>特色美食</h4><div class="tag-list" id="modalFoods"></div></div>
     <div class="rating-section">
-      <h4>鍑鸿鎰忔効璇勫垎锛�1-10锛�</h4>
+      <h4>出行意愿评分（1-10）</h4>
       <div class="rating-slider-row">
-        <span class="rating-emoji" id="ratingEmoji">馃槓</span>
+        <span class="rating-emoji" id="ratingEmoji">😐</span>
         <input type="range" min="1" max="10" value="5" id="ratingSlider" oninput="updateRatingDisplay()">
         <span class="rating-value" id="ratingValue">5</span>
       </div>
       <div class="not-interested-row">
         <input type="checkbox" id="notInterestedCheck" onchange="onNotInterestedChange()">
-        <label for="notInterestedCheck">涓嶆兂鍘伙紙鍕鹃€夊悗璇勫垎鏃犳晥锛�</label>
+        <label for="notInterestedCheck">不想去（勾选后评分无效）</label>
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn-clear" id="btnClear" onclick="clearProvinceRating()">娓呴櫎璇勫垎</button>
-      <button class="btn-cancel" onclick="closeModal()">鍙栨秷</button>
-      <button class="btn-save" onclick="saveProvinceRating()">淇濆瓨璇勫垎</button>
+      <button class="btn-clear" id="btnClear" onclick="clearProvinceRating()">清除评分</button>
+      <button class="btn-cancel" onclick="closeModal()">取消</button>
+      <button class="btn-save" onclick="saveProvinceRating()">保存评分</button>
     </div>
   </div>
 </div>
@@ -1151,18 +1151,18 @@ body::after{display:none!important;}
     <h2 id="guideTitle"></h2>
     <p class="guide-subtitle" id="guideSubtitle"></p>
     <img class="guide-img" id="guideImg" src="" alt="" data-scenic-name="" data-fallback-index="0" onerror="handleScenicImgError(this)">
-    <div class="guide-section"><h4>鍩烘湰淇℃伅</h4><div class="info-row" id="guideInfo"></div></div>
-    <div class="guide-section"><h4>鎺ㄨ崘璺嚎</h4><p id="guideRoute" style="font-size:.85rem;color:var(--ink);"></p></div>
-    <div class="guide-section"><h4>蹇呮墦鍗′寒鐐�</h4><ul id="guideHighlights"></ul></div>
-    <div class="guide-section"><h4>瀹炵敤璐村＋</h4><ul id="guideTips"></ul></div>
+    <div class="guide-section"><h4>基本信息</h4><div class="info-row" id="guideInfo"></div></div>
+    <div class="guide-section"><h4>推荐路线</h4><p id="guideRoute" style="font-size:.85rem;color:var(--ink);"></p></div>
+    <div class="guide-section"><h4>必打卡亮点</h4><ul id="guideHighlights"></ul></div>
+    <div class="guide-section"><h4>实用贴士</h4><ul id="guideTips"></ul></div>
 
 <div class="guide-section">
-    <h4>鏃呮父鏀荤暐</h4>
+    <h4>旅游攻略</h4>
     <div id="guideLinks" class="guide-links"></div>
 </div>
     <div class="guide-actions">
-      <button class="btn-back" onclick="closeGuide()">杩斿洖鐪佷唤</button>
-      <button class="btn-rate" onclick="closeGuideAndRate()">鍘昏瘎鍒�</button>
+      <button class="btn-back" onclick="closeGuide()">返回省份</button>
+      <button class="btn-rate" onclick="closeGuideAndRate()">去评分</button>
     </div>
   </div>
 </div>
@@ -1170,191 +1170,191 @@ body::after{display:none!important;}
 <script>
 // ============ 34 PROVINCES DATA ============
 const provinceData = [
-  // --- NORTHWEST 瑗垮寳 ---
-  { id:"xinjiang", name:"鏂扮枂缁村惥灏旇嚜娌诲尯", short:"鏂扮枂",
+  // --- NORTHWEST 西北 ---
+  { id:"xinjiang", name:"新疆维吾尔自治区", short:"新疆",
     path:"30,10 75,5 125,8 175,5 225,12 275,22 310,38 320,60 315,85 330,110 310,138 280,145 250,155 220,148 190,150 160,142 130,148 100,138 75,130 50,120 28,105 15,80 10,50 15,30",
     cx:160,cy:78, small:false,
-    attractions:["澶╁北澶╂睜","鍠€绾虫柉婀�","鍚愰瞾鐣憽钀勬矡","閭ｆ媺鎻愯崏鍘�","璧涢噷鏈ㄦ箹"],
-    foods:["澶х洏楦�","缇婅倝涓�","鎵嬫姄楗�","鐑ゅ寘瀛�","鐐掔背绮�"] },
-  { id:"qinghai", name:"闈掓捣鐪�", short:"闈掓捣",
+    attractions:["天山天池","喀纳斯湖","吐鲁番葡萄沟","那拉提草原","赛里木湖"],
+    foods:["大盘鸡","羊肉串","手抓饭","烤包子","炒米粉"] },
+  { id:"qinghai", name:"青海省", short:"青海",
     path:"120,128 155,120 195,128 235,140 260,155 270,175 265,200 245,220 215,225 185,218 155,210 125,205 100,195 85,178 90,158 100,145",
     cx:180,cy:180, small:false,
-    attractions:["闈掓捣婀�","鑼跺崱鐩愭箹","濉斿皵瀵�","绁佽繛灞辫崏鍘�","鍙彲瑗块噷"],
-    foods:["鎵嬫姄缇婅倝","閰跨毊","鐢滈唴","閰稿ザ","灏曢潰鐗�"] },
-  { id:"gansu", name:"鐢樿們鐪�", short:"鐢樿們",
+    attractions:["青海湖","茶卡盐湖","塔尔寺","祁连山草原","可可西里"],
+    foods:["手抓羊肉","酿皮","甜醅","酸奶","尕面片"] },
+  { id:"gansu", name:"甘肃省", short:"甘肃",
     path:"235,130 260,125 290,128 315,140 330,160 325,185 310,200 290,210 270,215 250,210 235,195 225,175 215,160 220,145",
     cx:275,cy:170, small:false,
-    attractions:["鏁︾厡鑾珮绐�","鍢夊唱鍏�","寮犳帠涓归湠","楦ｆ矙灞辨湀鐗欐硥","楹︾Н灞辩煶绐�"],
-    foods:["鍏板窞鎷夐潰","鎵嬫姄缇婅倝","閰跨毊瀛�","娴嗘按闈�","鑷婂瓙闈�"] },
-  { id:"ningxia", name:"瀹佸鍥炴棌鑷不鍖�", short:"瀹佸",
+    attractions:["敦煌莫高窟","嘉峪关","张掖丹霞","鸣沙山月牙泉","麦积山石窟"],
+    foods:["兰州拉面","手抓羊肉","酿皮子","浆水面","臊子面"] },
+  { id:"ningxia", name:"宁夏回族自治区", short:"宁夏",
     path:"290,138 310,132 325,140 328,158 318,170 300,172 288,165 283,152",
     cx:308,cy:152, small:true,
-    attractions:["娌欐箹","瑗垮鐜嬮櫟","璐哄叞灞卞博鐢�","闀囧寳鍫″奖瑙嗗煄","娌欏潯澶�"],
-    foods:["鎵嬫姄缇婅倝","缇婃潅纰�","缇婅倝鑷婂瓙闈�","娌归","鐩栫鑼�"] },
+    attractions:["沙湖","西夏王陵","贺兰山岩画","镇北堡影视城","沙坡头"],
+    foods:["手抓羊肉","羊杂碎","羊肉臊子面","油香","盖碗茶"] },
 
-  // --- NORTH 鍗庡寳 ---
-  { id:"neimenggu", name:"鍐呰挋鍙よ嚜娌诲尯", short:"鍐呰挋鍙�",
+  // --- NORTH 华北 ---
+  { id:"neimenggu", name:"内蒙古自治区", short:"内蒙古",
     path:"235,50 300,35 370,30 440,38 500,50 520,70 510,95 490,105 470,100 440,105 410,95 385,105 360,95 340,108 320,100 305,115 295,108 275,120 260,108 245,118 235,105 220,95 220,70",
     cx:370,cy:78, small:false,
-    attractions:["鍛间鸡璐濆皵鑽夊師","鍝嶆矙婀�","鎴愬悏鎬濇睏闄�","棰濇祹绾宠儭鏉ㄦ灄","闃垮皵灞�"],
-    foods:["鐑ゅ叏缇�","鎵嬫妸鑲�","濂惰尪","濂惰眴鑵�","椋庡共鐗涜倝"] },
-  { id:"beijing", name:"鍖椾含甯�", short:"鍖椾含",
+    attractions:["呼伦贝尔草原","响沙湾","成吉思汗陵","额济纳胡杨林","阿尔山"],
+    foods:["烤全羊","手把肉","奶茶","奶豆腐","风干牛肉"] },
+  { id:"beijing", name:"北京市", short:"北京",
     path:"420,118 440,112 453,118 458,133 450,145 435,148 420,143 412,135",
     cx:435,cy:130, small:true,
-    attractions:["鏁呭","闀垮煄","澶╁潧","棰愬拰鍥�","楦熷发"],
-    foods:["鍖椾含鐑ら腑","鐐搁叡闈�","娑緤鑲�","璞嗘眮鐒﹀湀","鍗ょ叜鐏儳"] },
-  { id:"tianjin", name:"澶╂触甯�", short:"澶╂触",
+    attractions:["故宫","长城","天坛","颐和园","鸟巢"],
+    foods:["北京烤鸭","炸酱面","涮羊肉","豆汁焦圈","卤煮火烧"] },
+  { id:"tianjin", name:"天津市", short:"天津",
     path:"445,125 458,120 465,128 463,140 452,143 442,138",
     cx:453,cy:132, small:true,
-    attractions:["澶╂触涔嬬溂","鍙ゆ枃鍖栬","鐩樺北","浜斿ぇ閬�","鎰忓紡椋庢儏鍖�"],
-    foods:["鐙椾笉鐞嗗寘瀛�","鐓庨ゼ鏋滃瓙","鑰虫湹鐪肩偢绯�","鍗佸叓琛楅夯鑺�","閿呭反鑿�"] },
-  { id:"hebei", name:"娌冲寳鐪�", short:"娌冲寳",
+    attractions:["天津之眼","古文化街","盘山","五大道","意式风情区"],
+    foods:["狗不理包子","煎饼果子","耳朵眼炸糕","十八街麻花","锅巴菜"] },
+  { id:"hebei", name:"河北省", short:"河北",
     path:"400,130 418,125 435,132 440,148 432,160 415,168 398,172 385,165 378,152 382,140 392,132",
     cx:410,cy:148, small:false,
-    attractions:["閬挎殤灞卞簞","灞辨捣鍏�","鐧芥磱娣€","鍖楁埓娌�","瑗挎煆鍧�"],
-    foods:["椹磋倝鐏儳","妫嬪瓙鐑чゼ","閲戞瘺鐙瓙楸�","鐔忚倝澶чゼ","浜笢鏉挎牀"] },
-  { id:"shanxi", name:"灞辫タ鐪�", short:"灞辫タ",
+    attractions:["避暑山庄","山海关","白洋淀","北戴河","西柏坡"],
+    foods:["驴肉火烧","棋子烧饼","金毛狮子鱼","熏肉大饼","京东板栗"] },
+  { id:"shanxi", name:"山西省", short:"山西",
     path:"360,148 380,140 395,148 400,162 392,178 375,185 358,182 346,170 345,158 350,150",
     cx:372,cy:164, small:false,
-    attractions:["骞抽仴鍙ゅ煄","浜戝唸鐭崇獰","浜斿彴灞�","澹跺彛鐎戝竷","鎮┖瀵�"],
-    foods:["鍒€鍓婇潰","骞抽仴鐗涜倝","杩囨补鑲�","鑾滈潰鏍叉牫鏍�","澶胺楗�"] },
-  { id:"shandong", name:"灞变笢鐪�", short:"灞变笢",
+    attractions:["平遥古城","云冈石窟","五台山","壶口瀑布","悬空寺"],
+    foods:["刀削面","平遥牛肉","过油肉","莜面栲栳栳","太谷饼"] },
+  { id:"shandong", name:"山东省", short:"山东",
     path:"425,148 445,142 460,148 470,162 465,180 452,192 435,195 420,188 410,178 415,165",
     cx:440,cy:170, small:false,
-    attractions:["娉板北","鏇查槣瀛斿簷","宕傚北","钃幈闃�","瓒电獊娉�"],
-    foods:["鐓庨ゼ鍗峰ぇ钁�","寰峰窞鎵掗浮","涔濊浆澶ц偁","绯栭唻椴ら奔","闈掑矝鍟ら厭"] },
+    attractions:["泰山","曲阜孔庙","崂山","蓬莱阁","趵突泉"],
+    foods:["煎饼卷大葱","德州扒鸡","九转大肠","糖醋鲤鱼","青岛啤酒"] },
 
-  // --- NORTHEAST 涓滃寳 ---
-  { id:"liaoning", name:"杈藉畞鐪�", short:"杈藉畞",
+  // --- NORTHEAST 东北 ---
+  { id:"liaoning", name:"辽宁省", short:"辽宁",
     path:"465,108 490,100 510,108 520,125 515,142 502,150 485,148 470,140 462,125 460,115",
     cx:490,cy:125, small:false,
-    attractions:["娌堥槼鏁呭","澶ц繛鑰佽檸婊�","鍗冨北","鏈邯姘存礊","鏄熸捣骞垮満"],
-    foods:["閿呭寘鑲�","澶ц繛娴烽矞","鐚倝鐐栫矇鏉�","鑰佽竟楗哄瓙","娴峰煄棣呴ゼ"] },
-  { id:"jilin", name:"鍚夋灄鐪�", short:"鍚夋灄",
+    attractions:["沈阳故宫","大连老虎滩","千山","本溪水洞","星海广场"],
+    foods:["锅包肉","大连海鲜","猪肉炖粉条","老边饺子","海城馅饼"] },
+  { id:"jilin", name:"吉林省", short:"吉林",
     path:"490,60 520,52 540,58 545,78 535,98 515,108 498,102 485,90 482,75",
     cx:515,cy:78, small:false,
-    attractions:["闀跨櫧灞卞ぉ姹�","浼弧鐨囧","鍑€鏈堟江","闆惧噰宀�","鏉捐姳婀�"],
-    foods:["鍐烽潰","鐧借倝琛€鑲�","鏈濋矞鏃忕儰鑲�","鎵撶硶","鐭抽攨鎷岄キ"] },
-  { id:"heilongjiang", name:"榛戦緳姹熺渷", short:"榛戦緳姹�",
+    attractions:["长白山天池","伪满皇宫","净月潭","雾凇岛","松花湖"],
+    foods:["冷面","白肉血肠","朝鲜族烤肉","打糕","石锅拌饭"] },
+  { id:"heilongjiang", name:"黑龙江省", short:"黑龙江",
     path:"480,15 530,5 570,12 590,30 595,55 580,72 560,78 535,72 510,60 490,52 475,40 470,25",
     cx:535,cy:42, small:false,
-    attractions:["鍐伴洩澶т笘鐣�","闀滄硦婀�","浜斿ぇ杩炴睜","婕犳渤鍖楁瀬鏉�","澶槼宀�"],
-    foods:["鍝堝皵婊ㄧ孩鑲�","鏉€鐚彍","閿呭寘鑲�","寰楄帿鍒╃倴楸�","灏忛浮鐐栬槕鑿�"] },
+    attractions:["冰雪大世界","镜泊湖","五大连池","漠河北极村","太阳岛"],
+    foods:["哈尔滨红肠","杀猪菜","锅包肉","得莫利炖鱼","小鸡炖蘑菇"] },
 
-  // --- CENTRAL 鍗庝腑 ---
-  { id:"henan", name:"娌冲崡鐪�", short:"娌冲崡",
+  // --- CENTRAL 华中 ---
+  { id:"henan", name:"河南省", short:"河南",
     path:"370,185 395,178 410,185 420,200 415,220 400,232 382,235 365,228 355,215 352,200 358,190",
     cx:388,cy:210, small:false,
-    attractions:["灏戞灄瀵�","榫欓棬鐭崇獰","娓呮槑涓婃渤鍥�","浜戝彴灞�","鐧介┈瀵�"],
-    foods:["鑳¤荆姹�","鐑╅潰","閬撳彛鐑ч浮","鐏屾堡鍖�","娲涢槼姘村腑"] },
-  { id:"hubei", name:"婀栧寳鐪�", short:"婀栧寳",
+    attractions:["少林寺","龙门石窟","清明上河园","云台山","白马寺"],
+    foods:["胡辣汤","烩面","道口烧鸡","灌汤包","洛阳水席"] },
+  { id:"hubei", name:"湖北省", short:"湖北",
     path:"365,240 390,232 410,238 425,250 420,268 402,278 382,280 362,275 348,262 345,248 352,240",
     cx:385,cy:258, small:false,
-    attractions:["榛勯工妤�","姝﹀綋灞�","绁炲啘鏋�","涓夊场澶у潩","鎭╂柦澶у场璋�"],
-    foods:["鐑共闈�","姝︽槍楸�","楦剸","涓夐矞璞嗙毊","闈㈢獫"] },
-  { id:"hunan", name:"婀栧崡鐪�", short:"婀栧崡",
+    attractions:["黄鹤楼","武当山","神农架","三峡大坝","恩施大峡谷"],
+    foods:["热干面","武昌鱼","鸭脖","三鲜豆皮","面窝"] },
+  { id:"hunan", name:"湖南省", short:"湖南",
     path:"355,280 380,275 400,282 412,298 405,318 388,328 365,330 345,322 332,308 338,290 345,282",
     cx:375,cy:305, small:false,
-    attractions:["寮犲鐣�","鍑ゅ嚢鍙ゅ煄","宀抽簱灞�","姗樺瓙娲�","澶╅棬灞�"],
-    foods:["鑷眴鑵�","鍓佹楸煎ご","鍙ｅ懗铏�","绯栨补绮戠矐","濮婂鍥㈠瓙"] },
+    attractions:["张家界","凤凰古城","岳麓山","橘子洲","天门山"],
+    foods:["臭豆腐","剁椒鱼头","口味虾","糖油粑粑","姊妹团子"] },
 
-  // --- EAST 鍗庝笢 ---
-  { id:"shanghai", name:"涓婃捣甯�", short:"涓婃捣",
+  // --- EAST 华东 ---
+  { id:"shanghai", name:"上海市", short:"上海",
     path:"485,250 500,245 508,255 505,268 492,272 480,265 478,255",
     cx:493,cy:258, small:true,
-    attractions:["澶栨哗","杩＋灏间箰鍥�","璞洯","涓滄柟鏄庣彔","鍗椾含璺�"],
-    foods:["灏忕鍖�","鐢熺厧","锜圭矇璞嗚厫","鎺掗骞寸硶","钁辨补鎷岄潰"] },
-  { id:"jiangsu", name:"姹熻嫃鐪�", short:"姹熻嫃",
+    attractions:["外滩","迪士尼乐园","豫园","东方明珠","南京路"],
+    foods:["小笼包","生煎","蟹粉豆腐","排骨年糕","葱油拌面"] },
+  { id:"jiangsu", name:"江苏省", short:"江苏",
     path:"445,215 465,208 480,215 490,230 488,248 475,258 458,260 442,255 432,245 428,230 432,218",
     cx:460,cy:235, small:false,
-    attractions:["鑻忓窞鍥灄","鍗椾含澶瓙搴�","澶箹","涓北闄�","鐦﹁タ婀�"],
-    foods:["鐩愭按楦�","鏉鹃紶妗傞奔","澶ч椄锜�","楦绮変笣姹�","鏃犻敗鎺掗"] },
-  { id:"zhejiang", name:"娴欐睙鐪�", short:"娴欐睙",
+    attractions:["苏州园林","南京夫子庙","太湖","中山陵","瘦西湖"],
+    foods:["盐水鸭","松鼠桂鱼","大闸蟹","鸭血粉丝汤","无锡排骨"] },
+  { id:"zhejiang", name:"浙江省", short:"浙江",
     path:"465,262 482,255 498,262 508,278 505,298 488,308 468,308 450,300 442,285 448,270 458,264",
     cx:476,cy:285, small:false,
-    attractions:["瑗挎箹","涔岄晣","鏅檧灞�","鍗冨矝婀�","闆佽崱灞�"],
-    foods:["涓滃潯鑲�","榫欎簳铏句粊","瑗挎箹閱嬮奔","鐗囧効宸�","閲戝崕鐏吙"] },
-  { id:"anhui", name:"瀹夊窘鐪�", short:"瀹夊窘",
+    attractions:["西湖","乌镇","普陀山","千岛湖","雁荡山"],
+    foods:["东坡肉","龙井虾仁","西湖醋鱼","片儿川","金华火腿"] },
+  { id:"anhui", name:"安徽省", short:"安徽",
     path:"400,230 422,225 438,232 445,248 440,260 425,268 408,268 392,260 385,248 388,238",
     cx:418,cy:248, small:false,
-    attractions:["榛勫北","瀹忔潙","涔濆崕灞�","澶╂煴灞�","瑗块€掑彜鏉�"],
-    foods:["鑷硿楸�","姣涜眴鑵�","寰藉窞涓€鍝侀攨","绗︾闆嗙儳楦�","榛勫北鐑чゼ"] },
-  { id:"jiangxi", name:"姹熻タ鐪�", short:"姹熻タ",
+    attractions:["黄山","宏村","九华山","天柱山","西递古村"],
+    foods:["臭鳜鱼","毛豆腐","徽州一品锅","符离集烧鸡","黄山烧饼"] },
+  { id:"jiangxi", name:"江西省", short:"江西",
     path:"400,280 422,275 440,282 450,298 445,315 430,325 410,328 392,322 378,310 375,295 385,285",
     cx:415,cy:302, small:false,
-    attractions:["搴愬北","鏅痉闀�","涓夋竻灞�","婊曠帇闃�","濠烘簮"],
-    foods:["鐡︾綈姹�","鍗楁槍绫崇矇","钘滆捒鐐掕厞鑲�","涓夋澂楦�","楗哄瓙绮�"] },
-  { id:"fujian", name:"绂忓缓鐪�", short:"绂忓缓",
+    attractions:["庐山","景德镇","三清山","滕王阁","婺源"],
+    foods:["瓦罐汤","南昌米粉","藜蒿炒腊肉","三杯鸡","饺子粑"] },
+  { id:"fujian", name:"福建省", short:"福建",
     path:"450,305 468,298 485,305 495,320 490,340 475,348 458,348 440,340 432,325 438,310",
     cx:465,cy:325, small:false,
-    attractions:["榧撴氮灞�","姝﹀し灞�","鍦熸ゼ","涓夊潑涓冨贩","澶Д灞�"],
-    foods:["浣涜烦澧�","娌欒尪闈�","铓典粩鐓�","楸间父","鑽旀灊鑲�"] },
-  { id:"taiwan", name:"鍙版咕鐪�", short:"鍙版咕",
+    attractions:["鼓浪屿","武夷山","土楼","三坊七巷","太姥山"],
+    foods:["佛跳墙","沙茶面","蚵仔煎","鱼丸","荔枝肉"] },
+  { id:"taiwan", name:"台湾省", short:"台湾",
     path:"510,305 528,298 538,310 535,328 522,340 508,338 500,325 502,312",
     cx:520,cy:320, small:false,
-    attractions:["鍙板寳101","鏃ユ湀娼�","闃块噷灞�","澶瞾闃�","涔濅唤鑰佽"],
-    foods:["鐗涜倝闈�","铓典粩鐓�","鐝嶇彔濂惰尪","鍗よ倝楗�","鍑ゆⅷ閰�"] },
+    attractions:["台北101","日月潭","阿里山","太鲁阁","九份老街"],
+    foods:["牛肉面","蚵仔煎","珍珠奶茶","卤肉饭","凤梨酥"] },
 
-  // --- SOUTH 鍗庡崡 ---
-  { id:"guangdong", name:"骞夸笢鐪�", short:"骞夸笢",
+  // --- SOUTH 华南 ---
+  { id:"guangdong", name:"广东省", short:"广东",
     path:"390,340 415,330 435,338 450,352 455,372 440,388 415,395 392,390 375,378 368,362 372,348",
     cx:415,cy:368, small:false,
-    attractions:["骞垮窞濉�","涓归湠灞�","闀块殕涔愬洯","涓冩槦宀�","娣卞湷婀�"],
-    foods:["鏃╄尪鐐瑰績","鐑ч箙","鐧藉垏楦�","鑲犵矇","鐓蹭粩楗�"] },
-  { id:"guangxi", name:"骞胯タ澹棌鑷不鍖�", short:"骞胯タ",
+    attractions:["广州塔","丹霞山","长隆乐园","七星岩","深圳湾"],
+    foods:["早茶点心","烧鹅","白切鸡","肠粉","煲仔饭"] },
+  { id:"guangxi", name:"广西壮族自治区", short:"广西",
     path:"340,338 365,328 388,335 400,348 395,368 378,385 355,392 332,388 312,378 300,362 305,345 320,338",
     cx:350,cy:362, small:false,
-    attractions:["妗傛灄灞辨按","闃虫湐瑗胯","寰峰ぉ鐎戝竷","娑犳床宀�","榫欒剨姊敯"],
-    foods:["铻鸿洺绮�","妗傛灄绫崇矇","鍟ら厭楸�","閰稿槩","鏌犳楦�"] },
-  { id:"hainan", name:"娴峰崡鐪�", short:"娴峰崡",
+    attractions:["桂林山水","阳朔西街","德天瀑布","涠洲岛","龙脊梯田"],
+    foods:["螺蛳粉","桂林米粉","啤酒鱼","酸嘢","柠檬鸭"] },
+  { id:"hainan", name:"海南省", short:"海南",
     path:"378,395 402,388 418,392 422,405 415,418 395,422 378,416 372,406",
     cx:398,cy:406, small:true,
-    attractions:["涓変簹娴锋哗","铚堟敮娲插矝","澶╂动娴疯","鍗楀北瀵�","鍒嗙晫娲插矝"],
-    foods:["鏂囨槍楦�","娓呰ˉ鍑�","妞板瓙楗�","鍜屼箰锜�","鎶辩綏绮�"] },
-  { id:"hongkong", name:"棣欐腐鐗瑰埆琛屾斂鍖�", short:"棣欐腐",
+    attractions:["三亚海滩","蜈支洲岛","天涯海角","南山寺","分界洲岛"],
+    foods:["文昌鸡","清补凉","椰子饭","和乐蟹","抱罗粉"] },
+  { id:"hongkong", name:"香港特别行政区", short:"香港",
     path:"440,388 452,384 456,394 450,402 440,400 436,394",
     cx:446,cy:394, small:true,
-    attractions:["缁村鍒╀簹娓�","杩＋灏间箰鍥�","娴锋磱鍏洯","澶钩灞遍《","鏄熷厜澶ч亾"],
-    foods:["娓紡鑼堕鍘�","鐑ц厞","铔嬫尀","鑿犺悵鍖�","涓濊濂惰尪"] },
-  { id:"macau", name:"婢抽棬鐗瑰埆琛屾斂鍖�", short:"婢抽棬",
+    attractions:["维多利亚港","迪士尼乐园","海洋公园","太平山顶","星光大道"],
+    foods:["港式茶餐厅","烧腊","蛋挞","菠萝包","丝袜奶茶"] },
+  { id:"macau", name:"澳门特别行政区", short:"澳门",
     path:"422,388 432,384 436,392 432,400 420,398 417,392",
     cx:427,cy:393, small:true,
-    attractions:["澶т笁宸寸墝鍧�","濞佸凹鏂汉","婢抽棬濉�","瀹樹篃琛�","娓斾汉鐮佸ご"],
-    foods:["钁″紡铔嬫尀","鐚墥鍖�","姘磋煿绮�","椹粙浼�","鏈ㄧ碃甯冧竵"] },
+    attractions:["大三巴牌坊","威尼斯人","澳门塔","官也街","渔人码头"],
+    foods:["葡式蛋挞","猪扒包","水蟹粥","马介休","木糠布丁"] },
 
-  // --- SOUTHWEST 瑗垮崡 ---
-  { id:"sichuan", name:"鍥涘窛鐪�", short:"鍥涘窛",
+  // --- SOUTHWEST 西南 ---
+  { id:"sichuan", name:"四川省", short:"四川",
     path:"240,215 270,205 300,205 330,215 345,235 340,258 315,272 288,275 260,268 238,255 225,240 228,222",
     cx:285,cy:242, small:false,
-    attractions:["涔濆娌�","宄ㄧ湁灞�","閮芥睙鍫�","绋诲煄浜氫竵","涔愬北澶т經"],
-    foods:["鐏攨","鎷呮媴闈�","楹诲﹩璞嗚厫","涓蹭覆棣�","閽甸挼楦�"] },
-  { id:"chongqing", name:"閲嶅簡甯�", short:"閲嶅簡",
+    attractions:["九寨沟","峨眉山","都江堰","稻城亚丁","乐山大佛"],
+    foods:["火锅","担担面","麻婆豆腐","串串香","钵钵鸡"] },
+  { id:"chongqing", name:"重庆市", short:"重庆",
     path:"305,238 325,232 340,240 342,255 330,265 312,265 300,258 298,247",
     cx:320,cy:250, small:true,
-    attractions:["娲礀娲�","纾佸櫒鍙�","姝﹂殕澶╁潙","闀挎睙涓夊场","澶ц冻鐭冲埢"],
-    foods:["閲嶅簡鐏攨","灏忛潰","閰歌荆绮�","姣涜鏃�","杈ｅ瓙楦�"] },
-  { id:"guizhou", name:"璐靛窞鐪�", short:"璐靛窞",
+    attractions:["洪崖洞","磁器口","武隆天坑","长江三峡","大足石刻"],
+    foods:["重庆火锅","小面","酸辣粉","毛血旺","辣子鸡"] },
+  { id:"guizhou", name:"贵州省", short:"贵州",
     path:"290,282 315,272 335,278 350,292 352,310 340,325 318,330 298,325 282,312 275,298 280,286",
     cx:315,cy:305, small:false,
-    attractions:["榛勬灉鏍戠€戝竷","鍗冩埛鑻楀","姊靛噣灞�","鑽旀尝灏忎竷瀛�","闀囪繙鍙ら晣"],
-    foods:["閰告堡楸�","鑲犳椇闈�","涓濆▋濞�","鑺辨邯鐗涜倝绮�","鎭嬬埍璞嗚厫鏋�"] },
-  { id:"yunnan", name:"浜戝崡鐪�", short:"浜戝崡",
+    attractions:["黄果树瀑布","千户苗寨","梵净山","荔波小七孔","镇远古镇"],
+    foods:["酸汤鱼","肠旺面","丝娃娃","花溪牛肉粉","恋爱豆腐果"] },
+  { id:"yunnan", name:"云南省", short:"云南",
     path:"215,288 245,278 265,282 285,290 300,308 310,330 305,355 280,375 245,385 210,382 180,368 162,348 158,325 170,305 190,295",
     cx:235,cy:335, small:false,
-    attractions:["涓芥睙鍙ゅ煄","澶х悊娲辨捣","鐜夐緳闆北","瑗垮弻鐗堢撼","棣欐牸閲屾媺"],
-    foods:["杩囨ˉ绫崇嚎","椴滆姳楗�","姹介攨楦�","閲庣敓鑿岀伀閿�","楗靛潡"] },
-  { id:"xizang", name:"瑗胯棌鑷不鍖�", short:"瑗胯棌",
+    attractions:["丽江古城","大理洱海","玉龙雪山","西双版纳","香格里拉"],
+    foods:["过桥米线","鲜花饼","汽锅鸡","野生菌火锅","饵块"] },
+  { id:"xizang", name:"西藏自治区", short:"西藏",
     path:"25,115 50,100 70,108 85,100 100,115 110,108 125,125 130,110 145,125 155,118 170,138 165,155 175,170 165,190 170,210 180,230 172,255 155,275 130,290 100,295 70,288 45,275 25,255 12,230 5,200 5,170 8,145",
     cx:100,cy:200, small:false,
-    attractions:["甯冭揪鎷夊","绾虫湪閿�","鐝犵﹩鏈楃帥宄�","澶ф槶瀵�","缇婂崜闆嶆帾"],
-    foods:["閰ユ补鑼�","绯岀矐","鐗︾墰鑲�","闈掔閰�","钘忛潰"] },
+    attractions:["布达拉宫","纳木错","珠穆朗玛峰","大昭寺","羊卓雍措"],
+    foods:["酥油茶","糌粑","牦牛肉","青稞酒","藏面"] },
 
   // --- NORTHWEST / CENTRAL-NORTH ---
-  { id:"shaanxi", name:"闄曡タ鐪�", short:"闄曡タ",
+  { id:"shaanxi", name:"陕西省", short:"陕西",
     path:"315,180 340,170 360,175 372,188 368,208 352,222 332,225 315,218 305,205 305,190",
     cx:340,cy:200, small:false,
-    attractions:["鍏甸┈淇�","鍗庡北","澶ч泚濉�","鍗庢竻姹�","閽熼紦妤�"],
-    foods:["鑲夊す棣�","缇婅倝娉￠","鍑夌毊","biangbiang闈�","鑷婂瓙闈�"] }
+    attractions:["兵马俑","华山","大雁塔","华清池","钟鼓楼"],
+    foods:["肉夹馍","羊肉泡馍","凉皮","biangbiang面","臊子面"] }
 ];
 
 // Build lookup maps
@@ -1364,457 +1364,457 @@ provinceData.forEach(p => { provinceMap[p.id] = p; });
 // ============ DESTINATIONS DATA (popular + niche spots per province) ============
 const provinceDestinations = {
   xinjiang: [
-    { name:"鍠€绾虫柉婀�", type:"鐑棬", img:"images/01_鍠€绾虫柉婀�.jpg", desc:"涓滄柟鐟炲＋锛屼腑鍥芥渶缇庢箹娉婄兢锛岀瀛ｅ眰鏋楀敖鏌撳绔ヨ瘽涓栫晫",
-      bestTime:"6鏈�-10鏈堬紙绉嬪鏈€浣筹級", duration:"2-3澶�", budget:"1500-3000鍏�",
-      route:"涔岄瞾鏈ㄩ綈鈫掑竷灏旀触鈫掑杸绾虫柉鈫掔櫧鍝堝反鈫掕繑绋�",
-      highlights:["瑙傞奔鍙颁刊鐬板叏鏅�","涓夋咕寰掓锛堟湀浜咕/绁炰粰婀�/鍗ч緳婀撅級","鍠€绾虫柉婀栨父鑸�","鐧藉搱宸磋竟澧冩潙"],
-      tips:["鏅尯鍐呬綇瀹胯緝璐靛缓璁彁鍓嶉璁�","鏃╂櫄娓╁樊澶ч渶甯﹀啿閿嬭。","鍖洪棿杞︽槸涓昏浜ら€氭柟寮�","绉嬪9鏈堝簳-10鏈堝垵鏈€缇�"] },
-    { name:"绂炬湪鏉�", type:"灏忎紬", img:"images/02_绂炬湪鏉�.jpg", desc:"鍥剧摝浜哄師濮嬫潙钀斤紝鏅ㄩ浘缂粫鐨勬湪灞嬬兢琚О涓虹鐨勮嚜鐣欏湴",
-      bestTime:"6鏈�-10鏈�", duration:"1-2澶�", budget:"800-1500鍏�",
-      route:"鍠€绾虫柉鏅尯鈫掔鏈ㄦ潙鈫掔編涓藉嘲",
-      highlights:["绂炬湪鏃ュ嚭鏅ㄩ浘","缇庝附宄板緬姝�","绂炬湪娌虫紓娴�","鏄熺┖鏈ㄥ眿"],
-      tips:["涓€瀹氳鏃╄捣鐪嬫棩鍑烘櫒闆�","鏉戦噷楠戦┈椤圭洰鍙浠�","鍐涔熸槸缁濈編闆埂"] },
-    { name:"璧涢噷鏈ㄦ箹", type:"鐑棬", img:"images/03_璧涢噷鏈ㄦ箹.jpg", desc:"澶цタ娲嬫渶鍚庝竴婊寸溂娉紝婀栨按婀涜摑濡傚疂鐭抽暥宓屽湪澶╁北鑴氫笅",
-      bestTime:"6鏈�-8鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"浼婂畞鈫掕禌閲屾湪婀栤啋鏋滃瓙娌熷ぇ妗モ啋杩旂▼",
-      highlights:["鐜箹鍏矾鑷┚","澶╅箙婀捐楦�","鏋滃瓙娌熷ぇ妗ヨ繙鐪�","婀栫晹闇茶惀"],
-      tips:["鐜箹绾�90鍏噷寤鸿鑷┚","婀栬竟椋庡ぇ闇€甯﹂槻椋庡濂�","鏅尯鍐呭彲闇茶惀"] }
+    { name:"喀纳斯湖", type:"热门", img:"images/01_喀纳斯湖.jpg", desc:"东方瑞士，中国最美湖泊群，秋季层林尽染如童话世界",
+      bestTime:"6月-10月（秋季最佳）", duration:"2-3天", budget:"1500-3000元",
+      route:"乌鲁木齐→布尔津→喀纳斯→白哈巴→返程",
+      highlights:["观鱼台俯瞰全景","三湾徒步（月亮湾/神仙湾/卧龙湾）","喀纳斯湖游船","白哈巴边境村"],
+      tips:["景区内住宿较贵建议提前预订","早晚温差大需带冲锋衣","区间车是主要交通方式","秋季9月底-10月初最美"] },
+    { name:"禾木村", type:"小众", img:"images/02_禾木村.jpg", desc:"图瓦人原始村落，晨雾缭绕的木屋群被称为神的自留地",
+      bestTime:"6月-10月", duration:"1-2天", budget:"800-1500元",
+      route:"喀纳斯景区→禾木村→美丽峰",
+      highlights:["禾木日出晨雾","美丽峰徒步","禾木河漂流","星空木屋"],
+      tips:["一定要早起看日出晨雾","村里骑马项目可议价","冬季也是绝美雪乡"] },
+    { name:"赛里木湖", type:"热门", img:"images/03_赛里木湖.jpg", desc:"大西洋最后一滴眼泪，湖水湛蓝如宝石镶嵌在天山脚下",
+      bestTime:"6月-8月", duration:"1-2天", budget:"600-1200元",
+      route:"伊宁→赛里木湖→果子沟大桥→返程",
+      highlights:["环湖公路自驾","天鹅湾观鸟","果子沟大桥远眺","湖畔露营"],
+      tips:["环湖约90公里建议自驾","湖边风大需带防风外套","景区内可露营"] }
   ],
   qinghai: [
-    { name:"闈掓捣婀�", type:"鐑棬", img:"images/04_闈掓捣婀�.jpg", desc:"涓浗鏈€澶у唴闄嗘箹锛屼竷鏈堟补鑿滆姳娴蜂笌纰ц摑婀栨按浜ょ浉杈夋槧",
-      bestTime:"7鏈�-8鏈�", duration:"1-2澶�", budget:"800-1500鍏�",
-      route:"瑗垮畞鈫掓棩鏈堝北鈫掗潚娴锋箹鈫掕尪鍗♀啋杩旂▼",
-      highlights:["鐜箹楠戣","娌硅彍鑺辩敯鎷嶇収","楦熷矝瑙傞笩","鏃ュ嚭鏃ヨ惤"],
-      tips:["娴锋嫈3200绫虫敞鎰忛珮鍙�","7鏈堟补鑿滆姳瀛ｆ渶缇�","寤鸿鍖呰溅鎴栬嚜椹�"] },
-    { name:"缈＄繝婀�", type:"灏忎紬", img:"images/05_缈＄繝婀�.jpg", desc:"姣旇尪鍗℃洿绾噣鐨勭洂婀栫澧冿紝缈犵豢鑹叉箹闈㈠缈＄繝鏁ｈ惤浜洪棿",
-      bestTime:"6鏈�-9鏈�", duration:"鍗婂ぉ-1澶�", budget:"200-400鍏�",
-      route:"澶ф煷鏃﹂晣鈫掔俊缈犳箹鈫掕繑鍥�",
-      highlights:["鏃犱汉鏈鸿埅鎷�","缈＄繝鑹茬洂婀栫兢","鏃ヨ惤鍊掑奖","浜哄皯鏅編"],
-      tips:["鐩墠鍏嶈垂浣嗛渶鑷┚鍓嶅線","寤鸿甯︽棤浜烘満鎷嶆憚","鏅村ぉ鏈€浣�"] },
-    { name:"鑼跺崱鐩愭箹", type:"鐑棬", img:"images/06_鑼跺崱鐩愭箹.jpg", desc:"澶╃┖涔嬮暅锛岀珯鍦ㄦ箹闈笂浠夸經琛岃蛋浜庝簯绔�",
-      bestTime:"6鏈�-8鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"瑗垮畞鈫掗潚娴锋箹鈫掕尪鍗＄洂婀栤啋杩旂▼",
-      highlights:["澶╃┖涔嬮暅鍊掑奖","灏忕伀杞︿綋楠�","鐩愰洉骞垮満","鏃ヨ惤鎷嶆憚"],
-      tips:["绌块矞鑹宠瀛愭媿鐓уソ鐪�","鏅村ぉ鏃犻鏃舵墠鏈夐暅闈㈡晥鏋�","鏅尯灏忕伀杞﹂渶鍙﹁喘绁�"] }
+    { name:"青海湖", type:"热门", img:"images/04_青海湖.jpg", desc:"中国最大内陆湖，七月油菜花海与碧蓝湖水交相辉映",
+      bestTime:"7月-8月", duration:"1-2天", budget:"800-1500元",
+      route:"西宁→日月山→青海湖→茶卡→返程",
+      highlights:["环湖骑行","油菜花田拍照","鸟岛观鸟","日出日落"],
+      tips:["海拔3200米注意高反","7月油菜花季最美","建议包车或自驾"] },
+    { name:"翡翠湖", type:"小众", img:"images/05_翡翠湖.jpg", desc:"比茶卡更纯净的盐湖秘境，翠绿色湖面如翡翠散落人间",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"200-400元",
+      route:"大柴旦镇→翡翠湖→返回",
+      highlights:["无人机航拍","翡翠色盐湖群","日落倒影","人少景美"],
+      tips:["目前免费但需自驾前往","建议带无人机拍摄","晴天最佳"] },
+    { name:"茶卡盐湖", type:"热门", img:"images/06_茶卡盐湖.jpg", desc:"天空之镜，站在湖面上仿佛行走于云端",
+      bestTime:"6月-8月", duration:"半天-1天", budget:"300-500元",
+      route:"西宁→青海湖→茶卡盐湖→返程",
+      highlights:["天空之镜倒影","小火车体验","盐雕广场","日落拍摄"],
+      tips:["穿鲜艳裙子拍照好看","晴天无风时才有镜面效果","景区小火车需另购票"] }
   ],
   gansu: [
-    { name:"鏁︾厡鑾珮绐�", type:"鐑棬", img:"images/07_鏁︾厡鑾珮绐�.jpg", desc:"涓栫晫鏂囧寲閬椾骇锛屽崈骞翠經鏁欒壓鏈疂搴擄紝涓濈桓涔嬭矾涓婄殑鐠€鐠ㄦ槑鐝�",
-      bestTime:"5鏈�-10鏈�", duration:"1-2澶�", budget:"800-2000鍏�",
-      route:"鏁︾厡甯傚尯鈫掕帿楂樼獰鈫掗福娌欏北鏈堢墮娉夆啋杩旂▼",
-      highlights:["鑾珮绐熷鐢婚洉濉�","鏁板瓧灞曠ず涓績","楦ｆ矙灞遍獑椹奸獞琛�","鏈堢墮娉夋棩钀�"],
-      tips:["鏃哄闇€鎻愬墠棰勭害闂ㄧエ","绐熷唴绂佹鎷嶇収","寤鸿璇疯瑙ｅ憳"] },
-    { name:"鎵庡皶閭�", type:"灏忎紬", img:"images/08_鎵庡皶閭�.jpg", desc:"钘忚鎰忎负鐭冲專瀛愶紝琚礇鍏嬬О涓轰簹褰撲笌澶忓▋鐨勮癁鐢熷湴",
-      bestTime:"6鏈�-9鏈�", duration:"1-2澶�", budget:"400-800鍏�",
-      route:"杩儴鍘库啋鎵庡皶閭ｂ啋浠欏コ婊┾啋涓€绾垮ぉ",
-      highlights:["浠欏コ婊╄鍏ㄦ櫙","鐭冲煄鏃ュ嚭","钘忓浣撻獙","寰掓绌胯秺"],
-      tips:["鐩墠鐩稿灏忎紬璁炬柦鏈夐檺","娴锋嫈3000+娉ㄦ剰楂樺弽","閫傚悎鎽勫奖鐖卞ソ鑰�"] },
-    { name:"寮犳帠涓归湠", type:"鐑棬", img:"images/09_寮犳帠涓归湠.jpg", desc:"涓冨僵涓归湠鍦拌矊锛屽ぇ鑷劧鎵撶炕鐨勮皟鑹茬洏",
-      bestTime:"6鏈�-9鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"寮犳帠甯傚尯鈫掍竷褰╀腹闇炩啋鍐版矡涓归湠鈫掕繑绋�",
-      highlights:["涓冨僵涓归湠瑙傛櫙鍙�","鏃ヨ惤鏃跺垎鑹插僵鏈€鑹�","鐑皵鐞冧綋楠�","鍐版矡涓归湠"],
-      tips:["涓嬪崍4鐐瑰悗鍏夌嚎鏈€浣�","鏅尯鏈夎鍏夎溅","澶忓娉ㄦ剰闃叉檼"] }
+    { name:"敦煌莫高窟", type:"热门", img:"images/07_敦煌莫高窟.jpg", desc:"世界文化遗产，千年佛教艺术宝库，丝绸之路上的璀璨明珠",
+      bestTime:"5月-10月", duration:"1-2天", budget:"800-2000元",
+      route:"敦煌市区→莫高窟→鸣沙山月牙泉→返程",
+      highlights:["莫高窟壁画雕塑","数字展示中心","鸣沙山骆驼骑行","月牙泉日落"],
+      tips:["旺季需提前预约门票","窟内禁止拍照","建议请讲解员"] },
+    { name:"扎尕那", type:"小众", img:"images/08_扎尕那.jpg", desc:"藏语意为石匣子，被洛克称为亚当与夏娃的诞生地",
+      bestTime:"6月-9月", duration:"1-2天", budget:"400-800元",
+      route:"迭部县→扎尕那→仙女滩→一线天",
+      highlights:["仙女滩观全景","石城日出","藏寨体验","徒步穿越"],
+      tips:["目前相对小众设施有限","海拔3000+注意高反","适合摄影爱好者"] },
+    { name:"张掖丹霞", type:"热门", img:"images/09_张掖丹霞.jpg", desc:"七彩丹霞地貌，大自然打翻的调色盘",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"300-500元",
+      route:"张掖市区→七彩丹霞→冰沟丹霞→返程",
+      highlights:["七彩丹霞观景台","日落时分色彩最艳","热气球体验","冰沟丹霞"],
+      tips:["下午4点后光线最佳","景区有观光车","夏季注意防晒"] }
   ],
   ningxia: [
-    { name:"娌欏潯澶�", type:"鐑棬", img:"images/10_娌欏潯澶�.jpg", desc:"娌欐紶涓庨粍娌充氦姹囩殑濂囪锛屼腑鍥芥渶濂界帺鐨勬矙婕犳櫙鍖�",
-      bestTime:"5鏈�-10鏈�", duration:"1-2澶�", budget:"500-1000鍏�",
-      route:"閾跺窛鈫掍腑鍗啋娌欏潯澶粹啋杩旂▼",
-      highlights:["缇婄毊绛忓瓙娓￠粍娌�","娌欐紶鍐叉氮杞�","榛勬渤椋炵储","楠戦獑椹�"],
-      tips:["娌欐紶娓╁樊澶у甫澶栧","闃叉檼闇滃ⅷ闀滃繀澶�","鏅尯椤圭洰闇€鍙﹁喘绁�"] },
-    { name:"闀囧寳鍫″奖瑙嗗煄", type:"灏忎紬", img:"images/11_闀囧寳鍫″奖瑙嗗煄.jpg", desc:"涓滄柟濂借幈鍧烇紝銆婂ぇ璇濊タ娓搞€嬨€婄孩楂樼脖銆嬬瓑缁忓吀鐢靛奖鎷嶆憚鍦�",
-      bestTime:"4鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"200-350鍏�",
-      route:"閾跺窛甯傚尯鈫掗晣鍖楀牎鈫掕タ澶忕帇闄碘啋杩旂▼",
-      highlights:["缁忓吀鐢靛奖鍦烘櫙鍐嶇幇","鍙よ鍐欑湡浣撻獙","鏄庡煄涓庢竻鍩�","褰辫閬撳叿灞�"],
-      tips:["鍙互绉熷彜瑁呮媿鐓�","寤鸿娓哥帺3-4灏忔椂","绂诲競鍖虹害30鍏噷"] }
+    { name:"沙坡头", type:"热门", img:"images/10_沙坡头.jpg", desc:"沙漠与黄河交汇的奇观，中国最好玩的沙漠景区",
+      bestTime:"5月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"银川→中卫→沙坡头→返程",
+      highlights:["羊皮筏子渡黄河","沙漠冲浪车","黄河飞索","骑骆驼"],
+      tips:["沙漠温差大带外套","防晒霜墨镜必备","景区项目需另购票"] },
+    { name:"镇北堡影视城", type:"小众", img:"images/11_镇北堡影视城.jpg", desc:"东方好莱坞，《大话西游》《红高粱》等经典电影拍摄地",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"200-350元",
+      route:"银川市区→镇北堡→西夏王陵→返程",
+      highlights:["经典电影场景再现","古装写真体验","明城与清城","影视道具展"],
+      tips:["可以租古装拍照","建议游玩3-4小时","离市区约30公里"] }
   ],
   neimenggu: [
-    { name:"鍛间鸡璐濆皵鑽夊師", type:"鐑棬", img:"images/12_鍛间鸡璐濆皵鑽夊師.jpg", desc:"涓栫晫鍥涘ぇ鑽夊師涔嬩竴锛屼竴鏈涙棤闄呯殑缁胯壊娴锋磱涓庤摑澶╃櫧浜�",
-      bestTime:"6鏈�-9鏈�", duration:"3-5澶�", budget:"2000-4000鍏�",
-      route:"娴锋媺灏斺啋棰濆皵鍙ょ撼鈫掓仼鍜屸啋榛戝北澶粹啋婊℃床閲�",
-      highlights:["楠戦┈绌胯秺鑽夊師","浣忚挋鍙ゅ寘","鑾棩鏍煎嫆娌�","鍛间鸡婀�"],
-      tips:["7-8鏈堣崏鏈€缁�","寤鸿鍖呰溅鎴栬嚜椹�","鑽夊師铓婅櫕澶氬甫椹辫殜姘�"] },
-    { name:"棰濇祹绾宠儭鏉ㄦ灄", type:"灏忎紬", img:"images/13_棰濇祹绾宠儭鏉ㄦ灄.jpg", desc:"涓夊崈骞寸殑绛夊緟锛岄噾绉嬪崄鏈堣儭鏉ㄦ灄濡傞噾鑹叉捣娲嬭埇闇囨捈",
-      bestTime:"10鏈堜笂鏃�-涓棳", duration:"2-3澶�", budget:"1500-2500鍏�",
-      route:"棰濇祹绾虫棗鈫掍竴閬撴ˉ鑷冲叓閬撴ˉ鈫掗粦鍩庨仐鍧€鈫掓€爲鏋�",
-      highlights:["鑳℃潹鏋楅噾榛勫","鎬爲鏋楁棩钀�","榛戝煄閬楀潃","娌欐紶鎽勫奖"],
-      tips:["鏈€浣宠璧忔湡浠�20澶╁乏鍙�","浣忓绱у紶闇€鎻愬墠棰勮","鏃╂櫄鍏夌嚎鏈€浣�"] },
-    { name:"闃垮皵灞�", type:"鐑棬", img:"images/14_闃垮皵灞�.jpg", desc:"涓浗鏈€灏忓煄甯傦紝鐏北澶╂睜妫灄娓╂硥闆嗕簬涓€韬殑绉樺",
-      bestTime:"6鏈�-9鏈堬紙澶忥級12鏈�-2鏈堬紙鍐級", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"闃垮皵灞卞競鍖衡啋澶╂睜鈫掔煶濉樻灄鈫掓潨楣冩箹鈫掓俯娉�",
-      highlights:["澶╂睜缇�","鐭冲鏋楃伀灞卞湴璨�","鏉滈箖婀�","娓╂硥鍗氱墿棣�"],
-      tips:["鍐鍙湅闆惧噰鍜屼笉鍐绘渤","鏃哄浣忓杈冭吹","寤鸿浣忓湪妫灄鍏洯鍐�"] }
+    { name:"呼伦贝尔草原", type:"热门", img:"images/12_呼伦贝尔草原.jpg", desc:"世界四大草原之一，一望无际的绿色海洋与蓝天白云",
+      bestTime:"6月-9月", duration:"3-5天", budget:"2000-4000元",
+      route:"海拉尔→额尔古纳→恩和→黑山头→满洲里",
+      highlights:["骑马穿越草原","住蒙古包","莫日格勒河","呼伦湖"],
+      tips:["7-8月草最绿","建议包车或自驾","草原蚊虫多带驱蚊水"] },
+    { name:"额济纳胡杨林", type:"小众", img:"images/13_额济纳胡杨林.jpg", desc:"三千年的等待，金秋十月胡杨林如金色海洋般震撼",
+      bestTime:"10月上旬-中旬", duration:"2-3天", budget:"1500-2500元",
+      route:"额济纳旗→一道桥至八道桥→黑城遗址→怪树林",
+      highlights:["胡杨林金黄季","怪树林日落","黑城遗址","沙漠摄影"],
+      tips:["最佳观赏期仅20天左右","住宿紧张需提前预订","早晚光线最佳"] },
+    { name:"阿尔山", type:"热门", img:"images/14_阿尔山.jpg", desc:"中国最小城市，火山天池森林温泉集于一身的秘境",
+      bestTime:"6月-9月（夏）12月-2月（冬）", duration:"2-3天", budget:"1000-2000元",
+      route:"阿尔山市区→天池→石塘林→杜鹃湖→温泉",
+      highlights:["天池群","石塘林火山地貌","杜鹃湖","温泉博物馆"],
+      tips:["冬季可看雾凇和不冻河","旺季住宿较贵","建议住在森林公园内"] }
   ],
   beijing: [
-    { name:"鏁呭鍗氱墿闄�", type:"鐑棬", img:"images/15_鏁呭鍗氱墿闄�.jpg", desc:"鍏櫨骞寸传绂佸煄锛屼笘鐣屾渶澶у娈垮缓绛戠兢锛屼腑鍗庢枃鏄庣懓瀹�",
-      bestTime:"4鏈�-6鏈�/9鏈�-11鏈�", duration:"1澶�", budget:"300-600鍏�",
-      route:"澶╁畨闂ㄢ啋鏁呭鈫掓櫙灞卞叕鍥啋鍖楁捣鍏洯",
-      highlights:["澶拰娈�","鐝嶅疂棣�","閽熻〃棣�","瑙掓ゼ鎵撳崱"],
-      tips:["闇€鎻愬墠棰勭害璐エ","鍛ㄤ竴闂","寤鸿涓婂崍灏芥棭鍏ュ洯","绌胯垝鏈嶇殑闉嬭蛋璺"] },
-    { name:"鍙ゅ寳姘撮晣", type:"灏忎紬", img:"images/16_鍙ゅ寳姘撮晣.jpg", desc:"闀垮煄鑴氫笅鐨勬睙鍗楁按涔★紝鍙搁┈鍙伴暱鍩庡鏅粷缇�",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"500-1200鍏�",
-      route:"鍖椾含甯傚尯鈫掑彜鍖楁按闀団啋鍙搁┈鍙伴暱鍩庘啋杩旂▼",
-      highlights:["鍙搁┈鍙伴暱鍩庡鏅�","鍙ら晣鎽囨┕鑸�","娓╂硥娉℃堡","鏄熺┖甯愮"],
-      tips:["鍛ㄦ湯浜哄寤鸿宸ヤ綔鏃ュ幓","澶滄父闀垮煄闇€鍗曠嫭璐エ","闀囧唴浣忓鐣ヨ吹"] }
+    { name:"故宫博物院", type:"热门", img:"images/15_故宫博物院.jpg", desc:"六百年紫禁城，世界最大宫殿建筑群，中华文明瑰宝",
+      bestTime:"4月-6月/9月-11月", duration:"1天", budget:"300-600元",
+      route:"天安门→故宫→景山公园→北海公园",
+      highlights:["太和殿","珍宝馆","钟表馆","角楼打卡"],
+      tips:["需提前预约购票","周一闭馆","建议上午尽早入园","穿舒服的鞋走路多"] },
+    { name:"古北水镇", type:"小众", img:"images/16_古北水镇.jpg", desc:"长城脚下的江南水乡，司马台长城夜景绝美",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1200元",
+      route:"北京市区→古北水镇→司马台长城→返程",
+      highlights:["司马台长城夜景","古镇摇橹船","温泉泡汤","星空帐篷"],
+      tips:["周末人多建议工作日去","夜游长城需单独购票","镇内住宿略贵"] }
   ],
   tianjin: [
-    { name:"澶╂触涔嬬溂", type:"鐑棬", img:"images/17_澶╂触涔嬬溂.jpg", desc:"寤哄湪妗ヤ笂鐨勬懇澶╄疆锛屾捣娌冲鏅敖鏀剁溂搴�",
-      bestTime:"鍏ㄥ勾锛堝鏅洿浣筹級", duration:"鍗婂ぉ", budget:"200-400鍏�",
-      route:"鍙ゆ枃鍖栬鈫掓剰寮忛鎯呭尯鈫掑ぉ娲ヤ箣鐪尖啋娴锋渤澶滄父",
-      highlights:["鎽╁ぉ杞澶滄櫙","娴锋渤娓歌埞","鍙ゆ枃鍖栬","鎰忓紡椋庢儏鍖�"],
-      tips:["鏅氫笂鍘荤伅鍏夋晥鏋滄渶濂�","闇€鎻愬墠棰勭害璐エ","闄勮繎鍋滆溅涓嶄究"] },
-    { name:"鐩樺北", type:"灏忎紬", img:"images/18_鐩樺北.jpg", desc:"浜笢绗竴灞憋紝涔鹃殕甯�32娆″贰骞哥殑鍖楁柟鍚嶅北",
-      bestTime:"4鏈�-10鏈�", duration:"1澶�", budget:"200-400鍏�",
-      route:"澶╂触甯傚尯鈫掕摕宸炩啋鐩樺北鈫掕繑绋�",
-      highlights:["浜斿嘲鍏煶","鎸傛湀宄�","澶╂垚瀵�","鐧诲北绱㈤亾"],
-      tips:["璺濆競鍖虹害120鍏噷","寤鸿鍏ㄧ▼绱㈤亾鐪佷綋鍔�","鏄ョ瀛ｆ渶浣�"] }
+    { name:"天津之眼", type:"热门", img:"images/17_天津之眼.jpg", desc:"建在桥上的摩天轮，海河夜景尽收眼底",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-400元",
+      route:"古文化街→意式风情区→天津之眼→海河夜游",
+      highlights:["摩天轮观夜景","海河游船","古文化街","意式风情区"],
+      tips:["晚上去灯光效果最好","需提前预约购票","附近停车不便"] },
+    { name:"盘山", type:"小众", img:"images/18_盘山.jpg", desc:"京东第一山，乾隆帝32次巡幸的北方名山",
+      bestTime:"4月-10月", duration:"1天", budget:"200-400元",
+      route:"天津市区→蓟州→盘山→返程",
+      highlights:["五峰八石","挂月峰","天成寺","登山索道"],
+      tips:["距市区约120公里","建议全程索道省体力","春秋季最佳"] }
   ],
   hebei: [
-    { name:"鎵垮痉閬挎殤灞卞簞", type:"鐑棬", img:"images/19_鎵垮痉閬挎殤灞卞簞.jpg", desc:"娓呬唬鐨囧澶忓锛屼腑鍥芥渶澶х殑鍙ゅ吀鍥灄寤虹瓚缇�",
-      bestTime:"6鏈�-9鏈�", duration:"1-2澶�", budget:"400-800鍏�",
-      route:"鎵垮痉甯傚尯鈫掗伩鏆戝北搴勨啋澶栧叓搴欌啋杩旂▼",
-      highlights:["瀹鍖�","婀栧尯娓歌埞","鐑熼洦妤�","鏅檧瀹椾箻涔嬪簷"],
-      tips:["鏅尯寰堝ぇ寤鸿瀹夋帓涓€鏁村ぉ","澶忓閬挎殤鑳滃湴","鍙瀵兼父璁茶В鍘嗗彶"] },
-    { name:"鍖楁埓娌�", type:"鐑棬", img:"images/20_鍖楁埓娌�.jpg", desc:"鍖楁柟鏈€鍙楁杩庣殑娴锋花搴﹀亣鑳滃湴锛屽澶╅伩鏆戝ぉ鍫�",
-      bestTime:"6鏈�-8鏈�", duration:"2-3澶�", budget:"800-1500鍏�",
-      route:"鍖椾含/澶╂触鈫掑寳鎴存渤鈫掗附瀛愮獫鍏洯鈫掕€佽檸鐭斥啋杩旂▼",
-      highlights:["楦藉瓙绐濇棩鍑�","鑰佽檸鐭虫捣婊�","纰ц灪濉旈厭鍚у叕鍥�","娴烽矞澶ч"],
-      tips:["鏆戝亣浜哄緢澶氬敖閲忛伩寮€鍛ㄦ湯","娴锋按涓嶅鍗楁柟娓呮緢","閫傚悎浜插瓙娓�"] }
+    { name:"承德避暑山庄", type:"热门", img:"images/19_承德避暑山庄.jpg", desc:"清代皇家夏宫，中国最大的古典园林建筑群",
+      bestTime:"6月-9月", duration:"1-2天", budget:"400-800元",
+      route:"承德市区→避暑山庄→外八庙→返程",
+      highlights:["宫殿区","湖区游船","烟雨楼","普陀宗乘之庙"],
+      tips:["景区很大建议安排一整天","夏季避暑胜地","可请导游讲解历史"] },
+    { name:"北戴河", type:"热门", img:"images/20_北戴河.jpg", desc:"北方最受欢迎的海滨度假胜地，夏天避暑天堂",
+      bestTime:"6月-8月", duration:"2-3天", budget:"800-1500元",
+      route:"北京/天津→北戴河→鸽子窝公园→老虎石→返程",
+      highlights:["鸽子窝日出","老虎石海滩","碧螺塔酒吧公园","海鲜大餐"],
+      tips:["暑假人很多尽量避开周末","海水不如南方清澈","适合亲子游"] }
   ],
   shanxi: [
-    { name:"骞抽仴鍙ゅ煄", type:"鐑棬", img:"images/21_骞抽仴鍙ゅ煄.jpg", desc:"淇濆瓨鏈€瀹屽ソ鐨勬槑娓呭彜鍩庯紝绌胯秺鍥炴檵鍟嗚緣鐓屽勾浠�",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"500-1000鍏�",
-      route:"澶師鈫掑钩閬ュ彜鍩庘啋涔斿澶ч櫌鈫掕繑绋�",
-      highlights:["鍙ゅ煄澧�","鏃ュ崌鏄岀エ鍙�","鍘胯","鍙堣骞抽仴婕斿嚭"],
-      tips:["鍙ゅ煄鍐呮皯瀹垮緢鏈夌壒鑹�","銆婂張瑙佸钩閬ャ€嬪繀鐪�","寤鸿璇峰娓歌瑙�"] },
-    { name:"澹跺彛鐎戝竷", type:"灏忎紬", img:"images/22_澹跺彛鐎戝竷.jpg", desc:"涓栫晫涓婃渶澶х殑榛勮壊鐎戝竷锛岄粍娌充箣姘村ぉ涓婃潵",
-      bestTime:"7鏈�-10鏈堬紙姹涙湡姘村ぇ锛�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"涓存本/寤跺畨鈫掑６鍙ｇ€戝竷鈫掕繑绋�",
-      highlights:["涓荤€戝竷瑙傛櫙","榫欐礊","鍗侀噷榫欐Ы","榛勬渤澶у悎鍞�"],
-      tips:["姹涙湡姘撮噺澶ф洿澹","娉ㄦ剰姘撮浘浼氭墦婀胯。鏈�","灞辫タ渚у拰闄曡タ渚ч兘鍙"] }
+    { name:"平遥古城", type:"热门", img:"images/21_平遥古城.jpg", desc:"保存最完好的明清古城，穿越回晋商辉煌年代",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"太原→平遥古城→乔家大院→返程",
+      highlights:["古城墙","日升昌票号","县衙","又见平遥演出"],
+      tips:["古城内民宿很有特色","《又见平遥》必看","建议请导游讲解"] },
+    { name:"壶口瀑布", type:"小众", img:"images/22_壶口瀑布.jpg", desc:"世界上最大的黄色瀑布，黄河之水天上来",
+      bestTime:"7月-10月（汛期水大）", duration:"半天-1天", budget:"300-500元",
+      route:"临汾/延安→壶口瀑布→返程",
+      highlights:["主瀑布观景","龙洞","十里龙槽","黄河大合唱"],
+      tips:["汛期水量大更壮观","注意水雾会打湿衣服","山西侧和陕西侧都可观"] }
   ],
   shandong: [
-    { name:"娉板北", type:"鐑棬", img:"images/23_娉板北.jpg", desc:"浜斿渤涔嬮锛屽巻浠ｅ笣鐜嬪皝绂呬箣鍦帮紝鏃ュ嚭浜戞捣闇囨捈浜哄績",
-      bestTime:"4鏈�-11鏈�", duration:"1-2澶�", budget:"500-1000鍏�",
-      route:"娉板畨鈫掔孩闂�/澶╁鏉戔啋涓ぉ闂ㄢ啋鍗楀ぉ闂ㄢ啋鐜夌殗椤�",
-      highlights:["娉板北鏃ュ嚭","鍗佸叓鐩�","鍗楀ぉ闂�","鐜夌殗椤�"],
-      tips:["澶滅埇鐪嬫棩鍑洪渶甯︽墜鐢�","灞遍《鍐烽渶甯﹀帤琛ｆ湇","鍙箻绱㈤亾鍒板崡澶╅棬"] },
-    { name:"宕傚北", type:"鐑棬", img:"images/24_宕傚北.jpg", desc:"娴蜂笂绗竴鍚嶅北锛岄亾鏁欏湥鍦帮紝灞辨捣鐩歌繛鐨勭嫭鐗规櫙瑙�",
-      bestTime:"5鏈�-10鏈�", duration:"1澶�", budget:"300-500鍏�",
-      route:"闈掑矝甯傚尯鈫掑磦灞扁啋澶竻瀹啋浠板彛鈫掕繑绋�",
-      highlights:["澶竻瀹�","浠板彛娴锋哗","宸ㄥ嘲","鍖椾節姘�"],
-      tips:["澶氭潯绾胯矾鍙€�","澶竻绾挎渶缁忓吀","鏄ュ澶氫簯闆�"] },
-    { name:"钃幈闃�", type:"灏忎紬", img:"images/25_钃幈闃�.jpg", desc:"鍏粰杩囨捣浼犺鍙戞簮鍦帮紝娴峰競铚冩ゼ濂囪鏃舵湁鍑虹幇",
-      bestTime:"5鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"钃幈甯傚尯鈫掕摤鑾遍榿鈫掑叓浠欐浮鈫掕繑绋�",
-      highlights:["钃幈闃佸彜寤虹瓚","娴峰競铚冩ゼ锛堝伓閬囷級","鍏粰杩囨捣鏅尯","姘村煄"],
-      tips:["娴峰競铚冩ゼ鏄ュ涔嬩氦姒傜巼鏈€楂�","鍙笌闀垮矝鑱旀父","娴烽矞涓嶉敊"] }
+    { name:"泰山", type:"热门", img:"images/23_泰山.jpg", desc:"五岳之首，历代帝王封禅之地，日出云海震撼人心",
+      bestTime:"4月-11月", duration:"1-2天", budget:"500-1000元",
+      route:"泰安→红门/天外村→中天门→南天门→玉皇顶",
+      highlights:["泰山日出","十八盘","南天门","玉皇顶"],
+      tips:["夜爬看日出需带手电","山顶冷需带厚衣服","可乘索道到南天门"] },
+    { name:"崂山", type:"热门", img:"images/24_崂山.jpg", desc:"海上第一名山，道教圣地，山海相连的独特景观",
+      bestTime:"5月-10月", duration:"1天", budget:"300-500元",
+      route:"青岛市区→崂山→太清宫→仰口→返程",
+      highlights:["太清宫","仰口海滩","巨峰","北九水"],
+      tips:["多条线路可选","太清线最经典","春夏多云雾"] },
+    { name:"蓬莱阁", type:"小众", img:"images/25_蓬莱阁.jpg", desc:"八仙过海传说发源地，海市蜃楼奇观时有出现",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"蓬莱市区→蓬莱阁→八仙渡→返程",
+      highlights:["蓬莱阁古建筑","海市蜃楼（偶遇）","八仙过海景区","水城"],
+      tips:["海市蜃楼春夏之交概率最高","可与长岛联游","海鲜不错"] }
   ],
   liaoning: [
-    { name:"澶ц繛鑰佽檸婊�", type:"鐑棬", img:"images/26_澶ц繛鑰佽檸婊�.jpg", desc:"鍖楁柟鏈€娴极鐨勬捣婊ㄥ煄甯傦紝娴锋磱鍏洯涓庢矙婊╃殑瀹岀編缁撳悎",
-      bestTime:"6鏈�-9鏈�", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"澶ц繛甯傚尯鈫掕€佽檸婊┾啋鏄熸捣骞垮満鈫掓妫板矝鈫掕繑绋�",
-      highlights:["鑰佽檸婊╂捣娲嬪叕鍥�","鏄熸捣骞垮満","婊ㄦ捣璺嚜椹�","閲戠煶婊�"],
-      tips:["澶忓娴烽矞鑲ョ編","婊ㄦ捣璺€傚悎鑷┚","6鏈堟湁妯辨鑺�"] },
-    { name:"鏈邯姘存礊", type:"灏忎紬", img:"images/27_鏈邯姘存礊.jpg", desc:"涓栫晫鏈€闀垮湴涓嬪厖姘存憾娲烇紝涔樺潗娓歌埞绌胯秺鍦颁笅鏆楁渤",
-      bestTime:"5鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"鏈邯甯傚尯鈫掓按娲炩啋鍏抽棬灞扁啋杩旂▼",
-      highlights:["鍦颁笅鏆楁渤娓歌埞","閽熶钩鐭冲瑙�","鍦拌川鍗氱墿棣�","绉嬪绾㈠彾"],
-      tips:["娲炲唴甯稿勾12掳C甯﹀濂�","鍏ㄧ▼鍧愯埞娓歌绾�40鍒嗛挓","绉嬪鍏抽棬灞辩孩鍙朵篃寰堢編"] }
+    { name:"大连老虎滩", type:"热门", img:"images/26_大连老虎滩.jpg", desc:"北方最浪漫的海滨城市，海洋公园与沙滩的完美结合",
+      bestTime:"6月-9月", duration:"2-3天", budget:"1000-2000元",
+      route:"大连市区→老虎滩→星海广场→棒棰岛→返程",
+      highlights:["老虎滩海洋公园","星海广场","滨海路自驾","金石滩"],
+      tips:["夏季海鲜肥美","滨海路适合自驾","6月有樱桃节"] },
+    { name:"本溪水洞", type:"小众", img:"images/27_本溪水洞.jpg", desc:"世界最长地下充水溶洞，乘坐游船穿越地下暗河",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"本溪市区→水洞→关门山→返程",
+      highlights:["地下暗河游船","钟乳石奇观","地质博物馆","秋季红叶"],
+      tips:["洞内常年12°C带外套","全程坐船游览约40分钟","秋季关门山红叶也很美"] }
   ],
   jilin: [
-    { name:"闀跨櫧灞卞ぉ姹�", type:"鐑棬", img:"images/28_闀跨櫧灞卞ぉ姹�.jpg", desc:"涓浗鏈€娣辩殑鐏北婀栵紝鍗佸叚搴у北宄扮幆鎶变竴姹犵ⅶ姘�",
-      bestTime:"7鏈�-9鏈堬紙鐪嬪ぉ姹狅級12鏈�-2鏈堬紙婊戦洩锛�", duration:"2-3澶�", budget:"1500-2500鍏�",
-      route:"闀挎槬鈫掗暱鐧藉北鍖楀潯/瑗垮潯鈫掑ぉ姹犫啋鐎戝竷鈫掓俯娉�",
-      highlights:["澶╂睜鍏ㄨ矊","闀跨櫧鐎戝竷","鍦颁笅妫灄","鑱氶緳娓╂硥"],
-      tips:["鐪嬪埌澶╂睜闇€瑕佽繍姘旓紙澶氫簯闆撅級","灞遍《寰堝喎闇€甯﹀濂�","鍖楀潯寮€鍙戞渶鎴愮啛"] },
-    { name:"闆惧噰宀�", type:"灏忎紬", img:"images/29_闆惧噰宀�.jpg", desc:"涓浗鍥涘ぇ鑷劧濂囪涔嬩竴锛屽啲鏃ユ竻鏅ㄧ帀鏍戠惣鑺卞姊︿技骞�",
-      bestTime:"12鏈�-娆″勾2鏈�", duration:"1澶�", budget:"300-600鍏�",
-      route:"鍚夋灄甯傚尯鈫掍箤鎷夎闀団啋闆惧噰宀涒啋杩旂▼",
-      highlights:["鏅ㄩ棿闆惧噰鎷嶆憚","婊℃棌姘戜織鏉�","鏉捐姳姹熺晹","闊╁悲鍐滃"],
-      tips:["闇€鏃╄捣锛�6-8鐐规渶浣筹級","姘旀俯鏋佷綆娉ㄦ剰淇濇殩","鍓嶄竴澶╂櫄涓婃棤椋庢墠鏄撳舰鎴�"] }
+    { name:"长白山天池", type:"热门", img:"images/28_长白山天池.jpg", desc:"中国最深的火山湖，十六座山峰环抱一池碧水",
+      bestTime:"7月-9月（看天池）12月-2月（滑雪）", duration:"2-3天", budget:"1500-2500元",
+      route:"长春→长白山北坡/西坡→天池→瀑布→温泉",
+      highlights:["天池全貌","长白瀑布","地下森林","聚龙温泉"],
+      tips:["看到天池需要运气（多云雾）","山顶很冷需带外套","北坡开发最成熟"] },
+    { name:"雾凇岛", type:"小众", img:"images/29_雾凇岛.jpg", desc:"中国四大自然奇观之一，冬日清晨玉树琼花如梦似幻",
+      bestTime:"12月-次年2月", duration:"1天", budget:"300-600元",
+      route:"吉林市区→乌拉街镇→雾凇岛→返程",
+      highlights:["晨间雾凇拍摄","满族民俗村","松花江畔","韩屯农家"],
+      tips:["需早起（6-8点最佳）","气温极低注意保暖","前一天晚上无风才易形成"] }
   ],
   heilongjiang: [
-    { name:"鍝堝皵婊ㄥ啺闆ぇ涓栫晫", type:"鐑棬", img:"images/30_鍝堝皵婊ㄥ啺闆ぇ涓栫晫.jpg", desc:"涓栫晫涓婃渶澶х殑鍐伴洩涓婚鍏洯锛屽啺闆曞煄鍫＄殑姊﹀够鐜嬪浗",
-      bestTime:"12鏈�-娆″勾2鏈�", duration:"1-2澶�", budget:"800-1500鍏�",
-      route:"鍝堝皵婊ㄥ競鍖衡啋鍐伴洩澶т笘鐣屸啋涓ぎ澶ц鈫掔储鑿蹭簹鏁欏爞",
-      highlights:["鍐伴洉鍩庡牎","鍐版粦姊�","闆洉鑹烘湳","澶滄櫙鐏厜"],
-      tips:["闆朵笅20掳C+娉ㄦ剰淇濇殩","鍌嶆櫄鍏ュ洯鍙湅鐧藉ぉ鍜屽鏅�","鏆栧疂瀹濆繀澶�"] },
-    { name:"婕犳渤鍖楁瀬鏉�", type:"灏忎紬", img:"images/31_婕犳渤鍖楁瀬鏉�.jpg", desc:"涓浗鏈€鍖楃锛屾瀬鍏夊嚭鐜板湴锛屽鑷崇櫧澶滀笌鍐嚦鏋佸瘨鐨勬瀬鑷翠綋楠�",
-      bestTime:"6鏈�-8鏈堬紙鐧藉锛�12鏈�-2鏈堬紙鏋佸瘨锛�", duration:"2-3澶�", budget:"1500-2500鍏�",
-      route:"婕犳渤甯傗啋鍖楁瀬鏉戔啋鍖楃孩鏉戔啋榫欐睙绗竴婀�",
-      highlights:["涓浗鏈€鍖楃偣","鏋佸厜瑙傛祴锛堟瀬缃曡锛�","鐧藉浣撻獙","榫欐睙绗竴婀�"],
-      tips:["鍐鏈€浣�-40掳C鍋氬ソ淇濇殩","鏋佸厜闈炲父缃曡涓嶈鎶卞お澶ф湡鏈�","澶忓鐧藉寰堢壒鍒�"] }
+    { name:"哈尔滨冰雪大世界", type:"热门", img:"images/30_哈尔滨冰雪大世界.jpg", desc:"世界上最大的冰雪主题公园，冰雕城堡的梦幻王国",
+      bestTime:"12月-次年2月", duration:"1-2天", budget:"800-1500元",
+      route:"哈尔滨市区→冰雪大世界→中央大街→索菲亚教堂",
+      highlights:["冰雕城堡","冰滑梯","雪雕艺术","夜景灯光"],
+      tips:["零下20°C+注意保暖","傍晚入园可看白天和夜景","暖宝宝必备"] },
+    { name:"漠河北极村", type:"小众", img:"images/31_漠河北极村.jpg", desc:"中国最北端，极光出现地，夏至白夜与冬至极寒的极致体验",
+      bestTime:"6月-8月（白夜）12月-2月（极寒）", duration:"2-3天", budget:"1500-2500元",
+      route:"漠河市→北极村→北红村→龙江第一湾",
+      highlights:["中国最北点","极光观测（极罕见）","白夜体验","龙江第一湾"],
+      tips:["冬季最低-40°C做好保暖","极光非常罕见不要抱太大期望","夏季白夜很特别"] }
   ],
   henan: [
-    { name:"灏戞灄瀵�", type:"鐑棬", img:"images/32_灏戞灄瀵�.jpg", desc:"澶╀笅绗竴鍚嶅埞锛岀瀹楃搴笌灏戞灄姝︽湳鍙戞簮鍦�",
-      bestTime:"4鏈�-10鏈�", duration:"1澶�", budget:"400-800鍏�",
-      route:"閮戝窞鈫掔櫥灏佲啋灏戞灄瀵衡啋濉旀灄鈫掍笁鐨囧鈫掕繑绋�",
-      highlights:["灏戞灄姝﹀儳琛ㄦ紨","濉旀灄","杈炬懇娲�","涓夌殗瀵ㄦ偓绌烘爤閬�"],
-      tips:["姝﹀儳琛ㄦ紨鏈夊浐瀹氭椂闂�","鏅尯杈冨ぇ寤鸿鍧愮數鐡惰溅","鍙埇宓╁北"] },
-    { name:"榫欓棬鐭崇獰", type:"鐑棬", img:"images/33_榫欓棬鐭崇獰.jpg", desc:"涓浗鍥涘ぇ鐭崇獰涔嬩竴锛屼紛娌充袱宀稿崄涓囧皧浣涘儚鐨勫畯浼熺煶鍒�",
-      bestTime:"4鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"娲涢槼甯傚尯鈫掗緳闂ㄧ煶绐熲啋鐧介┈瀵衡啋杩旂▼",
-      highlights:["鍗㈣垗閭ｅぇ浣�","涓囦經娲�","涓滃北鐭崇獰","澶滄父榫欓棬"],
-      tips:["瑗垮北鐭崇獰鏈€绮惧崕","寤鸿璇疯瑙ｅ憳","鍌嶆櫄鍏夌嚎濂介€傚悎鎷嶇収"] },
-    { name:"浜戝彴灞�", type:"鐑棬", img:"images/34_浜戝彴灞�.jpg", desc:"鍏ㄧ悆棣栨壒涓栫晫鍦拌川鍏洯锛岀孩鐭冲场涓庤尡钀稿嘲鐨勭粷缇庡北姘�",
-      bestTime:"5鏈�-10鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"鐒︿綔鈫掍簯鍙板北鈫掔孩鐭冲场鈫掓江鐎戝场鈫掕尡钀稿嘲",
-      highlights:["绾㈢煶宄�","娼€戝场","鑼辫惛宄扮幓鐠冩爤閬�","娉夌€戝场"],
-      tips:["鏅尯鍒嗗涓尯鍩熼渶1-2澶�","绾㈢煶宄℃槸绮惧崕蹇呭幓","澶忓姘撮噺澶ф洿缇�"] }
+    { name:"少林寺", type:"热门", img:"images/32_少林寺.jpg", desc:"天下第一名刹，禅宗祖庭与少林武术发源地",
+      bestTime:"4月-10月", duration:"1天", budget:"400-800元",
+      route:"郑州→登封→少林寺→塔林→三皇寨→返程",
+      highlights:["少林武僧表演","塔林","达摩洞","三皇寨悬空栈道"],
+      tips:["武僧表演有固定时间","景区较大建议坐电瓶车","可爬嵩山"] },
+    { name:"龙门石窟", type:"热门", img:"images/33_龙门石窟.jpg", desc:"中国四大石窟之一，伊河两岸十万尊佛像的宏伟石刻",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"洛阳市区→龙门石窟→白马寺→返程",
+      highlights:["卢舍那大佛","万佛洞","东山石窟","夜游龙门"],
+      tips:["西山石窟最精华","建议请讲解员","傍晚光线好适合拍照"] },
+    { name:"云台山", type:"热门", img:"images/34_云台山.jpg", desc:"全球首批世界地质公园，红石峡与茱萸峰的绝美山水",
+      bestTime:"5月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"焦作→云台山→红石峡→潭瀑峡→茱萸峰",
+      highlights:["红石峡","潭瀑峡","茱萸峰玻璃栈道","泉瀑峡"],
+      tips:["景区分多个区域需1-2天","红石峡是精华必去","夏季水量大更美"] }
   ],
   hubei: [
-    { name:"姝﹀綋灞�", type:"鐑棬", img:"images/35_姝﹀綋灞�.jpg", desc:"閬撴暀绗竴鍚嶅北锛屽紶涓変赴鍒涚珛澶瀬鎷崇殑姝︽灄鍦ｅ湴",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"鍗佸牥鈫掓褰撳北鈫掗噾椤垛啋鍗楀博鈫掔传闇勫鈫掕繑绋�",
-      highlights:["閲戦《","鍗楀博瀹�","绱渼瀹�","澶瓙鍧�"],
-      tips:["閲戦《闇€鐖北鎴栫储閬�","灞变笂浣忓鍙湅鏃ュ嚭","閬撴暀鏂囧寲娴撳帤"] },
-    { name:"鎭╂柦澶у场璋�", type:"灏忎紬", img:"images/36_鎭╂柦澶у场璋�.jpg", desc:"濯茬編绉戠綏鎷夊鐨勪腑鍥藉ぇ宄¤胺锛屼竴鐐烽濂囩煶浠や汉鍙逛负瑙傛",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"鎭╂柦甯傚尯鈫掑ぇ宄¤胺鈫掍簯榫欏湴缂濃啋涓冩槦瀵ㄢ啋杩旂▼",
-      highlights:["涓€鐐烽","浜戦緳鍦扮紳","涓冩槦瀵�","缁濆鏍堥亾"],
-      tips:["闇€瑕佷綋鍔涘ソ澶ч噺鐖北璺�","涓嬮洦鍚庝簯闆惧ソ鐪�","鎭╂柦甯傚尯鍒版櫙鍖虹害2灏忔椂"] },
-    { name:"绁炲啘鏋�", type:"鐑棬", img:"images/37_绁炲啘鏋�.jpg", desc:"绁炵鐨勫師濮嬫．鏋楋紝閲庝汉浼犺涓庨珮灞辨箍鍦扮殑鑷劧绉樺",
-      bestTime:"5鏈�-10鏈�", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"瀹滄槍鈫掔鍐滄灦鈫掑ぇ涔濇箹鈫掔鍐滈《鈫掕繑绋�",
-      highlights:["澶т節婀栨櫒闆�","绁炲啘椤�","閲戜笣鐚�","鏉垮宀�"],
-      tips:["灞卞尯澶╂皵澶氬彉甯﹂洦鍏�","澶т節婀栨竻鏅ㄦ渶缇�","寤鸿鑷┚鎴栧寘杞�"] }
+    { name:"武当山", type:"热门", img:"images/35_武当山.jpg", desc:"道教第一名山，张三丰创立太极拳的武林圣地",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"十堰→武当山→金顶→南岩→紫霄宫→返程",
+      highlights:["金顶","南岩宫","紫霄宫","太子坡"],
+      tips:["金顶需爬山或索道","山上住宿可看日出","道教文化浓厚"] },
+    { name:"恩施大峡谷", type:"小众", img:"images/36_恩施大峡谷.jpg", desc:"媲美科罗拉多的中国大峡谷，一炷香奇石令人叹为观止",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"恩施市区→大峡谷→云龙地缝→七星寨→返程",
+      highlights:["一炷香","云龙地缝","七星寨","绝壁栈道"],
+      tips:["需要体力好大量爬山路","下雨后云雾好看","恩施市区到景区约2小时"] },
+    { name:"神农架", type:"热门", img:"images/37_神农架.jpg", desc:"神秘的原始森林，野人传说与高山湿地的自然秘境",
+      bestTime:"5月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"宜昌→神农架→大九湖→神农顶→返程",
+      highlights:["大九湖晨雾","神农顶","金丝猴","板壁岩"],
+      tips:["山区天气多变带雨具","大九湖清晨最美","建议自驾或包车"] }
   ],
   hunan: [
-    { name:"寮犲鐣�", type:"鐑棬", img:"images/38_寮犲鐣�.jpg", desc:"闃垮嚒杈惧彇鏅湴锛屼笁鍗冨宄版嫈鍦拌€岃捣濡傚鏄熶笘鐣�",
-      bestTime:"4鏈�-10鏈�", duration:"2-3澶�", budget:"1500-2500鍏�",
-      route:"寮犲鐣屽競鍖衡啋妫灄鍏洯鈫掕瀹剁晫鈫掑ぉ闂ㄥ北鈫掕繑绋�",
-      highlights:["琚佸鐣屽搱鍒╄矾浜氬北","澶╅棬灞辩幓鐠冩爤閬�","閲戦灜婧�","鐧鹃緳澶╂"],
-      tips:["鏅尯寰堝ぇ寤鸿鐜�2-3澶�","澶╅棬灞遍渶鎻愬墠璐エ","闆ㄥ悗浜戞捣鏈€缇�"] },
-    { name:"鍑ゅ嚢鍙ゅ煄", type:"鐑棬", img:"images/39_鍑ゅ嚢鍙ゅ煄.jpg", desc:"娌堜粠鏂囩瑪涓嬬殑杈瑰煄锛屾脖姹熻竟鐨勫悐鑴氭ゼ澶滄櫙濡傛ⅵ",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"500-1000鍏�",
-      route:"寮犲鐣�/闀挎矙鈫掑嚖鍑板彜鍩庘啋娌辨睙娉涜垷鈫掕繑绋�",
-      highlights:["娌辨睙澶滄櫙","鍚婅剼妤�","娌堜粠鏂囨晠灞�","鑻楀浣撻獙"],
-      tips:["鏅氫笂姣旂櫧澶╂洿缇�","浣忔脖姹熻竟姘戝瑙傛櫙濂�","鍟嗕笟鍖栫▼搴﹁緝楂�"] }
+    { name:"张家界", type:"热门", img:"images/38_张家界.jpg", desc:"阿凡达取景地，三千奇峰拔地而起如外星世界",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1500-2500元",
+      route:"张家界市区→森林公园→袁家界→天门山→返程",
+      highlights:["袁家界哈利路亚山","天门山玻璃栈道","金鞭溪","百龙天梯"],
+      tips:["景区很大建议玩2-3天","天门山需提前购票","雨后云海最美"] },
+    { name:"凤凰古城", type:"热门", img:"images/39_凤凰古城.jpg", desc:"沈从文笔下的边城，沱江边的吊脚楼夜景如梦",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"张家界/长沙→凤凰古城→沱江泛舟→返程",
+      highlights:["沱江夜景","吊脚楼","沈从文故居","苗寨体验"],
+      tips:["晚上比白天更美","住沱江边民宿观景好","商业化程度较高"] }
   ],
   shanghai: [
-    { name:"澶栨哗", type:"鐑棬", img:"images/40_澶栨哗.jpg", desc:"涓囧浗寤虹瓚鍗氳缇や笌闄嗗鍢存懇澶╁ぇ妤间氦鐩歌緣鏄犵殑涓婃捣鍚嶇墖",
-      bestTime:"鍏ㄥ勾锛堝鏅洿浣筹級", duration:"鍗婂ぉ", budget:"200-500鍏�",
-      route:"鍗椾含璺啋澶栨哗鈫掕疆娓♀啋闄嗗鍢粹啋杩旂▼",
-      highlights:["澶栨哗澶滄櫙","涓囧浗寤虹瓚缇�","杞浮浣撻獙","澶栫櫧娓℃ˉ"],
-      tips:["鏅氫笂浜伅鍚庢渶缇�","鍙潗杞浮鍒板宀搁檰瀹跺槾","鍛ㄦ湯浜哄緢澶�"] },
-    { name:"鏈卞瑙掑彜闀�", type:"灏忎紬", img:"images/41_鏈卞瑙掑彜闀�.jpg", desc:"涓婃捣杩戦儕鐨勬睙鍗楁按涔★紝灏忔ˉ娴佹按浜哄鐨勯潤璋ф椂鍏�",
-      bestTime:"4鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"200-400鍏�",
-      route:"涓婃捣甯傚尯鈫掓湵瀹惰鈫掓斁鐢熸ˉ鈫掕妞嶅洯鈫掕繑绋�",
-      highlights:["鏀剧敓妗�","璇炬鍥�","鍙ら晣娓歌埞","鎵庤倝绛夊皬鍚�"],
-      tips:["鍦伴搧鍙揪寰堟柟渚�","閬垮紑鍛ㄦ湯浜哄皯","灏忓悆涓板瘜涓嶈吹"] }
+    { name:"外滩", type:"热门", img:"images/40_外滩.jpg", desc:"万国建筑博览群与陆家嘴摩天大楼交相辉映的上海名片",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-500元",
+      route:"南京路→外滩→轮渡→陆家嘴→返程",
+      highlights:["外滩夜景","万国建筑群","轮渡体验","外白渡桥"],
+      tips:["晚上亮灯后最美","可坐轮渡到对岸陆家嘴","周末人很多"] },
+    { name:"朱家角古镇", type:"小众", img:"images/41_朱家角古镇.jpg", desc:"上海近郊的江南水乡，小桥流水人家的静谧时光",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"200-400元",
+      route:"上海市区→朱家角→放生桥→课植园→返程",
+      highlights:["放生桥","课植园","古镇游船","扎肉等小吃"],
+      tips:["地铁可达很方便","避开周末人少","小吃丰富不贵"] }
   ],
   jiangsu: [
-    { name:"鑻忓窞鍥灄", type:"鐑棬", img:"images/42_鑻忓窞鍥灄.jpg", desc:"鍜昂涔嬪唴鍐嶉€犱咕鍧わ紝涓浗鍙ゅ吀鍥灄鑹烘湳鐨勫穮宄颁箣浣�",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"鑻忓窞甯傚尯鈫掓嫏鏀垮洯鈫掔嫯瀛愭灄鈫掑钩姹熻矾鈫掑瘨灞卞",
-      highlights:["鎷欐斂鍥�","鐣欏洯","骞虫睙璺彜琛�","铏庝笜"],
-      tips:["鎷欐斂鍥渶棰勭害","寤鸿璇峰娓歌瑙ｅ洯鏋楄璁�","鏄ュ鑺卞紑鏈€缇�"] },
-    { name:"鐦﹁タ婀�", type:"鐑棬", img:"images/43_鐦﹁タ婀�.jpg", desc:"鐑熻姳涓夋湀涓嬫壃宸烇紝鍥灄涓庢箹鏅畬缇庤瀺鍚堢殑姹熷崡闊靛懗",
-      bestTime:"3鏈�-5鏈�", duration:"1澶�", budget:"400-700鍏�",
-      route:"鎵窞甯傚尯鈫掔槮瑗挎箹鈫掍釜鍥啋涓滃叧琛椻啋杩旂▼",
-      highlights:["浜斾涵妗�","浜屽崄鍥涙ˉ","鐧藉","闀垮牑鏄ユ煶"],
-      tips:["涓夋湀鍥涙湀鏄渶浣冲鑺�","鍙潗娓歌埞娓歌","涓滃叧琛楀皬鍚冨"] }
+    { name:"苏州园林", type:"热门", img:"images/42_苏州园林.jpg", desc:"咫尺之内再造乾坤，中国古典园林艺术的巅峰之作",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"苏州市区→拙政园→狮子林→平江路→寒山寺",
+      highlights:["拙政园","留园","平江路古街","虎丘"],
+      tips:["拙政园需预约","建议请导游讲解园林设计","春季花开最美"] },
+    { name:"瘦西湖", type:"热门", img:"images/43_瘦西湖.jpg", desc:"烟花三月下扬州，园林与湖景完美融合的江南韵味",
+      bestTime:"3月-5月", duration:"1天", budget:"400-700元",
+      route:"扬州市区→瘦西湖→个园→东关街→返程",
+      highlights:["五亭桥","二十四桥","白塔","长堤春柳"],
+      tips:["三月四月是最佳季节","可坐游船游览","东关街小吃多"] }
   ],
   zhejiang: [
-    { name:"瑗挎箹", type:"鐑棬", img:"images/44_瑗挎箹.jpg", desc:"浜洪棿澶╁爞锛屾柇妗ユ畫闆笌闆峰嘲澶曠収鐨勫崈骞磋瘲鎰忕敾鍗�",
-      bestTime:"3鏈�-5鏈�/9鏈�-11鏈�", duration:"1-2澶�", budget:"500-1000鍏�",
-      route:"鏉窞甯傚尯鈫掓柇妗モ啋鑻忓牑鈫掗浄宄板鈫掔伒闅愬",
-      highlights:["鏂ˉ","鑻忓牑鏄ユ檽","闆峰嘲濉�","涓夋江鍗版湀","鐏甸殣瀵�"],
-      tips:["瑗挎箹鍏嶈垂寮€鏀�","寤鸿楠戣鐜箹","閬垮紑榛勯噾鍛ㄤ汉瓒呯骇澶�"] },
-    { name:"鍗冨矝婀�", type:"鐑棬", img:"images/45_鍗冨矝婀�.jpg", desc:"1078涓矝灞挎暎钀藉湪纰ф尝涔嬩腑锛屽啘澶北娉夋按婧愬湴",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"800-1500鍏�",
-      route:"鏉窞鈫掑崈宀涙箹鈫掍腑蹇冩箹鍖衡啋姊呭嘲宀涒啋杩旂▼",
-      highlights:["姊呭嘲宀涜宀�","鐜箹楠戣","娓歌埞鐧诲矝","楸煎ご瀹�"],
-      tips:["蹇呭悆鍗冨矝婀栭奔澶�","寤鸿浣忔箹鏅埧","鍙嚜椹剧幆婀�"] }
+    { name:"西湖", type:"热门", img:"images/44_西湖.jpg", desc:"人间天堂，断桥残雪与雷峰夕照的千年诗意画卷",
+      bestTime:"3月-5月/9月-11月", duration:"1-2天", budget:"500-1000元",
+      route:"杭州市区→断桥→苏堤→雷峰塔→灵隐寺",
+      highlights:["断桥","苏堤春晓","雷峰塔","三潭印月","灵隐寺"],
+      tips:["西湖免费开放","建议骑行环湖","避开黄金周人超级多"] },
+    { name:"千岛湖", type:"热门", img:"images/45_千岛湖.jpg", desc:"1078个岛屿散落在碧波之中，农夫山泉水源地",
+      bestTime:"4月-10月", duration:"1-2天", budget:"800-1500元",
+      route:"杭州→千岛湖→中心湖区→梅峰岛→返程",
+      highlights:["梅峰岛观岛","环湖骑行","游船登岛","鱼头宴"],
+      tips:["必吃千岛湖鱼头","建议住湖景房","可自驾环湖"] }
   ],
   anhui: [
-    { name:"榛勫北", type:"鐑棬", img:"images/46_榛勫北.jpg", desc:"浜斿渤褰掓潵涓嶇湅灞憋紝榛勫北褰掓潵涓嶇湅宀筹紝濂囨澗鎬煶浜戞捣娓╂硥",
-      bestTime:"4鏈�-11鏈�", duration:"2-3澶�", budget:"1200-2000鍏�",
-      route:"榛勫北甯傚尯鈫掍簯璋峰鈫掑寳娴封啋鍏夋槑椤垛啋杩庡鏉锯啋涓嬪北",
-      highlights:["杩庡鏉�","鍏夋槑椤舵棩鍑�","瑗挎捣澶у场璋�","浜戞捣"],
-      tips:["灞变笂浣忓闇€鎻愬墠棰勮","甯︾櫥灞辨潠鐪佸姏","澶╂皵鍙樺寲蹇甫闆ㄨ。"] },
-    { name:"瀹忔潙", type:"鐑棬", img:"images/47_瀹忔潙.jpg", desc:"鐢婚噷鐨勪埂鏉戯紝寰芥淳寤虹瓚涓庢湀娌煎€掑奖鏋勬垚鏈€缇庢按澧ㄧ敾",
-      bestTime:"3鏈�-5鏈�/9鏈�-11鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"榛勫北甯傗啋瀹忔潙鈫掓湀娌尖啋鎵垮織鍫傗啋鍗楁箹",
-      highlights:["鏈堟布鍊掑奖","鍗楁箹","鎵垮織鍫�","鍐欑敓瀛︾敓"],
-      tips:["娓呮櫒浜哄皯鏈€缇�","鍙笌榛勫北鑱旀父","鍛ㄨ竟杩樻湁瑗块€�"] }
+    { name:"黄山", type:"热门", img:"images/46_黄山.jpg", desc:"五岳归来不看山，黄山归来不看岳，奇松怪石云海温泉",
+      bestTime:"4月-11月", duration:"2-3天", budget:"1200-2000元",
+      route:"黄山市区→云谷寺→北海→光明顶→迎客松→下山",
+      highlights:["迎客松","光明顶日出","西海大峡谷","云海"],
+      tips:["山上住宿需提前预订","带登山杖省力","天气变化快带雨衣"] },
+    { name:"宏村", type:"热门", img:"images/47_宏村.jpg", desc:"画里的乡村，徽派建筑与月沼倒影构成最美水墨画",
+      bestTime:"3月-5月/9月-11月", duration:"半天-1天", budget:"300-500元",
+      route:"黄山市→宏村→月沼→承志堂→南湖",
+      highlights:["月沼倒影","南湖","承志堂","写生学生"],
+      tips:["清晨人少最美","可与黄山联游","周边还有西递"] }
   ],
   jiangxi: [
-    { name:"搴愬北", type:"鐑棬", img:"images/48_搴愬北.jpg", desc:"鍖″簮濂囩鐢插ぉ涓嬶紝鍗冨勾浜烘枃鍦ｅ北涓庝簯娴风€戝竷鐨勫畬缇庣粨鍚�",
-      bestTime:"5鏈�-10鏈�", duration:"2-3澶�", budget:"800-1500鍏�",
-      route:"涔濇睙鈫掑簮灞扁啋鐗箔闀団啋涓夊彔娉夆啋浜旇€佸嘲鈫掕繑绋�",
-      highlights:["涓夊彔娉夌€戝竷","浜旇€佸嘲","鍚劚鍙ｆ棩鍑�","鐗箔闀�"],
-      tips:["灞变笂浣忓鍑夌埥鏄伩鏆戣儨鍦�","涓夊彔娉夊彴闃跺緢澶氶渶浣撳姏","澶氫簯闆惧ぉ姘斿彉鍖栧揩"] },
-    { name:"濠烘簮", type:"鐑棬", img:"images/49_濠烘簮.jpg", desc:"涓浗鏈€缇庝埂鏉戯紝鏄ュぉ娌硅彍鑺辨捣涓庣澶╂檼绉嬬殑鎽勫奖澶╁爞",
-      bestTime:"3鏈�-4鏈堬紙娌硅彍鑺憋級10鏈�-11鏈堬紙鏅掔锛�", duration:"2-3澶�", budget:"800-1500鍏�",
-      route:"濠烘簮鈫掔瘉宀啋姹熸咕鈫掓潕鍧戔啋鏈堜寒婀锯啋杩旂▼",
-      highlights:["绡佸箔鏅掔","姹熷箔娌硅彍鑺�","鏈堜寒婀炬櫒闆�","寰芥淳鍙ゆ潙"],
-      tips:["鏄ュ鍜岀瀛ｆ渶缇�","鏅偣鍒嗘暎寤鸿鍖呰溅","绡佸箔鏄繀鍘荤簿鍗�"] }
+    { name:"庐山", type:"热门", img:"images/48_庐山.jpg", desc:"匡庐奇秀甲天下，千年人文圣山与云海瀑布的完美结合",
+      bestTime:"5月-10月", duration:"2-3天", budget:"800-1500元",
+      route:"九江→庐山→牯岭镇→三叠泉→五老峰→返程",
+      highlights:["三叠泉瀑布","五老峰","含鄱口日出","牯岭镇"],
+      tips:["山上住宿凉爽是避暑胜地","三叠泉台阶很多需体力","多云雾天气变化快"] },
+    { name:"婺源", type:"热门", img:"images/49_婺源.jpg", desc:"中国最美乡村，春天油菜花海与秋天晒秋的摄影天堂",
+      bestTime:"3月-4月（油菜花）10月-11月（晒秋）", duration:"2-3天", budget:"800-1500元",
+      route:"婺源→篁岭→江湾→李坑→月亮湾→返程",
+      highlights:["篁岭晒秋","江岭油菜花","月亮湾晨雾","徽派古村"],
+      tips:["春季和秋季最美","景点分散建议包车","篁岭是必去精华"] }
   ],
   fujian: [
-    { name:"榧撴氮灞�", type:"鐑棬", img:"images/50_榧撴氮灞�.jpg", desc:"娴蜂笂鑺卞洯涓囧浗寤虹瓚鍗氱墿棣嗭紝閽㈢惔涔嬪矝鐨勬氮婕椂鍏�",
-      bestTime:"3鏈�-5鏈�/10鏈�-11鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"鍘﹂棬鈫掗紦娴笨鈫掓棩鍏夊博鈫掕徑搴勮姳鍥啋榫欏ご璺�",
-      highlights:["鏃ュ厜宀�","鑿藉簞鑺卞洯","涓囧浗寤虹瓚","榫欏ご璺皬鍚�"],
-      tips:["鑸圭エ闇€鎻愬墠棰勮","宀涗笂鍙兘姝ヨ","閬垮紑鑺傚亣鏃ヤ汉灏�"] },
-    { name:"姝﹀し灞�", type:"鐑棬", img:"images/51_姝﹀し灞�.jpg", desc:"涓栫晫鍙岄仐浜э紝涔濇洸婧绛忔紓娴佷笌宀╄尪澶х孩琚嶇殑鏁呬埂",
-      bestTime:"4鏈�-10鏈�", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"姝﹀し灞卞競鈫掑ぉ娓稿嘲鈫掍節鏇叉邯婕傛祦鈫掑ぇ绾㈣鈫掕繑绋�",
-      highlights:["涔濇洸婧绛�","澶╂父宄�","澶х孩琚嶆瘝鏍�","姘村笜娲�"],
-      tips:["绔圭瓘闇€鎻愬墠棰勮","鐖北杈冪疮鍋氬ソ闃叉檼","鍝佽尪浣撻獙涓嶅閿欒繃"] }
+    { name:"鼓浪屿", type:"热门", img:"images/50_鼓浪屿.jpg", desc:"海上花园万国建筑博物馆，钢琴之岛的浪漫时光",
+      bestTime:"3月-5月/10月-11月", duration:"1-2天", budget:"600-1200元",
+      route:"厦门→鼓浪屿→日光岩→菽庄花园→龙头路",
+      highlights:["日光岩","菽庄花园","万国建筑","龙头路小吃"],
+      tips:["船票需提前预订","岛上只能步行","避开节假日人少"] },
+    { name:"武夷山", type:"热门", img:"images/51_武夷山.jpg", desc:"世界双遗产，九曲溪竹筏漂流与岩茶大红袍的故乡",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"武夷山市→天游峰→九曲溪漂流→大红袍→返程",
+      highlights:["九曲溪竹筏","天游峰","大红袍母树","水帘洞"],
+      tips:["竹筏需提前预订","爬山较累做好防晒","品茶体验不容错过"] }
   ],
   taiwan: [
-    { name:"鏃ユ湀娼�", type:"鐑棬", img:"images/52_鏃ユ湀娼�.jpg", desc:"鍙版咕鏈€澶х殑澶╃劧婀栨硦锛屾箹鍏夊北鑹插璇楀鐢�",
-      bestTime:"鍏ㄥ勾", duration:"1-2澶�", budget:"800-1500鍏�",
-      route:"鍙颁腑鈫掓棩鏈堟江鈫掔幆婀栭獞琛屸啋鐜勫厜瀵衡啋杩旂▼",
-      highlights:["鐜箹楠戣","娓歌埞璧忔櫙","鐜勫厜瀵�","鍚戝北娓稿涓績"],
-      tips:["楠戣鏄渶浣虫父瑙堟柟寮�","闃垮﹩鑼跺彾铔嬪緢鏈夊悕","娓呮櫒婀栭潰鏈€缇�"] },
-    { name:"涔濅唤鑰佽", type:"灏忎紬", img:"images/53_涔濅唤鑰佽.jpg", desc:"鍗冧笌鍗冨鐏垫劅鍦帮紝鎸傛弧绾㈢伅绗肩殑灞卞煄鑰佽闈㈡湞澶ф捣",
-      bestTime:"鍏ㄥ勾", duration:"鍗婂ぉ-1澶�", budget:"300-600鍏�",
-      route:"鍙板寳鈫掍節浠解啋绔栧磶璺啋闃垮鑼舵ゼ鈫掗粍閲戠€戝竷",
-      highlights:["绔栧磶璺伅绗�","闃垮鑼舵ゼ","榛勯噾鍗氱墿棣�","闃撮槼娴�"],
-      tips:["鍌嶆櫄鐏浜捣鏈€缇�","鍛ㄦ湯浜哄緢澶氬缓璁钩鏃ュ幓","鑺嬪渾蹇呭悆"] }
+    { name:"日月潭", type:"热门", img:"images/52_日月潭.jpg", desc:"台湾最大的天然湖泊，湖光山色如诗如画",
+      bestTime:"全年", duration:"1-2天", budget:"800-1500元",
+      route:"台中→日月潭→环湖骑行→玄光寺→返程",
+      highlights:["环湖骑行","游船赏景","玄光寺","向山游客中心"],
+      tips:["骑行是最佳游览方式","阿婆茶叶蛋很有名","清晨湖面最美"] },
+    { name:"九份老街", type:"小众", img:"images/53_九份老街.jpg", desc:"千与千寻灵感地，挂满红灯笼的山城老街面朝大海",
+      bestTime:"全年", duration:"半天-1天", budget:"300-600元",
+      route:"台北→九份→竖崎路→阿妹茶楼→黄金瀑布",
+      highlights:["竖崎路灯笼","阿妹茶楼","黄金博物馆","阴阳海"],
+      tips:["傍晚灯笼亮起最美","周末人很多建议平日去","芋圆必吃"] }
   ],
   guangdong: [
-    { name:"骞垮窞濉�", type:"鐑棬", img:"images/54_骞垮窞濉�.jpg", desc:"灏忚洰鑵扮殑鏇煎韬Э锛岀彔姹熸柊鍩庡ぉ闄呯嚎鐨勭粷瀵逛富瑙�",
-      bestTime:"鍏ㄥ勾", duration:"鍗婂ぉ", budget:"300-600鍏�",
-      route:"鑺卞煄骞垮満鈫掑箍宸炲鈫掔彔姹熷娓糕啋鍖椾含璺�",
-      highlights:["濉旈《瑙傛櫙鍙�","鎽╁ぉ杞�","鐝犳睙澶滄父","鍩庡競澶滄櫙"],
-      tips:["鎻愬墠璐エ鏈変紭鎯�","鏅氫笂鐏厜绉€濂界湅","濉旈《鎽╁ぉ杞渶鎺掗槦"] },
-    { name:"涓归湠灞�", type:"鐑棬", img:"images/55_涓归湠灞�.jpg", desc:"涓浗绾㈢煶鍏洯锛屼腹闇炲湴璨屽懡鍚嶅湴锛岄槼鍏冪煶涓庨槾鍏冪煶鐨勫ぉ閫犲湴璁�",
-      bestTime:"3鏈�-5鏈�/10鏈�-12鏈�", duration:"1-2澶�", budget:"400-800鍏�",
-      route:"闊跺叧鈫掍腹闇炲北鈫掗暱鑰佸嘲鈫掗槼鍏冪煶鈫掕繑绋�",
-      highlights:["闀胯€佸嘲鏃ュ嚭","闃冲厓鐭�","缈旈緳婀�","閿︽睙娓歌埞"],
-      tips:["闇€瑕佺埇灞变綋鍔涜姹備腑绛�","鏃ュ嚭寰堢編鍊煎緱鏃╄捣","澶忓寰堢儹娉ㄦ剰闃叉殤"] }
+    { name:"广州塔", type:"热门", img:"images/54_广州塔.jpg", desc:"小蛮腰的曼妙身姿，珠江新城天际线的绝对主角",
+      bestTime:"全年", duration:"半天", budget:"300-600元",
+      route:"花城广场→广州塔→珠江夜游→北京路",
+      highlights:["塔顶观景台","摩天轮","珠江夜游","城市夜景"],
+      tips:["提前购票有优惠","晚上灯光秀好看","塔顶摩天轮需排队"] },
+    { name:"丹霞山", type:"热门", img:"images/55_丹霞山.jpg", desc:"中国红石公园，丹霞地貌命名地，阳元石与阴元石的天造地设",
+      bestTime:"3月-5月/10月-12月", duration:"1-2天", budget:"400-800元",
+      route:"韶关→丹霞山→长老峰→阳元石→返程",
+      highlights:["长老峰日出","阳元石","翔龙湖","锦江游船"],
+      tips:["需要爬山体力要求中等","日出很美值得早起","夏季很热注意防暑"] }
   ],
   guangxi: [
-    { name:"妗傛灄灞辨按", type:"鐑棬", img:"images/56_妗傛灄灞辨按.jpg", desc:"妗傛灄灞辨按鐢插ぉ涓嬶紝婕撴睙涓ゅ哺鐨勫杸鏂壒宄版灄濡傜櫨閲岀敾鍗�",
-      bestTime:"4鏈�-10鏈�", duration:"2-3澶�", budget:"1200-2000鍏�",
-      route:"妗傛灄鈫掓紦姹熸紓娴佲啋闃虫湐鈫掑崄閲岀敾寤娾啋閬囬緳娌�",
-      highlights:["婕撴睙绔圭瓘","闃虫湐瑗胯","閬囬緳娌虫紓娴�","鍗侀噷鐢诲粖楠戣"],
-      tips:["婕撴睙婕傛祦閫夋潹鍫よ嚦鍏村潽娈�","闃虫湐閫傚悎澶氫綇鍑犲ぉ","楠戣鏄渶濂界殑鎺㈢储鏂瑰紡"] },
-    { name:"娑犳床宀�", type:"灏忎紬", img:"images/57_娑犳床宀�.jpg", desc:"涓浗鏈€骞磋交鐨勭伀灞卞矝锛岀幓鐠冩捣涓庣伀灞卞湴璨岀殑鐙壒娴峰矝",
-      bestTime:"4鏈�-6鏈�/10鏈�-12鏈�", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"鍖楁捣鈫掓稜娲插矝鈫掗硠楸煎北鈫掓淮姘翠腹灞忊啋浜斿僵婊�",
-      highlights:["槌勯奔灞辩伀灞卞叕鍥�","浜斿僵婊╂棩鍑�","婊存按涓瑰睆鏃ヨ惤","娴烽矞甯傚満"],
-      tips:["鍙伴瀛�7-9鏈堟敞鎰忓ぉ姘�","绉熺數鍔ㄨ溅鐜矝鏈€浣虫柟寮�","娴烽矞鑷繁鍘诲競鍦轰拱鏉ュ姞宸�"] }
+    { name:"桂林山水", type:"热门", img:"images/56_桂林山水.jpg", desc:"桂林山水甲天下，漓江两岸的喀斯特峰林如百里画卷",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1200-2000元",
+      route:"桂林→漓江漂流→阳朔→十里画廊→遇龙河",
+      highlights:["漓江竹筏","阳朔西街","遇龙河漂流","十里画廊骑行"],
+      tips:["漓江漂流选杨堤至兴坪段","阳朔适合多住几天","骑行是最好的探索方式"] },
+    { name:"涠洲岛", type:"小众", img:"images/57_涠洲岛.jpg", desc:"中国最年轻的火山岛，玻璃海与火山地貌的独特海岛",
+      bestTime:"4月-6月/10月-12月", duration:"2-3天", budget:"1000-2000元",
+      route:"北海→涠洲岛→鳄鱼山→滴水丹屏→五彩滩",
+      highlights:["鳄鱼山火山公园","五彩滩日出","滴水丹屏日落","海鲜市场"],
+      tips:["台风季7-9月注意天气","租电动车环岛最佳方式","海鲜自己去市场买来加工"] }
   ],
   hainan: [
-    { name:"涓変簹娴锋哗", type:"鐑棬", img:"images/58_涓変簹娴锋哗.jpg", desc:"涓浗鏈€缇庣殑鐑甫娴锋哗锛屾ぐ椋庢捣闊电殑搴﹀亣澶╁爞",
-      bestTime:"10鏈�-娆″勾4鏈�", duration:"3-5澶�", budget:"2000-5000鍏�",
-      route:"涓変簹鈫掍簹榫欐咕鈫掕湀鏀床宀涒啋澶╂动娴疯鈫掑厤绋庡簵",
-      highlights:["浜氶緳婀�","铚堟敮娲插矝娼滄按","澶╂动娴疯","鍗楀北瀵�"],
-      tips:["鏃哄浣忓璐甸渶鎻愬墠璁�","闃叉檼蹇呴』鍋氬ソ","娴烽矞绗竴甯傚満鎬т环姣旈珮"] },
-    { name:"鍒嗙晫娲插矝", type:"灏忎紬", img:"images/59_鍒嗙晫娲插矝.jpg", desc:"娴峰崡鍗楀寳姘斿€欏垎鐣岀嚎涓婄殑娴峰矝锛屾捣姘存竻婢堥€傚悎娼滄按",
-      bestTime:"10鏈�-娆″勾5鏈�", duration:"1澶�", budget:"500-1000鍏�",
-      route:"涓変簹/涓囧畞鈫掑垎鐣屾床宀涒啋娼滄按鈫掓捣璞氳〃婕斺啋杩旂▼",
-      highlights:["娴峰簳瑙傚厜","娼滄按浣撻獙","娴疯睔琛ㄦ紨","姘翠笂杩愬姩"],
-      tips:["姣旇湀鏀床宀涗汉灏戞€т环姣旈珮","娼滄按浣撻獙涓嶉敊","闇€瑕佸潗鑸逛笂宀�"] }
+    { name:"三亚海滩", type:"热门", img:"images/58_三亚海滩.jpg", desc:"中国最美的热带海滩，椰风海韵的度假天堂",
+      bestTime:"10月-次年4月", duration:"3-5天", budget:"2000-5000元",
+      route:"三亚→亚龙湾→蜈支洲岛→天涯海角→免税店",
+      highlights:["亚龙湾","蜈支洲岛潜水","天涯海角","南山寺"],
+      tips:["旺季住宿贵需提前订","防晒必须做好","海鲜第一市场性价比高"] },
+    { name:"分界洲岛", type:"小众", img:"images/59_分界洲岛.jpg", desc:"海南南北气候分界线上的海岛，海水清澈适合潜水",
+      bestTime:"10月-次年5月", duration:"1天", budget:"500-1000元",
+      route:"三亚/万宁→分界洲岛→潜水→海豚表演→返程",
+      highlights:["海底观光","潜水体验","海豚表演","水上运动"],
+      tips:["比蜈支洲岛人少性价比高","潜水体验不错","需要坐船上岛"] }
   ],
   hongkong: [
-    { name:"缁村鍒╀簹娓�", type:"鐑棬", img:"images/60_缁村鍒╀簹娓�.jpg", desc:"涓栫晫涓夊ぇ澶滄櫙涔嬩竴锛屾懇澶╁ぇ妤间笌娓咕浜ょ粐鐨勪笢鏂逛箣鐝�",
-      bestTime:"鍏ㄥ勾", duration:"鍗婂ぉ-1澶�", budget:"300-800鍏�",
-      route:"灏栨矙鍜€鈫掓槦鍏夊ぇ閬撯啋澶╂槦灏忚疆鈫掍腑鐜啋澶钩灞遍《",
-      highlights:["骞诲僵鍜忛姹熺伅鍏夌","澶╂槦灏忚疆","澶钩灞遍《鍏ㄦ櫙","鏄熷厜澶ч亾"],
-      tips:["姣忔櫄8鐐规湁鐏厜绉€","澶╂槦灏忚疆鏄€т环姣旀渶楂樼殑娓歌鏂瑰紡","澶钩灞辩紗杞︽帓闃熻緝闀�"] },
-    { name:"鍗椾斧宀�", type:"灏忎紬", img:"images/61_鍗椾斧宀�.jpg", desc:"棣欐腐鐨勫悗鑺卞洯锛岀宀涘緬姝ヤ笌娴烽矞澶ч鐨勬偁闂叉椂鍏�",
-      bestTime:"10鏈�-娆″勾4鏈�", duration:"鍗婂ぉ-1澶�", budget:"200-500鍏�",
-      route:"涓幆鐮佸ご鈫掑崡涓矝姒曟爲婀锯啋绱㈢綗婀锯啋娴烽矞鈫掕繑绋�",
-      highlights:["寰掓璺嚎","娲湥鐖锋咕娴锋哗","娴烽矞澶ч","绂诲矝椋庢儏"],
-      tips:["閫傚悎鍗婃棩鎴栦竴鏃ユ父","寰掓闅惧害浣庨€傚悎鎵€鏈変汉","绱㈢綗婀炬捣椴滄湁鍚�"] }
+    { name:"维多利亚港", type:"热门", img:"images/60_维多利亚港.jpg", desc:"世界三大夜景之一，摩天大楼与港湾交织的东方之珠",
+      bestTime:"全年", duration:"半天-1天", budget:"300-800元",
+      route:"尖沙咀→星光大道→天星小轮→中环→太平山顶",
+      highlights:["幻彩咏香江灯光秀","天星小轮","太平山顶全景","星光大道"],
+      tips:["每晚8点有灯光秀","天星小轮是性价比最高的游览方式","太平山缆车排队较长"] },
+    { name:"南丫岛", type:"小众", img:"images/61_南丫岛.jpg", desc:"香港的后花园，离岛徒步与海鲜大餐的悠闲时光",
+      bestTime:"10月-次年4月", duration:"半天-1天", budget:"200-500元",
+      route:"中环码头→南丫岛榕树湾→索罟湾→海鲜→返程",
+      highlights:["徒步路线","洪圣爷湾海滩","海鲜大餐","离岛风情"],
+      tips:["适合半日或一日游","徒步难度低适合所有人","索罟湾海鲜有名"] }
   ],
   macau: [
-    { name:"澶т笁宸寸墝鍧�", type:"鐑棬", img:"images/62_澶т笁宸寸墝鍧�.jpg", desc:"婢抽棬鐨勬爣蹇楋紝宸存礇鍏嬮鏍兼暀鍫傞仐鍧€瑙佽瘉鍥涚櫨骞翠腑瑗夸氦铻�",
-      bestTime:"鍏ㄥ勾", duration:"鍗婂ぉ-1澶�", budget:"300-800鍏�",
-      route:"鎷卞寳鍙ｅ哺鈫掑ぇ涓夊反鈫掕浜嬩涵鍓嶅湴鈫掑闃佸簷鈫掑▉灏兼柉浜�",
-      highlights:["澶т笁宸寸墝鍧�","璁簨浜墠鍦�","濡堥榿搴�","濞佸凹鏂汉"],
-      tips:["闄勮繎鏈夊緢澶氭墜淇″簵","閽滆鎵嬩俊鐨勬潖浠侀ゼ涓嶉敊","鍙笌棣欐腐鑱旀父"] }
+    { name:"大三巴牌坊", type:"热门", img:"images/62_大三巴牌坊.jpg", desc:"澳门的标志，巴洛克风格教堂遗址见证四百年中西交融",
+      bestTime:"全年", duration:"半天-1天", budget:"300-800元",
+      route:"拱北口岸→大三巴→议事亭前地→妈阁庙→威尼斯人",
+      highlights:["大三巴牌坊","议事亭前地","妈阁庙","威尼斯人"],
+      tips:["附近有很多手信店","钜记手信的杏仁饼不错","可与香港联游"] }
   ],
   sichuan: [
-    { name:"涔濆娌�", type:"鐑棬", img:"images/63_涔濆娌�.jpg", desc:"浜洪棿浠欏绔ヨ瘽涓栫晫锛屼簲褰╂睜涓庤鏃ユ湕鐎戝竷鐨勭粷缇庡北姘�",
-      bestTime:"9鏈�-11鏈堬紙绉嬪鏈€浣筹級", duration:"1-2澶�", budget:"1000-2000鍏�",
-      route:"鎴愰兘鈫掍節瀵ㄦ矡鈫掓矡鍐呮父瑙堚啋杩旂▼",
-      highlights:["浜旇姳娴�","浜斿僵姹�","璇烘棩鏈楃€戝竷","鍘熷妫灄"],
-      tips:["闇€鎻愬墠棰勭害闂ㄧエ","绉嬪10鏈堜腑涓嬫棳鏈€缇�","鏅尯鍐呴渶鍧愯鍏夎溅"] },
-    { name:"绋诲煄浜氫竵", type:"鐑棬", img:"images/64_绋诲煄浜氫竵.jpg", desc:"钃濊壊鏄熺悆涓婃渶鍚庝竴鐗囧噣鍦燂紝涓夌灞变笌鐗涘ザ娴风殑鏋佽嚧椋庡厜",
-      bestTime:"5鏈�-10鏈�", duration:"2-3澶�", budget:"1500-3000鍏�",
-      route:"鎴愰兘鈫掔ɑ鍩庘啋浜氫竵鈫掑啿鍙ゅ鈫掓礇缁掔墰鍦衡啋鐗涘ザ娴�",
-      highlights:["浠欎箖鏃ョ灞�","鐗涘ザ娴�","浜旇壊娴�","娲涚粧鐗涘満"],
-      tips:["娴锋嫈4000+娉ㄦ剰楂樺弽","闇€瑕佽緝濂戒綋鍔�","鏅尯鍐呮棤琛ョ粰鑷甫骞茬伯"] },
-    { name:"涔愬北澶т經", type:"鐑棬", img:"images/65_涔愬北澶т經.jpg", desc:"涓栫晫鏈€澶х煶鍒诲讥鍕掍經鍧愬儚锛屽北鏄竴灏婁經浣涙槸涓€搴у北",
-      bestTime:"4鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-500鍏�",
-      route:"涔愬北甯傚尯鈫掍箰灞卞ぇ浣涒啋鍑屼簯瀵衡啋杩旂▼",
-      highlights:["澶т經鍏ㄨ矊","鍑屼簯瀵�","涔濇洸鏍堥亾","涓夋睙姹囨祦"],
-      tips:["鍙潗鑸逛粠姹熶笂鐪嬪叏鏅�","鏍堥亾杈冪獎闇€鎺掗槦","涔愬北灏忓悆寰堝嚭鍚�"] }
+    { name:"九寨沟", type:"热门", img:"images/63_九寨沟.jpg", desc:"人间仙境童话世界，五彩池与诺日朗瀑布的绝美山水",
+      bestTime:"9月-11月（秋季最佳）", duration:"1-2天", budget:"1000-2000元",
+      route:"成都→九寨沟→沟内游览→返程",
+      highlights:["五花海","五彩池","诺日朗瀑布","原始森林"],
+      tips:["需提前预约门票","秋季10月中下旬最美","景区内需坐观光车"] },
+    { name:"稻城亚丁", type:"热门", img:"images/64_稻城亚丁.jpg", desc:"蓝色星球上最后一片净土，三神山与牛奶海的极致风光",
+      bestTime:"5月-10月", duration:"2-3天", budget:"1500-3000元",
+      route:"成都→稻城→亚丁→冲古寺→洛绒牛场→牛奶海",
+      highlights:["仙乃日神山","牛奶海","五色海","洛绒牛场"],
+      tips:["海拔4000+注意高反","需要较好体力","景区内无补给自带干粮"] },
+    { name:"乐山大佛", type:"热门", img:"images/65_乐山大佛.jpg", desc:"世界最大石刻弥勒佛坐像，山是一尊佛佛是一座山",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"乐山市区→乐山大佛→凌云寺→返程",
+      highlights:["大佛全貌","凌云寺","九曲栈道","三江汇流"],
+      tips:["可坐船从江上看全景","栈道较窄需排队","乐山小吃很出名"] }
   ],
   chongqing: [
-    { name:"娲礀娲�", type:"鐑棬", img:"images/66_娲礀娲�.jpg", desc:"鍗冧笌鍗冨鐜板疄鐗堬紝渚濆北鑰屽缓鐨勫悐鑴氭ゼ缇ゅ鏅绔ヨ瘽",
-      bestTime:"鍏ㄥ勾锛堝鏅洿浣筹級", duration:"鍗婂ぉ", budget:"200-400鍏�",
-      route:"瑙ｆ斁纰戔啋娲礀娲炩啋闀挎睙绱㈤亾鈫掑崡灞变竴妫垫爲",
-      highlights:["娲礀娲炲鏅�","闀挎睙绱㈤亾","瑙ｆ斁纰�","鍗楀北澶滄櫙"],
-      tips:["鏅氫笂浜伅鍚庢渶缇�","鏈€浣虫媿鐓х偣鍦ㄥ崈鍘棬澶фˉ","鐢垫鎺掗槦寰堥暱寤鸿璧版ゼ姊�"] },
-    { name:"姝﹂殕澶╁潙", type:"灏忎紬", img:"images/67_姝﹂殕澶╁潙.jpg", desc:"銆婂彉褰㈤噾鍒�4銆嬪彇鏅湴锛屽ぉ鐢熶笁妗ヤ笌澶╁潙鍦扮紳鐨勫湴璐ㄥ瑙�",
-      bestTime:"4鏈�-10鏈�", duration:"1澶�", budget:"500-800鍏�",
-      route:"閲嶅簡甯傚尯鈫掓闅嗏啋澶╃敓涓夋ˉ鈫掗緳姘村场鍦扮紳鈫掕繑绋�",
-      highlights:["澶╃敓涓夋ˉ","澶╅緳妗�","澶╃瀹橀┛","榫欐按宄″湴缂�"],
-      tips:["璺濆競鍖虹害2.5灏忔椂杞︾▼","鏅尯鍐呮琛岃緝澶�","寤鸿璺熷洟鎴栬嚜椹�"] }
+    { name:"洪崖洞", type:"热门", img:"images/66_洪崖洞.jpg", desc:"千与千寻现实版，依山而建的吊脚楼群夜景如童话",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-400元",
+      route:"解放碑→洪崖洞→长江索道→南山一棵树",
+      highlights:["洪崖洞夜景","长江索道","解放碑","南山夜景"],
+      tips:["晚上亮灯后最美","最佳拍照点在千厮门大桥","电梯排队很长建议走楼梯"] },
+    { name:"武隆天坑", type:"小众", img:"images/67_武隆天坑.jpg", desc:"《变形金刚4》取景地，天生三桥与天坑地缝的地质奇观",
+      bestTime:"4月-10月", duration:"1天", budget:"500-800元",
+      route:"重庆市区→武隆→天生三桥→龙水峡地缝→返程",
+      highlights:["天生三桥","天龙桥","天福官驿","龙水峡地缝"],
+      tips:["距市区约2.5小时车程","景区内步行较多","建议跟团或自驾"] }
   ],
   guizhou: [
-    { name:"榛勬灉鏍戠€戝竷", type:"鐑棬", img:"images/68_榛勬灉鏍戠€戝竷.jpg", desc:"浜氭床鏈€澶х€戝竷缇わ紝姘村笜娲炵┛瓒婄€戝竷鐨勭嫭鐗逛綋楠�",
-      bestTime:"6鏈�-9鏈堬紙姘撮噺鏈€澶э級", duration:"1澶�", budget:"400-700鍏�",
-      route:"璐甸槼鈫掗粍鏋滄爲鈫掗櫋鍧″鈫掑ぉ鏄熸ˉ鈫掕繑绋�",
-      highlights:["澶х€戝竷姘村笜娲�","闄″潯濉樼€戝竷","澶╂槦妗ユ櫙鍖�","閾堕摼鍧犳江"],
-      tips:["澶忓姘撮噺澶ф洿澹","姘村笜娲為渶绌块洦琛�","鏅尯澶ч渶涓€鏁村ぉ"] },
-    { name:"鍗冩埛鑻楀", type:"鐑棬", img:"images/69_鍗冩埛鑻楀.jpg", desc:"涓栫晫鏈€澶ц嫍鏃忚仛灞呮潙瀵紝涓囧鐏伀鐐逛寒灞辫胺鐨勯渿鎾煎鏅�",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"600-1000鍏�",
-      route:"璐甸槼鈫掑嚡閲屸啋瑗挎睙鍗冩埛鑻楀鈫掕鏅彴鈫掕繑绋�",
-      highlights:["鑻楀鍏ㄦ櫙澶滄櫙","鑻楁棌闀挎瀹�","铚℃煋浣撻獙","閾堕グ鍒朵綔"],
-      tips:["涓€瀹氳鐪嬪鏅�","瑙傛櫙鍙版槸鏈€浣虫媿鎽勭偣","鍙綋楠岃嫍鏃忔湇楗�"] }
+    { name:"黄果树瀑布", type:"热门", img:"images/68_黄果树瀑布.jpg", desc:"亚洲最大瀑布群，水帘洞穿越瀑布的独特体验",
+      bestTime:"6月-9月（水量最大）", duration:"1天", budget:"400-700元",
+      route:"贵阳→黄果树→陡坡塘→天星桥→返程",
+      highlights:["大瀑布水帘洞","陡坡塘瀑布","天星桥景区","银链坠潭"],
+      tips:["夏季水量大更壮观","水帘洞需穿雨衣","景区大需一整天"] },
+    { name:"千户苗寨", type:"热门", img:"images/69_千户苗寨.jpg", desc:"世界最大苗族聚居村寨，万家灯火点亮山谷的震撼夜景",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1000元",
+      route:"贵阳→凯里→西江千户苗寨→观景台→返程",
+      highlights:["苗寨全景夜景","苗族长桌宴","蜡染体验","银饰制作"],
+      tips:["一定要看夜景","观景台是最佳拍摄点","可体验苗族服饰"] }
   ],
   yunnan: [
-    { name:"涓芥睙鍙ゅ煄", type:"鐑棬", img:"images/70_涓芥睙鍙ゅ煄.jpg", desc:"涓栫晫鏂囧寲閬椾骇锛屽洓鏂硅涓庣撼瑗挎棌鏂囧寲浜ょ粐鐨勬氮婕彜鍩�",
-      bestTime:"4鏈�-10鏈�", duration:"2-3澶�", budget:"1000-2000鍏�",
-      route:"涓芥睙鈫掑彜鍩庘啋鐜夐緳闆北鈫掓潫娌冲彜闀団啋鎷夊競娴�",
-      highlights:["鍥涙柟琛�","鏈ㄥ簻","鐜夐緳闆北","鏉熸渤鍙ら晣","閰掑惂琛�"],
-      tips:["鍙ゅ煄鍐呬綇瀹挎湁鐗硅壊","鐜夐緳闆北闇€鎻愬墠璐エ","娴锋嫈2400绫虫敞鎰忛珮鍙�"] },
-    { name:"澶х悊娲辨捣", type:"鐑棬", img:"images/71_澶х悊娲辨捣.jpg", desc:"椋庤姳闆湀涔嬪湴锛岃媿灞辨幢娴风晹鐨勬參鐢熸椿浠や汉鍚戝線",
-      bestTime:"3鏈�-5鏈�/9鏈�-11鏈�", duration:"2-3澶�", budget:"800-1500鍏�",
-      route:"澶х悊鍙ゅ煄鈫掓幢娴风幆婀栤啋鍠滄床鍙ら晣鈫掑弻寤娾啋杩旂▼",
-      highlights:["鐜幢娴烽獞琛�","鍠滄床鐧芥棌姘戝眳","鍙屽粖","鑻嶅北绱㈤亾"],
-      tips:["鐜幢娴风害120鍏噷閫傚悎楠戣鎴栬嚜椹�","鍙屽粖娴锋櫙瀹㈡爤寰堣禐","涓夋湀琛楁湁闆嗗競"] },
-    { name:"瑗垮弻鐗堢撼", type:"鐑棬", img:"images/72_瑗垮弻鐗堢撼.jpg", desc:"涓浗鍞竴鐨勭儹甯﹂洦鏋楋紝鍌ｆ棌椋庢儏涓庝笢鍗椾簹鏂囧寲浜よ瀺",
-      bestTime:"11鏈�-娆″勾4鏈�", duration:"3-5澶�", budget:"1500-2500鍏�",
-      route:"鏅椽鈫掔儹甯︽鐗╁洯鈫掗噹璞¤胺鈫掓浖鍚叕鍥啋鍛婂簞",
-      highlights:["涓闄㈡鐗╁洯","閲庤薄璋�","鍛婂簞鏄熷厜澶滃競","鍌ｆ棌鍥�"],
-      tips:["娉兼按鑺�4鏈堜腑鏃渶鐑椆","鐑甫姘存灉涓板瘜渚垮疁","娉ㄦ剰闃茶殜铏�"] }
+    { name:"丽江古城", type:"热门", img:"images/70_丽江古城.jpg", desc:"世界文化遗产，四方街与纳西族文化交织的浪漫古城",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"丽江→古城→玉龙雪山→束河古镇→拉市海",
+      highlights:["四方街","木府","玉龙雪山","束河古镇","酒吧街"],
+      tips:["古城内住宿有特色","玉龙雪山需提前购票","海拔2400米注意高反"] },
+    { name:"大理洱海", type:"热门", img:"images/71_大理洱海.jpg", desc:"风花雪月之地，苍山洱海畔的慢生活令人向往",
+      bestTime:"3月-5月/9月-11月", duration:"2-3天", budget:"800-1500元",
+      route:"大理古城→洱海环湖→喜洲古镇→双廊→返程",
+      highlights:["环洱海骑行","喜洲白族民居","双廊","苍山索道"],
+      tips:["环洱海约120公里适合骑行或自驾","双廊海景客栈很赞","三月街有集市"] },
+    { name:"西双版纳", type:"热门", img:"images/72_西双版纳.jpg", desc:"中国唯一的热带雨林，傣族风情与东南亚文化交融",
+      bestTime:"11月-次年4月", duration:"3-5天", budget:"1500-2500元",
+      route:"景洪→热带植物园→野象谷→曼听公园→告庄",
+      highlights:["中科院植物园","野象谷","告庄星光夜市","傣族园"],
+      tips:["泼水节4月中旬最热闹","热带水果丰富便宜","注意防蚊虫"] }
   ],
   xizang: [
-    { name:"甯冭揪鎷夊", type:"鐑棬", img:"images/73_甯冭揪鎷夊.jpg", desc:"涓栫晫灞嬭剨涓婄殑瀹锛岃棌浼犱經鏁欏湥鍦颁笌瑗胯棌鏈€鑰€鐪肩殑鍦版爣",
-      bestTime:"5鏈�-10鏈�", duration:"鍗婂ぉ-1澶�", budget:"500-1000鍏�",
-      route:"鎷夎惃甯傚尯鈫掑竷杈炬媺瀹啋澶ф槶瀵衡啋鍏粨琛�",
-      highlights:["甯冭揪鎷夊鍏ㄦ櫙","澶ф槶瀵�","鍏粨琛楄浆缁�","鑽帇灞辫鏅�"],
-      tips:["闇€鎻愬墠棰勭害闂ㄧエ","娴锋嫈3650绫虫敞鎰忛珮鍙�","娈垮唴绂佹鎷嶇収"] },
-    { name:"缇婂崜闆嶆帾", type:"灏忎紬", img:"images/74_缇婂崜闆嶆帾.jpg", desc:"瑗胯棌涓夊ぇ鍦ｆ箹涔嬩竴锛岀ⅶ钃濇箹姘村鐝婄憵鏋濊埇铚胯湌鍦ㄧ兢灞变箣闂�",
-      bestTime:"6鏈�-9鏈�", duration:"鍗婂ぉ-1澶�", budget:"300-600鍏�",
-      route:"鎷夎惃鈫掔緤鍗撻泹鎺啋鐜箹鈫掕繑绋�",
-      highlights:["宀楀反鎷夊北鍙ｈ鍏ㄦ櫙","鐜箹鑷┚","婀栫晹鎷嶇収","缁忓埂绁堢"],
-      tips:["璺濇媺钀ㄧ害2灏忔椂杞︾▼","娴锋嫈4400+娉ㄦ剰楂樺弽","澶╂皵鍙樺寲蹇甫鍘氳。鏈�"] }
+    { name:"布达拉宫", type:"热门", img:"images/73_布达拉宫.jpg", desc:"世界屋脊上的宫殿，藏传佛教圣地与西藏最耀眼的地标",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"500-1000元",
+      route:"拉萨市区→布达拉宫→大昭寺→八廓街",
+      highlights:["布达拉宫全景","大昭寺","八廓街转经","药王山观景"],
+      tips:["需提前预约门票","海拔3650米注意高反","殿内禁止拍照"] },
+    { name:"羊卓雍措", type:"小众", img:"images/74_羊卓雍措.jpg", desc:"西藏三大圣湖之一，碧蓝湖水如珊瑚枝般蜿蜒在群山之间",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"300-600元",
+      route:"拉萨→羊卓雍措→环湖→返程",
+      highlights:["岗巴拉山口观全景","环湖自驾","湖畔拍照","经幡祈福"],
+      tips:["距拉萨约2小时车程","海拔4400+注意高反","天气变化快带厚衣服"] }
   ],
   shaanxi: [
-    { name:"鍏甸┈淇�", type:"鐑棬", img:"images/75_鍏甸┈淇�.jpg", desc:"涓栫晫绗叓澶у杩癸紝涓ゅ崈骞村墠绉﹀笣鍥界殑鍦颁笅鍐涘洟",
-      bestTime:"鍏ㄥ勾", duration:"鍗婂ぉ-1澶�", budget:"400-700鍏�",
-      route:"瑗垮畨鈫掑叺椹繎鈫掑崕娓呮睜鈫掕繑绋�",
-      highlights:["涓€鍙峰潙鍐涢樀","閾滆溅椹�","涓夊彿鍧戞寚鎸ラ儴","鍗庢竻姹�"],
-      tips:["寤鸿璇峰娓歌瑙ｅ惁鍒欑湅涓嶆噦","璺濆競鍖虹害1灏忔椂杞︾▼","鍙『渚挎父瑙堝崕娓呮睜"] },
-    { name:"鍗庡北", type:"鐑棬", img:"images/76_鍗庡北.jpg", desc:"濂囬櫓澶╀笅绗竴灞憋紝闀跨┖鏍堥亾涓庨篂瀛愮炕韬殑鎯婇櫓鍒烘縺",
-      bestTime:"4鏈�-10鏈�", duration:"1-2澶�", budget:"600-1200鍏�",
-      route:"瑗垮畨鈫掑崕灞扁啋鍖楀嘲鈫掕タ宄扳啋鍗楀嘲鈫掍笢宄扳啋杩旂▼",
-      highlights:["闀跨┖鏍堥亾","楣炲瓙缈昏韩","瑗垮嘲鏃ヨ惤","涓滃嘲鏃ュ嚭"],
-      tips:["寤鸿瑗夸笂鍖椾笅鐪佷綋鍔�","澶滅埇鐪嬫棩鍑洪渶甯﹀ご鐏�","鎭愰珮鑰呮厧鍏ラ暱绌烘爤閬�"] }
+    { name:"兵马俑", type:"热门", img:"images/75_兵马俑.jpg", desc:"世界第八大奇迹，两千年前秦帝国的地下军团",
+      bestTime:"全年", duration:"半天-1天", budget:"400-700元",
+      route:"西安→兵马俑→华清池→返程",
+      highlights:["一号坑军阵","铜车马","三号坑指挥部","华清池"],
+      tips:["建议请导游讲解否则看不懂","距市区约1小时车程","可顺便游览华清池"] },
+    { name:"华山", type:"热门", img:"images/76_华山.jpg", desc:"奇险天下第一山，长空栈道与鹞子翻身的惊险刺激",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"西安→华山→北峰→西峰→南峰→东峰→返程",
+      highlights:["长空栈道","鹞子翻身","西峰日落","东峰日出"],
+      tips:["建议西上北下省体力","夜爬看日出需带头灯","恐高者慎入长空栈道"] }
   ]
 };
 
 // ============ SUPABASE ONLINE SYNC ============
-// 璇存槑锛歛non public key 鍙互鏀惧湪鍓嶇锛涗笉瑕佹妸 service_role key 鏀惧埌缃戦〉閲屻€�
+// 说明：anon public key 可以放在前端；不要把 service_role key 放到网页里。
 const SUPABASE_URL = 'https://kkacparxwpfiwbnskmav.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrYWNwYXJ4d3BmaXdibnNrbWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTI1NzEsImV4cCI6MjA5NzM2ODU3MX0.E-eYCmdTyMuvXDzJOsf66LdfHozY5LjuM8sN51uZxYU';
 let supabaseClient = null;
@@ -1823,7 +1823,7 @@ let cloudSyncTimer = null;
 
 function initSupabaseClient() {
   if (!window.supabase) {
-    console.warn('Supabase SDK 鏈姞杞斤紝褰撳墠涓烘湰鍦版ā寮�');
+    console.warn('Supabase SDK 未加载，当前为本地模式');
     cloudSyncEnabled = false;
     return null;
   }
@@ -1834,7 +1834,7 @@ function initSupabaseClient() {
 function getGroupCode() {
   let code = localStorage.getItem('travelGroupCode');
   if (!code) {
-    code = prompt('璇疯緭鍏ユ梾琛屽皬缁勭爜锛堜緥濡傦細summer2026銆乨ormA銆乧lass1锛�', 'summer2026') || 'summer2026';
+    code = prompt('请输入旅行小组码（例如：summer2026、dormA、class1）', 'summer2026') || 'summer2026';
     code = code.trim() || 'summer2026';
     localStorage.setItem('travelGroupCode', code);
   }
@@ -1843,19 +1843,19 @@ function getGroupCode() {
 
 function changeGroupCode() {
   const oldCode = getGroupCode();
-  const code = prompt('璇疯緭鍏ユ柊鐨勬梾琛屽皬缁勭爜', oldCode);
+  const code = prompt('请输入新的旅行小组码', oldCode);
   if (!code || !code.trim()) return;
   localStorage.setItem('travelGroupCode', code.trim());
-  alert('宸插垏鎹㈠埌灏忕粍锛�' + code.trim() + '锛屽嵆灏嗛噸鏂板悓姝ユ暟鎹�');
+  alert('已切换到小组：' + code.trim() + '，即将重新同步数据');
   syncFromCloud(true);
 }
 
 function renderCloudBadge() {
   const badge = document.querySelector('.user-badge');
   if (!badge) return;
-  const group = localStorage.getItem('travelGroupCode') || '鏈缃�';
-  const user = getCurrentUser() || '鏈€夋嫨鐢ㄦ埛';
-  badge.innerHTML = '鈽侊笍 灏忕粍锛�<strong>' + group + '</strong>銆€褰撳墠鐢ㄦ埛锛�<strong>' + user + '</strong> <button onclick="changeGroupCode()" style="margin-left:8px;border:0;border-radius:999px;padding:4px 9px;background:#E4F7FF;color:#256D85;font-weight:800;cursor:pointer">鍒囨崲</button>';
+  const group = localStorage.getItem('travelGroupCode') || '未设置';
+  const user = getCurrentUser() || '未选择用户';
+  badge.innerHTML = '☁️ 小组：<strong>' + group + '</strong>　当前用户：<strong>' + user + '</strong> <button onclick="changeGroupCode()" style="margin-left:8px;border:0;border-radius:999px;padding:4px 9px;background:#E4F7FF;color:#256D85;font-weight:800;cursor:pointer">切换</button>';
 }
 
 async function syncFromCloud(forceClearLocal=false) {
@@ -1867,8 +1867,8 @@ async function syncFromCloud(forceClearLocal=false) {
       supabaseClient.from('ratings').select('*').eq('group_code', group)
     ]);
     if (usersError || ratingsError) {
-      console.warn('浜戠璇诲彇澶辫触锛�', usersError || ratingsError);
-      alert('浜戠璇诲彇澶辫触銆傚彲鑳芥槸 Supabase 琛ㄦ潈闄愭病鏈夊紑鏀撅紝璇锋鏌� RLS Policy銆傝鎯呯湅鎺у埗鍙般€�');
+      console.warn('云端读取失败：', usersError || ratingsError);
+      alert('云端读取失败。可能是 Supabase 表权限没有开放，请检查 RLS Policy。详情看控制台。');
       return;
     }
 
@@ -1898,9 +1898,9 @@ async function syncFromCloud(forceClearLocal=false) {
     }
     localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge();
-    console.log('浜戠鍚屾瀹屾垚', { group, users: usersData, ratings: ratingsData });
+    console.log('云端同步完成', { group, users: usersData, ratings: ratingsData });
   } catch (err) {
-    console.warn('浜戠鍚屾寮傚父锛�', err);
+    console.warn('云端同步异常：', err);
   }
 }
 
@@ -1912,7 +1912,7 @@ async function pushToCloudNow() {
   const userNames = Object.keys(users);
 
   try {
-    // 1. users 琛細涓嶅瓨鍦ㄥ垯鎻掑叆锛岄伩鍏嶅弽澶嶄骇鐢熷お澶氶噸澶嶇敤鎴�
+    // 1. users 表：不存在则插入，避免反复产生太多重复用户
     for (const name of userNames) {
       const { data: exists, error: findError } = await supabaseClient
         .from('users')
@@ -1929,7 +1929,7 @@ async function pushToCloudNow() {
       }
     }
 
-    // 2. ratings 琛細姣忔淇濆瓨鏃堕噸鍐欏綋鍓嶅皬缁勭殑鍏ㄩ儴璇勫垎锛屼繚璇佺粺璁＄粨鏋滃拰椤甸潰涓€鑷�
+    // 2. ratings 表：每次保存时重写当前小组的全部评分，保证统计结果和页面一致
     const { error: deleteError } = await supabaseClient
       .from('ratings')
       .delete()
@@ -1954,10 +1954,10 @@ async function pushToCloudNow() {
       if (insertRatingsError) throw insertRatingsError;
     }
     renderCloudBadge();
-    console.log('宸蹭繚瀛樺埌浜戠', { group, rows });
+    console.log('已保存到云端', { group, rows });
   } catch (err) {
-    console.warn('浜戠淇濆瓨澶辫触锛�', err);
-    alert('浜戠淇濆瓨澶辫触銆傚父瑙佸師鍥狅細Supabase 鐨� RLS 鏉冮檺鏈紑鏀撅紝鎴栧瓧娈靛悕鍜岃〃缁撴瀯涓嶄竴鑷淬€傝鎵撳紑鎺у埗鍙版煡鐪嬭鎯呫€�');
+    console.warn('云端保存失败：', err);
+    alert('云端保存失败。常见原因：Supabase 的 RLS 权限未开放，或字段名和表结构不一致。请打开控制台查看详情。');
   }
 }
 
@@ -1980,31 +1980,31 @@ function getAllUsers() { return getData().users; }
 // ============ HELPERS ============
 
 // ============ ACCURATE SCENIC IMAGE LOADER ============
-// 鏀硅繘鐐癸細涓嶅啀鐢ㄩ殢鏈哄浘婧愪綔涓虹涓€閫夋嫨锛岃€屾槸浼樺厛浠庣淮鍩虹櫨绉�/缁村熀鍏变韩璧勬簮璇诲彇璇ユ櫙鐐硅瘝鏉＄殑鐪熷疄缂╃暐鍥俱€�
-// 濡傛灉璇嶆潯娌℃湁鍥剧墖鎴栫綉缁滃け璐ワ紝鍐嶆寜鈥滄櫙鐐瑰悕鍏抽敭璇嶁€濊繘鍏ュ鐢ㄥ浘婧愶紝鏈€鍚庣敤鏈湴 SVG 鍗犱綅锛岄伩鍏嶇┖鐧姐€�
+// 改进点：不再用随机图源作为第一选择，而是优先从维基百科/维基共享资源读取该景点词条的真实缩略图。
+// 如果词条没有图片或网络失败，再按“景点名关键词”进入备用图源，最后用本地 SVG 占位，避免空白。
 
-// 鎵嬪伐鏍″噯锛氳繖浜涙櫙鐐圭殑鐧剧璇嶆潯棣栧浘瀹规槗鍖归厤閿欙紝鍥犳浼樺厛浣跨敤鎸囧畾鐨� Wikimedia Commons 鐪熷疄鏅偣鍥俱€�
-// 璇存槑锛氶€氳繃 Special:FilePath 璇诲彇锛屽彲閬垮厤鎵嬪啓澶嶆潅鐨勭缉鐣ュ浘鐪熷疄璺緞銆�
+// 手工校准：这些景点的百科词条首图容易匹配错，因此优先使用指定的 Wikimedia Commons 真实景点图。
+// 说明：通过 Special:FilePath 读取，可避免手写复杂的缩略图真实路径。
 const scenicDirectImageFiles = {
-  "姝﹂殕澶╁潙":"Wulongtianshengsanqiao.JPG",
-  "娌欏潯澶�":"https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_900%2Ch_600/w_37%2Cx_6%2Cy_6%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/lv66ymnr8ozqzdrgrny1/%E6%B2%99%E5%9D%A1%E5%A4%B4.webp",
-  // 浠ヤ笅鍑犱釜鏄敤鎴蜂簩娆℃寚鍑虹殑閿欒鍥撅紝鏀逛负鎵嬪伐鏍″噯鐨勫浐瀹氬浘婧愶紝閬垮厤鍏抽敭璇�/璇嶆潯棣栧浘璇尮閰嶃€�
-  // 鍏朵腑鈥滄墡灏曢偅鈥濅娇鐢ㄦ柊娴疄鎷嶅浘锛屸€滈浘鍑囧矝鈥濇敼鐢ㄧ敤鎴锋寚瀹氱櫨搴︾櫨绉戝浘鍐屼腑鐨� f2deb48f 鍥炬簮锛涒€滄矙鍧″ご鈥濇敼涓烘洿澹鐨勬矙涓樻櫙瑙傚浘銆�
-  "鎵庡皶閭�":"https://k.sinaimg.cn/n/front/20171016/3jcZ-fymviyp1693822.jpg/w700d1q75cms.jpg",
-  "闆惧噰宀�":"images/31_闆惧噰宀�.jpg",
-  "棰濇祹绾宠儭鏉ㄦ灄":"https://k.sinaimg.cn/n/spider20241031/0/w2048h1152/20241031/7428-2591602446d87f0961462437f18d40ab.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
-  "娑犳床宀�":"https://dimg04.c-ctrip.com/images/1lo3112000kqv718p447D_R_800_600.jpg?proc=autoorient",
-  "鏃ユ湀娼�":"Sun Moon Lake 鏃ユ湀娼� - panoramio (3).jpg",
-  "涔濅唤鑰佽":"2008-03-08 Jiufen Old Street 03.jpg",
-  "姝﹀し灞�":"Jiuqu Brook in Wuyi Mountains.jpg",
-  "搴愬北":"Mount Lu.jpg",
-  "鏈卞瑙掑彜闀�":"1 zhujiajiao ancient water town 2023.jpg",
-  "鎭╂柦澶у场璋�":"Enshi grand canyon.jpg",
-  "鐩樺北":"Pan shan.jpg",
-  "闈掓捣婀�":"Qinghai Lake 2016.jpg",
-  "闈掓捣婀�":"Qinghai Lake 2016.jpg",
-  "缈＄繝婀�":"Emerald Lake 01.jpg",
-  "鍠€绾虫柉婀�":"Kanas Lake North XinJiang.jpg"
+  "武隆天坑":"Wulongtianshengsanqiao.JPG",
+  "沙坡头":"https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_900%2Ch_600/w_37%2Cx_6%2Cy_6%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/lv66ymnr8ozqzdrgrny1/%E6%B2%99%E5%9D%A1%E5%A4%B4.webp",
+  // 以下几个是用户二次指出的错误图，改为手工校准的固定图源，避免关键词/词条首图误匹配。
+  // 其中“扎尕那”使用新浪实拍图，“雾凇岛”改用用户指定百度百科图册中的 f2deb48f 图源；“沙坡头”改为更壮观的沙丘景观图。
+  "扎尕那":"https://k.sinaimg.cn/n/front/20171016/3jcZ-fymviyp1693822.jpg/w700d1q75cms.jpg",
+  "雾凇岛":"images/31_雾凇岛.jpg",
+  "额济纳胡杨林":"https://k.sinaimg.cn/n/spider20241031/0/w2048h1152/20241031/7428-2591602446d87f0961462437f18d40ab.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+  "涠洲岛":"https://dimg04.c-ctrip.com/images/1lo3112000kqv718p447D_R_800_600.jpg?proc=autoorient",
+  "日月潭":"Sun Moon Lake 日月潭 - panoramio (3).jpg",
+  "九份老街":"2008-03-08 Jiufen Old Street 03.jpg",
+  "武夷山":"Jiuqu Brook in Wuyi Mountains.jpg",
+  "庐山":"Mount Lu.jpg",
+  "朱家角古镇":"1 zhujiajiao ancient water town 2023.jpg",
+  "恩施大峡谷":"Enshi grand canyon.jpg",
+  "盘山":"Pan shan.jpg",
+  "青海湖":"Qinghai Lake 2016.jpg",
+  "青海湖":"Qinghai Lake 2016.jpg",
+  "翡翠湖":"Emerald Lake 01.jpg",
+  "喀纳斯湖":"Kanas Lake North XinJiang.jpg"
 };
 function commonsFileUrl(fileName, width=900) {
   if (/^https?:\/\//i.test(fileName)) return fileName;
@@ -2012,44 +2012,44 @@ function commonsFileUrl(fileName, width=900) {
 }
 
 const scenicWikiTitles = {
-  "鍠€绾虫柉婀�":"鍠€绾虫柉婀�", "绂炬湪鏉�":"绂炬湪鏉�", "璧涢噷鏈ㄦ箹":"璧涢噷鏈ㄦ箹", "闈掓捣婀�":"闈掓捣婀�", "缈＄繝婀�":"澶ф煷鏃︾俊缈犳箹", "鑼跺崱鐩愭箹":"鑼跺崱鐩愭箹",
-  "鏁︾厡鑾珮绐�":"鑾珮绐�", "鎵庡皶閭�":"鎵庡皶閭ｆ櫙鍖�", "寮犳帠涓归湠":"寮犳帠鍥藉鍦拌川鍏洯", "娌欏潯澶�":"娌欏潯澶�", "闀囧寳鍫″奖瑙嗗煄":"闀囧寳鍫¤タ閮ㄥ奖鍩�",
-  "鍛间鸡璐濆皵鑽夊師":"鍛间鸡璐濆皵鑽夊師", "棰濇祹绾宠儭鏉ㄦ灄":"棰濇祹绾宠儭鏉ㄦ灄", "闃垮皵灞�":"闃垮皵灞卞浗瀹舵．鏋楀叕鍥�",
-  "鏁呭鍗氱墿闄�":"鍖椾含鏁呭", "鍙ゅ寳姘撮晣":"鍙ゅ寳姘撮晣", "澶╂触涔嬬溂":"澶╂触涔嬬溂", "鐩樺北":"鐩樺北", "鎵垮痉閬挎殤灞卞簞":"鎵垮痉閬挎殤灞卞簞", "鍖楁埓娌�":"鍖楁埓娌冲尯",
-  "骞抽仴鍙ゅ煄":"骞抽仴鍙ゅ煄", "澹跺彛鐎戝竷":"澹跺彛鐎戝竷", "娉板北":"娉板北", "宕傚北":"宕傚北", "钃幈闃�":"钃幈闃�",
-  "澶ц繛鑰佽檸婊�":"鑰佽檸婊╂捣娲嬪叕鍥�", "鏈邯姘存礊":"鏈邯姘存礊", "闀跨櫧灞卞ぉ姹�":"闀跨櫧灞卞ぉ姹�", "闆惧噰宀�":"images/31_闆惧噰宀�.jpg", "鍝堝皵婊ㄥ啺闆ぇ涓栫晫":"鍝堝皵婊ㄥ啺闆ぇ涓栫晫", "婕犳渤鍖楁瀬鏉�":"鍖楁瀬鏉�",
-  "灏戞灄瀵�":"灏戞灄瀵�", "榫欓棬鐭崇獰":"榫欓棬鐭崇獰", "浜戝彴灞�":"浜戝彴灞�", "姝﹀綋灞�":"姝﹀綋灞�", "鎭╂柦澶у场璋�":"鎭╂柦澶у场璋�", "绁炲啘鏋�":"绁炲啘鏋舵灄鍖�",
-  "寮犲鐣�":"寮犲鐣屽浗瀹舵．鏋楀叕鍥�", "鍑ゅ嚢鍙ゅ煄":"鍑ゅ嚢鍙ゅ煄", "澶栨哗":"澶栨哗", "鏈卞瑙掑彜闀�":"鏈卞瑙掗晣",
-  "鑻忓窞鍥灄":"鑻忓窞鍙ゅ吀鍥灄", "鐦﹁タ婀�":"鐦﹁タ婀�", "瑗挎箹":"瑗挎箹", "鍗冨矝婀�":"鍗冨矝婀�", "榛勫北":"榛勫北", "瀹忔潙":"瀹忔潙", "搴愬北":"搴愬北", "濠烘簮":"濠烘簮鍘�",
-  "榧撴氮灞�":"榧撴氮灞�", "姝﹀し灞�":"姝﹀し灞�", "鏃ユ湀娼�":"鏃ユ湀娼�", "涔濅唤鑰佽":"涔濅唤", "骞垮窞濉�":"骞垮窞濉�", "涓归湠灞�":"涓归湠灞�",
-  "妗傛灄灞辨按":"婕撴睙", "娑犳床宀�":"娑犳床宀�", "涓変簹娴锋哗":"浜氶緳婀�", "鍒嗙晫娲插矝":"鍒嗙晫娲插矝", "缁村鍒╀簹娓�":"缁村鍒╀簹娓�", "鍗椾斧宀�":"鍗椾斧宀�", "澶т笁宸寸墝鍧�":"澶т笁宸寸墝鍧�",
-  "涔濆娌�":"涔濆娌熼鏅悕鑳滃尯", "绋诲煄浜氫竵":"绋诲煄浜氫竵", "涔愬北澶т經":"涔愬北澶т經", "娲礀娲�":"娲礀娲�", "姝﹂殕澶╁潙":"姝﹂殕鍠€鏂壒鏃呮父鍖�",
-  "榛勬灉鏍戠€戝竷":"榛勬灉鏍戠€戝竷", "鍗冩埛鑻楀":"瑗挎睙鍗冩埛鑻楀", "涓芥睙鍙ゅ煄":"涓芥睙鍙ゅ煄", "澶х悊娲辨捣":"娲辨捣", "瑗垮弻鐗堢撼":"瑗垮弻鐗堢撼鍌ｆ棌鑷不宸�",
-  "甯冭揪鎷夊":"甯冭揪鎷夊", "缇婂崜闆嶆帾":"缇婂崜闆嶉敊", "鍏甸┈淇�":"绉﹀鐨囧叺椹繎", "鍗庡北":"鍗庡北"
+  "喀纳斯湖":"喀纳斯湖", "禾木村":"禾木村", "赛里木湖":"赛里木湖", "青海湖":"青海湖", "翡翠湖":"大柴旦翡翠湖", "茶卡盐湖":"茶卡盐湖",
+  "敦煌莫高窟":"莫高窟", "扎尕那":"扎尕那景区", "张掖丹霞":"张掖国家地质公园", "沙坡头":"沙坡头", "镇北堡影视城":"镇北堡西部影城",
+  "呼伦贝尔草原":"呼伦贝尔草原", "额济纳胡杨林":"额济纳胡杨林", "阿尔山":"阿尔山国家森林公园",
+  "故宫博物院":"北京故宫", "古北水镇":"古北水镇", "天津之眼":"天津之眼", "盘山":"盘山", "承德避暑山庄":"承德避暑山庄", "北戴河":"北戴河区",
+  "平遥古城":"平遥古城", "壶口瀑布":"壶口瀑布", "泰山":"泰山", "崂山":"崂山", "蓬莱阁":"蓬莱阁",
+  "大连老虎滩":"老虎滩海洋公园", "本溪水洞":"本溪水洞", "长白山天池":"长白山天池", "雾凇岛":"images/31_雾凇岛.jpg", "哈尔滨冰雪大世界":"哈尔滨冰雪大世界", "漠河北极村":"北极村",
+  "少林寺":"少林寺", "龙门石窟":"龙门石窟", "云台山":"云台山", "武当山":"武当山", "恩施大峡谷":"恩施大峡谷", "神农架":"神农架林区",
+  "张家界":"张家界国家森林公园", "凤凰古城":"凤凰古城", "外滩":"外滩", "朱家角古镇":"朱家角镇",
+  "苏州园林":"苏州古典园林", "瘦西湖":"瘦西湖", "西湖":"西湖", "千岛湖":"千岛湖", "黄山":"黄山", "宏村":"宏村", "庐山":"庐山", "婺源":"婺源县",
+  "鼓浪屿":"鼓浪屿", "武夷山":"武夷山", "日月潭":"日月潭", "九份老街":"九份", "广州塔":"广州塔", "丹霞山":"丹霞山",
+  "桂林山水":"漓江", "涠洲岛":"涠洲岛", "三亚海滩":"亚龙湾", "分界洲岛":"分界洲岛", "维多利亚港":"维多利亚港", "南丫岛":"南丫岛", "大三巴牌坊":"大三巴牌坊",
+  "九寨沟":"九寨沟风景名胜区", "稻城亚丁":"稻城亚丁", "乐山大佛":"乐山大佛", "洪崖洞":"洪崖洞", "武隆天坑":"武隆喀斯特旅游区",
+  "黄果树瀑布":"黄果树瀑布", "千户苗寨":"西江千户苗寨", "丽江古城":"丽江古城", "大理洱海":"洱海", "西双版纳":"西双版纳傣族自治州",
+  "布达拉宫":"布达拉宫", "羊卓雍措":"羊卓雍错", "兵马俑":"秦始皇兵马俑", "华山":"华山"
 };
 const scenicEnglishTitles = {
-  "缈＄繝婀�":"Emerald Lake Qinghai", "鍙ゅ寳姘撮晣":"Gubei Water Town", "闀囧寳鍫″奖瑙嗗煄":"Zhenbeibao Western Film Studio", "鎵庡皶閭�":"Zhagana Scenic Area", "棰濇祹绾宠儭鏉ㄦ灄":"Ejina Populus Euphratica Forest Inner Mongolia",
-  "澶ц繛鑰佽檸婊�":"Laohutan Ocean Park", "闆惧噰宀�":"images/31_闆惧噰宀�.jpg", "鏈卞瑙掑彜闀�":"Zhujiajiao", "涓変簹娴锋哗":"Yalong Bay", "鍒嗙晫娲插矝":"Boundary Island",
-  "鍗椾斧宀�":"Lamma Island", "绋诲煄浜氫竵":"Yading Nature Reserve", "娲礀娲�":"Hongya Cave", "鍗冩埛鑻楀":"Xijiang Miao Village", "缇婂崜闆嶆帾":"Yamdrok Lake"
+  "翡翠湖":"Emerald Lake Qinghai", "古北水镇":"Gubei Water Town", "镇北堡影视城":"Zhenbeibao Western Film Studio", "扎尕那":"Zhagana Scenic Area", "额济纳胡杨林":"Ejina Populus Euphratica Forest Inner Mongolia",
+  "大连老虎滩":"Laohutan Ocean Park", "雾凇岛":"images/31_雾凇岛.jpg", "朱家角古镇":"Zhujiajiao", "三亚海滩":"Yalong Bay", "分界洲岛":"Boundary Island",
+  "南丫岛":"Lamma Island", "稻城亚丁":"Yading Nature Reserve", "洪崖洞":"Hongya Cave", "千户苗寨":"Xijiang Miao Village", "羊卓雍措":"Yamdrok Lake"
 };
 const scenicImageKeywords = {
-  "鍠€绾虫柉婀�":"Kanas Lake Xinjiang China", "绂炬湪鏉�":"Hemu Village Xinjiang China", "璧涢噷鏈ㄦ箹":"Sayram Lake Xinjiang China", "闈掓捣婀�":"Qinghai Lake China", "缈＄繝婀�":"Dachaidan Emerald Lake Qinghai", "鑼跺崱鐩愭箹":"Chaka Salt Lake Qinghai",
-  "鏁︾厡鑾珮绐�":"Mogao Caves Dunhuang", "鎵庡皶閭�":"Zhagana Gansu China mountain village", "寮犳帠涓归湠":"Zhangye Danxia National Geopark", "娌欏潯澶�":"Shapotou Ningxia", "闀囧寳鍫″奖瑙嗗煄":"Zhenbeibao Western Film Studio",
-  "鍛间鸡璐濆皵鑽夊師":"Hulunbuir Grassland", "棰濇祹绾宠儭鏉ㄦ灄":"Ejina Populus Euphratica Forest Inner Mongolia", "闃垮皵灞�":"Arxan National Forest Park",
-  "鏁呭鍗氱墿闄�":"Forbidden City Beijing", "鍙ゅ寳姘撮晣":"Gubei Water Town", "澶╂触涔嬬溂":"Tianjin Eye", "鐩樺北":"Mount Panshan Tianjin", "鎵垮痉閬挎殤灞卞簞":"Chengde Mountain Resort", "鍖楁埓娌�":"Beidaihe Beach",
-  "骞抽仴鍙ゅ煄":"Pingyao Ancient City", "澹跺彛鐎戝竷":"Hukou Waterfall", "娉板北":"Mount Tai", "宕傚北":"Mount Laoshan Qingdao", "钃幈闃�":"Penglai Pavilion",
-  "澶ц繛鑰佽檸婊�":"Dalian Laohutan Ocean Park", "鏈邯姘存礊":"Benxi Water Cave", "闀跨櫧灞卞ぉ姹�":"Heaven Lake Changbai Mountain", "闆惧噰宀�":"images/31_闆惧噰宀�.jpg", "鍝堝皵婊ㄥ啺闆ぇ涓栫晫":"Harbin Ice and Snow World", "婕犳渤鍖楁瀬鏉�":"Mohe Arctic Village",
-  "灏戞灄瀵�":"Shaolin Temple", "榫欓棬鐭崇獰":"Longmen Grottoes", "浜戝彴灞�":"Yuntai Mountain Henan", "姝﹀綋灞�":"Wudang Mountains", "鎭╂柦澶у场璋�":"Enshi Grand Canyon", "绁炲啘鏋�":"Shennongjia Forest",
-  "寮犲鐣�":"Zhangjiajie National Forest Park", "鍑ゅ嚢鍙ゅ煄":"Fenghuang Ancient Town", "澶栨哗":"The Bund Shanghai", "鏈卞瑙掑彜闀�":"Zhujiajiao Water Town",
-  "鑻忓窞鍥灄":"Suzhou Classical Gardens", "鐦﹁タ婀�":"Slender West Lake Yangzhou", "瑗挎箹":"West Lake Hangzhou", "鍗冨矝婀�":"Qiandao Lake", "榛勫北":"Huangshan Mountain", "瀹忔潙":"Hongcun Anhui", "搴愬北":"Mount Lu", "濠烘簮":"Wuyuan Jiangxi",
-  "榧撴氮灞�":"Gulangyu Island", "姝﹀し灞�":"Wuyi Mountains", "鏃ユ湀娼�":"Sun Moon Lake Taiwan", "涔濅唤鑰佽":"Jiufen Old Street", "骞垮窞濉�":"Canton Tower", "涓归湠灞�":"Danxia Mountain Guangdong",
-  "妗傛灄灞辨按":"Li River Guilin", "娑犳床宀�":"Weizhou Island Guangxi", "涓変簹娴锋哗":"Yalong Bay Sanya Beach", "鍒嗙晫娲插矝":"Boundary Island Hainan", "缁村鍒╀簹娓�":"Victoria Harbour Hong Kong", "鍗椾斧宀�":"Lamma Island Hong Kong", "澶т笁宸寸墝鍧�":"Ruins of Saint Paul's Macau",
-  "涔濆娌�":"Jiuzhaigou Valley", "绋诲煄浜氫竵":"Daocheng Yading", "涔愬北澶т經":"Leshan Giant Buddha", "娲礀娲�":"Hongya Cave Chongqing", "姝﹂殕澶╁潙":"Wulong Karst Three Natural Bridges",
-  "榛勬灉鏍戠€戝竷":"Huangguoshu Waterfall", "鍗冩埛鑻楀":"Xijiang Qianhu Miao Village", "涓芥睙鍙ゅ煄":"Lijiang Old Town", "澶х悊娲辨捣":"Erhai Lake Dali", "瑗垮弻鐗堢撼":"Xishuangbanna rainforest",
-  "甯冭揪鎷夊":"Potala Palace", "缇婂崜闆嶆帾":"Yamdrok Lake Tibet", "鍏甸┈淇�":"Terracotta Army Xi'an", "鍗庡北":"Mount Hua"
+  "喀纳斯湖":"Kanas Lake Xinjiang China", "禾木村":"Hemu Village Xinjiang China", "赛里木湖":"Sayram Lake Xinjiang China", "青海湖":"Qinghai Lake China", "翡翠湖":"Dachaidan Emerald Lake Qinghai", "茶卡盐湖":"Chaka Salt Lake Qinghai",
+  "敦煌莫高窟":"Mogao Caves Dunhuang", "扎尕那":"Zhagana Gansu China mountain village", "张掖丹霞":"Zhangye Danxia National Geopark", "沙坡头":"Shapotou Ningxia", "镇北堡影视城":"Zhenbeibao Western Film Studio",
+  "呼伦贝尔草原":"Hulunbuir Grassland", "额济纳胡杨林":"Ejina Populus Euphratica Forest Inner Mongolia", "阿尔山":"Arxan National Forest Park",
+  "故宫博物院":"Forbidden City Beijing", "古北水镇":"Gubei Water Town", "天津之眼":"Tianjin Eye", "盘山":"Mount Panshan Tianjin", "承德避暑山庄":"Chengde Mountain Resort", "北戴河":"Beidaihe Beach",
+  "平遥古城":"Pingyao Ancient City", "壶口瀑布":"Hukou Waterfall", "泰山":"Mount Tai", "崂山":"Mount Laoshan Qingdao", "蓬莱阁":"Penglai Pavilion",
+  "大连老虎滩":"Dalian Laohutan Ocean Park", "本溪水洞":"Benxi Water Cave", "长白山天池":"Heaven Lake Changbai Mountain", "雾凇岛":"images/31_雾凇岛.jpg", "哈尔滨冰雪大世界":"Harbin Ice and Snow World", "漠河北极村":"Mohe Arctic Village",
+  "少林寺":"Shaolin Temple", "龙门石窟":"Longmen Grottoes", "云台山":"Yuntai Mountain Henan", "武当山":"Wudang Mountains", "恩施大峡谷":"Enshi Grand Canyon", "神农架":"Shennongjia Forest",
+  "张家界":"Zhangjiajie National Forest Park", "凤凰古城":"Fenghuang Ancient Town", "外滩":"The Bund Shanghai", "朱家角古镇":"Zhujiajiao Water Town",
+  "苏州园林":"Suzhou Classical Gardens", "瘦西湖":"Slender West Lake Yangzhou", "西湖":"West Lake Hangzhou", "千岛湖":"Qiandao Lake", "黄山":"Huangshan Mountain", "宏村":"Hongcun Anhui", "庐山":"Mount Lu", "婺源":"Wuyuan Jiangxi",
+  "鼓浪屿":"Gulangyu Island", "武夷山":"Wuyi Mountains", "日月潭":"Sun Moon Lake Taiwan", "九份老街":"Jiufen Old Street", "广州塔":"Canton Tower", "丹霞山":"Danxia Mountain Guangdong",
+  "桂林山水":"Li River Guilin", "涠洲岛":"Weizhou Island Guangxi", "三亚海滩":"Yalong Bay Sanya Beach", "分界洲岛":"Boundary Island Hainan", "维多利亚港":"Victoria Harbour Hong Kong", "南丫岛":"Lamma Island Hong Kong", "大三巴牌坊":"Ruins of Saint Paul's Macau",
+  "九寨沟":"Jiuzhaigou Valley", "稻城亚丁":"Daocheng Yading", "乐山大佛":"Leshan Giant Buddha", "洪崖洞":"Hongya Cave Chongqing", "武隆天坑":"Wulong Karst Three Natural Bridges",
+  "黄果树瀑布":"Huangguoshu Waterfall", "千户苗寨":"Xijiang Qianhu Miao Village", "丽江古城":"Lijiang Old Town", "大理洱海":"Erhai Lake Dali", "西双版纳":"Xishuangbanna rainforest",
+  "布达拉宫":"Potala Palace", "羊卓雍措":"Yamdrok Lake Tibet", "兵马俑":"Terracotta Army Xi'an", "华山":"Mount Hua"
 };
 const scenicWikiImageCache = {};
-function scenicQuery(name) { return scenicImageKeywords[name] || (name + ' 涓浗 鏅偣 椋庢櫙'); }
+function scenicQuery(name) { return scenicImageKeywords[name] || (name + ' 中国 景点 风景'); }
 function wikiTitlesFor(name) {
   const list = [];
   if (scenicWikiTitles[name]) list.push({lang:'zh', title: scenicWikiTitles[name]});
@@ -2084,10 +2084,10 @@ async function fetchWikiImage(name) {
   return '';
 }
 function encodeSvgText(text) {
-  return String(text || '鏅偣鍥剧墖').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return String(text || '景点图片').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 function scenicFallbackSvg(name) {
-  const title = encodeSvgText(name || '澶忔棩鏃呰');
+  const title = encodeSvgText(name || '夏日旅行');
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
     <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7FD8FF"/><stop offset=".55" stop-color="#8EDFB3"/><stop offset="1" stop-color="#FFE69A"/></linearGradient></defs>
     <rect width="640" height="420" fill="url(#g)"/>
@@ -2100,7 +2100,7 @@ function scenicFallbackSvg(name) {
   return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
 }
 function getLocalScenicImage(name) {
-  // 绾湰鍦板浘鐗囨ā寮忥細鍙粠 provinceDestinations 涓鍙� img 瀛楁锛屼笉鍐嶈姹傜綉缁滃浘鐗囥€�
+  // 纯本地图片模式：只从 provinceDestinations 中读取 img 字段，不再请求网络图片。
   const scenicName = name || '';
   for (const list of Object.values(provinceDestinations || {})) {
     const found = list.find(d => d.name === scenicName);
@@ -2113,7 +2113,7 @@ function scenicImageCandidates(name) {
   return localImg ? [localImg, scenicFallbackSvg(name)] : [scenicFallbackSvg(name)];
 }
 function handleScenicImgError(img) {
-  const name = img.dataset.scenicName || img.alt || '澶忔棩鏃呰';
+  const name = img.dataset.scenicName || img.alt || '夏日旅行';
   const idx = parseInt(img.dataset.fallbackIndex || '0', 10) + 1;
   const list = scenicImageCandidates(name);
   if (idx < list.length) {
@@ -2128,7 +2128,7 @@ function handleScenicImgError(img) {
 }
 function setScenicImage(img, name) {
   if (!img) return;
-  const scenicName = name || img.alt || '澶忔棩鏃呰';
+  const scenicName = name || img.alt || '夏日旅行';
   img.classList.remove('is-fallback');
   img.dataset.scenicName = scenicName;
   img.dataset.fallbackIndex = '0';
@@ -2149,12 +2149,12 @@ function hydrateScenicImages(scope) {
   });
 }
 function prepareProvinceDestinationImages() {
-  // 鏈湴鍥剧墖妯″紡涓嬶紝鍊欓€夊浘鍙繚鐣欐湰鍦拌矾寰勪笌 SVG 鍏滃簳鍥俱€�
+  // 本地图片模式下，候选图只保留本地路径与 SVG 兜底图。
   Object.values(provinceDestinations).forEach(list => {
     list.forEach(d => { d.imgCandidates = d.img ? [d.img, scenicFallbackSvg(d.name)] : [scenicFallbackSvg(d.name)]; });
   });
 }
-const ratingEmojis = {1:'馃槴',2:'馃槪',3:'馃槦',4:'馃槙',5:'馃槓',6:'馃檪',7:'馃槉',8:'馃槃',9:'馃ぉ',10:'馃槏'};
+const ratingEmojis = {1:'😫',2:'😣',3:'😟',4:'😕',5:'😐',6:'🙂',7:'😊',8:'😄',9:'🤩',10:'😍'};
 function getRatingClass(score) { if (score >= 7) return 'high'; if (score >= 4) return 'mid'; return 'low'; }
 
 // ============ RENDER MAP ============
@@ -2168,7 +2168,7 @@ async function renderMap() {
   const userData = user ? getUser(user) : null;
   const ratings = userData ? (userData.ratings || {}) : {};
   const notInterested = userData ? (userData.notInterested || []) : [];
-  el.innerHTML = '<div class="map-loading">姝ｅ湪鍔犺浇鐪熷疄鐪佺晫鍦板浘...</div>';
+  el.innerHTML = '<div class="map-loading">正在加载真实省界地图...</div>';
   const GEO_URLS = [
     'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
     'https://geo.datav.aliyun.com/areas_v3/bound/100000.json',
@@ -2178,8 +2178,8 @@ async function renderMap() {
     const geojson = await loadChinaGeoJSON(GEO_URLS);
     renderAccurateGeoJSONMap(el, geojson, ratings, notInterested);
   } catch (err) {
-    console.warn('鐪熷疄鐪佺晫鍦板浘鍔犺浇澶辫触锛�', err);
-    el.innerHTML = '<div class="map-error"><strong>鐪熷疄鐪佺晫鍦板浘鍔犺浇澶辫触</strong><p>璇风‘璁ょ綉缁滃彲璁块棶鍦板浘鏁版嵁婧愬悗鍒锋柊椤甸潰銆�</p><button onclick="renderMap()">閲嶆柊鍔犺浇鍦板浘</button></div>';
+    console.warn('真实省界地图加载失败：', err);
+    el.innerHTML = '<div class="map-error"><strong>真实省界地图加载失败</strong><p>请确认网络可访问地图数据源后刷新页面。</p><button onclick="renderMap()">重新加载地图</button></div>';
   }
   updateRatingSummary();
   renderDestinationList();
@@ -2194,16 +2194,16 @@ async function loadChinaGeoJSON(urls) {
       const text = await res.text();
       const first = text.indexOf('{');
       const last = text.lastIndexOf('}');
-      if (first < 0 || last < 0) throw new Error('涓嶆槸鏈夋晥 JSON');
+      if (first < 0 || last < 0) throw new Error('不是有效 JSON');
       return JSON.parse(text.slice(first, last + 1));
     } catch (e) { lastError = e; }
   }
-  throw lastError || new Error('鍏ㄩ儴鍦板浘婧愬姞杞藉け璐�');
+  throw lastError || new Error('全部地图源加载失败');
 }
 function normalizeProvinceName(name) {
-  return String(name || '').replace(/鐗瑰埆琛屾斂鍖簗缁村惥灏旇嚜娌诲尯|澹棌鑷不鍖簗鍥炴棌鑷不鍖簗鑷不鍖簗鐪亅甯�/g, '').replace(/棣欐腐宀泑婢抽棬鍗婂矝/g, '').trim();
+  return String(name || '').replace(/特别行政区|维吾尔自治区|壮族自治区|回族自治区|自治区|省|市/g, '').replace(/香港岛|澳门半岛/g, '').trim();
 }
-const provinceNameToId = {'鏂扮枂':'xinjiang','瑗胯棌':'xizang','鍐呰挋鍙�':'neimenggu','闈掓捣':'qinghai','鐢樿們':'gansu','瀹佸':'ningxia','闄曡タ':'shaanxi','鍖椾含':'beijing','澶╂触':'tianjin','娌冲寳':'hebei','灞辫タ':'shanxi','灞变笢':'shandong','杈藉畞':'liaoning','鍚夋灄':'jilin','榛戦緳姹�':'heilongjiang','娌冲崡':'henan','婀栧寳':'hubei','婀栧崡':'hunan','涓婃捣':'shanghai','姹熻嫃':'jiangsu','娴欐睙':'zhejiang','瀹夊窘':'anhui','姹熻タ':'jiangxi','绂忓缓':'fujian','鍙版咕':'taiwan','骞夸笢':'guangdong','骞胯タ':'guangxi','娴峰崡':'hainan','棣欐腐':'hongkong','婢抽棬':'macau','鍥涘窛':'sichuan','閲嶅簡':'chongqing','璐靛窞':'guizhou','浜戝崡':'yunnan'};
+const provinceNameToId = {'新疆':'xinjiang','西藏':'xizang','内蒙古':'neimenggu','青海':'qinghai','甘肃':'gansu','宁夏':'ningxia','陕西':'shaanxi','北京':'beijing','天津':'tianjin','河北':'hebei','山西':'shanxi','山东':'shandong','辽宁':'liaoning','吉林':'jilin','黑龙江':'heilongjiang','河南':'henan','湖北':'hubei','湖南':'hunan','上海':'shanghai','江苏':'jiangsu','浙江':'zhejiang','安徽':'anhui','江西':'jiangxi','福建':'fujian','台湾':'taiwan','广东':'guangdong','广西':'guangxi','海南':'hainan','香港':'hongkong','澳门':'macau','四川':'sichuan','重庆':'chongqing','贵州':'guizhou','云南':'yunnan'};
 function getFeatureProvinceId(feature) {
   const props = feature.properties || {};
   const rawName = props.name || props.NAME || props.fullname || props.fullName || props.Name || props.adname || '';
@@ -2214,7 +2214,7 @@ function getFeatureProvinceId(feature) {
 }
 function renderAccurateGeoJSONMap(el, geojson, ratings, notInterested) {
   const features = (geojson.features || []).filter(f => getFeatureProvinceId(f));
-  if (!features.length) throw new Error('鍦板浘鏁版嵁涓病鏈夊尮閰嶅埌鐪佺骇杈圭晫');
+  if (!features.length) throw new Error('地图数据中没有匹配到省级边界');
   const width = 920, height = 690, pad = 28;
   const points = [];
   features.forEach(f => collectLonLat(f.geometry.coordinates, points));
@@ -2226,7 +2226,7 @@ function renderAccurateGeoJSONMap(el, geojson, ratings, notInterested) {
   const offsetY = (height - (maxY - minY) * scale) / 2;
   const transform = (lon, lat) => { const [x, y] = projectMercator(lon, lat); return [offsetX + (x - minX) * scale, height - (offsetY + (y - minY) * scale)]; };
   function clsForProvince(id) { if (ratings[id] && ratings[id].score !== undefined) { const s = ratings[id].score; if (s >= 7) return ' rated-high'; if (s >= 4) return ' rated-mid'; return ' rated-low'; } if (notInterested.includes(id)) return ' not-interested'; return ''; }
-  let svg = `<svg viewBox="0 0 ${width} ${height}" class="accurate-china-svg" role="img" aria-label="鐪熷疄鐪佺骇琛屾斂鍖鸿竟鐣屼腑鍥藉湴鍥�"><defs><filter id="mapPaperShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#256D85" flood-opacity="0.20"/></filter></defs><rect x="0" y="0" width="${width}" height="${height}" rx="34" fill="#DDF6FF" opacity=".42"/><g class="map-paper-layer" filter="url(#mapPaperShadow)">`;
+  let svg = `<svg viewBox="0 0 ${width} ${height}" class="accurate-china-svg" role="img" aria-label="真实省级行政区边界中国地图"><defs><filter id="mapPaperShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#256D85" flood-opacity="0.20"/></filter></defs><rect x="0" y="0" width="${width}" height="${height}" rx="34" fill="#DDF6FF" opacity=".42"/><g class="map-paper-layer" filter="url(#mapPaperShadow)">`;
   const labelData = [];
   features.forEach(f => {
     const id = getFeatureProvinceId(f), p = provinceMap[id];
@@ -2235,7 +2235,7 @@ function renderAccurateGeoJSONMap(el, geojson, ratings, notInterested) {
     if (!d) return;
     svg += `<path class="province-shape${clsForProvince(id)}" d="${d}" data-id="${id}" onclick="openProvinceModal('${id}')"><title>${p.name}</title></path>`;
     const c = getGeometryCentroid(f.geometry);
-    if (c) { const [lx, ly] = transform(c[0], c[1]); labelData.push({x: lx, y: ly, name: p.short, small: p.small || ['棣欐腐','婢抽棬','涓婃捣','澶╂触','鍖椾含','瀹佸','娴峰崡'].includes(p.short)}); }
+    if (c) { const [lx, ly] = transform(c[0], c[1]); labelData.push({x: lx, y: ly, name: p.short, small: p.small || ['香港','澳门','上海','天津','北京','宁夏','海南'].includes(p.short)}); }
   });
   svg += '</g><g class="map-label-layer">';
   labelData.forEach(l => { svg += `<text x="${l.x.toFixed(1)}" y="${l.y.toFixed(1)}" class="province-label${l.small ? ' small' : ''}">${l.name}</text>`; });
@@ -2250,22 +2250,22 @@ function updateRatingSummary() {
   const user = getCurrentUser();
   const container = document.getElementById('ratingSummary');
   const nameEl = document.getElementById('sidebarUserName');
-  if (!user) { nameEl.textContent = '璇勫垎鎽樿'; container.innerHTML = '<div class="empty-state">璇峰厛鍦�"鐢ㄦ埛璁剧疆"涓€夋嫨鐢ㄦ埛</div>'; return; }
-  nameEl.textContent = user + ' 鐨勮瘎鍒�';
+  if (!user) { nameEl.textContent = '评分摘要'; container.innerHTML = '<div class="empty-state">请先在"用户设置"中选择用户</div>'; return; }
+  nameEl.textContent = user + ' 的评分';
   const userData = getUser(user);
-  if (!userData || (!userData.ratings && !userData.notInterested)) { container.innerHTML = '<div class="empty-state">灏氭湭璇勫垎锛岀偣鍑诲湴鍥惧紑濮�</div>'; return; }
+  if (!userData || (!userData.ratings && !userData.notInterested)) { container.innerHTML = '<div class="empty-state">尚未评分，点击地图开始</div>'; return; }
   const ratings = userData.ratings || {};
   const notInterested = userData.notInterested || [];
-  let html = '<div class="summary-count">宸茶瘎鍒�: ' + (Object.keys(ratings).length + notInterested.length) + ' / 34</div>';
+  let html = '<div class="summary-count">已评分: ' + (Object.keys(ratings).length + notInterested.length) + ' / 34</div>';
   provinceData.forEach(p => {
     if (ratings[p.id] && ratings[p.id].score !== undefined) {
       let s = ratings[p.id].score, cls = getRatingClass(s);
-      html += `<div class="rating-summary-item"><span>${p.short}</span><span class="rating-score ${cls}">${ratingEmojis[s]} ${s}鍒�</span></div>`;
+      html += `<div class="rating-summary-item"><span>${p.short}</span><span class="rating-score ${cls}">${ratingEmojis[s]} ${s}分</span></div>`;
     } else if (notInterested.includes(p.id)) {
-      html += `<div class="rating-summary-item"><span>${p.short}</span><span style="color:#a0aec0">馃毇 涓嶆兂鍘�</span></div>`;
+      html += `<div class="rating-summary-item"><span>${p.short}</span><span style="color:#a0aec0">🚫 不想去</span></div>`;
     }
   });
-  container.innerHTML = html || '<div class="empty-state">灏氭湭璇勫垎</div>';
+  container.innerHTML = html || '<div class="empty-state">尚未评分</div>';
 }
 
 // ============ MODAL ============
@@ -2273,30 +2273,30 @@ let currentGuideProvince = null;
 let currentGuideDest = null;
 
 function openProvinceModal(provinceId) {
-  if (!getCurrentUser()) { alert('璇峰厛鍦�"鐢ㄦ埛璁剧疆"涓€夋嫨鎴栧垱寤虹敤鎴�'); return; }
+  if (!getCurrentUser()) { alert('请先在"用户设置"中选择或创建用户'); return; }
   const p = provinceMap[provinceId];
   if (!p) return;
   currentModalProvince = provinceId;
   document.getElementById('modalTitle').textContent = p.name;
-  document.getElementById('modalSubtitle').textContent = '鐐瑰嚮鏃呮父鍦板崱鐗囨煡鐪嬭缁嗘敾鐣ワ紝鎴栫洿鎺ヨ瘎鍒�';
+  document.getElementById('modalSubtitle').textContent = '点击旅游地卡片查看详细攻略，或直接评分';
 
   // Render destination cards with images
   const dests = provinceDestinations[provinceId] || [];
   let destHtml = '';
   if (dests.length > 0) {
     destHtml = dests.map((d, i) => {
-      const typeClass = d.type === '鐑棬' ? 'popular' : 'niche';
+      const typeClass = d.type === '热门' ? 'popular' : 'niche';
       return `<button type="button" class="dest-card" onclick="event.stopPropagation();showGuide('${provinceId}',${i})">
         <img class="dest-card-img" src="${d.img || scenicFallbackSvg(d.name)}" alt="${d.name}" data-scenic-name="${d.name}" data-fallback-index="0" loading="lazy" onerror="handleScenicImgError(this)">
         <div class="dest-card-body">
           <div class="dest-card-name">${d.name}<span class="dest-card-type ${typeClass}">${d.type}</span></div>
           <div class="dest-card-desc">${d.desc}</div>
-          <div class="dest-card-hint">馃憠 鐐瑰嚮鏌ョ湅璇︾粏鏀荤暐</div>
+          <div class="dest-card-hint">👉 点击查看详细攻略</div>
         </div>
       </button>`;
     }).join('');
   } else {
-    destHtml = '<p style="color:var(--muted);font-size:.88rem;">鏆傛棤鐩殑鍦版暟鎹紝鏁鏈熷緟</p>';
+    destHtml = '<p style="color:var(--muted);font-size:.88rem;">暂无目的地数据，敬请期待</p>';
   }
   document.getElementById('modalDestinations').innerHTML = destHtml;
   hydrateScenicImages(document.getElementById('modalDestinations'));
@@ -2314,7 +2314,7 @@ function openProvinceModal(provinceId) {
   if (isNotInterested) {
     document.getElementById('ratingSlider').value = 5;
     document.getElementById('ratingValue').textContent = '-';
-    document.getElementById('ratingEmoji').textContent = '馃毇';
+    document.getElementById('ratingEmoji').textContent = '🚫';
   } else if (existing && existing.score !== undefined) {
     document.getElementById('ratingSlider').value = existing.score;
     updateRatingDisplay();
@@ -2335,13 +2335,13 @@ function showGuide(provinceId, destIndex) {
   currentGuideDest = destIndex;
 
   document.getElementById('guideTitle').textContent = d.name;
-  document.getElementById('guideSubtitle').textContent = (p ? p.name + ' 路 ' : '') + d.type + '鎺ㄨ崘';
+  document.getElementById('guideSubtitle').textContent = (p ? p.name + ' · ' : '') + d.type + '推荐';
   setScenicImage(document.getElementById('guideImg'), d.name);
 
   document.getElementById('guideInfo').innerHTML = `
-    <span class="info-chip">馃搮 鏈€浣虫椂闂达細${d.bestTime}</span>
-    <span class="info-chip">鈴憋笍 寤鸿鏃堕暱锛�${d.duration}</span>
-    <span class="info-chip">馃挵 棰勭畻鍙傝€冿細${d.budget}</span>
+    <span class="info-chip">📅 最佳时间：${d.bestTime}</span>
+    <span class="info-chip">⏱️ 建议时长：${d.duration}</span>
+    <span class="info-chip">💰 预算参考：${d.budget}</span>
   `;
 
   document.getElementById('guideRoute').textContent = d.route;
@@ -2351,8 +2351,8 @@ function showGuide(provinceId, destIndex) {
   document.getElementById('guideTips').innerHTML = d.tips.map(t => `<li>${t}</li>`).join('');
 
   document.getElementById('guideLinks').innerHTML = `
-    <a class="guide-link-btn mafengwo" target="_blank" href="https://www.mafengwo.cn/search/s.php?q=${encodeURIComponent(d.name)}">馃Л 椹渹绐濇敾鐣�</a>
-    <a class="guide-link-btn xiaohongshu" target="_blank" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(d.name)}">馃摃 灏忕孩涔︽敾鐣�</a>
+    <a class="guide-link-btn mafengwo" target="_blank" href="https://www.mafengwo.cn/search/s.php?q=${encodeURIComponent(d.name)}">🧭 马蜂窝攻略</a>
+    <a class="guide-link-btn xiaohongshu" target="_blank" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(d.name)}">📕 小红书攻略</a>
   `;
 
   document.getElementById('guideOverlay').classList.add('show');
@@ -2380,13 +2380,13 @@ function closeModal() { document.getElementById('modalOverlay').classList.remove
 function updateRatingDisplay() {
   const v = parseInt(document.getElementById('ratingSlider').value);
   document.getElementById('ratingValue').textContent = v;
-  document.getElementById('ratingEmoji').textContent = ratingEmojis[v] || '馃槓';
+  document.getElementById('ratingEmoji').textContent = ratingEmojis[v] || '😐';
 }
 function onNotInterestedChange() {
   const checked = document.getElementById('notInterestedCheck').checked;
   document.getElementById('ratingSlider').disabled = checked;
   document.getElementById('ratingValue').textContent = checked ? '-' : document.getElementById('ratingSlider').value;
-  document.getElementById('ratingEmoji').textContent = checked ? '馃毇' : (ratingEmojis[document.getElementById('ratingSlider').value] || '馃槓');
+  document.getElementById('ratingEmoji').textContent = checked ? '🚫' : (ratingEmojis[document.getElementById('ratingSlider').value] || '😐');
 }
 
 function saveProvinceRating() {
@@ -2419,7 +2419,7 @@ function clearProvinceRating() {
 }
 
 // ============ USER SETUP ============
-const presetNames = ['寮犱笁','鏉庡洓','鐜嬩簲','璧靛叚','闄堜竷','鍛ㄥ叓','鍚翠節','閮戝崄','閽卞崄涓€'];
+const presetNames = ['张三','李四','王五','赵六','陈七','周八','吴九','郑十','钱十一'];
 
 function renderSetup() {
   const users = getAllUsers(), userNames = Object.keys(users), current = getCurrentUser();
@@ -2428,7 +2428,7 @@ function renderSetup() {
     let cls = 'preset-chip';
     if (name === current) cls += ' selected';
     if (userNames.includes(name) && name !== current) cls += ' used';
-    chipsHtml += `<span class="${cls}" onclick="selectPresetUser('${name}')">${name}${userNames.includes(name) && name !== current ? ' 鉁�' : ''}</span>`;
+    chipsHtml += `<span class="${cls}" onclick="selectPresetUser('${name}')">${name}${userNames.includes(name) && name !== current ? ' ✓' : ''}</span>`;
   });
   document.getElementById('presetUsers').innerHTML = chipsHtml;
 
@@ -2437,17 +2437,17 @@ function renderSetup() {
     const u = users[name];
     const ratings = u.ratings || {}, notInterested = u.notInterested || [];
     const rated = Object.keys(ratings).length + notInterested.length;
-    const hasTime = u.vacationStart ? ' 鉁撴椂闂�' : '';
+    const hasTime = u.vacationStart ? ' ✓时间' : '';
     listHtml += `<div class="user-list-item">
-      <span><strong>${name}</strong> ${name === current ? '鈼€ 褰撳墠' : ''} 鈥� 宸茶瘎 ${rated}/34${hasTime}</span>
-      <div class="actions"><button onclick="switchToUser('${name}')">鍒囨崲</button><button class="danger" onclick="deleteUserConfirm('${name}')">鍒犻櫎</button></div></div>`;
+      <span><strong>${name}</strong> ${name === current ? '◀ 当前' : ''} — 已评 ${rated}/34${hasTime}</span>
+      <div class="actions"><button onclick="switchToUser('${name}')">切换</button><button class="danger" onclick="deleteUserConfirm('${name}')">删除</button></div></div>`;
   });
-  document.getElementById('userList').innerHTML = listHtml || '<div class="empty-state">鏆傛棤鐢ㄦ埛锛岃鐐瑰嚮涓婃柟棰勮鍚嶆垨杈撳叆鑷畾涔夊鍚�</div>';
+  document.getElementById('userList').innerHTML = listHtml || '<div class="empty-state">暂无用户，请点击上方预设名或输入自定义姓名</div>';
 
   const count = userNames.length;
   document.getElementById('progressFill').style.width = (count/9*100)+'%';
   document.getElementById('progressText').textContent = count+'/9';
-  document.getElementById('currentUserBadge').textContent = current || '鏈€夋嫨鐢ㄦ埛';
+  document.getElementById('currentUserBadge').textContent = current || '未选择用户';
   const badge = document.getElementById('resultsBadge');
   if (count>0) { badge.style.display=''; badge.textContent=count+'/9'; } else badge.style.display='none';
   updateAllTabs();
@@ -2461,23 +2461,23 @@ function selectPresetUser(name) {
 }
 function addCustomUser() {
   const input = document.getElementById('customNameInput'), name = input.value.trim();
-  if (!name) { alert('璇疯緭鍏ョ敤鎴峰悕'); return; }
+  if (!name) { alert('请输入用户名'); return; }
   let users = getAllUsers();
-  if (users[name]) { alert('璇ョ敤鎴峰悕宸插瓨鍦�'); return; }
+  if (users[name]) { alert('该用户名已存在'); return; }
   users[name] = { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
   saveData({ users, currentUser:name }); input.value = '';
   renderSetup(); renderMap(); renderTimeTab();
 }
 function switchToUser(name) { setCurrentUser(name); renderSetup(); renderMap(); renderTimeTab(); }
-function deleteUserConfirm(name) { if (!confirm(`纭畾鍒犻櫎"${name}"鍙婂叾鎵€鏈夋暟鎹紵`)) return; deleteUser(name); renderSetup(); renderMap(); renderTimeTab(); }
-function resetAllData() { if (!confirm('纭畾娓呴櫎鎵€鏈夌敤鎴风殑鍏ㄩ儴鏁版嵁鍚楋紵姝ゆ搷浣滀笉鍙仮澶嶏紒')) return; localStorage.removeItem('tripPlannerV2'); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
+function deleteUserConfirm(name) { if (!confirm(`确定删除"${name}"及其所有数据？`)) return; deleteUser(name); renderSetup(); renderMap(); renderTimeTab(); }
+function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem('tripPlannerV2'); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
 
 // ============ TIME TAB ============
 let tempUnavailPeriods = [];
 
 function renderTimeTab() {
   const user = getCurrentUser();
-  if (!user) { document.getElementById('vacationStart').value=''; document.getElementById('vacationEnd').value=''; document.getElementById('unavailPeriods').innerHTML='<div class="empty-state">璇峰厛閫夋嫨鐢ㄦ埛</div>'; document.getElementById('timelineViz').innerHTML='<div class="empty-state">璇峰厛閫夋嫨鐢ㄦ埛</div>'; return; }
+  if (!user) { document.getElementById('vacationStart').value=''; document.getElementById('vacationEnd').value=''; document.getElementById('unavailPeriods').innerHTML='<div class="empty-state">请先选择用户</div>'; document.getElementById('timelineViz').innerHTML='<div class="empty-state">请先选择用户</div>'; return; }
   const userData = getUser(user);
   if (userData) { document.getElementById('vacationStart').value=userData.vacationStart||''; document.getElementById('vacationEnd').value=userData.vacationEnd||''; tempUnavailPeriods=JSON.parse(JSON.stringify(userData.unavailablePeriods||[])); }
   else { document.getElementById('vacationStart').value=''; document.getElementById('vacationEnd').value=''; tempUnavailPeriods=[]; }
@@ -2485,38 +2485,38 @@ function renderTimeTab() {
 }
 function renderUnavailPeriods() {
   const container = document.getElementById('unavailPeriods');
-  if (tempUnavailPeriods.length===0) { container.innerHTML='<div style="color:var(--text-light);font-size:0.85rem;margin-bottom:8px">鏆傛湭娣诲姞鏃犳硶鍑鸿鏃堕棿娈�</div>'; return; }
+  if (tempUnavailPeriods.length===0) { container.innerHTML='<div style="color:var(--text-light);font-size:0.85rem;margin-bottom:8px">暂未添加无法出行时间段</div>'; return; }
   container.innerHTML = tempUnavailPeriods.map((p,i)=>`<div class="unavail-period">
     <input type="date" value="${p.start}" onchange="updateTempPeriod(${i},'start',this.value)">
-    <span>鑷�</span><input type="date" value="${p.end}" onchange="updateTempPeriod(${i},'end',this.value)">
-    <button onclick="removeTempPeriod(${i})">鍒犻櫎</button></div>`).join('');
+    <span>至</span><input type="date" value="${p.end}" onchange="updateTempPeriod(${i},'end',this.value)">
+    <button onclick="removeTempPeriod(${i})">删除</button></div>`).join('');
 }
 function addUnavailPeriod() { tempUnavailPeriods.push({start:'',end:''}); renderUnavailPeriods(); }
 function updateTempPeriod(i,k,v) { tempUnavailPeriods[i][k]=v; }
 function removeTempPeriod(i) { tempUnavailPeriods.splice(i,1); renderUnavailPeriods(); }
 function saveVacationDates() {
-  const user = getCurrentUser(); if (!user) { alert('璇峰厛閫夋嫨鐢ㄦ埛'); return; }
+  const user = getCurrentUser(); if (!user) { alert('请先选择用户'); return; }
   let userData = getUser(user) || { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
   userData.vacationStart=document.getElementById('vacationStart').value;
   userData.vacationEnd=document.getElementById('vacationEnd').value;
   saveUser(user,userData); renderTimelineViz();
 }
 function saveUnavailPeriods() {
-  const user = getCurrentUser(); if (!user) { alert('璇峰厛閫夋嫨鐢ㄦ埛'); return; }
+  const user = getCurrentUser(); if (!user) { alert('请先选择用户'); return; }
   let userData = getUser(user) || { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
   userData.unavailablePeriods = tempUnavailPeriods.filter(p=>p.start&&p.end);
   saveUser(user,userData); renderUnavailPeriods(); renderTimelineViz();
 }
 function renderTimelineViz() {
   const container = document.getElementById('timelineViz'), user = getCurrentUser();
-  if (!user) { container.innerHTML='<div class="empty-state">璇峰厛閫夋嫨鐢ㄦ埛</div>'; return; }
+  if (!user) { container.innerHTML='<div class="empty-state">请先选择用户</div>'; return; }
   const userData = getUser(user);
-  if (!userData||!userData.vacationStart||!userData.vacationEnd) { container.innerHTML='<div class="empty-state">璇峰厛璁剧疆鍋囨湡鏃ユ湡</div>'; return; }
+  if (!userData||!userData.vacationStart||!userData.vacationEnd) { container.innerHTML='<div class="empty-state">请先设置假期日期</div>'; return; }
   const start=new Date(userData.vacationStart), end=new Date(userData.vacationEnd);
-  if (start>=end) { container.innerHTML='<div class="empty-state">鏀惧亣鏃ユ湡蹇呴』鏃╀簬寮€瀛︽棩鏈�</div>'; return; }
+  if (start>=end) { container.innerHTML='<div class="empty-state">放假日期必须早于开学日期</div>'; return; }
   const totalDays=Math.ceil((end-start)/(86400000));
   const sortedPeriods=(userData.unavailablePeriods||[]).filter(p=>p.start&&p.end).sort((a,b)=>new Date(a.start)-new Date(b.start));
-  let html=`<div style="margin-bottom:8px;font-size:0.9rem">鍋囨湡锛�${userData.vacationStart} 鑷� ${userData.vacationEnd}锛堝叡 ${totalDays} 澶╋級</div>`;
+  let html=`<div style="margin-bottom:8px;font-size:0.9rem">假期：${userData.vacationStart} 至 ${userData.vacationEnd}（共 ${totalDays} 天）</div>`;
   let segments=[], current=new Date(start);
   sortedPeriods.forEach(p=>{
     let ps=new Date(p.start), pe=new Date(p.end);
@@ -2528,9 +2528,9 @@ function renderTimelineViz() {
   });
   if(current<end) segments.push({type:'available',start:new Date(current),end:new Date(end)});
   html+='<div class="time-overlap-bar">';
-  segments.forEach(seg=>{ let sd=Math.ceil((seg.end-seg.start)/86400000), pct=(sd/totalDays*100).toFixed(1); html+=`<div class="time-overlap-seg ${seg.type==='available'?'avail':'unavail'}" style="width:${pct}%">${pct>4?(seg.type==='available'?'鉁�':'鉁�'):''}</div>`; });
+  segments.forEach(seg=>{ let sd=Math.ceil((seg.end-seg.start)/86400000), pct=(sd/totalDays*100).toFixed(1); html+=`<div class="time-overlap-seg ${seg.type==='available'?'avail':'unavail'}" style="width:${pct}%">${pct>4?(seg.type==='available'?'✓':'✗'):''}</div>`; });
   html+='</div><div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-light);margin-top:4px"><span>'+userData.vacationStart+'</span><span>'+userData.vacationEnd+'</span></div>';
-  html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>鍙嚭琛�</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>涓嶅彲鍑鸿</span></div>';
+  html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>可出行</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>不可出行</span></div>';
   container.innerHTML=html;
 }
 
@@ -2539,14 +2539,14 @@ function renderResults() { renderRankingTable(); renderBarChart(); renderTimeOve
 
 function renderRankingTable() {
   const container=document.getElementById('rankingTable'), users=getAllUsers(), userNames=Object.keys(users);
-  if(userNames.length===0) { container.innerHTML='<div class="empty-state">鏆傛棤鐢ㄦ埛鏁版嵁</div>'; return; }
+  if(userNames.length===0) { container.innerHTML='<div class="empty-state">暂无用户数据</div>'; return; }
   let scores=provinceData.map(p=>{
     let total=0,count=0,highest=0,lowest=10,ni=0;
     userNames.forEach(name=>{ const u=users[name]; if(u.notInterested&&u.notInterested.includes(p.id)) ni++; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ let s=u.ratings[p.id].score; total+=s; count++; if(s>highest) highest=s; if(s<lowest) lowest=s; } });
     return {id:p.id,name:p.short,fullName:p.name,avg:count>0?(total/count):0,count,highest,lowest:count>0?lowest:0,ni,totalVoters:userNames.length};
   });
   scores.sort((a,b)=>{ if(b.avg!==a.avg) return b.avg-a.avg; if(b.count!==a.count) return b.count-a.count; return a.ni-b.ni; });
-  let html='<table class="result-table"><thead><tr><th>#</th><th>鐩殑鍦�</th><th>骞冲潎鍒�</th><th>鎯冲幓</th><th>涓嶆兂鍘�</th><th>鏈€楂�/鏈€浣�</th></tr></thead><tbody>';
+  let html='<table class="result-table"><thead><tr><th>#</th><th>目的地</th><th>平均分</th><th>想去</th><th>不想去</th><th>最高/最低</th></tr></thead><tbody>';
   scores.forEach((s,i)=>{
     let rc=i===0?'rank-1':(i===1?'rank-2':(i===2?'rank-3':''));
     html+=`<tr><td><span class="rank-badge ${rc}">${i+1}</span></td><td><strong>${s.name}</strong></td><td><span class="rating-score ${s.avg>0?getRatingClass(Math.round(s.avg)):''}">${s.avg>0?s.avg.toFixed(1):'-'}</span></td><td>${s.count}/${s.totalVoters}</td><td>${s.ni||'0'}</td><td>${s.count>0?s.highest+'/'+s.lowest:'-'}</td></tr>`;
@@ -2556,15 +2556,15 @@ function renderRankingTable() {
 
 function renderBarChart() {
   const container=document.getElementById('barChart'), users=getAllUsers(), userNames=Object.keys(users);
-  if(userNames.length===0) { container.innerHTML='<div class="empty-state">鏆傛棤鏁版嵁</div>'; return; }
+  if(userNames.length===0) { container.innerHTML='<div class="empty-state">暂无数据</div>'; return; }
   let scores=provinceData.map(p=>{ let total=0,count=0; userNames.forEach(name=>{ const u=users[name]; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ total+=u.ratings[p.id].score; count++; } }); return {name:p.short,avg:count>0?(total/count):0,count}; });
   scores.sort((a,b)=>b.avg-a.avg);
   const colors=['#667eea','#764ba2','#f093fb','#4facfe','#43e97b','#fa709a','#fee140','#30cfd0','#a8c0ff','#3f2b96','#f6d365','#fda085','#84fab0','#8fd3f4','#cfd9df','#ff9a9e','#a18cd1','#fbc2eb','#84fab0','#8fd3f4','#a6c0fe','#f68084','#0ba360','#3cba92','#f5af19','#f12711','#667eea','#764ba2','#f093fb','#4facfe','#43e97b','#fa709a','#fee140','#30cfd0'];
-  container.innerHTML = scores.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'绁�':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
+  container.innerHTML = scores.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'票':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
   // Show top 15 only to avoid clutter
   const top15 = scores.slice(0,15);
-  container.innerHTML = top15.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'绁�':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
-  if (scores.length > 15) container.innerHTML += `<div style="text-align:center;color:var(--text-light);font-size:0.8rem;margin-top:8px">浠呮樉绀哄墠 15 鍚嶏紝瀹屾暣鎺掑悕瑙佸乏渚ц〃鏍�</div>`;
+  container.innerHTML = top15.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'票':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
+  if (scores.length > 15) container.innerHTML += `<div style="text-align:center;color:var(--text-light);font-size:0.8rem;margin-top:8px">仅显示前 15 名，完整排名见左侧表格</div>`;
 }
 
 function formatDate(d) { return d.toISOString().split('T')[0]; }
@@ -2572,12 +2572,12 @@ function formatDate(d) { return d.toISOString().split('T')[0]; }
 function renderTimeOverlapAnalysis() {
   const container=document.getElementById('timeOverlapAnalysis'), users=getAllUsers();
   const userNames=Object.keys(users).filter(n=>{ const u=users[n]; return u&&u.vacationStart&&u.vacationEnd; });
-  if(userNames.length<2) { container.innerHTML='<div class="empty-state">闇€瑕佽嚦灏戜袱浜哄～鍐欐椂闂翠俊鎭墠鑳藉垎鏋�</div>'; return; }
+  if(userNames.length<2) { container.innerHTML='<div class="empty-state">需要至少两人填写时间信息才能分析</div>'; return; }
   let allStarts=userNames.map(n=>new Date(users[n].vacationStart)), allEnds=userNames.map(n=>new Date(users[n].vacationEnd));
   let overallStart=new Date(Math.max(...allStarts)), overallEnd=new Date(Math.min(...allEnds));
   let html='';
   if(overallStart>=overallEnd) {
-    html+='<div class="no-data-banner"><strong style="color:#e53e3e">鎵€鏈夌敤鎴风殑鍋囨湡娌℃湁閲嶅彔鍖洪棿</strong><p style="font-size:0.85rem;color:var(--text-light);margin-top:4px">寤鸿鍗忚皟鍚勮嚜鐨勬斁鍋�/寮€瀛︽椂闂�</p></div>';
+    html+='<div class="no-data-banner"><strong style="color:#e53e3e">所有用户的假期没有重叠区间</strong><p style="font-size:0.85rem;color:var(--text-light);margin-top:4px">建议协调各自的放假/开学时间</p></div>';
   } else {
     let allUnavail=[];
     userNames.forEach(name=>{ (users[name].unavailablePeriods||[]).forEach(p=>{ if(p.start&&p.end) allUnavail.push({start:new Date(p.start),end:new Date(p.end)}); }); });
@@ -2593,40 +2593,40 @@ function renderTimeOverlapAnalysis() {
     merged.forEach(p=>{ if(p.start>current) availSegments.push({start:new Date(current),end:new Date(p.start)}); if(p.end>current) current=new Date(p.end); });
     if(current<overallEnd) availSegments.push({start:new Date(current),end:new Date(overallEnd)});
     const totalDays=Math.ceil((overallEnd-overallStart)/86400000);
-    html+=`<p style="font-size:0.9rem;margin-bottom:8px">鍏卞悓鍋囨湡鑼冨洿锛�<strong>${formatDate(overallStart)}</strong> 鑷� <strong>${formatDate(overallEnd)}</strong>锛�${totalDays}澶╋級</p>`;
+    html+=`<p style="font-size:0.9rem;margin-bottom:8px">共同假期范围：<strong>${formatDate(overallStart)}</strong> 至 <strong>${formatDate(overallEnd)}</strong>（${totalDays}天）</p>`;
     html+='<div class="time-overlap-bar">';
     let allSegs=[];
     availSegments.forEach(s=>{ let sd=Math.ceil((s.end-s.start)/86400000); allSegs.push({type:'avail',start:s.start,days:sd,pct:(sd/totalDays*100).toFixed(1)}); });
     merged.forEach(p=>{ let sd=Math.ceil((p.end-p.start)/86400000); allSegs.push({type:'unavail',start:p.start,days:sd,pct:(sd/totalDays*100).toFixed(1)}); });
     allSegs.sort((a,b)=>a.start-b.start);
 
-    allSegs.forEach(seg=>{ let sd=seg.days; let pct=seg.pct; html+=`<div class="time-overlap-seg ${seg.type==='avail'?'avail':'unavail'}" style="width:${pct}%">${parseFloat(pct)>3?sd+'澶�':''}</div>`; });
+    allSegs.forEach(seg=>{ let sd=seg.days; let pct=seg.pct; html+=`<div class="time-overlap-seg ${seg.type==='avail'?'avail':'unavail'}" style="width:${pct}%">${parseFloat(pct)>3?sd+'天':''}</div>`; });
 
     html+='</div>';
-    html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>鎵€鏈変汉鍙嚭琛�</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>鏈変汉鏃犳硶鍑鸿</span></div>';
+    html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>所有人可出行</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>有人无法出行</span></div>';
     if(availSegments.length>0){
       let best=availSegments[0]; availSegments.forEach(s=>{ if((s.end-s.start)>(best.end-best.start)) best=s; });
       let bestDays=Math.ceil((best.end-best.start)/86400000);
-      html+=`<div style="margin-top:12px;padding:12px;background:#f0fff4;border-radius:8px;border-left:4px solid #48bb78"><strong style="color:#276749">鎺ㄨ崘鍑鸿绐楀彛锛�${formatDate(best.start)} 鑷� ${formatDate(best.end)}</strong><span style="color:var(--text-light);font-size:0.85rem;margin-left:8px">锛�${bestDays}澶╋紝鎵€鏈変汉閮藉彲鐢級</span></div>`;
+      html+=`<div style="margin-top:12px;padding:12px;background:#f0fff4;border-radius:8px;border-left:4px solid #48bb78"><strong style="color:#276749">推荐出行窗口：${formatDate(best.start)} 至 ${formatDate(best.end)}</strong><span style="color:var(--text-light);font-size:0.85rem;margin-left:8px">（${bestDays}天，所有人都可用）</span></div>`;
     }
   }
-  html+='<h4 style="margin-top:16px;margin-bottom:8px">鍚勭敤鎴锋椂闂寸嚎</h4>';
-  userNames.forEach(name=>{ const u=users[name]; html+=`<div style="margin-bottom:6px;font-size:0.85rem"><strong>${name}</strong>锛�${u.vacationStart} ~ ${u.vacationEnd}`; (u.unavailablePeriods||[]).forEach(p=>{ if(p.start&&p.end) html+=` <span style="color:#e53e3e">[涓嶅彲:${p.start}~${p.end}]</span>`; }); html+='</div>'; });
+  html+='<h4 style="margin-top:16px;margin-bottom:8px">各用户时间线</h4>';
+  userNames.forEach(name=>{ const u=users[name]; html+=`<div style="margin-bottom:6px;font-size:0.85rem"><strong>${name}</strong>：${u.vacationStart} ~ ${u.vacationEnd}`; (u.unavailablePeriods||[]).forEach(p=>{ if(p.start&&p.end) html+=` <span style="color:#e53e3e">[不可:${p.start}~${p.end}]</span>`; }); html+='</div>'; });
   container.innerHTML=html;
 }
 
 function renderRecommendations() {
   const container=document.getElementById('recommendations'), users=getAllUsers(), userNames=Object.keys(users);
   const ratedUsers=userNames.filter(n=>{ const u=users[n]; return (u.ratings&&Object.keys(u.ratings).length>0)||(u.notInterested&&u.notInterested.length>0); });
-  if(ratedUsers.length<1) { container.innerHTML='<div class="empty-state">闇€瑕佽嚦灏戜竴浜哄畬鎴愯瘎鍒�</div>'; return; }
+  if(ratedUsers.length<1) { container.innerHTML='<div class="empty-state">需要至少一人完成评分</div>'; return; }
   let scores=provinceData.map(p=>{ let total=0,count=0,ni=0; userNames.forEach(name=>{ const u=users[name]; if(u.notInterested&&u.notInterested.includes(p.id)) ni++; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ total+=u.ratings[p.id].score; count++; } }); return {id:p.id,name:p.short,fullName:p.name,avg:count>0?(total/count):0,count,ni,score:count>0?(total/count)*(count/ratedUsers.length)-ni*2:-ni*2}; });
   scores.sort((a,b)=>b.score-a.score);
   const top5=scores.slice(0,5);
   let html='';
   top5.forEach((s,i)=>{
     let tier=i===0?'gold':(i===1?'silver':(i===2?'bronze':''));
-    let medal=['馃','馃','馃','4锔忊儯','5锔忊儯'][i];
-    html+=`<div class="recommendation-card ${tier}"><h4>${medal} ${s.name}锛�${s.fullName}锛夆€� 鍧囧垎 ${s.avg>0?s.avg.toFixed(1):'N/A'}</h4><p style="font-size:0.85rem;color:var(--text-light)">${s.count}浜烘兂鍘伙紝${s.ni}浜轰笉鎯冲幓 鈥� ${s.avg>=7?'寮虹儓鎺ㄨ崘锛�':s.avg>=5?'鍊煎緱鑰冭檻':'鍙綔涓哄閫�'}</p></div>`;
+    let medal=['🥇','🥈','🥉','4️⃣','5️⃣'][i];
+    html+=`<div class="recommendation-card ${tier}"><h4>${medal} ${s.name}（${s.fullName}）— 均分 ${s.avg>0?s.avg.toFixed(1):'N/A'}</h4><p style="font-size:0.85rem;color:var(--text-light)">${s.count}人想去，${s.ni}人不想去 — ${s.avg>=7?'强烈推荐！':s.avg>=5?'值得考虑':'可作为备选'}</p></div>`;
   });
   container.innerHTML=html;
 }
@@ -2635,17 +2635,17 @@ function renderRecommendations() {
 // ============ DESTINATION LIST PICKER ============
 function getDestinationState(provinceId) {
   const user = getCurrentUser();
-  if (!user) return { type:'unrated', label:'鏈瘎鍒�', score:null };
+  if (!user) return { type:'unrated', label:'未评分', score:null };
   const userData = getUser(user) || {};
   const ratings = userData.ratings || {};
   const notInterested = userData.notInterested || [];
-  if (notInterested.includes(provinceId)) return { type:'notInterested', label:'馃毇 涓嶆兂鍘�', score:null };
+  if (notInterested.includes(provinceId)) return { type:'notInterested', label:'🚫 不想去', score:null };
   if (ratings[provinceId] && ratings[provinceId].score !== undefined) {
     const score = ratings[provinceId].score;
     const type = score >= 7 ? 'high' : (score >= 4 ? 'mid' : 'low');
-    return { type, label:`${ratingEmojis[score] || ''} ${score}鍒哷, score };
+    return { type, label:`${ratingEmojis[score] || ''} ${score}分`, score };
   }
-  return { type:'unrated', label:'鏈瘎鍒�', score:null };
+  return { type:'unrated', label:'未评分', score:null };
 }
 
 function renderDestinationList() {
@@ -2653,7 +2653,7 @@ function renderDestinationList() {
   if (!list) return;
   const user = getCurrentUser();
   if (!user) {
-    list.innerHTML = '<div class="empty-state">璇峰厛鍦ㄢ€滅敤鎴疯缃€濅腑閫夋嫨鐢ㄦ埛</div>';
+    list.innerHTML = '<div class="empty-state">请先在“用户设置”中选择用户</div>';
     return;
   }
 
@@ -2681,11 +2681,11 @@ function renderDestinationList() {
   }
 
   if (items.length === 0) {
-    list.innerHTML = '<div class="empty-state">娌℃湁鎵惧埌鍖归厤鐨勭洰鐨勫湴</div>';
+    list.innerHTML = '<div class="empty-state">没有找到匹配的目的地</div>';
     return;
   }
 
-  let html = `<div class="destination-list-count">鎵惧埌 ${items.length} 涓洰鐨勫湴 路 鐐瑰嚮鍗冲彲鎵撳紑璇勫垎寮圭獥</div>`;
+  let html = `<div class="destination-list-count">找到 ${items.length} 个目的地 · 点击即可打开评分弹窗</div>`;
   html += items.map(p => {
     const state = getDestinationState(p.id);
     const attractions = (p.attractions || []).slice(0,2).join(' / ');
@@ -2699,8 +2699,8 @@ function renderDestinationList() {
         <span class="destination-status ${state.type}">${state.label}</span>
       </div>
       <div class="destination-meta">
-        <span class="destination-mini-tag">馃搷 ${attractions || '鏅偣寰呰ˉ鍏�'}</span>
-        <span class="destination-mini-tag">馃崪 ${foods || '缇庨寰呰ˉ鍏�'}</span>
+        <span class="destination-mini-tag">📍 ${attractions || '景点待补充'}</span>
+        <span class="destination-mini-tag">🍜 ${foods || '美食待补充'}</span>
       </div>
     </button>`;
   }).join('');
@@ -2861,7 +2861,7 @@ function generateTravelGroupCode(){
 function setLoginStatus(text, ok=false){
   const el = document.getElementById('accountLoginStatus');
   if(el){
-    el.textContent = '鐘舵€侊細' + text;
+    el.textContent = '状态：' + text;
     el.style.color = ok ? '#2E6F57' : '#6E8991';
   }
 }
@@ -2872,7 +2872,7 @@ function showGroupLogin(){
   const codeInput = document.getElementById('loginGroupCode');
   if(accountInput) accountInput.value = onlineAccount || '';
   if(codeInput) codeInput.value = travelGroupCode || '';
-  setLoginStatus(isAccountLoggedIn ? `宸茬櫥褰� ${onlineAccount}` : '鏈櫥褰�', isAccountLoggedIn);
+  setLoginStatus(isAccountLoggedIn ? `已登录 ${onlineAccount}` : '未登录', isAccountLoggedIn);
 }
 function hideGroupLogin(){
   const overlay = document.getElementById('groupLoginOverlay');
@@ -2906,8 +2906,8 @@ function updateGroupPill(){
   if(!pill) return;
   if(travelGroupCode && onlineAccount && isAccountLoggedIn){
     pill.style.display = 'inline-flex';
-    pill.innerHTML = `馃懃 ${currentDisplayName()}锝滄梾琛屽洟锛�${travelGroupCode}
-      <button class="btn-change-group" onclick="logoutTravelGroup()">閫€鍑�</button>`;
+    pill.innerHTML = `👥 ${currentDisplayName()}｜旅行团：${travelGroupCode}
+      <button class="btn-change-group" onclick="logoutTravelGroup()">退出</button>`;
   }else{
     pill.style.display = 'none';
   }
@@ -2916,9 +2916,9 @@ function renderCloudBadge(){
   const badge = document.getElementById('currentUserBadge');
   if(!badge) return;
   if(onlineAccount && travelGroupCode && isAccountLoggedIn){
-    badge.innerHTML = `褰撳墠锛�<strong>${currentDisplayName()}</strong>`;
+    badge.innerHTML = `当前：<strong>${currentDisplayName()}</strong>`;
   }else{
-    badge.textContent = '鏈櫥褰�';
+    badge.textContent = '未登录';
   }
 }
 
@@ -2936,15 +2936,15 @@ async function registerAccount(){
   const account = normalizeAccount(document.getElementById('loginAccount')?.value);
   const password = document.getElementById('loginPassword')?.value || '';
 
-  if(!account){ alert('璇疯緭鍏ヨ处鍙�'); return; }
-  if(!password){ alert('璇疯緭鍏ュ瘑鐮�'); return; }
-  if(password.length < 4){ alert('瀵嗙爜鑷冲皯 4 浣�'); return; }
-  if(!supabaseClient){ alert('Supabase 灏氭湭杩炴帴鎴愬姛锛岃鍒锋柊鍚庨噸璇�'); return; }
+  if(!account){ alert('请输入账号'); return; }
+  if(!password){ alert('请输入密码'); return; }
+  if(password.length < 4){ alert('密码至少 4 位'); return; }
+  if(!supabaseClient){ alert('Supabase 尚未连接成功，请刷新后重试'); return; }
 
   try{
     const existing = await findAccount(account);
     if(existing){
-      alert('杩欎釜璐﹀彿宸茬粡娉ㄥ唽杩囦簡锛岃鐩存帴鐧诲綍銆�');
+      alert('这个账号已经注册过了，请直接登录。');
       return;
     }
     const { error } = await supabaseClient.from('users').insert([{
@@ -2962,11 +2962,11 @@ async function registerAccount(){
     localStorage.setItem('travel_account', onlineAccount);
     localStorage.setItem('travel_nickname', onlineNickname);
     localStorage.setItem('travel_logged_in', 'true');
-    setLoginStatus(`娉ㄥ唽鎴愬姛锛屽凡鐧诲綍 ${account}`, true);
-    alert('娉ㄥ唽鎴愬姛锛佺幇鍦ㄥ彲浠ュ垱寤烘垨鍔犲叆鏃呰鍥€€�');
+    setLoginStatus(`注册成功，已登录 ${account}`, true);
+    alert('注册成功！现在可以创建或加入旅行团。');
   }catch(e){
     console.error(e);
-    alert('娉ㄥ唽澶辫触銆傝妫€鏌� users 琛ㄦ槸鍚︽湁 account銆乸assword銆乶ickname銆乶ame銆乬roup_code 瀛楁锛屼互鍙� RLS 鏉冮檺銆�');
+    alert('注册失败。请检查 users 表是否有 account、password、nickname、name、group_code 字段，以及 RLS 权限。');
   }
 }
 
@@ -2974,18 +2974,18 @@ async function loginAccountOnly(){
   const account = normalizeAccount(document.getElementById('loginAccount')?.value);
   const password = document.getElementById('loginPassword')?.value || '';
 
-  if(!account){ alert('璇疯緭鍏ヨ处鍙�'); return; }
-  if(!password){ alert('璇疯緭鍏ュ瘑鐮�'); return; }
-  if(!supabaseClient){ alert('Supabase 灏氭湭杩炴帴鎴愬姛锛岃鍒锋柊鍚庨噸璇�'); return; }
+  if(!account){ alert('请输入账号'); return; }
+  if(!password){ alert('请输入密码'); return; }
+  if(!supabaseClient){ alert('Supabase 尚未连接成功，请刷新后重试'); return; }
 
   try{
     const existing = await findAccount(account);
     if(!existing){
-      alert('璐﹀彿涓嶅瓨鍦紝璇峰厛娉ㄥ唽銆�');
+      alert('账号不存在，请先注册。');
       return;
     }
     if(String(existing.password || '') !== String(password)){
-      alert('瀵嗙爜閿欒锛屾棤娉曠櫥褰曘€�');
+      alert('密码错误，无法登录。');
       return;
     }
     onlineAccount = account;
@@ -2994,22 +2994,22 @@ async function loginAccountOnly(){
     localStorage.setItem('travel_account', onlineAccount);
     localStorage.setItem('travel_nickname', onlineNickname);
     localStorage.setItem('travel_logged_in', 'true');
-    setLoginStatus(`宸茬櫥褰� ${account}`, true);
-    alert('鐧诲綍鎴愬姛锛佽閫夋嫨鍒涘缓鎴栧姞鍏ユ梾琛屽洟銆�');
+    setLoginStatus(`已登录 ${account}`, true);
+    alert('登录成功！请选择创建或加入旅行团。');
   }catch(e){
     console.error(e);
-    alert('鐧诲綍澶辫触銆傝妫€鏌� Supabase 鏉冮檺鍜� users 琛ㄥ瓧娈点€�');
+    alert('登录失败。请检查 Supabase 权限和 users 表字段。');
   }
 }
 
 async function enterTravelGroup(mode){
   if(!isAccountLoggedIn || !onlineAccount){
-    alert('璇峰厛娉ㄥ唽鎴栫櫥褰曡处鍙枫€�');
+    alert('请先注册或登录账号。');
     return;
   }
   const code = normalizeGroupCode(document.getElementById('loginGroupCode')?.value);
-  if(!code){ alert('璇疯緭鍏ユ垨鐢熸垚鏃呰鍥唬鐮�'); return; }
-  if(!supabaseClient){ alert('Supabase 灏氭湭杩炴帴鎴愬姛锛岃鍒锋柊鍚庨噸璇�'); return; }
+  if(!code){ alert('请输入或生成旅行团代码'); return; }
+  if(!supabaseClient){ alert('Supabase 尚未连接成功，请刷新后重试'); return; }
 
   try{
     const { data: groupExists, error: groupErr } = await supabaseClient
@@ -3021,11 +3021,11 @@ async function enterTravelGroup(mode){
     if(groupErr) throw groupErr;
 
     if(mode === 'create' && groupExists && groupExists.length > 0){
-      alert('杩欎釜鏃呰鍥唬鐮佸凡缁忓瓨鍦ㄣ€傚鏋滀綘鏄姞鍏ユ湅鍙嬬殑鏃呰鍥紝璇风偣鍑烩€滃姞鍏ユ梾琛屽洟鈥濓紱濡傛灉瑕佹柊寤猴紝璇锋崲涓€涓唬鐮併€�');
+      alert('这个旅行团代码已经存在。如果你是加入朋友的旅行团，请点击“加入旅行团”；如果要新建，请换一个代码。');
       return;
     }
     if(mode === 'join' && (!groupExists || groupExists.length === 0)){
-      alert('娌℃湁鎵惧埌杩欎釜鏃呰鍥€€傝妫€鏌ヤ唬鐮侊紝鎴栧厛鍒涘缓鏃呰鍥€€�');
+      alert('没有找到这个旅行团。请检查代码，或先创建旅行团。');
       return;
     }
 
@@ -3050,12 +3050,12 @@ async function enterTravelGroup(mode){
     await syncFromCloud(false);
   }catch(e){
     console.error(e);
-    alert('鍒涘缓/鍔犲叆鏃呰鍥㈠け璐ャ€傝妫€鏌� users 琛ㄥ瓧娈靛拰 RLS 鏉冮檺銆�');
+    alert('创建/加入旅行团失败。请检查 users 表字段和 RLS 权限。');
   }
 }
 
 function logoutTravelGroup(){
-  if(!confirm('纭畾閫€鍑哄綋鍓嶈处鍙峰悧锛熸湰鏈轰細杩斿洖鐧诲綍鐣岄潰銆�')) return;
+  if(!confirm('确定退出当前账号吗？本机会返回登录界面。')) return;
   localStorage.removeItem('travel_account');
   localStorage.removeItem('travel_nickname');
   localStorage.removeItem('travel_group_code');
@@ -3071,12 +3071,12 @@ function logoutTravelGroup(){
 
 async function updateMyNickname(){
   if(!isAccountLoggedIn || !onlineAccount){
-    alert('璇峰厛鐧诲綍');
+    alert('请先登录');
     return;
   }
   const input = document.getElementById('nicknameEditInput');
   const newName = (input?.value || '').trim();
-  if(!newName){ alert('璇疯緭鍏ユ柊鐨勬樀绉�'); return; }
+  if(!newName){ alert('请输入新的昵称'); return; }
 
   onlineNickname = newName;
   localStorage.setItem('travel_nickname', onlineNickname);
@@ -3097,7 +3097,7 @@ async function updateMyNickname(){
   renderSetup();
   updateGroupPill();
   renderCloudBadge();
-  alert('鏄电О宸叉洿鏂�');
+  alert('昵称已更新');
 }
 
 async function syncFromCloud(forceClearLocal=false){
@@ -3148,8 +3148,8 @@ async function syncFromCloud(forceClearLocal=false){
     localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge(); updateGroupPill();
   }catch(err){
-    console.warn('浜戠鍚屾澶辫触锛�', err);
-    alert('浜戠璇诲彇澶辫触銆傝妫€鏌� Supabase 琛ㄥ瓧娈靛拰 RLS Policy銆傝鎯呰鎺у埗鍙般€�');
+    console.warn('云端同步失败：', err);
+    alert('云端读取失败。请检查 Supabase 表字段和 RLS Policy。详情见控制台。');
   }
 }
 
@@ -3187,8 +3187,8 @@ async function pushToCloudNow(){
     }
     renderCloudBadge();
   }catch(err){
-    console.warn('浜戠淇濆瓨澶辫触锛�', err);
-    alert('浜戠淇濆瓨澶辫触銆傝妫€鏌� Supabase 鏉冮檺鍜� ratings 琛ㄥ瓧娈点€�');
+    console.warn('云端保存失败：', err);
+    alert('云端保存失败。请检查 Supabase 权限和 ratings 表字段。');
   }
 }
 
@@ -3199,12 +3199,12 @@ function renderSetup(){
 
   const groupPanel = document.getElementById('groupInfoPanel');
   if(groupPanel){
-    const display = currentDisplayName() || '鏈櫥褰�';
+    const display = currentDisplayName() || '未登录';
     groupPanel.innerHTML = `
-      <div><strong>鏃呰鍥唬鐮侊細</strong>${travelGroupCode || '鏈姞鍏�'}</div>
-      <div><strong>褰撳墠璐﹀彿锛�</strong>${onlineAccount || '鏈櫥褰�'}</div>
-      <div><strong>褰撳墠鏄电О锛�</strong>${display}</div>
-      <div><strong>鎴愬憳浜烘暟锛�</strong>${userNames.length} 浜�</div>
+      <div><strong>旅行团代码：</strong>${travelGroupCode || '未加入'}</div>
+      <div><strong>当前账号：</strong>${onlineAccount || '未登录'}</div>
+      <div><strong>当前昵称：</strong>${display}</div>
+      <div><strong>成员人数：</strong>${userNames.length} 人</div>
     `;
   }
 
@@ -3218,17 +3218,17 @@ function renderSetup(){
     const notInterested = u.notInterested || [];
     const rated = Object.keys(ratings).length + notInterested.length;
     const percent = Math.round(rated / 34 * 100);
-    const hasTime = u.vacationStart ? ' 鉁撴椂闂�' : '';
+    const hasTime = u.vacationStart ? ' ✓时间' : '';
     const name = u.displayName || account;
     listHtml += `<div class="user-list-item">
-      <span><strong>${name}</strong>${account === current ? ' 鈼€ 鎴�' : ''}<br>
-        <small style="color:var(--text-light)">璐﹀彿锛�${account}</small>
-        <span class="member-progress-pill">宸茶瘎 ${rated}/34 路 ${percent}%${hasTime}</span>
+      <span><strong>${name}</strong>${account === current ? ' ◀ 我' : ''}<br>
+        <small style="color:var(--text-light)">账号：${account}</small>
+        <span class="member-progress-pill">已评 ${rated}/34 · ${percent}%${hasTime}</span>
       </span>
     </div>`;
   });
   const userList = document.getElementById('userList');
-  if(userList) userList.innerHTML = listHtml || '<div class="empty-state">鏆傛棤鎴愬憳銆傜櫥褰曞悗浼氳嚜鍔ㄥ姞鍏ユ梾琛屽洟銆�</div>';
+  if(userList) userList.innerHTML = listHtml || '<div class="empty-state">暂无成员。登录后会自动加入旅行团。</div>';
 
   const count = userNames.length;
   const fill = document.getElementById('progressFill');
@@ -3237,7 +3237,7 @@ function renderSetup(){
   if(text) text.textContent = count + '/9';
 
   const badge = document.getElementById('currentUserBadge');
-  if(badge) badge.innerHTML = current ? `褰撳墠锛�<strong>${currentDisplayName()}</strong>` : '鏈櫥褰�';
+  if(badge) badge.innerHTML = current ? `当前：<strong>${currentDisplayName()}</strong>` : '未登录';
   const resultsBadge = document.getElementById('resultsBadge');
   if(resultsBadge){
     if(count>0){ resultsBadge.style.display=''; resultsBadge.textContent=count+'/9'; }
@@ -3246,10 +3246,10 @@ function renderSetup(){
   updateAllTabs();
 }
 
-function selectPresetUser(){ alert('鍦ㄧ嚎鐗堜笉闇€瑕侀€夋嫨鐩爣鐢ㄦ埛銆傝浣跨敤褰撳墠鐧诲綍璐﹀彿濉啓鑷繁鐨勪俊鎭€�'); }
-function addCustomUser(){ alert('鍦ㄧ嚎鐗堜笉闇€瑕佸垱寤虹洰鏍囩敤鎴枫€傝璁╂湅鍙嬬敤鑷繁鐨勮处鍙峰姞鍏ュ悓涓€涓梾琛屽洟銆�'); }
-function switchToUser(){ alert('涓嶈兘鍒囨崲鍒颁粬浜鸿处鍙枫€傛瘡涓汉鍙兘濉啓鑷繁鐨勪俊鎭€�'); }
-function deleteUserConfirm(){ alert('鍦ㄧ嚎鐗堜笉寤鸿鍦ㄧ綉椤电鍒犻櫎鏃呰鍥㈡垚鍛樸€傚闇€鍒犻櫎锛岃鍒� Supabase 鍚庡彴鎿嶄綔銆�'); }
+function selectPresetUser(){ alert('在线版不需要选择目标用户。请使用当前登录账号填写自己的信息。'); }
+function addCustomUser(){ alert('在线版不需要创建目标用户。请让朋友用自己的账号加入同一个旅行团。'); }
+function switchToUser(){ alert('不能切换到他人账号。每个人只能填写自己的信息。'); }
+function deleteUserConfirm(){ alert('在线版不建议在网页端删除旅行团成员。如需删除，请到 Supabase 后台操作。'); }
 
 function initOnlineApp(){
   initSupabaseClient();
