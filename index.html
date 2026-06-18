@@ -909,6 +909,7 @@ body::after{display:none!important;}
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -3282,6 +3283,45 @@ function initOnlineApp(){
   if(isAccountLoggedIn && onlineAccount && travelGroupCode) syncFromCloud(false);
 }
 initOnlineApp();
+</script>
+
+
+<script>
+/* ===================== SUPABASE SDK FORCE FIX ===================== */
+(function(){
+  const SUPABASE_URL = 'https://kkacparxwpfiwbnskmav.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrYWNwYXJ4d3BmaXdibnNrbWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTI1NzEsImV4cCI6MjA5NzM2ODU3MX0.E-eYCmdTyMuvXDzJOsf66LdfHozY5LjuM8sN51uZxYU';
+
+  window.forceInitSupabase = function(){
+    try{
+      if(window.supabase && window.supabase.createClient){
+        window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        window.cloudSyncEnabled = true;
+        console.log('Supabase 已连接成功');
+        return true;
+      }
+      console.warn('Supabase SDK 未加载，请确认不是 file:// 打开，并检查网络是否能访问 jsdelivr。');
+      return false;
+    }catch(e){
+      console.error('Supabase 初始化失败：', e);
+      return false;
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    setTimeout(window.forceInitSupabase, 300);
+  });
+})();
+</script>
+
+
+<script>
+window.addEventListener('error', function(e){
+  const src = e && e.target && e.target.src ? e.target.src : '';
+  if(src && src.includes('geo.datav.aliyun.com')){
+    console.warn('地图 GeoJSON 外链被拒绝访问，建议后续改为本地 china.json。');
+  }
+}, true);
 </script>
 
 </body>
