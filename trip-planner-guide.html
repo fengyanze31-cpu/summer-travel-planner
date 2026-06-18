@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暑期出行决策助手</title>
+<style>
+:root {
+  --lake-blue:#5BBEE8;
+  --sky-blue:#7FD8FF;
+  --teal:#4EC9B0;
+  --mint:#8EDFB3;
+  --cream:#F8F7F2;
+  --paper:#F4F1EA;
+  --sun:#FFE69A;
+  --coral:#FFB26B;
+  --deep:#256D85;
+  --forest:#2E6F57;
+  --ink:#234554;
+  --muted:#6E8991;
+  --danger:#FF7B7B;
+  --success:#4EC9B0;
+  --warning:#FFCF66;
+  --card:rgba(255,255,255,.88);
+  --border:rgba(37,109,133,.13);
+  --radius:24px;
+  --shadow:0 18px 42px rgba(37,109,133,.13), 0 3px 0 rgba(255,255,255,.88) inset;
+  --paper-shadow:0 18px 30px rgba(37,109,133,.12), 0 2px 0 rgba(255,255,255,.9) inset;
+  --text:var(--ink);
+  --text-light:var(--muted);
+  --primary:var(--teal);
+  --primary-dark:#36AE9A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  min-height:100vh;
+  color:var(--ink);
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255,230,154,.55), transparent 24%),
+    linear-gradient(180deg,#DFF7FF 0%,#F3FEFA 43%,#FFF8E8 100%);
+}
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-5; pointer-events:none;
+  background-image:
+    radial-gradient(rgba(37,109,133,.06) 1px, transparent 1px),
+    linear-gradient(120deg, rgba(255,255,255,.34), transparent 45%);
+  background-size:18px 18px,100% 100%;
+}
+body::after{
+  content:"✈︎";
+  position:fixed; right:7vw; top:86px; z-index:-1;
+  font-size:76px; color:rgba(37,109,133,.12);
+  transform:rotate(-12deg);
+  animation:floaty 5s ease-in-out infinite;
+}
+.paper-scene{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden;}
+.paper-scene span{position:absolute;display:block;filter:drop-shadow(0 12px 14px rgba(37,109,133,.12));}
+.sun-cut{width:140px;height:140px;border-radius:50%;background:#FFE69A;right:10%;top:80px;box-shadow:0 14px 0 rgba(255,178,107,.25);}
+.cloud-a,.cloud-b,.cloud-c{background:#fff;border-radius:999px;opacity:.92;animation:cloudFloat 8s ease-in-out infinite;}
+.cloud-a{width:190px;height:58px;left:7%;top:86px;clip-path:polygon(0 42%,14% 42%,20% 18%,35% 18%,44% 0,61% 0,70% 24%,87% 24%,100% 43%,100% 100%,0 100%);}
+.cloud-b{width:150px;height:46px;right:22%;top:170px;animation-delay:-2s;clip-path:polygon(0 48%,16% 42%,23% 16%,42% 20%,51% 0,68% 8%,76% 30%,92% 32%,100% 48%,100% 100%,0 100%);}
+.cloud-c{width:116px;height:36px;left:48%;top:108px;animation-delay:-4s;clip-path:polygon(0 54%,18% 44%,28% 18%,44% 22%,55% 0,76% 20%,100% 50%,100% 100%,0 100%);}
+.mountain-back{left:-5%;right:-5%;top:235px;height:230px;background:#BEEEDB;clip-path:polygon(0 70%,10% 54%,18% 68%,30% 36%,42% 70%,56% 28%,70% 66%,82% 40%,100% 68%,100% 100%,0 100%);}
+.mountain-front{left:-6%;right:-6%;top:285px;height:210px;background:#8EDFB3;clip-path:polygon(0 66%,14% 46%,24% 64%,36% 30%,51% 70%,64% 36%,77% 60%,90% 42%,100% 61%,100% 100%,0 100%);}
+.forest-cut{left:-3%;right:-3%;bottom:115px;height:190px;background:#4EC9B0;clip-path:polygon(0 55%,4% 28%,7% 56%,11% 22%,16% 58%,20% 30%,26% 59%,31% 20%,36% 58%,41% 25%,47% 60%,53% 22%,60% 57%,66% 28%,72% 60%,78% 21%,84% 55%,90% 30%,96% 59%,100% 25%,100% 100%,0 100%);opacity:.52;}
+.river-cut{left:-10%;right:-10%;bottom:48px;height:145px;background:#7FD8FF;clip-path:polygon(0 50%,12% 42%,24% 58%,37% 43%,52% 57%,66% 39%,82% 52%,100% 42%,100% 100%,0 100%);opacity:.72;}
+.grass-cut{left:-5%;right:-5%;bottom:-32px;height:145px;background:#BDEEB9;clip-path:ellipse(58% 64% at 50% 100%);}
+.app-header{
+  position:relative; overflow:hidden;
+  min-height:188px; padding:38px 6vw 56px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  background:transparent;color:var(--ink);
+}
+.app-header::before{
+  content:"";position:absolute;inset:18px 4vw 0;border-radius:0 0 42px 42px;z-index:-1;
+  background:rgba(248,247,242,.72);
+  clip-path:polygon(0 0,100% 0,100% 70%,92% 76%,82% 68%,70% 82%,58% 73%,45% 86%,33% 72%,20% 84%,8% 74%,0 82%);
+  box-shadow:var(--paper-shadow);
+  backdrop-filter:blur(8px);
+}
+.app-header::after{
+  content:"SUMMER TRAVEL";position:absolute;left:6vw;bottom:14px;
+  font-size:clamp(1.8rem,7vw,5.4rem);font-weight:900;letter-spacing:.12em;line-height:.9;
+  color:rgba(91,190,232,.13);z-index:-1;white-space:nowrap;
+}
+.app-header h1{
+  position:relative;font-size:clamp(2rem,5vw,4.6rem);font-weight:900;line-height:1.04;letter-spacing:.08em;
+  background:linear-gradient(135deg,#2E6F57 0%,#4EC9B0 38%,#5BBEE8 76%,#256D85 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 8px 0 rgba(255,230,154,.42);
+}
+.app-header h1::before{content:"☀︎ PAPER CUT POSTER";display:block;margin-bottom:8px;font-size:.76rem;color:#FFB26B;letter-spacing:.26em;font-weight:900;text-shadow:none;}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;z-index:1;}
+.user-badge,.btn-reset-all,.tab-badge{border-radius:999px;background:#fff;border:2px solid rgba(255,255,255,.9);box-shadow:0 8px 18px rgba(37,109,133,.12);}
+.user-badge{padding:9px 18px;color:var(--deep);font-weight:700;}
+.btn-reset-all,.name-input-row button,.modal-actions button,.btn-add-period,button[onclick="saveVacationDates()"],button[onclick="saveUnavailPeriods()"]{
+  border:0!important;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:800;letter-spacing:.03em;
+  transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  box-shadow:0 9px 0 rgba(37,109,133,.16),0 15px 26px rgba(37,109,133,.12);
+}
+.btn-reset-all{padding:10px 18px;color:var(--deep);background:#FFE69A;}
+.btn-reset-all:hover,.name-input-row button:hover,.modal-actions button:hover,.btn-add-period:hover,button[onclick="saveVacationDates()"]:hover,button[onclick="saveUnavailPeriods()"]:hover{transform:translateY(-3px) scale(1.03);filter:saturate(1.05);}
+.btn-reset-all:active,.name-input-row button:active,.modal-actions button:active,.btn-add-period:active,button[onclick="saveVacationDates()"]:active,button[onclick="saveUnavailPeriods()"]:active{transform:translateY(2px) scale(.98);box-shadow:0 4px 0 rgba(37,109,133,.16);}
+.tab-nav{position:sticky;top:0;z-index:20;display:flex;gap:12px;overflow-x:auto;padding:14px 6vw;background:rgba(255,255,255,.58);backdrop-filter:blur(16px);border:0;box-shadow:0 12px 30px rgba(37,109,133,.08);}
+.tab-btn{position:relative;padding:13px 21px;border:0;background:#F8F7F2;border-radius:999px;color:var(--deep);font-size:.95rem;font-weight:800;white-space:nowrap;cursor:pointer;font-family:inherit;box-shadow:0 8px 0 rgba(78,201,176,.12),0 12px 20px rgba(37,109,133,.08);transition:.25s ease;}
+.tab-btn::before{content:"";position:absolute;inset:-5px;border:2px dashed rgba(78,201,176,.36);border-radius:999px;opacity:0;transition:.25s;}
+.tab-btn:hover{transform:rotate(-1deg) translateY(-2px);}
+.tab-btn.active{color:#fff;background:linear-gradient(135deg,#4EC9B0,#5BBEE8);}
+.tab-btn.active::before{opacity:1;}
+.tab-badge{display:inline-block;margin-left:6px;padding:2px 8px;background:#FFE69A;color:#256D85;font-size:.72rem;}
+.container{max-width:1300px;margin:0 auto;padding:30px 24px 70px;position:relative;}
+.tab-content{display:none;animation:fadeInUp .55s ease both;}
+.tab-content.active{display:block;}
+.setup-grid,.time-layout,.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.card,.sidebar-card,.map-container,.modal{
+  position:relative;background:var(--card);border:1px solid rgba(255,255,255,.78);border-radius:24px;padding:26px;margin-bottom:24px;
+  box-shadow:var(--shadow);backdrop-filter:blur(10px);transition:transform .3s ease, box-shadow .3s ease;
+}
+.card::before,.sidebar-card::before,.map-container::before,.modal::before{
+  content:"";position:absolute;inset:10px;border-radius:19px;border:2px dashed rgba(91,190,232,.18);pointer-events:none;
+}
+.card::after,.sidebar-card::after,.map-container::after{
+  content:"";position:absolute;width:58px;height:20px;top:-10px;left:34px;background:rgba(255,230,154,.72);transform:rotate(-4deg);border-radius:4px;box-shadow:0 5px 10px rgba(37,109,133,.08);}
+.card:nth-child(even)::after{left:auto;right:42px;transform:rotate(5deg);background:rgba(127,216,255,.55);}
+.card:hover,.sidebar-card:hover,.map-container:hover{transform:translateY(-5px) rotate(.2deg);box-shadow:0 24px 54px rgba(37,109,133,.17),0 3px 0 rgba(255,255,255,.9) inset;}
+.card h2,.map-container h2,.sidebar-card h3{font-size:1.18rem;margin-bottom:16px;color:var(--deep);font-weight:900;letter-spacing:.03em;}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"🌊";margin-right:8px;}
+.card h3{font-size:1rem;margin-bottom:12px;color:var(--forest);}
+.preset-users{display:flex;flex-wrap:wrap;gap:10px;}
+.preset-chip,.tag,.user-list-item,.recommendation-card,.rank-badge{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;background:#fff;border:2px solid rgba(255,255,255,.86);box-shadow:0 8px 16px rgba(37,109,133,.10);transition:.25s ease;
+}
+.preset-chip{padding:9px 17px;cursor:pointer;font-size:.9rem;color:var(--deep);font-weight:800;}
+.preset-chip:nth-child(3n+1){transform:rotate(-2deg);background:#E7FAF0;}.preset-chip:nth-child(3n+2){transform:rotate(1.5deg);background:#E4F7FF;}.preset-chip:nth-child(3n){transform:rotate(-.6deg);background:#FFF5C9;}
+.preset-chip:hover{transform:translateY(-4px) rotate(0deg) scale(1.04);}
+.preset-chip.selected{background:linear-gradient(135deg,#4EC9B0,#5BBEE8);color:#fff;border-color:#fff;}
+.preset-chip.used{background:#F8F7F2;color:#6E8991;font-size:.78rem;}
+.name-input-row{display:flex;gap:10px;margin-top:18px;}
+.name-input-row input,.date-input-row input[type=date],.unavail-period input[type=date]{flex:1;padding:12px 16px;border:2px solid rgba(91,190,232,.25);border-radius:18px;background:rgba(255,255,255,.82);font-family:inherit;font-size:.95rem;color:var(--ink);outline:none;box-shadow:inset 0 2px 0 rgba(255,255,255,.8);}
+.name-input-row input:focus,.date-input-row input[type=date]:focus,.unavail-period input[type=date]:focus{border-color:var(--teal);box-shadow:0 0 0 5px rgba(78,201,176,.13);}
+.name-input-row button,button[onclick="saveVacationDates()"],button[onclick="saveUnavailPeriods()"],.btn-save{padding:12px 26px;background:linear-gradient(135deg,#4EC9B0,#5BBEE8)!important;color:#fff!important;}
+.progress-bar{height:16px;background:#E4F7FF;border-radius:999px;margin-top:14px;overflow:hidden;border:3px solid #fff;box-shadow:inset 0 2px 8px rgba(37,109,133,.08);}
+.progress-fill{height:100%;background:repeating-linear-gradient(45deg,#4EC9B0 0 12px,#8EDFB3 12px 24px);border-radius:999px;transition:width .45s ease;}
+.user-list{margin-top:18px;max-height:400px;overflow-y:auto;padding-right:4px;}
+.user-list-item{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;margin-bottom:10px;background:#fff;border-radius:18px;font-size:.88rem;}
+.user-list-item .actions{display:flex;gap:7px;}
+.user-list-item button{padding:6px 13px;border:0;border-radius:999px;background:#E4F7FF;color:var(--deep);font-weight:800;cursor:pointer;font-family:inherit;}
+.user-list-item button.danger{background:#FFE9DF;color:#C75B50;}
+.empty-state{text-align:center;color:var(--muted);padding:28px;font-size:.92rem;background:rgba(255,255,255,.48);border-radius:18px;border:2px dashed rgba(91,190,232,.18);}
+.map-layout{display:grid;grid-template-columns:1fr 360px;gap:24px;}
+.map-container{padding:20px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(232,250,255,.86));overflow:hidden;}
+.map-container svg{width:100%;height:auto;display:block;background:#fff;border:12px solid #fff;border-bottom-width:30px;border-radius:18px;box-shadow:0 18px 28px rgba(37,109,133,.14);transform:rotate(-1deg);transition:.3s;}
+.map-container:hover svg{transform:rotate(0deg) scale(1.005);}
+.map-legend{display:flex;gap:10px;margin-bottom:14px;font-size:.78rem;flex-wrap:wrap;padding:0 4px;}
+.map-legend span{display:inline-flex;align-items:center;gap:5px;background:#fff;padding:6px 10px;border-radius:999px;box-shadow:0 6px 12px rgba(37,109,133,.08);}
+.legend-dot{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 3px 7px rgba(37,109,133,.12);}
+.province-shape{fill:#DDE8E7;stroke:#fff;stroke-width:1.4;cursor:pointer;filter:drop-shadow(0 3px 0 rgba(37,109,133,.10));transition:fill .2s,stroke-width .15s,filter .2s,transform .2s;}
+.province-shape:hover{fill:#7FD8FF;stroke-width:2.6;stroke:#256D85;filter:drop-shadow(0 6px 6px rgba(37,109,133,.22));}
+.province-shape.rated-high{fill:#8EDFB3;}.province-shape.rated-mid{fill:#FFE69A;}.province-shape.rated-low{fill:#FFB26B;}.province-shape.not-interested{fill:#E9E5DA;stroke:#D0C8B6;}
+.province-label{fill:#234554;font-size:9px;pointer-events:none;text-anchor:middle;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:2px;}
+.province-label.small{font-size:7.5px;}
+.rating-summary-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;margin-bottom:7px;border:0;border-radius:15px;background:#fff;box-shadow:0 6px 14px rgba(37,109,133,.08);font-size:.86rem;}
+.rating-score{font-weight:900;font-size:.95rem;}.rating-score.high{color:#2E9E73;}.rating-score.mid{color:#D99A00;}.rating-score.low{color:#E67556;}.summary-count{font-size:.82rem;color:var(--muted);margin-bottom:10px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(37,109,133,.24);z-index:100;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(9px);}
+.modal-overlay.show{display:flex;}
+.modal{max-width:560px;width:92%;max-height:88vh;overflow-y:auto;background:#FFFDF8;border:10px solid #fff;border-bottom-width:24px;transform:rotate(-1deg);box-shadow:0 28px 70px rgba(37,109,133,.25);}
+.modal h2{font-size:1.55rem;margin-bottom:5px;color:var(--deep);font-weight:900;}
+.modal .province-subtitle{color:var(--muted);font-size:.88rem;margin-bottom:18px;}
+.modal-section{margin-bottom:18px;padding:14px;background:#F8F7F2;border-radius:18px;}
+.modal-section h4{font-size:.78rem;color:var(--forest);margin-bottom:8px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;}.tag{padding:7px 14px;background:#E4F7FF;color:#256D85;font-size:.85rem;font-weight:800;}.tag.food{background:#FFF1C8;color:#9A6B00;}
+.rating-section{margin-top:18px;background:#E8FAF4;padding:16px;border-radius:18px;}.rating-section h4{font-size:.92rem;margin-bottom:12px;color:var(--forest);}.rating-slider-row{display:flex;align-items:center;gap:14px;}
+.rating-slider-row input[type=range]{flex:1;height:10px;-webkit-appearance:none;background:linear-gradient(90deg,#FFB26B,#FFE69A,#4EC9B0,#5BBEE8);border-radius:999px;outline:none;border:3px solid #fff;box-shadow:0 5px 12px rgba(37,109,133,.1);}
+.rating-slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;border:7px solid var(--teal);cursor:pointer;box-shadow:0 5px 14px rgba(37,109,133,.18);}
+.rating-value{font-size:1.7rem;font-weight:900;min-width:42px;text-align:center;color:var(--deep);}.rating-emoji{font-size:1.6rem;}
+.not-interested-row{display:flex;align-items:center;gap:8px;margin-top:14px;}.not-interested-row input[type=checkbox]{width:19px;height:19px;cursor:pointer;accent-color:var(--coral);}.not-interested-row label{cursor:pointer;font-size:.9rem;color:var(--muted);}
+.modal-actions{display:flex;gap:10px;margin-top:20px;}.modal-actions button{flex:1;padding:12px;font-size:.95rem;}.btn-cancel{background:#F4F1EA!important;color:var(--deep)!important;}.btn-clear{background:#FFE9DF!important;color:#C75B50!important;}
+.date-input-row{display:flex;align-items:center;gap:10px;margin-bottom:13px;}.date-input-row label{min-width:82px;font-size:.9rem;font-weight:800;color:var(--deep);}
+.unavail-period{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:10px;background:#FFF5EA;border-radius:18px;border:2px dashed rgba(255,178,107,.35);}.unavail-period button{padding:7px 12px;border:0;border-radius:999px;cursor:pointer;font-size:.85rem;color:#C75B50;background:#FFE1D2;font-weight:800;font-family:inherit;}
+.btn-add-period{padding:11px 16px;background:#fff;color:var(--deep);border:2px dashed rgba(91,190,232,.4)!important;width:100%;}
+.time-overlap-bar{display:flex;height:36px;border-radius:999px;overflow:hidden;margin:12px 0;border:4px solid #fff;box-shadow:0 10px 20px rgba(37,109,133,.11);}.time-overlap-seg{display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#fff;min-width:0;overflow:hidden;}.time-overlap-seg.avail{background:repeating-linear-gradient(45deg,#4EC9B0 0 14px,#8EDFB3 14px 28px);}.time-overlap-seg.unavail{background:repeating-linear-gradient(45deg,#FFB26B 0 14px,#FF8E8E 14px 28px);}
+.result-table{width:100%;border-collapse:separate;border-spacing:0 9px;font-size:.88rem;}.result-table th{text-align:left;padding:10px 12px;background:transparent;font-weight:900;font-size:.76rem;color:var(--muted);text-transform:uppercase;border:0;}.result-table td{padding:12px;background:#fff;border:0;box-shadow:0 6px 14px rgba(37,109,133,.07);}.result-table td:first-child{border-radius:16px 0 0 16px;}.result-table td:last-child{border-radius:0 16px 16px 0;}.result-table tbody tr:hover td{background:#F3FEFA;}
+.rank-badge{width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;font-weight:900;font-size:.78rem;}.rank-1{background:#FFE69A;color:#8A6400;}.rank-2{background:#E4F7FF;color:#256D85;}.rank-3{background:#FFE2C5;color:#A0571E;}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px;}.bar-label{width:50px;text-align:right;font-size:.8rem;font-weight:900;color:var(--deep);}.bar-track{flex:1;height:26px;background:#fff;border:3px solid #fff;border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 8px rgba(37,109,133,.08);}.bar-fill{height:100%;border-radius:999px;display:flex;align-items:center;padding-left:10px;font-size:.75rem;color:#fff;font-weight:900;transition:width .5s ease;white-space:nowrap;background:linear-gradient(90deg,#4EC9B0,#5BBEE8)!important;}.bar-score{width:36px;font-size:.85rem;font-weight:900;text-align:right;color:var(--deep);}
+.recommendation-card{display:block;padding:18px;border-radius:22px;margin-bottom:14px;border:0!important;background:#fff;box-shadow:0 12px 22px rgba(37,109,133,.10);transform:rotate(-.4deg);}.recommendation-card:nth-child(even){transform:rotate(.5deg);}.recommendation-card.gold{background:#FFF8D5;}.recommendation-card.silver{background:#E9F8FF;}.recommendation-card.bronze{background:#FFE9D5;}.recommendation-card h4{margin-bottom:6px;color:var(--deep);font-weight:900;}.no-data-banner{padding:18px;background:#FFF0EA;border-radius:20px;margin-bottom:14px;border:2px dashed rgba(255,178,107,.35);}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-12deg)}50%{transform:translateY(12px) rotate(-7deg)}}
+@keyframes cloudFloat{0%,100%{transform:translateX(0)}50%{transform:translateX(20px)}}
+@media (max-width:900px){.setup-grid,.map-layout,.time-layout,.results-grid{grid-template-columns:1fr}.app-header{min-height:170px}.map-container svg{transform:none}.container{padding:22px 14px 56px}.tab-nav{padding:12px 14px}.tab-btn{padding:11px 15px;font-size:.84rem}.name-input-row,.date-input-row,.unavail-period{flex-wrap:wrap}.date-input-row label{min-width:100%}}
+@media (max-width:520px){.app-header{padding:30px 18px 46px}.app-header h1{font-size:2.25rem}.card,.sidebar-card,.map-container{padding:20px;border-radius:22px}.modal-actions{flex-direction:column}.user-list-item{align-items:flex-start;gap:10px;flex-direction:column}.paper-scene .sun-cut{right:-25px;top:90px}}
+
+
+/* ===================== BOLDER PAPERCUT COLLAGE OVERRIDE =====================
+   方向：减少“白卡片后台感”，把页面改成一整张夏日剪切画海报。
+   只覆盖视觉样式，不改任何 JS 行为与 DOM 层级。
+============================================================================ */
+body{
+  background:
+    radial-gradient(circle at 12% 9%, rgba(255,230,154,.92) 0 7%, transparent 7.5%),
+    linear-gradient(180deg,#BFEFFF 0%,#DBFAFF 32%,#F7FFE9 65%,#FFF3C8 100%);
+}
+body::before{
+  background-image:
+    radial-gradient(rgba(37,109,133,.05) 1px,transparent 1.4px),
+    radial-gradient(rgba(255,255,255,.65) 1.2px,transparent 1.8px);
+  background-size:22px 22px,37px 37px;
+  opacity:.8;
+}
+body::after{
+  content:"✈︎  summer route";
+  right:4vw;top:74px;font-size:28px;font-weight:900;letter-spacing:.08em;
+  color:rgba(37,109,133,.25);background:rgba(255,255,255,.45);
+  padding:12px 18px;border-radius:999px;border:3px dashed rgba(255,255,255,.9);
+  transform:rotate(7deg);box-shadow:0 12px 24px rgba(37,109,133,.12);
+}
+.paper-scene{z-index:-3;}
+.paper-scene span{filter:drop-shadow(0 16px 0 rgba(37,109,133,.05)) drop-shadow(0 24px 24px rgba(37,109,133,.16));}
+.sun-cut{right:8%;top:66px;width:170px;height:170px;background:#FFE27A;box-shadow:0 0 0 16px rgba(255,230,154,.35),0 18px 0 rgba(255,178,107,.18);}
+.sun-cut::before{content:"";position:absolute;inset:-30px;border-radius:50%;background:repeating-conic-gradient(from 10deg,rgba(255,178,107,.42) 0 8deg,transparent 8deg 18deg);z-index:-1;}
+.cloud-a,.cloud-b,.cloud-c{background:#fff;border:5px solid rgba(255,255,255,.85);}
+.cloud-a{width:250px;height:74px;left:4%;top:96px;clip-path:path("M15 55 C30 20 67 28 78 48 C92 6 151 8 163 50 C190 20 236 30 240 58 C205 75 63 78 15 55 Z");}
+.cloud-b{width:210px;height:64px;right:20%;top:180px;clip-path:path("M8 48 C28 25 55 26 65 42 C78 6 125 9 137 40 C154 22 195 27 202 51 C163 67 42 66 8 48 Z");}
+.cloud-c{width:145px;height:48px;left:68%;top:22px;opacity:.95;}
+.mountain-back{left:-8%;right:-8%;bottom:250px;height:260px;background:#7FD8FF;clip-path:polygon(0 100%,8% 72%,16% 86%,27% 40%,38% 82%,48% 26%,61% 76%,72% 36%,84% 82%,93% 60%,100% 92%,100% 100%);}
+.mountain-front{left:-8%;right:-8%;bottom:185px;height:250px;background:#5BBEE8;clip-path:polygon(0 100%,0 82%,10% 66%,18% 82%,29% 45%,40% 88%,50% 38%,62% 84%,74% 46%,86% 86%,96% 58%,100% 78%,100% 100%);}
+.forest-cut{left:-8%;right:-8%;bottom:120px;height:190px;background:#4EC9B0;clip-path:polygon(0 100%,0 48%,3% 70%,5% 42%,8% 76%,11% 38%,14% 72%,17% 44%,20% 78%,23% 37%,26% 70%,29% 43%,32% 76%,35% 39%,38% 72%,41% 46%,44% 80%,47% 36%,50% 74%,53% 42%,56% 76%,59% 39%,62% 72%,65% 46%,68% 78%,71% 37%,74% 70%,77% 43%,80% 76%,83% 39%,86% 72%,89% 45%,92% 78%,95% 40%,98% 72%,100% 50%,100% 100%);}
+.grass-cut{height:150px;background:#8EDFB3;clip-path:polygon(0 36%,7% 44%,15% 30%,25% 48%,36% 28%,48% 45%,58% 32%,68% 50%,78% 30%,88% 46%,100% 33%,100% 100%,0 100%);}
+.river-cut{left:-10%;right:-10%;bottom:38px;height:170px;background:#7FD8FF;clip-path:polygon(0 68%,11% 57%,22% 64%,34% 49%,45% 62%,58% 43%,71% 55%,84% 40%,100% 54%,100% 100%,0 100%);opacity:.92;animation:wave 4.8s ease-in-out infinite alternate;}
+.paper-scene .wave-foam{left:-8%;right:-8%;bottom:108px;height:70px;background:rgba(255,255,255,.7);clip-path:polygon(0 62%,8% 38%,18% 65%,28% 34%,40% 62%,52% 36%,64% 60%,76% 32%,88% 62%,100% 34%,100% 100%,0 100%);}
+.paper-scene .palm-left{width:150px;height:250px;left:2vw;bottom:95px;background:#2E6F57;clip-path:polygon(45% 100%,56% 100%,52% 45%,73% 35%,54% 37%,83% 19%,55% 30%,62% 0,46% 29%,28% 5%,39% 35%,8% 22%,34% 45%);transform:rotate(-8deg);}
+.paper-scene .palm-right{width:120px;height:210px;right:5vw;bottom:118px;background:#2E6F57;clip-path:polygon(46% 100%,58% 100%,52% 43%,78% 36%,54% 36%,88% 21%,58% 29%,62% 0,47% 30%,27% 7%,40% 36%,6% 24%,35% 45%);transform:rotate(10deg);opacity:.9;}
+.paper-scene .sticker-sun{right:22vw;bottom:215px;width:120px;height:54px;background:#FFB26B;border:5px solid #fff;border-radius:999px;transform:rotate(-7deg);}
+.paper-scene .sticker-sun::after{content:"VACATION";position:absolute;inset:0;display:grid;place-items:center;font-weight:900;color:#fff;letter-spacing:.12em;font-size:17px;}
+.app-header{min-height:245px;padding:46px 6vw 76px;}
+.app-header::before{
+  inset:24px 3.6vw 12px;border-radius:46px;background:#F8F7F2;
+  clip-path:polygon(0 10%,8% 0,22% 8%,36% 0,53% 8%,66% 2%,82% 10%,94% 0,100% 12%,97% 100%,84% 92%,72% 100%,60% 91%,45% 100%,32% 92%,18% 100%,5% 91%,0 98%);
+  border:6px solid rgba(255,255,255,.95);box-shadow:0 26px 0 rgba(91,190,232,.12),0 30px 52px rgba(37,109,133,.18);
+  backdrop-filter:none;
+}
+.app-header h1{font-size:clamp(2.9rem,7vw,6.2rem);line-height:.86;max-width:760px;text-transform:uppercase;text-shadow:5px 5px 0 rgba(255,230,154,.65);}
+.app-header h1::after{content:"  ✂︎";font-size:.5em;color:#FFB26B;vertical-align:top;}
+.app-header::after{bottom:22px;color:rgba(78,201,176,.18);font-size:clamp(2.4rem,8vw,6.7rem);}
+.header-right{align-self:flex-start;background:#fff;border:4px solid #F8F7F2;border-radius:30px;padding:12px;box-shadow:0 16px 0 rgba(255,178,107,.14),0 20px 35px rgba(37,109,133,.12);transform:rotate(2deg);}
+.user-badge{background:#FFE69A;color:#256D85;border:3px solid #fff;box-shadow:0 7px 0 rgba(37,109,133,.08);font-weight:900;}
+.btn-reset-all{background:#FFB26B;color:#fff;border:3px solid #fff;border-radius:999px;font-weight:900;box-shadow:0 7px 0 rgba(199,91,80,.18);}
+.tab-nav{background:transparent;backdrop-filter:none;box-shadow:none;padding:8px 6vw 20px;gap:16px;align-items:center;}
+.tab-nav::before{content:"";position:absolute;left:5vw;right:5vw;height:34px;background:rgba(255,255,255,.5);border-radius:999px;z-index:-1;box-shadow:0 12px 25px rgba(37,109,133,.08);}
+.tab-btn{border:4px solid #fff;border-radius:28px;box-shadow:0 10px 0 rgba(37,109,133,.08),0 18px 26px rgba(37,109,133,.10);transform:rotate(-1deg);}
+.tab-btn:nth-child(even){transform:rotate(1.2deg);background:#FFF2B6;}
+.tab-btn:nth-child(3n){background:#DFF8EC;}
+.tab-btn:hover{transform:translateY(-5px) rotate(0deg) scale(1.04);}
+.tab-btn.active{background:#4EC9B0;box-shadow:0 10px 0 rgba(46,111,87,.26),0 18px 26px rgba(37,109,133,.12);}
+.container{max-width:1360px;padding-top:18px;}
+.setup-grid,.time-layout,.results-grid,.map-layout{gap:32px;align-items:start;}
+.card,.sidebar-card,.map-container,.modal{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;
+  padding:0;margin-bottom:34px;overflow:visible;transition:.28s ease;
+}
+.card::before,.sidebar-card::before,.map-container::before,.modal::before{
+  inset:0;border:0;border-radius:0;background:#F8F7F2;clip-path:polygon(3% 2%,97% 0,100% 12%,98% 89%,90% 100%,74% 96%,61% 100%,42% 95%,24% 100%,8% 94%,0 100%,2% 66%,0 48%,3% 30%);
+  box-shadow:0 18px 0 rgba(91,190,232,.11),0 30px 46px rgba(37,109,133,.14),inset 0 0 0 6px rgba(255,255,255,.88);z-index:-2;
+}
+.card::after,.sidebar-card::after,.map-container::after{
+  width:92px;height:31px;top:-15px;left:34px;background:rgba(255,230,154,.88);border:3px solid rgba(255,255,255,.7);border-radius:8px;
+  box-shadow:0 10px 14px rgba(37,109,133,.10);transform:rotate(-7deg);z-index:3;
+}
+.card:nth-child(even)::before{clip-path:polygon(0 6%,16% 0,31% 5%,45% 0,59% 5%,78% 0,100% 4%,97% 34%,100% 56%,96% 100%,82% 95%,64% 100%,48% 94%,34% 100%,17% 95%,0 99%,4% 68%);background:#FFFDF2;}
+.card:nth-child(3n)::before{background:#EAFBFF;clip-path:polygon(5% 0,23% 4%,38% 0,56% 5%,70% 0,97% 4%,100% 22%,97% 42%,100% 70%,96% 96%,74% 100%,55% 94%,38% 100%,20% 95%,3% 100%,0 74%,4% 54%,0 31%);}
+.card,.sidebar-card,.map-container{padding:32px 34px 36px;}
+.card:hover,.sidebar-card:hover,.map-container:hover{transform:translateY(-6px) rotate(-.4deg);}
+.card h2,.map-container h2,.sidebar-card h3{
+  display:inline-block;background:#5BBEE8;color:#fff;border:5px solid #fff;border-radius:999px;padding:10px 20px;margin:0 0 22px;
+  font-size:1.08rem;box-shadow:0 9px 0 rgba(37,109,133,.14);transform:rotate(-1.5deg);text-shadow:0 2px 0 rgba(37,109,133,.12);
+}
+.card:nth-child(even) h2,.sidebar-card h3{background:#4EC9B0;transform:rotate(1.5deg);}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"✂️";}
+.card h3{background:#FFE69A;color:#256D85;border-radius:16px;padding:6px 12px;display:inline-block;transform:rotate(-1deg);}
+.card p,.sidebar-card p{background:rgba(255,255,255,.55);border-radius:18px;padding:8px 12px;display:inline-block;}
+.name-input-row input,.date-input-row input[type=date],.unavail-period input[type=date]{background:#fff;border:4px solid #DDF6F7;border-radius:22px;box-shadow:0 7px 0 rgba(91,190,232,.10);}
+.name-input-row button,button[onclick="saveVacationDates()"],button[onclick="saveUnavailPeriods()"],.btn-save,.btn-add-period,.modal-actions button,.user-list-item button{
+  border:4px solid #fff!important;border-radius:999px!important;box-shadow:0 8px 0 rgba(37,109,133,.13),0 15px 20px rgba(37,109,133,.08)!important;font-weight:900!important;
+}
+.preset-chip,.tag,.user-list-item,.recommendation-card{
+  border:4px solid #fff;box-shadow:0 8px 0 rgba(37,109,133,.08),0 16px 25px rgba(37,109,133,.10);border-radius:26px;
+}
+.preset-chip:nth-child(4n+1),.tag:nth-child(4n+1){clip-path:polygon(8% 0,100% 5%,94% 100%,0 93%);}
+.preset-chip:nth-child(4n+2),.tag:nth-child(4n+2){clip-path:polygon(0 10%,90% 0,100% 88%,8% 100%);}
+.preset-chip:nth-child(4n+3),.tag:nth-child(4n+3){clip-path:polygon(5% 4%,95% 0,100% 100%,0 92%);}
+.user-list-item{background:#fff;clip-path:polygon(0 6%,98% 0,100% 86%,4% 100%);border-radius:0;}
+.progress-bar{height:24px;border:5px solid #fff;background:#DDF6F7;box-shadow:0 9px 0 rgba(37,109,133,.08);}
+.empty-state{background:#fff;border:4px dashed rgba(78,201,176,.35);border-radius:28px;clip-path:polygon(4% 0,100% 5%,96% 100%,0 92%);}
+.map-container::before{background:#E9FAFF;clip-path:polygon(2% 1%,99% 3%,96% 96%,82% 100%,67% 96%,51% 100%,36% 96%,19% 100%,0 94%,3% 70%,0 46%,4% 23%);}
+.map-container svg{background:#FFFDF5;border:18px solid #fff;border-bottom-width:54px;border-radius:8px;box-shadow:0 18px 0 rgba(255,178,107,.16),0 32px 45px rgba(37,109,133,.16);transform:rotate(-2.2deg);clip-path:polygon(1% 2%,99% 0,98% 98%,0 100%);}
+.map-container::after{content:"POSTCARD";left:auto;right:56px;top:38px;width:auto;height:auto;padding:7px 15px;background:#FFB26B;color:#fff;font-size:.75rem;font-weight:900;letter-spacing:.16em;border-radius:999px;transform:rotate(9deg);}
+.map-legend span{border:3px solid #fff;border-radius:18px;box-shadow:0 6px 0 rgba(37,109,133,.08);transform:rotate(-1deg);}
+.map-legend span:nth-child(even){transform:rotate(1deg);background:#FFF2B6;}
+.sidebar-card::before{background:#FFF8DC;clip-path:polygon(0 3%,97% 0,100% 28%,96% 49%,100% 76%,94% 100%,74% 95%,56% 100%,36% 94%,18% 100%,2% 94%,5% 66%,0 45%,4% 22%);}
+.rating-summary-item,.result-table tr,.bar-row,.unavail-period,.date-input-row{
+  background:rgba(255,255,255,.65);border:3px solid #fff;border-radius:22px;margin-bottom:10px;box-shadow:0 7px 0 rgba(37,109,133,.06);padding:10px 12px;
+}
+.rating-summary-item:nth-child(odd),.bar-row:nth-child(odd){transform:rotate(-.4deg);}
+.rating-summary-item:nth-child(even),.bar-row:nth-child(even){transform:rotate(.4deg);}
+.result-table{border-collapse:separate;border-spacing:0 9px;}
+.result-table th{background:#5BBEE8;color:white;border:0;border-radius:16px;font-weight:900;}
+.result-table td{border:0;background:rgba(255,255,255,.72);}
+.result-table tbody tr:hover td{background:#FFF8DC;}
+.bar-track{height:28px;border:4px solid #fff;background:#DDF6F7;border-radius:999px;box-shadow:inset 0 2px 10px rgba(37,109,133,.08);}
+.bar-fill{border-radius:999px;background:repeating-linear-gradient(45deg,#4EC9B0 0 10px,#5BBEE8 10px 20px)!important;}
+.recommendation-card{border-left:0!important;border-radius:0;clip-path:polygon(3% 0,100% 5%,96% 100%,0 94%);}
+.recommendation-card.gold{background:#FFF2B6;}.recommendation-card.silver{background:#EAFBFF;}.recommendation-card.bronze{background:#FFE9DF;}
+.modal-overlay{background:rgba(37,109,133,.28);backdrop-filter:blur(8px);}
+.modal{padding:38px!important;max-width:590px;}
+.modal::before{background:#FFFDF5;clip-path:polygon(2% 0,98% 3%,100% 24%,96% 45%,100% 71%,94% 100%,74% 96%,57% 100%,38% 95%,20% 100%,0 94%,4% 69%,0 48%,3% 22%);}
+.modal h2{font-size:2rem;color:#256D85;text-shadow:3px 3px 0 #FFE69A;}
+.modal .province-subtitle{background:#EAFBFF;border:3px solid #fff;border-radius:999px;padding:8px 15px;display:inline-block;}
+.province-shape{stroke:#fff;stroke-width:2.2;filter:drop-shadow(0 3px 0 rgba(37,109,133,.08));}
+.province-label{font-weight:900;fill:#17495b;text-shadow:0 1px 0 #fff;}
+@media (max-width:900px){
+  .app-header{min-height:220px}.header-right{transform:none}.tab-nav{padding-inline:14px}.container{padding-inline:14px}.card,.sidebar-card,.map-container{padding:26px 22px 30px}.paper-scene .palm-left,.paper-scene .palm-right,.paper-scene .sticker-sun{display:none}.map-container svg{transform:none;border-width:12px;border-bottom-width:38px}.app-header h1{font-size:3.1rem;}
+}
+@media (max-width:520px){
+  .app-header h1{font-size:2.45rem}.card h2,.map-container h2,.sidebar-card h3{font-size:.98rem;padding:9px 14px}.tab-btn{font-size:.8rem;padding:10px 13px}.card,.sidebar-card,.map-container{padding:24px 18px 28px}.setup-grid,.time-layout,.results-grid,.map-layout{gap:20px}
+}
+
+
+
+/* ===================== FINAL: POSTER-LIKE SUMMER PAPERCUT REPRODUCTION =====================
+   复现参考图：整屏剪贴画海报、彩色大标题、丰富夏日旅行贴纸背景。
+   不改原有功能逻辑，只覆盖视觉表现。
+========================================================================================== */
+:root{--poster-blue:#54C6F0;--poster-blue-2:#8EE4FF;--poster-orange:#F06E19;--poster-green:#55A94F;--poster-yellow:#FFD84A;--poster-paper:#FFF9EA;}
+html,body{background:#63C9EF!important;}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(255,216,74,.28), transparent 17%),
+    linear-gradient(180deg,#55C7F0 0%,#8EE4FF 32%,#66CEF0 46%,#F9DC96 74%,#FFE8B0 100%)!important;
+}
+body::before{
+  opacity:.95!important;
+  background-image:
+    radial-gradient(rgba(255,255,255,.24) 1px, transparent 1.8px),
+    radial-gradient(rgba(37,109,133,.07) 1px, transparent 2px),
+    linear-gradient(120deg,rgba(255,255,255,.20),transparent 55%)!important;
+  background-size:18px 18px,34px 34px,100% 100%!important;
+}
+body::after{display:none!important;}
+.paper-scene{z-index:-1!important;}
+.paper-scene span{position:absolute;display:block;filter:drop-shadow(0 5px 0 rgba(255,255,255,.92)) drop-shadow(0 13px 16px rgba(37,109,133,.18));}
+.sun-cut{left:6vw!important;right:auto!important;top:30px!important;width:150px!important;height:150px!important;background:#FFD84A!important;border:12px solid rgba(255,230,154,.55);box-shadow:0 10px 0 rgba(230,154,36,.24)!important;}
+.sun-cut::before{content:"";position:absolute;inset:-42px;border-radius:50%;background:repeating-conic-gradient(from 8deg,#FFD84A 0 12deg,transparent 12deg 24deg);z-index:-1;}
+.cloud-a{left:1.5vw!important;top:150px!important;width:180px!important;height:75px!important;background:#fff!important;border:6px solid rgba(255,255,255,.75)!important;}
+.cloud-b{right:4vw!important;top:82px!important;width:165px!important;height:72px!important;background:#fff!important;}
+.cloud-c{left:71vw!important;top:196px!important;width:130px!important;height:50px!important;background:#fff!important;}
+.mountain-back{top:auto!important;bottom:270px!important;height:190px!important;background:#A7E38D!important;opacity:.95!important;clip-path:polygon(0 100%,0 62%,7% 70%,12% 44%,20% 68%,29% 40%,39% 69%,50% 34%,62% 70%,74% 42%,86% 68%,94% 45%,100% 66%,100% 100%)!important;}
+.mountain-front{top:auto!important;bottom:205px!important;height:170px!important;background:#1F8FC2!important;opacity:1!important;clip-path:polygon(0 100%,0 62%,7% 55%,15% 65%,24% 48%,33% 63%,44% 46%,55% 63%,66% 44%,76% 61%,87% 45%,100% 60%,100% 100%)!important;}
+.river-cut{bottom:85px!important;height:150px!important;background:#2BAAD7!important;opacity:1!important;clip-path:polygon(0 54%,11% 46%,22% 56%,34% 44%,45% 57%,57% 43%,68% 55%,81% 42%,100% 55%,100% 100%,0 100%)!important;animation:wave 4.5s ease-in-out infinite alternate;}
+.wave-foam{bottom:137px!important;height:38px!important;background:rgba(255,255,255,.85)!important;clip-path:polygon(0 55%,8% 35%,18% 60%,28% 34%,39% 58%,51% 33%,63% 58%,75% 32%,88% 60%,100% 34%,100% 70%,0 78%)!important;}
+.grass-cut{bottom:-8px!important;height:130px!important;background:#55B95F!important;clip-path:polygon(0 55%,5% 38%,10% 56%,15% 30%,21% 58%,28% 35%,34% 56%,41% 28%,48% 60%,55% 38%,62% 58%,69% 30%,76% 56%,84% 36%,91% 58%,100% 35%,100% 100%,0 100%)!important;}
+.forest-cut{bottom:48px!important;height:130px!important;background:#2EA65F!important;opacity:.9!important;clip-path:polygon(0 100%,0 48%,3% 70%,5% 38%,9% 75%,13% 34%,18% 72%,22% 42%,27% 76%,32% 35%,38% 71%,44% 40%,50% 78%,56% 36%,62% 72%,68% 42%,74% 77%,80% 36%,86% 72%,92% 42%,100% 70%,100% 100%)!important;}
+.palm-left{left:2.5vw!important;bottom:95px!important;width:175px!important;height:270px!important;background:#1B8B50!important;}
+.palm-left::after,.palm-right::after{content:"";position:absolute;width:42px;height:42px;border-radius:50%;background:#B77724;left:62px;top:96px;box-shadow:-24px 4px 0 #C5872C,18px 10px 0 #9C641D;}
+.palm-right{right:3vw!important;bottom:85px!important;width:135px!important;height:230px!important;background:#2EAD55!important;}
+.sticker-sun{display:none!important;}
+.plane-cut{right:13vw;top:44px;width:170px;height:82px;background:#fff;clip-path:polygon(0 47%,14% 30%,53% 37%,75% 4%,90% 8%,73% 43%,100% 58%,90% 70%,68% 58%,58% 93%,47% 94%,48% 59%,15% 66%);transform:rotate(14deg);}
+.plane-cut::after{content:"";position:absolute;left:38px;top:38px;width:11px;height:11px;border-radius:50%;background:#177BBD;box-shadow:25px 2px 0 #177BBD,50px 4px 0 #177BBD,74px 7px 0 #177BBD;}
+.route-cut{right:-2vw;top:123px;width:280px;height:120px;border:6px dashed #fff;border-left:0;border-bottom:0;border-radius:50%;transform:rotate(14deg);opacity:.9;filter:none!important;}
+.balloon-cut{right:8vw;top:205px;width:72px;height:92px;background:conic-gradient(from 0deg,#FF7E54 0 22%,#FFF4D2 22% 43%,#F9C844 43% 66%,#FFF4D2 66% 82%,#FF7E54 82%);border:6px solid #fff;border-radius:50% 50% 45% 45%;}
+.balloon-cut::after{content:"";position:absolute;left:24px;bottom:-24px;width:22px;height:22px;background:#B06A28;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);}
+.suitcase-cut{right:9vw;bottom:112px;width:150px;height:205px;background:#F7C52D;border:8px solid #fff;border-radius:26px;box-shadow:inset 15px 0 rgba(255,255,255,.15),inset -13px 0 rgba(142,95,0,.10);}
+.suitcase-cut::before{content:"";position:absolute;left:48px;top:-42px;width:54px;height:45px;border:13px solid #333;border-bottom:0;border-radius:18px 18px 0 0;background:transparent;}
+.suitcase-cut::after{content:"🌴\A 📷";white-space:pre;position:absolute;inset:38px 0 auto 0;text-align:center;font-size:34px;line-height:1.6;}
+.signpost-cut{right:1.3vw;width:145px;height:42px;display:grid!important;place-items:center;color:white;font-weight:900;letter-spacing:.08em;border:5px solid #fff;border-radius:8px;clip-path:polygon(0 0,82% 0,100% 50%,82% 100%,0 100%,9% 50%);text-shadow:0 2px rgba(37,109,133,.22);}
+.sign-a{top:292px;background:#55C6E8;transform:rotate(-2deg);}.sign-b{top:345px;background:#55B95F;transform:rotate(2deg);}.sign-c{top:398px;background:#FF9A3E;transform:rotate(-1deg);}
+.sign-a::before{content:"";position:absolute;left:64px;top:40px;width:12px;height:140px;background:#9A642F;z-index:-1;filter:drop-shadow(0 5px 0 rgba(255,255,255,.5));}
+.surfboard-cut{left:8vw;bottom:118px;width:60px;height:180px;background:linear-gradient(90deg,#fff 0 30%,#FF814D 30% 55%,#FFE67A 55% 78%,#fff 78%);border:6px solid #fff;border-radius:50% 50% 45% 45%;transform:rotate(13deg);}
+.lifebuoy-cut{left:2vw;bottom:150px;width:85px;height:85px;border:18px solid #fff;border-radius:50%;background:conic-gradient(#FF7E54 0 20%,#fff 20% 31%,#FF7E54 31% 50%,#fff 50% 64%,#FF7E54 64% 82%,#fff 82%);}
+.camera-cut{right:2.6vw;bottom:20px;width:105px;height:72px;background:#62C8E9;border:6px solid #fff;border-radius:18px;transform:rotate(-7deg);}
+.camera-cut::before{content:"";position:absolute;left:35px;top:19px;width:35px;height:35px;border-radius:50%;background:#222;border:7px solid #EAFBFF;}.camera-cut::after{content:"";position:absolute;left:16px;top:-16px;width:34px;height:18px;background:#62C8E9;border:6px solid #fff;border-bottom:0;border-radius:10px 10px 0 0;}
+.sunglasses-cut{left:18vw;bottom:36px;width:110px;height:42px;background:#19485A;clip-path:polygon(0 15%,35% 0,47% 24%,55% 24%,66% 0,100% 15%,88% 100%,61% 100%,51% 40%,46% 40%,38% 100%,12% 100%);border:5px solid #fff;}
+.sailboat-cut{left:54vw;bottom:142px;width:84px;height:80px;background:#fff;clip-path:polygon(48% 0,52% 68%,100% 68%,88% 88%,20% 88%,0 68%,45% 68%);transform:rotate(3deg);}
+.sailboat-cut::before{content:"";position:absolute;left:13px;top:17px;width:34px;height:45px;background:#FFD84A;clip-path:polygon(100% 0,100% 100%,0 100%);}.sailboat-cut::after{content:"";position:absolute;left:50px;top:12px;width:27px;height:50px;background:#4BBDE4;clip-path:polygon(0 0,100% 100%,0 100%);}
+.shell-cut{left:44vw;bottom:58px;width:54px;height:42px;background:#FFD84A;border:5px solid #fff;border-radius:50% 50% 10px 10px;clip-path:polygon(50% 0,100% 55%,83% 100%,17% 100%,0 55%);}
+.starfish-cut{left:34vw;bottom:62px;width:58px;height:58px;background:#FF8C4B;border:5px solid #fff;clip-path:polygon(50% 0,61% 34%,98% 35%,68% 56%,79% 94%,50% 71%,20% 94%,31% 56%,2% 35%,39% 34%);}
+.hibiscus-cut{right:11vw;bottom:18px;width:80px;height:80px;background:#FF6F7C;border:5px solid #fff;clip-path:polygon(50% 12%,63% 36%,89% 27%,76% 52%,95% 70%,67% 70%,62% 96%,48% 72%,24% 91%,34% 62%,7% 51%,36% 41%);}
+.birds-cut{left:34vw;top:66px;color:#fff;font-size:42px;font-weight:900;letter-spacing:.5em;transform:rotate(-6deg);filter:drop-shadow(0 4px 0 rgba(37,109,133,.08))!important;}
+.app-header{min-height:310px!important;padding:46px 6vw 78px!important;align-items:center!important;justify-content:center!important;text-align:center!important;}
+.app-header::before{
+  inset:38px 18vw 42px!important;background:#FFF9EA!important;border:8px solid #fff!important;border-radius:18px!important;
+  clip-path:polygon(2% 10%,8% 0,18% 5%,30% 0,43% 6%,55% 2%,68% 7%,82% 0,96% 8%,100% 22%,96% 38%,100% 55%,96% 75%,100% 92%,88% 100%,75% 94%,61% 100%,47% 94%,32% 100%,18% 93%,4% 100%,0 85%,4% 64%,0 45%,4% 28%)!important;
+  box-shadow:0 12px 0 rgba(255,255,255,.58),0 22px 0 rgba(91,190,232,.20),0 32px 48px rgba(37,109,133,.22)!important;
+}
+.app-header::after{content:"轻松规划 · 玩转一夏"!important;left:50%!important;bottom:28px!important;transform:translateX(-50%) rotate(-3deg)!important;background:#FFD84A!important;color:#13688B!important;font-size:clamp(1rem,2.1vw,1.85rem)!important;line-height:1!important;padding:14px 48px!important;border:6px solid #fff!important;border-radius:6px!important;letter-spacing:.18em!important;box-shadow:0 10px 0 rgba(215,139,24,.18),0 18px 28px rgba(37,109,133,.15)!important;z-index:2!important;white-space:nowrap!important;}
+.app-header h1{position:relative;z-index:3;display:flex!important;flex-direction:column;gap:4px;align-items:center;justify-content:center;margin:0 auto!important;max-width:none!important;font-size:clamp(4rem,8vw,7.8rem)!important;line-height:.86!important;letter-spacing:.04em!important;background:none!important;color:transparent!important;text-shadow:none!important;}
+.app-header h1::before{content:""!important;position:absolute;left:-70px;top:18px;width:62px;height:72px;background:#FF7E2F;border:8px solid #fff;clip-path:polygon(0 12%,100% 0,72% 100%,28% 100%);transform:rotate(-14deg);filter:drop-shadow(0 8px 0 rgba(37,109,133,.13));}
+.app-header h1::after{content:""!important;position:absolute;right:-72px;top:72px;width:62px;height:72px;background:#55B95F;border:8px solid #fff;clip-path:polygon(0 0,100% 20%,60% 100%,0 70%);transform:rotate(18deg);filter:drop-shadow(0 8px 0 rgba(37,109,133,.13));}
+.title-line{display:block;color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:2px rgba(255,255,255,.15);filter:drop-shadow(7px 7px 0 rgba(37,109,133,.12));}
+.title-orange{background-image:linear-gradient(180deg,#FF8A21,#E95B0B);text-shadow:4px 4px 0 rgba(255,213,97,.38);}
+.title-green{background-image:linear-gradient(180deg,#67C55D,#318B40);text-shadow:4px 4px 0 rgba(255,213,97,.38);}
+.title-orange::after{content:"出行";background:linear-gradient(180deg,#157BDF,#075BB3);-webkit-background-clip:text;background-clip:text;color:transparent;margin-left:.18em;text-shadow:4px 4px 0 rgba(255,213,97,.28);}
+/* hide duplicate 出行 because h1 line contains 暑期出行; visually split by overlaying blue word */
+.title-orange{font-size:.76em;}
+.title-orange{letter-spacing:.05em;}
+.header-right{position:absolute!important;right:5vw!important;bottom:28px!important;z-index:4;transform:rotate(2deg)!important;background:rgba(255,255,255,.92)!important;border:6px solid #fff!important;border-radius:24px!important;padding:9px!important;}
+.tab-nav{margin-top:-10px!important;padding:10px 5vw 24px!important;justify-content:center!important;}
+.tab-nav::before{left:8vw!important;right:8vw!important;height:56px!important;background:#FFF9EA!important;border:5px solid #fff;box-shadow:0 10px 0 rgba(37,109,133,.08),0 18px 26px rgba(37,109,133,.12)!important;}
+.tab-btn{font-size:1rem!important;padding:14px 22px!important;background:#FFF9EA!important;border:5px solid #fff!important;color:#265C70!important;}
+.tab-btn:nth-child(1)::before{content:"🏠 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(2)::before{content:"📍 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(3)::before{content:"🌴 ";position:static;opacity:1;border:0;}.tab-btn:nth-child(4)::before{content:"📷 ";position:static;opacity:1;border:0;}
+.tab-btn.active{background:#FF7E2F!important;color:#fff!important;}
+.container{max-width:1400px!important;padding-top:18px!important;}
+.card::before,.sidebar-card::before,.map-container::before,.modal::before{background:#FFF9EA!important;border:0!important;box-shadow:0 14px 0 rgba(255,255,255,.55),0 26px 42px rgba(37,109,133,.16),inset 0 0 0 7px rgba(255,255,255,.88)!important;}
+.card h2::before,.map-container h2::before,.sidebar-card h3::before{content:"🌴"!important;}.map-container h2::before{content:"📍"!important;}.card:nth-child(2n) h2::before{content:"🌊"!important;}.results-grid .card h2::before{content:"📷"!important;}
+.card h2,.map-container h2,.sidebar-card h3{background:#20A88A!important;border:5px solid #fff!important;color:#fff!important;box-shadow:0 9px 0 rgba(37,109,133,.13)!important;}
+.map-container h2{background:#138ED1!important;}.sidebar-card h3{background:#FFD84A!important;color:#256D85!important;}.results-grid .card h2{background:#FF8A21!important;}
+.name-input-row button,.btn-save,button[onclick="saveVacationDates()"],button[onclick="saveUnavailPeriods()"]{background:#21B58E!important;color:#fff!important;}
+.btn-add-period{background:#FFD84A!important;color:#256D85!important;}.btn-reset-all,.btn-clear{background:#FF8A21!important;color:#fff!important;}.btn-cancel{background:#E7F8FF!important;color:#256D85!important;}
+.map-container svg{background:linear-gradient(180deg,#C9F0FF,#F5FDFF)!important;border:20px solid #fff!important;border-bottom-width:58px!important;border-radius:12px!important;filter:drop-shadow(0 18px 0 rgba(37,109,133,.10));}
+.province-shape{stroke:#fff!important;stroke-width:2.5!important;filter:drop-shadow(0 4px 0 rgba(37,109,133,.10));}.province-shape:hover{fill:#54C6F0!important;stroke:#fff!important;stroke-width:4!important;}
+.preset-chip::before{margin-right:6px}.preset-chip:nth-child(4n+1)::before{content:"🌊"}.preset-chip:nth-child(4n+2)::before{content:"🍉"}.preset-chip:nth-child(4n+3)::before{content:"⛱️"}.preset-chip:nth-child(4n)::before{content:"✈️"}
+.empty-state::before{content:"🌴 ";}.recommendation-card h4::before{content:"🏖️ ";}.rating-summary-item::before{content:"📌";margin-right:6px;}
+@media(max-width:900px){.app-header{min-height:250px!important}.app-header::before{inset:36px 6vw 58px!important}.app-header h1{font-size:clamp(3rem,11vw,5rem)!important}.header-right{position:relative!important;right:auto!important;bottom:auto!important;margin-top:10px}.plane-cut,.route-cut,.balloon-cut,.signpost-cut,.suitcase-cut{display:none!important}.tab-nav{justify-content:flex-start!important}.tab-nav::before{display:none}.title-orange::after{display:none}.title-orange{font-size:1em}}
+@media(max-width:520px){.app-header{min-height:225px!important;padding:28px 14px 58px!important}.app-header::after{font-size:.95rem!important;padding:10px 20px!important;bottom:20px!important}.sun-cut{width:95px!important;height:95px!important}.cloud-a{display:none!important}.tab-btn{font-size:.84rem!important;padding:10px 14px!important}.app-header h1::before,.app-header h1::after{display:none!important}.paper-scene .surfboard-cut,.paper-scene .lifebuoy-cut,.paper-scene .camera-cut,.paper-scene .sunglasses-cut{display:none!important}}
+@keyframes wave{from{transform:translateX(-18px)}to{transform:translateX(18px)}}
+
+
+.map-loading,.map-error{min-height:520px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#256D85;font-weight:800;letter-spacing:.08em;position:relative;z-index:3;}
+.map-loading:before{content:'🌊';font-size:54px;display:block;animation:floating 1.4s ease-in-out infinite;margin-bottom:12px;}
+.map-error{gap:10px;color:#2E6F57;background:rgba(255,255,255,.48);border:2px dashed rgba(37,109,133,.22);border-radius:30px;margin:18px;padding:24px;}
+.map-error p{font-size:14px;font-weight:600;letter-spacing:0;color:#256D85;opacity:.8;}
+.map-error button{border:0;border-radius:999px;padding:10px 22px;background:#FFE69A;color:#256D85;font-weight:900;box-shadow:0 8px 0 rgba(37,109,133,.14);cursor:pointer;}
+.accurate-china-svg{width:100%;height:min(72vh,690px);min-height:560px;display:block;position:relative;z-index:2;}
+.accurate-china-svg .province-shape{fill:#F8F7F2;stroke:#fff;stroke-width:1.15;cursor:pointer;transition:transform .18s ease,fill .2s ease,stroke-width .18s ease,filter .18s ease;transform-box:fill-box;transform-origin:center;}
+.accurate-china-svg .province-shape:nth-of-type(4n+1){fill:#BFEFD8;}
+.accurate-china-svg .province-shape:nth-of-type(4n+2){fill:#BFEFFF;}
+.accurate-china-svg .province-shape:nth-of-type(4n+3){fill:#FFF0B4;}
+.accurate-china-svg .province-shape:nth-of-type(4n){fill:#D9F3FF;}
+.accurate-china-svg .province-shape:hover{transform:translateY(-5px) scale(1.012);stroke:#256D85;stroke-width:2.4;filter:drop-shadow(0 10px 8px rgba(37,109,133,.20));}
+.accurate-china-svg .province-shape.rated-high{fill:#8EDFB3;}
+.accurate-china-svg .province-shape.rated-mid{fill:#FFE69A;}
+.accurate-china-svg .province-shape.rated-low{fill:#FFB26B;}
+.accurate-china-svg .province-shape.not-interested{fill:#E4E2DA;opacity:.65;}
+.accurate-china-svg .province-label{fill:#256D85;font-size:13px;font-weight:900;text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;}
+.accurate-china-svg .province-label.small{font-size:10px;}
+@media(max-width:768px){.accurate-china-svg{height:430px;min-height:430px}.map-loading,.map-error{min-height:390px}.accurate-china-svg .province-label{font-size:11px}.accurate-china-svg .province-label.small{font-size:8px}}
+
+
+/* ===================== Destination List Picker ===================== */
+.destination-picker{margin-top:26px;position:relative;z-index:2;}
+.destination-picker-title{margin-top:20px!important;margin-bottom:14px!important;}
+.destination-picker-title::before{content:"🧳"!important;}
+.destination-tools{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px;}
+.destination-tools input,.destination-tools select{
+  width:100%;padding:12px 14px;border:4px solid #fff;border-radius:22px;background:#fff;color:var(--deep);
+  font-family:inherit;font-weight:800;outline:none;box-shadow:0 7px 0 rgba(37,109,133,.08),0 13px 18px rgba(37,109,133,.08);
+}
+.destination-tools input:focus,.destination-tools select:focus{box-shadow:0 7px 0 rgba(37,109,133,.08),0 0 0 5px rgba(78,201,176,.2);}
+.destination-list{max-height:470px;overflow-y:auto;padding:6px 6px 6px 0;}
+.destination-item{
+  position:relative;width:100%;border:5px solid #fff;border-radius:0;padding:14px 14px 13px;margin-bottom:13px;cursor:pointer;
+  background:#FFF9EA;color:var(--deep);text-align:left;font-family:inherit;
+  box-shadow:0 8px 0 rgba(37,109,133,.08),0 15px 22px rgba(37,109,133,.10);
+  clip-path:polygon(4% 0,100% 5%,96% 100%,0 94%);
+  transition:transform .22s ease,filter .22s ease,box-shadow .22s ease;
+}
+.destination-item:nth-child(3n+1){background:#EAFBFF;transform:rotate(-.6deg);}
+.destination-item:nth-child(3n+2){background:#FFF3C7;transform:rotate(.7deg);}
+.destination-item:nth-child(3n){background:#EAF8E6;transform:rotate(-.2deg);}
+.destination-item:hover{transform:translateY(-5px) rotate(0deg) scale(1.015);filter:saturate(1.08);box-shadow:0 11px 0 rgba(37,109,133,.10),0 20px 28px rgba(37,109,133,.14);}
+.destination-item-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.destination-name{font-size:1rem;font-weight:900;letter-spacing:.03em;}
+.destination-full{font-size:.76rem;color:var(--muted);font-weight:800;}
+.destination-status{flex:0 0 auto;padding:5px 10px;border:3px solid #fff;border-radius:999px;font-size:.72rem;font-weight:900;box-shadow:0 4px 0 rgba(37,109,133,.06);}
+.destination-status.unrated{background:#E7EEF0;color:#58717A;}
+.destination-status.high{background:#8EDFB3;color:#1E6D4A;}
+.destination-status.mid{background:#FFE69A;color:#8A6400;}
+.destination-status.low{background:#FFB26B;color:#8E4A18;}
+.destination-status.notInterested{background:#E9E5DA;color:#7B756A;}
+.destination-meta{display:flex;flex-wrap:wrap;gap:6px;font-size:.72rem;color:var(--muted);}
+.destination-mini-tag{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.7);border:2px solid #fff;border-radius:999px;padding:4px 8px;font-weight:800;}
+.destination-list-count{margin:2px 0 10px;color:var(--muted);font-size:.78rem;font-weight:900;text-align:center;background:rgba(255,255,255,.58);border:3px dashed rgba(255,255,255,.95);border-radius:18px;padding:8px 10px;}
+@media (max-width:900px){.destination-list{max-height:360px;}}
+
+/* ===================== Destination Cards & Guide Modal ===================== */
+.dest-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+.dest-card{
+  position:relative;border:5px solid #fff;border-radius:22px;overflow:hidden;cursor:pointer;
+  background:#fff;box-shadow:0 9px 0 rgba(37,109,133,.09),0 18px 26px rgba(37,109,133,.11);
+  transition:transform .25s ease,box-shadow .25s ease;text-align:left;font-family:inherit;
+}
+.dest-card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 13px 0 rgba(37,109,133,.12),0 24px 34px rgba(37,109,133,.16);}
+.dest-card:nth-child(even):hover{transform:translateY(-6px) rotate(.6deg);}
+.dest-card-img{
+  width:100%;height:160px;object-fit:cover;display:block;
+  background:linear-gradient(135deg,#BFEFFF,#8EDFB3,#FFE69A);
+}
+.dest-card-body{padding:14px 16px 16px;}
+.dest-card-name{font-size:1.05rem;font-weight:900;color:var(--deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.dest-card-desc{font-size:.82rem;color:var(--muted);line-height:1.5;margin-bottom:6px;}
+.dest-card-type{
+  display:inline-block;padding:3px 10px;border-radius:999px;font-size:.68rem;font-weight:900;
+  border:2px solid #fff;letter-spacing:.04em;
+}
+.dest-card-type.popular{background:#FF8A21;color:#fff;}
+.dest-card-type.niche{background:#8EDFB3;color:#1E6D4A;}
+.dest-card-hint{font-size:.72rem;color:var(--teal);font-weight:800;margin-top:6px;}
+.guide-overlay{display:none;position:fixed;inset:0;background:rgba(37,109,133,.28);z-index:110;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(9px);}
+.guide-overlay.show{display:flex;}
+.guide-modal{
+  max-width:620px;width:94%;max-height:88vh;overflow-y:auto;position:relative;
+  background:#FFFDF8;border:10px solid #fff;border-bottom-width:24px;border-radius:28px;
+  box-shadow:0 28px 70px rgba(37,109,133,.25);transform:rotate(-.5deg);padding:34px;
+}
+.guide-modal::before{
+  content:"";position:absolute;inset:10px;border-radius:20px;border:2px dashed rgba(91,190,232,.18);pointer-events:none;
+}
+.guide-modal h2{font-size:1.7rem;color:#256D85;font-weight:900;margin-bottom:4px;}
+.guide-modal .guide-subtitle{color:var(--muted);font-size:.88rem;margin-bottom:18px;}
+.guide-modal .guide-img{width:100%;height:220px;object-fit:cover;border-radius:18px;border:5px solid #fff;box-shadow:0 9px 0 rgba(37,109,133,.09);margin-bottom:18px;background:linear-gradient(135deg,#BFEFFF,#8EDFB3);}
+.guide-section{margin-bottom:16px;padding:14px;background:#F8F7F2;border-radius:18px;}
+.guide-section h4{font-size:.8rem;color:var(--forest);margin-bottom:8px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;}
+.guide-section .info-row{display:flex;flex-wrap:wrap;gap:10px;}
+.guide-section .info-chip{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#fff;border:2px solid #fff;border-radius:999px;font-size:.82rem;font-weight:800;color:var(--deep);box-shadow:0 4px 0 rgba(37,109,133,.06);}
+.guide-section ul{margin:0;padding-left:18px;font-size:.85rem;color:var(--ink);line-height:1.8;}
+.guide-section li::marker{color:var(--teal);}
+.guide-actions{display:flex;gap:10px;margin-top:18px;}
+.guide-actions button{flex:1;padding:13px;border-radius:999px;border:4px solid #fff;font-family:inherit;font-weight:900;font-size:.95rem;cursor:pointer;box-shadow:0 8px 0 rgba(37,109,133,.12);transition:transform .2s,box-shadow .2s;}
+.guide-actions button:hover{transform:translateY(-2px);}
+.guide-actions .btn-back{background:#F4F1EA;color:var(--deep);}
+.guide-actions .btn-rate{background:linear-gradient(135deg,#4EC9B0,#5BBEE8);color:#fff;}
+@media (max-width:600px){.dest-grid{grid-template-columns:1fr}.dest-card-img{height:130px}.guide-modal{padding:24px;}.guide-modal .guide-img{height:150px}}
+
+
+/* ===== Scenic image robustness: real network photos + graceful fallback ===== */
+.dest-card-img,.guide-img{
+  background:linear-gradient(135deg,#BFEFFF,#FFF4C8);
+  object-fit:cover;
+}
+.dest-card-img.is-fallback,.guide-img.is-fallback{
+  object-fit:cover;
+  image-rendering:auto;
+}
+.image-loading-note{font-size:.72rem;color:var(--muted);margin-top:4px;}
+
+.guide-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.guide-link-btn{text-decoration:none;padding:12px 18px;border-radius:999px;font-weight:800;color:#fff;display:inline-block}
+.guide-link-btn.mafengwo{background:linear-gradient(135deg,#FF9F43,#FF6B35)}
+.guide-link-btn.xiaohongshu{background:linear-gradient(135deg,#ff5c7a,#ff2442)}
+
+</style>
+</head>
+<body>
+<div class="paper-scene" aria-hidden="true">
+  <span class="sun-cut"></span>
+  <span class="cloud-a"></span>
+  <span class="cloud-b"></span>
+  <span class="cloud-c"></span>
+  <span class="mountain-back"></span>
+  <span class="mountain-front"></span>
+  <span class="forest-cut"></span>
+  <span class="river-cut"></span>
+  <span class="grass-cut"></span>
+  <span class="wave-foam"></span>
+  <span class="palm-left"></span>
+  <span class="palm-right"></span>
+  <span class="sticker-sun"></span>
+  <span class="plane-cut"></span>
+  <span class="route-cut"></span>
+  <span class="balloon-cut"></span>
+  <span class="suitcase-cut"></span>
+  <span class="signpost-cut sign-a">海边度假</span>
+  <span class="signpost-cut sign-b">自然探索</span>
+  <span class="signpost-cut sign-c">城市风情</span>
+  <span class="surfboard-cut"></span>
+  <span class="lifebuoy-cut"></span>
+  <span class="camera-cut"></span>
+  <span class="sunglasses-cut"></span>
+  <span class="sailboat-cut"></span>
+  <span class="shell-cut"></span>
+  <span class="starfish-cut"></span>
+  <span class="hibiscus-cut"></span>
+  <span class="birds-cut">⌁ ⌁ ⌁</span>
+</div>
+
+
+<header class="app-header">
+  <h1><span class="title-line title-orange">暑期出行</span><span class="title-line title-green">决策助手</span></h1>
+  <div class="header-right">
+    <button class="btn-reset-all" onclick="resetAllData()">重置全部数据</button>
+    <span class="user-badge" id="currentUserBadge">未选择用户</span>
+  </div>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="setup">1. 用户设置</button>
+  <button class="tab-btn" data-tab="map">2. 目的地选择</button>
+  <button class="tab-btn" data-tab="time">3. 时间协调</button>
+  <button class="tab-btn" data-tab="results">4. 结果汇总 <span class="tab-badge" id="resultsBadge" style="display:none">0/9</span></button>
+</nav>
+
+<div class="container">
+
+<!-- TAB 1: Setup -->
+<div class="tab-content active" id="tab-setup">
+  <div class="setup-grid">
+    <div class="card">
+      <h2>选择或创建用户（目标 9 人）</h2>
+      <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:12px">点击预设用户名，或输入自定义姓名</p>
+      <div class="preset-users" id="presetUsers"></div>
+      <div class="name-input-row">
+        <input type="text" id="customNameInput" placeholder="输入自定义用户名..." maxlength="20">
+        <button onclick="addCustomUser()">添加</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>已添加用户</h2>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/9</strong></p>
+      <div class="user-list" id="userList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: Map -->
+<div class="tab-content" id="tab-map">
+  <div class="map-layout">
+    <div class="map-container">
+      <h2>点击省份查看详情并评分（共 34 个省级行政区）</h2>
+      <div class="map-legend">
+        <span><span class="legend-dot" style="background:#cbd5e0"></span>未评分</span>
+        <span><span class="legend-dot" style="background:#68d391"></span>高分(7-10)</span>
+        <span><span class="legend-dot" style="background:#f6e05e"></span>中等(4-6)</span>
+        <span><span class="legend-dot" style="background:#fc8181"></span>低分(1-3)</span>
+        <span><span class="legend-dot" style="background:#e2e8f0;border:1px solid #cbd5e0"></span>不想去</span>
+      </div>
+      <svg viewBox="0 0 660 430" id="chinaMap"></svg>
+    </div>
+    <div class="sidebar-card">
+      <h3 id="sidebarUserName">评分摘要</h3>
+      <div id="ratingSummary"><div class="empty-state">请先在"用户设置"中选择用户</div></div>
+
+      <div class="destination-picker">
+        <h3 class="destination-picker-title">按列表选择目的地</h3>
+        <div class="destination-tools">
+          <input type="text" id="destinationSearch" placeholder="搜索省份 / 景点 / 美食..." oninput="renderDestinationList()">
+          <select id="destinationFilter" onchange="renderDestinationList()">
+            <option value="all">全部目的地</option>
+            <option value="unrated">未评分</option>
+            <option value="rated">已评分</option>
+            <option value="high">高分 7-10</option>
+            <option value="mid">中等 4-6</option>
+            <option value="low">低分 1-3</option>
+            <option value="notInterested">不想去</option>
+          </select>
+        </div>
+        <div class="destination-list" id="destinationList">
+          <div class="empty-state">请先选择用户</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: Time -->
+<div class="tab-content" id="tab-time">
+  <div class="time-layout">
+    <div class="card">
+      <h2>假期时间设置</h2>
+      <div class="date-input-row"><label>放假日期：</label><input type="date" id="vacationStart"></div>
+      <div class="date-input-row"><label>开学日期：</label><input type="date" id="vacationEnd"></div>
+      <button onclick="saveVacationDates()" style="margin-top:8px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit">保存假期时间</button>
+    </div>
+    <div class="card">
+      <h2>无法出行时间段</h2>
+      <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:12px">添加暑假期间你无法出行的日期区间</p>
+      <div id="unavailPeriods"></div>
+      <button class="btn-add-period" onclick="addUnavailPeriod()">+ 添加时间段</button>
+      <button onclick="saveUnavailPeriods()" style="margin-top:12px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.95rem;font-family:inherit;width:100%">保存时间段</button>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h2>个人时间可视化</h2>
+    <div id="timelineViz"><div class="empty-state">请先设置假期日期</div></div>
+  </div>
+</div>
+
+<!-- TAB 4: Results -->
+<div class="tab-content" id="tab-results">
+  <div class="results-grid">
+    <div class="card"><h2>目的地排名</h2><div id="rankingTableContainer"><div id="rankingTable"></div></div></div>
+    <div class="card"><h2>评分分布图</h2><div class="bar-chart" id="barChart"></div></div>
+  </div>
+  <div class="card"><h2>时间交集分析</h2><div id="timeOverlapAnalysis"></div></div>
+  <div class="card"><h2>综合推荐 Top 5</h2><div id="recommendations"></div></div>
+</div>
+
+</div>
+
+<!-- Province Detail Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2 id="modalTitle"></h2>
+    <p class="province-subtitle" id="modalSubtitle"></p>
+    <div class="modal-section"><h4>热门 / 小众旅游地</h4><div class="dest-grid" id="modalDestinations"></div></div>
+    <div class="modal-section"><h4>特色美食</h4><div class="tag-list" id="modalFoods"></div></div>
+    <div class="rating-section">
+      <h4>出行意愿评分（1-10）</h4>
+      <div class="rating-slider-row">
+        <span class="rating-emoji" id="ratingEmoji">😐</span>
+        <input type="range" min="1" max="10" value="5" id="ratingSlider" oninput="updateRatingDisplay()">
+        <span class="rating-value" id="ratingValue">5</span>
+      </div>
+      <div class="not-interested-row">
+        <input type="checkbox" id="notInterestedCheck" onchange="onNotInterestedChange()">
+        <label for="notInterestedCheck">不想去（勾选后评分无效）</label>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-clear" id="btnClear" onclick="clearProvinceRating()">清除评分</button>
+      <button class="btn-cancel" onclick="closeModal()">取消</button>
+      <button class="btn-save" onclick="saveProvinceRating()">保存评分</button>
+    </div>
+  </div>
+</div>
+
+<!-- Guide Detail Modal -->
+<div class="guide-overlay" id="guideOverlay">
+  <div class="guide-modal">
+    <h2 id="guideTitle"></h2>
+    <p class="guide-subtitle" id="guideSubtitle"></p>
+    <img class="guide-img" id="guideImg" src="" alt="" data-scenic-name="" data-fallback-index="0" onerror="handleScenicImgError(this)">
+    <div class="guide-section"><h4>基本信息</h4><div class="info-row" id="guideInfo"></div></div>
+    <div class="guide-section"><h4>推荐路线</h4><p id="guideRoute" style="font-size:.85rem;color:var(--ink);"></p></div>
+    <div class="guide-section"><h4>必打卡亮点</h4><ul id="guideHighlights"></ul></div>
+    <div class="guide-section"><h4>实用贴士</h4><ul id="guideTips"></ul></div>
+
+<div class="guide-section">
+    <h4>旅游攻略</h4>
+    <div id="guideLinks" class="guide-links"></div>
+</div>
+    <div class="guide-actions">
+      <button class="btn-back" onclick="closeGuide()">返回省份</button>
+      <button class="btn-rate" onclick="closeGuideAndRate()">去评分</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ 34 PROVINCES DATA ============
+const provinceData = [
+  // --- NORTHWEST 西北 ---
+  { id:"xinjiang", name:"新疆维吾尔自治区", short:"新疆",
+    path:"30,10 75,5 125,8 175,5 225,12 275,22 310,38 320,60 315,85 330,110 310,138 280,145 250,155 220,148 190,150 160,142 130,148 100,138 75,130 50,120 28,105 15,80 10,50 15,30",
+    cx:160,cy:78, small:false,
+    attractions:["天山天池","喀纳斯湖","吐鲁番葡萄沟","那拉提草原","赛里木湖"],
+    foods:["大盘鸡","羊肉串","手抓饭","烤包子","炒米粉"] },
+  { id:"qinghai", name:"青海省", short:"青海",
+    path:"120,128 155,120 195,128 235,140 260,155 270,175 265,200 245,220 215,225 185,218 155,210 125,205 100,195 85,178 90,158 100,145",
+    cx:180,cy:180, small:false,
+    attractions:["青海湖","茶卡盐湖","塔尔寺","祁连山草原","可可西里"],
+    foods:["手抓羊肉","酿皮","甜醅","酸奶","尕面片"] },
+  { id:"gansu", name:"甘肃省", short:"甘肃",
+    path:"235,130 260,125 290,128 315,140 330,160 325,185 310,200 290,210 270,215 250,210 235,195 225,175 215,160 220,145",
+    cx:275,cy:170, small:false,
+    attractions:["敦煌莫高窟","嘉峪关","张掖丹霞","鸣沙山月牙泉","麦积山石窟"],
+    foods:["兰州拉面","手抓羊肉","酿皮子","浆水面","臊子面"] },
+  { id:"ningxia", name:"宁夏回族自治区", short:"宁夏",
+    path:"290,138 310,132 325,140 328,158 318,170 300,172 288,165 283,152",
+    cx:308,cy:152, small:true,
+    attractions:["沙湖","西夏王陵","贺兰山岩画","镇北堡影视城","沙坡头"],
+    foods:["手抓羊肉","羊杂碎","羊肉臊子面","油香","盖碗茶"] },
+
+  // --- NORTH 华北 ---
+  { id:"neimenggu", name:"内蒙古自治区", short:"内蒙古",
+    path:"235,50 300,35 370,30 440,38 500,50 520,70 510,95 490,105 470,100 440,105 410,95 385,105 360,95 340,108 320,100 305,115 295,108 275,120 260,108 245,118 235,105 220,95 220,70",
+    cx:370,cy:78, small:false,
+    attractions:["呼伦贝尔草原","响沙湾","成吉思汗陵","额济纳胡杨林","阿尔山"],
+    foods:["烤全羊","手把肉","奶茶","奶豆腐","风干牛肉"] },
+  { id:"beijing", name:"北京市", short:"北京",
+    path:"420,118 440,112 453,118 458,133 450,145 435,148 420,143 412,135",
+    cx:435,cy:130, small:true,
+    attractions:["故宫","长城","天坛","颐和园","鸟巢"],
+    foods:["北京烤鸭","炸酱面","涮羊肉","豆汁焦圈","卤煮火烧"] },
+  { id:"tianjin", name:"天津市", short:"天津",
+    path:"445,125 458,120 465,128 463,140 452,143 442,138",
+    cx:453,cy:132, small:true,
+    attractions:["天津之眼","古文化街","盘山","五大道","意式风情区"],
+    foods:["狗不理包子","煎饼果子","耳朵眼炸糕","十八街麻花","锅巴菜"] },
+  { id:"hebei", name:"河北省", short:"河北",
+    path:"400,130 418,125 435,132 440,148 432,160 415,168 398,172 385,165 378,152 382,140 392,132",
+    cx:410,cy:148, small:false,
+    attractions:["避暑山庄","山海关","白洋淀","北戴河","西柏坡"],
+    foods:["驴肉火烧","棋子烧饼","金毛狮子鱼","熏肉大饼","京东板栗"] },
+  { id:"shanxi", name:"山西省", short:"山西",
+    path:"360,148 380,140 395,148 400,162 392,178 375,185 358,182 346,170 345,158 350,150",
+    cx:372,cy:164, small:false,
+    attractions:["平遥古城","云冈石窟","五台山","壶口瀑布","悬空寺"],
+    foods:["刀削面","平遥牛肉","过油肉","莜面栲栳栳","太谷饼"] },
+  { id:"shandong", name:"山东省", short:"山东",
+    path:"425,148 445,142 460,148 470,162 465,180 452,192 435,195 420,188 410,178 415,165",
+    cx:440,cy:170, small:false,
+    attractions:["泰山","曲阜孔庙","崂山","蓬莱阁","趵突泉"],
+    foods:["煎饼卷大葱","德州扒鸡","九转大肠","糖醋鲤鱼","青岛啤酒"] },
+
+  // --- NORTHEAST 东北 ---
+  { id:"liaoning", name:"辽宁省", short:"辽宁",
+    path:"465,108 490,100 510,108 520,125 515,142 502,150 485,148 470,140 462,125 460,115",
+    cx:490,cy:125, small:false,
+    attractions:["沈阳故宫","大连老虎滩","千山","本溪水洞","星海广场"],
+    foods:["锅包肉","大连海鲜","猪肉炖粉条","老边饺子","海城馅饼"] },
+  { id:"jilin", name:"吉林省", short:"吉林",
+    path:"490,60 520,52 540,58 545,78 535,98 515,108 498,102 485,90 482,75",
+    cx:515,cy:78, small:false,
+    attractions:["长白山天池","伪满皇宫","净月潭","雾凇岛","松花湖"],
+    foods:["冷面","白肉血肠","朝鲜族烤肉","打糕","石锅拌饭"] },
+  { id:"heilongjiang", name:"黑龙江省", short:"黑龙江",
+    path:"480,15 530,5 570,12 590,30 595,55 580,72 560,78 535,72 510,60 490,52 475,40 470,25",
+    cx:535,cy:42, small:false,
+    attractions:["冰雪大世界","镜泊湖","五大连池","漠河北极村","太阳岛"],
+    foods:["哈尔滨红肠","杀猪菜","锅包肉","得莫利炖鱼","小鸡炖蘑菇"] },
+
+  // --- CENTRAL 华中 ---
+  { id:"henan", name:"河南省", short:"河南",
+    path:"370,185 395,178 410,185 420,200 415,220 400,232 382,235 365,228 355,215 352,200 358,190",
+    cx:388,cy:210, small:false,
+    attractions:["少林寺","龙门石窟","清明上河园","云台山","白马寺"],
+    foods:["胡辣汤","烩面","道口烧鸡","灌汤包","洛阳水席"] },
+  { id:"hubei", name:"湖北省", short:"湖北",
+    path:"365,240 390,232 410,238 425,250 420,268 402,278 382,280 362,275 348,262 345,248 352,240",
+    cx:385,cy:258, small:false,
+    attractions:["黄鹤楼","武当山","神农架","三峡大坝","恩施大峡谷"],
+    foods:["热干面","武昌鱼","鸭脖","三鲜豆皮","面窝"] },
+  { id:"hunan", name:"湖南省", short:"湖南",
+    path:"355,280 380,275 400,282 412,298 405,318 388,328 365,330 345,322 332,308 338,290 345,282",
+    cx:375,cy:305, small:false,
+    attractions:["张家界","凤凰古城","岳麓山","橘子洲","天门山"],
+    foods:["臭豆腐","剁椒鱼头","口味虾","糖油粑粑","姊妹团子"] },
+
+  // --- EAST 华东 ---
+  { id:"shanghai", name:"上海市", short:"上海",
+    path:"485,250 500,245 508,255 505,268 492,272 480,265 478,255",
+    cx:493,cy:258, small:true,
+    attractions:["外滩","迪士尼乐园","豫园","东方明珠","南京路"],
+    foods:["小笼包","生煎","蟹粉豆腐","排骨年糕","葱油拌面"] },
+  { id:"jiangsu", name:"江苏省", short:"江苏",
+    path:"445,215 465,208 480,215 490,230 488,248 475,258 458,260 442,255 432,245 428,230 432,218",
+    cx:460,cy:235, small:false,
+    attractions:["苏州园林","南京夫子庙","太湖","中山陵","瘦西湖"],
+    foods:["盐水鸭","松鼠桂鱼","大闸蟹","鸭血粉丝汤","无锡排骨"] },
+  { id:"zhejiang", name:"浙江省", short:"浙江",
+    path:"465,262 482,255 498,262 508,278 505,298 488,308 468,308 450,300 442,285 448,270 458,264",
+    cx:476,cy:285, small:false,
+    attractions:["西湖","乌镇","普陀山","千岛湖","雁荡山"],
+    foods:["东坡肉","龙井虾仁","西湖醋鱼","片儿川","金华火腿"] },
+  { id:"anhui", name:"安徽省", short:"安徽",
+    path:"400,230 422,225 438,232 445,248 440,260 425,268 408,268 392,260 385,248 388,238",
+    cx:418,cy:248, small:false,
+    attractions:["黄山","宏村","九华山","天柱山","西递古村"],
+    foods:["臭鳜鱼","毛豆腐","徽州一品锅","符离集烧鸡","黄山烧饼"] },
+  { id:"jiangxi", name:"江西省", short:"江西",
+    path:"400,280 422,275 440,282 450,298 445,315 430,325 410,328 392,322 378,310 375,295 385,285",
+    cx:415,cy:302, small:false,
+    attractions:["庐山","景德镇","三清山","滕王阁","婺源"],
+    foods:["瓦罐汤","南昌米粉","藜蒿炒腊肉","三杯鸡","饺子粑"] },
+  { id:"fujian", name:"福建省", short:"福建",
+    path:"450,305 468,298 485,305 495,320 490,340 475,348 458,348 440,340 432,325 438,310",
+    cx:465,cy:325, small:false,
+    attractions:["鼓浪屿","武夷山","土楼","三坊七巷","太姥山"],
+    foods:["佛跳墙","沙茶面","蚵仔煎","鱼丸","荔枝肉"] },
+  { id:"taiwan", name:"台湾省", short:"台湾",
+    path:"510,305 528,298 538,310 535,328 522,340 508,338 500,325 502,312",
+    cx:520,cy:320, small:false,
+    attractions:["台北101","日月潭","阿里山","太鲁阁","九份老街"],
+    foods:["牛肉面","蚵仔煎","珍珠奶茶","卤肉饭","凤梨酥"] },
+
+  // --- SOUTH 华南 ---
+  { id:"guangdong", name:"广东省", short:"广东",
+    path:"390,340 415,330 435,338 450,352 455,372 440,388 415,395 392,390 375,378 368,362 372,348",
+    cx:415,cy:368, small:false,
+    attractions:["广州塔","丹霞山","长隆乐园","七星岩","深圳湾"],
+    foods:["早茶点心","烧鹅","白切鸡","肠粉","煲仔饭"] },
+  { id:"guangxi", name:"广西壮族自治区", short:"广西",
+    path:"340,338 365,328 388,335 400,348 395,368 378,385 355,392 332,388 312,378 300,362 305,345 320,338",
+    cx:350,cy:362, small:false,
+    attractions:["桂林山水","阳朔西街","德天瀑布","涠洲岛","龙脊梯田"],
+    foods:["螺蛳粉","桂林米粉","啤酒鱼","酸嘢","柠檬鸭"] },
+  { id:"hainan", name:"海南省", short:"海南",
+    path:"378,395 402,388 418,392 422,405 415,418 395,422 378,416 372,406",
+    cx:398,cy:406, small:true,
+    attractions:["三亚海滩","蜈支洲岛","天涯海角","南山寺","分界洲岛"],
+    foods:["文昌鸡","清补凉","椰子饭","和乐蟹","抱罗粉"] },
+  { id:"hongkong", name:"香港特别行政区", short:"香港",
+    path:"440,388 452,384 456,394 450,402 440,400 436,394",
+    cx:446,cy:394, small:true,
+    attractions:["维多利亚港","迪士尼乐园","海洋公园","太平山顶","星光大道"],
+    foods:["港式茶餐厅","烧腊","蛋挞","菠萝包","丝袜奶茶"] },
+  { id:"macau", name:"澳门特别行政区", short:"澳门",
+    path:"422,388 432,384 436,392 432,400 420,398 417,392",
+    cx:427,cy:393, small:true,
+    attractions:["大三巴牌坊","威尼斯人","澳门塔","官也街","渔人码头"],
+    foods:["葡式蛋挞","猪扒包","水蟹粥","马介休","木糠布丁"] },
+
+  // --- SOUTHWEST 西南 ---
+  { id:"sichuan", name:"四川省", short:"四川",
+    path:"240,215 270,205 300,205 330,215 345,235 340,258 315,272 288,275 260,268 238,255 225,240 228,222",
+    cx:285,cy:242, small:false,
+    attractions:["九寨沟","峨眉山","都江堰","稻城亚丁","乐山大佛"],
+    foods:["火锅","担担面","麻婆豆腐","串串香","钵钵鸡"] },
+  { id:"chongqing", name:"重庆市", short:"重庆",
+    path:"305,238 325,232 340,240 342,255 330,265 312,265 300,258 298,247",
+    cx:320,cy:250, small:true,
+    attractions:["洪崖洞","磁器口","武隆天坑","长江三峡","大足石刻"],
+    foods:["重庆火锅","小面","酸辣粉","毛血旺","辣子鸡"] },
+  { id:"guizhou", name:"贵州省", short:"贵州",
+    path:"290,282 315,272 335,278 350,292 352,310 340,325 318,330 298,325 282,312 275,298 280,286",
+    cx:315,cy:305, small:false,
+    attractions:["黄果树瀑布","千户苗寨","梵净山","荔波小七孔","镇远古镇"],
+    foods:["酸汤鱼","肠旺面","丝娃娃","花溪牛肉粉","恋爱豆腐果"] },
+  { id:"yunnan", name:"云南省", short:"云南",
+    path:"215,288 245,278 265,282 285,290 300,308 310,330 305,355 280,375 245,385 210,382 180,368 162,348 158,325 170,305 190,295",
+    cx:235,cy:335, small:false,
+    attractions:["丽江古城","大理洱海","玉龙雪山","西双版纳","香格里拉"],
+    foods:["过桥米线","鲜花饼","汽锅鸡","野生菌火锅","饵块"] },
+  { id:"xizang", name:"西藏自治区", short:"西藏",
+    path:"25,115 50,100 70,108 85,100 100,115 110,108 125,125 130,110 145,125 155,118 170,138 165,155 175,170 165,190 170,210 180,230 172,255 155,275 130,290 100,295 70,288 45,275 25,255 12,230 5,200 5,170 8,145",
+    cx:100,cy:200, small:false,
+    attractions:["布达拉宫","纳木错","珠穆朗玛峰","大昭寺","羊卓雍措"],
+    foods:["酥油茶","糌粑","牦牛肉","青稞酒","藏面"] },
+
+  // --- NORTHWEST / CENTRAL-NORTH ---
+  { id:"shaanxi", name:"陕西省", short:"陕西",
+    path:"315,180 340,170 360,175 372,188 368,208 352,222 332,225 315,218 305,205 305,190",
+    cx:340,cy:200, small:false,
+    attractions:["兵马俑","华山","大雁塔","华清池","钟鼓楼"],
+    foods:["肉夹馍","羊肉泡馍","凉皮","biangbiang面","臊子面"] }
+];
+
+// Build lookup maps
+const provinceMap = {};
+provinceData.forEach(p => { provinceMap[p.id] = p; });
+
+// ============ DESTINATIONS DATA (popular + niche spots per province) ============
+const provinceDestinations = {
+  xinjiang: [
+    { name:"喀纳斯湖", type:"热门", img:"images/01_喀纳斯湖.jpg", desc:"东方瑞士，中国最美湖泊群，秋季层林尽染如童话世界",
+      bestTime:"6月-10月（秋季最佳）", duration:"2-3天", budget:"1500-3000元",
+      route:"乌鲁木齐→布尔津→喀纳斯→白哈巴→返程",
+      highlights:["观鱼台俯瞰全景","三湾徒步（月亮湾/神仙湾/卧龙湾）","喀纳斯湖游船","白哈巴边境村"],
+      tips:["景区内住宿较贵建议提前预订","早晚温差大需带冲锋衣","区间车是主要交通方式","秋季9月底-10月初最美"] },
+    { name:"禾木村", type:"小众", img:"images/02_禾木村.jpg", desc:"图瓦人原始村落，晨雾缭绕的木屋群被称为神的自留地",
+      bestTime:"6月-10月", duration:"1-2天", budget:"800-1500元",
+      route:"喀纳斯景区→禾木村→美丽峰",
+      highlights:["禾木日出晨雾","美丽峰徒步","禾木河漂流","星空木屋"],
+      tips:["一定要早起看日出晨雾","村里骑马项目可议价","冬季也是绝美雪乡"] },
+    { name:"赛里木湖", type:"热门", img:"images/03_赛里木湖.jpg", desc:"大西洋最后一滴眼泪，湖水湛蓝如宝石镶嵌在天山脚下",
+      bestTime:"6月-8月", duration:"1-2天", budget:"600-1200元",
+      route:"伊宁→赛里木湖→果子沟大桥→返程",
+      highlights:["环湖公路自驾","天鹅湾观鸟","果子沟大桥远眺","湖畔露营"],
+      tips:["环湖约90公里建议自驾","湖边风大需带防风外套","景区内可露营"] }
+  ],
+  qinghai: [
+    { name:"青海湖", type:"热门", img:"images/04_青海湖.jpg", desc:"中国最大内陆湖，七月油菜花海与碧蓝湖水交相辉映",
+      bestTime:"7月-8月", duration:"1-2天", budget:"800-1500元",
+      route:"西宁→日月山→青海湖→茶卡→返程",
+      highlights:["环湖骑行","油菜花田拍照","鸟岛观鸟","日出日落"],
+      tips:["海拔3200米注意高反","7月油菜花季最美","建议包车或自驾"] },
+    { name:"翡翠湖", type:"小众", img:"images/05_翡翠湖.jpg", desc:"比茶卡更纯净的盐湖秘境，翠绿色湖面如翡翠散落人间",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"200-400元",
+      route:"大柴旦镇→翡翠湖→返回",
+      highlights:["无人机航拍","翡翠色盐湖群","日落倒影","人少景美"],
+      tips:["目前免费但需自驾前往","建议带无人机拍摄","晴天最佳"] },
+    { name:"茶卡盐湖", type:"热门", img:"images/06_茶卡盐湖.jpg", desc:"天空之镜，站在湖面上仿佛行走于云端",
+      bestTime:"6月-8月", duration:"半天-1天", budget:"300-500元",
+      route:"西宁→青海湖→茶卡盐湖→返程",
+      highlights:["天空之镜倒影","小火车体验","盐雕广场","日落拍摄"],
+      tips:["穿鲜艳裙子拍照好看","晴天无风时才有镜面效果","景区小火车需另购票"] }
+  ],
+  gansu: [
+    { name:"敦煌莫高窟", type:"热门", img:"images/07_敦煌莫高窟.jpg", desc:"世界文化遗产，千年佛教艺术宝库，丝绸之路上的璀璨明珠",
+      bestTime:"5月-10月", duration:"1-2天", budget:"800-2000元",
+      route:"敦煌市区→莫高窟→鸣沙山月牙泉→返程",
+      highlights:["莫高窟壁画雕塑","数字展示中心","鸣沙山骆驼骑行","月牙泉日落"],
+      tips:["旺季需提前预约门票","窟内禁止拍照","建议请讲解员"] },
+    { name:"扎尕那", type:"小众", img:"images/08_扎尕那.jpg", desc:"藏语意为石匣子，被洛克称为亚当与夏娃的诞生地",
+      bestTime:"6月-9月", duration:"1-2天", budget:"400-800元",
+      route:"迭部县→扎尕那→仙女滩→一线天",
+      highlights:["仙女滩观全景","石城日出","藏寨体验","徒步穿越"],
+      tips:["目前相对小众设施有限","海拔3000+注意高反","适合摄影爱好者"] },
+    { name:"张掖丹霞", type:"热门", img:"images/09_张掖丹霞.jpg", desc:"七彩丹霞地貌，大自然打翻的调色盘",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"300-500元",
+      route:"张掖市区→七彩丹霞→冰沟丹霞→返程",
+      highlights:["七彩丹霞观景台","日落时分色彩最艳","热气球体验","冰沟丹霞"],
+      tips:["下午4点后光线最佳","景区有观光车","夏季注意防晒"] }
+  ],
+  ningxia: [
+    { name:"沙坡头", type:"热门", img:"images/10_沙坡头.jpg", desc:"沙漠与黄河交汇的奇观，中国最好玩的沙漠景区",
+      bestTime:"5月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"银川→中卫→沙坡头→返程",
+      highlights:["羊皮筏子渡黄河","沙漠冲浪车","黄河飞索","骑骆驼"],
+      tips:["沙漠温差大带外套","防晒霜墨镜必备","景区项目需另购票"] },
+    { name:"镇北堡影视城", type:"小众", img:"images/11_镇北堡影视城.jpg", desc:"东方好莱坞，《大话西游》《红高粱》等经典电影拍摄地",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"200-350元",
+      route:"银川市区→镇北堡→西夏王陵→返程",
+      highlights:["经典电影场景再现","古装写真体验","明城与清城","影视道具展"],
+      tips:["可以租古装拍照","建议游玩3-4小时","离市区约30公里"] }
+  ],
+  neimenggu: [
+    { name:"呼伦贝尔草原", type:"热门", img:"images/12_呼伦贝尔草原.jpg", desc:"世界四大草原之一，一望无际的绿色海洋与蓝天白云",
+      bestTime:"6月-9月", duration:"3-5天", budget:"2000-4000元",
+      route:"海拉尔→额尔古纳→恩和→黑山头→满洲里",
+      highlights:["骑马穿越草原","住蒙古包","莫日格勒河","呼伦湖"],
+      tips:["7-8月草最绿","建议包车或自驾","草原蚊虫多带驱蚊水"] },
+    { name:"额济纳胡杨林", type:"小众", img:"images/13_额济纳胡杨林.jpg", desc:"三千年的等待，金秋十月胡杨林如金色海洋般震撼",
+      bestTime:"10月上旬-中旬", duration:"2-3天", budget:"1500-2500元",
+      route:"额济纳旗→一道桥至八道桥→黑城遗址→怪树林",
+      highlights:["胡杨林金黄季","怪树林日落","黑城遗址","沙漠摄影"],
+      tips:["最佳观赏期仅20天左右","住宿紧张需提前预订","早晚光线最佳"] },
+    { name:"阿尔山", type:"热门", img:"images/14_阿尔山.jpg", desc:"中国最小城市，火山天池森林温泉集于一身的秘境",
+      bestTime:"6月-9月（夏）12月-2月（冬）", duration:"2-3天", budget:"1000-2000元",
+      route:"阿尔山市区→天池→石塘林→杜鹃湖→温泉",
+      highlights:["天池群","石塘林火山地貌","杜鹃湖","温泉博物馆"],
+      tips:["冬季可看雾凇和不冻河","旺季住宿较贵","建议住在森林公园内"] }
+  ],
+  beijing: [
+    { name:"故宫博物院", type:"热门", img:"images/15_故宫博物院.jpg", desc:"六百年紫禁城，世界最大宫殿建筑群，中华文明瑰宝",
+      bestTime:"4月-6月/9月-11月", duration:"1天", budget:"300-600元",
+      route:"天安门→故宫→景山公园→北海公园",
+      highlights:["太和殿","珍宝馆","钟表馆","角楼打卡"],
+      tips:["需提前预约购票","周一闭馆","建议上午尽早入园","穿舒服的鞋走路多"] },
+    { name:"古北水镇", type:"小众", img:"images/16_古北水镇.jpg", desc:"长城脚下的江南水乡，司马台长城夜景绝美",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1200元",
+      route:"北京市区→古北水镇→司马台长城→返程",
+      highlights:["司马台长城夜景","古镇摇橹船","温泉泡汤","星空帐篷"],
+      tips:["周末人多建议工作日去","夜游长城需单独购票","镇内住宿略贵"] }
+  ],
+  tianjin: [
+    { name:"天津之眼", type:"热门", img:"images/17_天津之眼.jpg", desc:"建在桥上的摩天轮，海河夜景尽收眼底",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-400元",
+      route:"古文化街→意式风情区→天津之眼→海河夜游",
+      highlights:["摩天轮观夜景","海河游船","古文化街","意式风情区"],
+      tips:["晚上去灯光效果最好","需提前预约购票","附近停车不便"] },
+    { name:"盘山", type:"小众", img:"images/18_盘山.jpg", desc:"京东第一山，乾隆帝32次巡幸的北方名山",
+      bestTime:"4月-10月", duration:"1天", budget:"200-400元",
+      route:"天津市区→蓟州→盘山→返程",
+      highlights:["五峰八石","挂月峰","天成寺","登山索道"],
+      tips:["距市区约120公里","建议全程索道省体力","春秋季最佳"] }
+  ],
+  hebei: [
+    { name:"承德避暑山庄", type:"热门", img:"images/19_承德避暑山庄.jpg", desc:"清代皇家夏宫，中国最大的古典园林建筑群",
+      bestTime:"6月-9月", duration:"1-2天", budget:"400-800元",
+      route:"承德市区→避暑山庄→外八庙→返程",
+      highlights:["宫殿区","湖区游船","烟雨楼","普陀宗乘之庙"],
+      tips:["景区很大建议安排一整天","夏季避暑胜地","可请导游讲解历史"] },
+    { name:"北戴河", type:"热门", img:"images/20_北戴河.jpg", desc:"北方最受欢迎的海滨度假胜地，夏天避暑天堂",
+      bestTime:"6月-8月", duration:"2-3天", budget:"800-1500元",
+      route:"北京/天津→北戴河→鸽子窝公园→老虎石→返程",
+      highlights:["鸽子窝日出","老虎石海滩","碧螺塔酒吧公园","海鲜大餐"],
+      tips:["暑假人很多尽量避开周末","海水不如南方清澈","适合亲子游"] }
+  ],
+  shanxi: [
+    { name:"平遥古城", type:"热门", img:"images/21_平遥古城.jpg", desc:"保存最完好的明清古城，穿越回晋商辉煌年代",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"太原→平遥古城→乔家大院→返程",
+      highlights:["古城墙","日升昌票号","县衙","又见平遥演出"],
+      tips:["古城内民宿很有特色","《又见平遥》必看","建议请导游讲解"] },
+    { name:"壶口瀑布", type:"小众", img:"images/22_壶口瀑布.jpg", desc:"世界上最大的黄色瀑布，黄河之水天上来",
+      bestTime:"7月-10月（汛期水大）", duration:"半天-1天", budget:"300-500元",
+      route:"临汾/延安→壶口瀑布→返程",
+      highlights:["主瀑布观景","龙洞","十里龙槽","黄河大合唱"],
+      tips:["汛期水量大更壮观","注意水雾会打湿衣服","山西侧和陕西侧都可观"] }
+  ],
+  shandong: [
+    { name:"泰山", type:"热门", img:"images/23_泰山.jpg", desc:"五岳之首，历代帝王封禅之地，日出云海震撼人心",
+      bestTime:"4月-11月", duration:"1-2天", budget:"500-1000元",
+      route:"泰安→红门/天外村→中天门→南天门→玉皇顶",
+      highlights:["泰山日出","十八盘","南天门","玉皇顶"],
+      tips:["夜爬看日出需带手电","山顶冷需带厚衣服","可乘索道到南天门"] },
+    { name:"崂山", type:"热门", img:"images/24_崂山.jpg", desc:"海上第一名山，道教圣地，山海相连的独特景观",
+      bestTime:"5月-10月", duration:"1天", budget:"300-500元",
+      route:"青岛市区→崂山→太清宫→仰口→返程",
+      highlights:["太清宫","仰口海滩","巨峰","北九水"],
+      tips:["多条线路可选","太清线最经典","春夏多云雾"] },
+    { name:"蓬莱阁", type:"小众", img:"images/25_蓬莱阁.jpg", desc:"八仙过海传说发源地，海市蜃楼奇观时有出现",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"蓬莱市区→蓬莱阁→八仙渡→返程",
+      highlights:["蓬莱阁古建筑","海市蜃楼（偶遇）","八仙过海景区","水城"],
+      tips:["海市蜃楼春夏之交概率最高","可与长岛联游","海鲜不错"] }
+  ],
+  liaoning: [
+    { name:"大连老虎滩", type:"热门", img:"images/26_大连老虎滩.jpg", desc:"北方最浪漫的海滨城市，海洋公园与沙滩的完美结合",
+      bestTime:"6月-9月", duration:"2-3天", budget:"1000-2000元",
+      route:"大连市区→老虎滩→星海广场→棒棰岛→返程",
+      highlights:["老虎滩海洋公园","星海广场","滨海路自驾","金石滩"],
+      tips:["夏季海鲜肥美","滨海路适合自驾","6月有樱桃节"] },
+    { name:"本溪水洞", type:"小众", img:"images/27_本溪水洞.jpg", desc:"世界最长地下充水溶洞，乘坐游船穿越地下暗河",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"本溪市区→水洞→关门山→返程",
+      highlights:["地下暗河游船","钟乳石奇观","地质博物馆","秋季红叶"],
+      tips:["洞内常年12°C带外套","全程坐船游览约40分钟","秋季关门山红叶也很美"] }
+  ],
+  jilin: [
+    { name:"长白山天池", type:"热门", img:"images/28_长白山天池.jpg", desc:"中国最深的火山湖，十六座山峰环抱一池碧水",
+      bestTime:"7月-9月（看天池）12月-2月（滑雪）", duration:"2-3天", budget:"1500-2500元",
+      route:"长春→长白山北坡/西坡→天池→瀑布→温泉",
+      highlights:["天池全貌","长白瀑布","地下森林","聚龙温泉"],
+      tips:["看到天池需要运气（多云雾）","山顶很冷需带外套","北坡开发最成熟"] },
+    { name:"雾凇岛", type:"小众", img:"images/29_雾凇岛.jpg", desc:"中国四大自然奇观之一，冬日清晨玉树琼花如梦似幻",
+      bestTime:"12月-次年2月", duration:"1天", budget:"300-600元",
+      route:"吉林市区→乌拉街镇→雾凇岛→返程",
+      highlights:["晨间雾凇拍摄","满族民俗村","松花江畔","韩屯农家"],
+      tips:["需早起（6-8点最佳）","气温极低注意保暖","前一天晚上无风才易形成"] }
+  ],
+  heilongjiang: [
+    { name:"哈尔滨冰雪大世界", type:"热门", img:"images/30_哈尔滨冰雪大世界.jpg", desc:"世界上最大的冰雪主题公园，冰雕城堡的梦幻王国",
+      bestTime:"12月-次年2月", duration:"1-2天", budget:"800-1500元",
+      route:"哈尔滨市区→冰雪大世界→中央大街→索菲亚教堂",
+      highlights:["冰雕城堡","冰滑梯","雪雕艺术","夜景灯光"],
+      tips:["零下20°C+注意保暖","傍晚入园可看白天和夜景","暖宝宝必备"] },
+    { name:"漠河北极村", type:"小众", img:"images/31_漠河北极村.jpg", desc:"中国最北端，极光出现地，夏至白夜与冬至极寒的极致体验",
+      bestTime:"6月-8月（白夜）12月-2月（极寒）", duration:"2-3天", budget:"1500-2500元",
+      route:"漠河市→北极村→北红村→龙江第一湾",
+      highlights:["中国最北点","极光观测（极罕见）","白夜体验","龙江第一湾"],
+      tips:["冬季最低-40°C做好保暖","极光非常罕见不要抱太大期望","夏季白夜很特别"] }
+  ],
+  henan: [
+    { name:"少林寺", type:"热门", img:"images/32_少林寺.jpg", desc:"天下第一名刹，禅宗祖庭与少林武术发源地",
+      bestTime:"4月-10月", duration:"1天", budget:"400-800元",
+      route:"郑州→登封→少林寺→塔林→三皇寨→返程",
+      highlights:["少林武僧表演","塔林","达摩洞","三皇寨悬空栈道"],
+      tips:["武僧表演有固定时间","景区较大建议坐电瓶车","可爬嵩山"] },
+    { name:"龙门石窟", type:"热门", img:"images/33_龙门石窟.jpg", desc:"中国四大石窟之一，伊河两岸十万尊佛像的宏伟石刻",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"洛阳市区→龙门石窟→白马寺→返程",
+      highlights:["卢舍那大佛","万佛洞","东山石窟","夜游龙门"],
+      tips:["西山石窟最精华","建议请讲解员","傍晚光线好适合拍照"] },
+    { name:"云台山", type:"热门", img:"images/34_云台山.jpg", desc:"全球首批世界地质公园，红石峡与茱萸峰的绝美山水",
+      bestTime:"5月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"焦作→云台山→红石峡→潭瀑峡→茱萸峰",
+      highlights:["红石峡","潭瀑峡","茱萸峰玻璃栈道","泉瀑峡"],
+      tips:["景区分多个区域需1-2天","红石峡是精华必去","夏季水量大更美"] }
+  ],
+  hubei: [
+    { name:"武当山", type:"热门", img:"images/35_武当山.jpg", desc:"道教第一名山，张三丰创立太极拳的武林圣地",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"十堰→武当山→金顶→南岩→紫霄宫→返程",
+      highlights:["金顶","南岩宫","紫霄宫","太子坡"],
+      tips:["金顶需爬山或索道","山上住宿可看日出","道教文化浓厚"] },
+    { name:"恩施大峡谷", type:"小众", img:"images/36_恩施大峡谷.jpg", desc:"媲美科罗拉多的中国大峡谷，一炷香奇石令人叹为观止",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"恩施市区→大峡谷→云龙地缝→七星寨→返程",
+      highlights:["一炷香","云龙地缝","七星寨","绝壁栈道"],
+      tips:["需要体力好大量爬山路","下雨后云雾好看","恩施市区到景区约2小时"] },
+    { name:"神农架", type:"热门", img:"images/37_神农架.jpg", desc:"神秘的原始森林，野人传说与高山湿地的自然秘境",
+      bestTime:"5月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"宜昌→神农架→大九湖→神农顶→返程",
+      highlights:["大九湖晨雾","神农顶","金丝猴","板壁岩"],
+      tips:["山区天气多变带雨具","大九湖清晨最美","建议自驾或包车"] }
+  ],
+  hunan: [
+    { name:"张家界", type:"热门", img:"images/38_张家界.jpg", desc:"阿凡达取景地，三千奇峰拔地而起如外星世界",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1500-2500元",
+      route:"张家界市区→森林公园→袁家界→天门山→返程",
+      highlights:["袁家界哈利路亚山","天门山玻璃栈道","金鞭溪","百龙天梯"],
+      tips:["景区很大建议玩2-3天","天门山需提前购票","雨后云海最美"] },
+    { name:"凤凰古城", type:"热门", img:"images/39_凤凰古城.jpg", desc:"沈从文笔下的边城，沱江边的吊脚楼夜景如梦",
+      bestTime:"4月-10月", duration:"1-2天", budget:"500-1000元",
+      route:"张家界/长沙→凤凰古城→沱江泛舟→返程",
+      highlights:["沱江夜景","吊脚楼","沈从文故居","苗寨体验"],
+      tips:["晚上比白天更美","住沱江边民宿观景好","商业化程度较高"] }
+  ],
+  shanghai: [
+    { name:"外滩", type:"热门", img:"images/40_外滩.jpg", desc:"万国建筑博览群与陆家嘴摩天大楼交相辉映的上海名片",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-500元",
+      route:"南京路→外滩→轮渡→陆家嘴→返程",
+      highlights:["外滩夜景","万国建筑群","轮渡体验","外白渡桥"],
+      tips:["晚上亮灯后最美","可坐轮渡到对岸陆家嘴","周末人很多"] },
+    { name:"朱家角古镇", type:"小众", img:"images/41_朱家角古镇.jpg", desc:"上海近郊的江南水乡，小桥流水人家的静谧时光",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"200-400元",
+      route:"上海市区→朱家角→放生桥→课植园→返程",
+      highlights:["放生桥","课植园","古镇游船","扎肉等小吃"],
+      tips:["地铁可达很方便","避开周末人少","小吃丰富不贵"] }
+  ],
+  jiangsu: [
+    { name:"苏州园林", type:"热门", img:"images/42_苏州园林.jpg", desc:"咫尺之内再造乾坤，中国古典园林艺术的巅峰之作",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"苏州市区→拙政园→狮子林→平江路→寒山寺",
+      highlights:["拙政园","留园","平江路古街","虎丘"],
+      tips:["拙政园需预约","建议请导游讲解园林设计","春季花开最美"] },
+    { name:"瘦西湖", type:"热门", img:"images/43_瘦西湖.jpg", desc:"烟花三月下扬州，园林与湖景完美融合的江南韵味",
+      bestTime:"3月-5月", duration:"1天", budget:"400-700元",
+      route:"扬州市区→瘦西湖→个园→东关街→返程",
+      highlights:["五亭桥","二十四桥","白塔","长堤春柳"],
+      tips:["三月四月是最佳季节","可坐游船游览","东关街小吃多"] }
+  ],
+  zhejiang: [
+    { name:"西湖", type:"热门", img:"images/44_西湖.jpg", desc:"人间天堂，断桥残雪与雷峰夕照的千年诗意画卷",
+      bestTime:"3月-5月/9月-11月", duration:"1-2天", budget:"500-1000元",
+      route:"杭州市区→断桥→苏堤→雷峰塔→灵隐寺",
+      highlights:["断桥","苏堤春晓","雷峰塔","三潭印月","灵隐寺"],
+      tips:["西湖免费开放","建议骑行环湖","避开黄金周人超级多"] },
+    { name:"千岛湖", type:"热门", img:"images/45_千岛湖.jpg", desc:"1078个岛屿散落在碧波之中，农夫山泉水源地",
+      bestTime:"4月-10月", duration:"1-2天", budget:"800-1500元",
+      route:"杭州→千岛湖→中心湖区→梅峰岛→返程",
+      highlights:["梅峰岛观岛","环湖骑行","游船登岛","鱼头宴"],
+      tips:["必吃千岛湖鱼头","建议住湖景房","可自驾环湖"] }
+  ],
+  anhui: [
+    { name:"黄山", type:"热门", img:"images/46_黄山.jpg", desc:"五岳归来不看山，黄山归来不看岳，奇松怪石云海温泉",
+      bestTime:"4月-11月", duration:"2-3天", budget:"1200-2000元",
+      route:"黄山市区→云谷寺→北海→光明顶→迎客松→下山",
+      highlights:["迎客松","光明顶日出","西海大峡谷","云海"],
+      tips:["山上住宿需提前预订","带登山杖省力","天气变化快带雨衣"] },
+    { name:"宏村", type:"热门", img:"images/47_宏村.jpg", desc:"画里的乡村，徽派建筑与月沼倒影构成最美水墨画",
+      bestTime:"3月-5月/9月-11月", duration:"半天-1天", budget:"300-500元",
+      route:"黄山市→宏村→月沼→承志堂→南湖",
+      highlights:["月沼倒影","南湖","承志堂","写生学生"],
+      tips:["清晨人少最美","可与黄山联游","周边还有西递"] }
+  ],
+  jiangxi: [
+    { name:"庐山", type:"热门", img:"images/48_庐山.jpg", desc:"匡庐奇秀甲天下，千年人文圣山与云海瀑布的完美结合",
+      bestTime:"5月-10月", duration:"2-3天", budget:"800-1500元",
+      route:"九江→庐山→牯岭镇→三叠泉→五老峰→返程",
+      highlights:["三叠泉瀑布","五老峰","含鄱口日出","牯岭镇"],
+      tips:["山上住宿凉爽是避暑胜地","三叠泉台阶很多需体力","多云雾天气变化快"] },
+    { name:"婺源", type:"热门", img:"images/49_婺源.jpg", desc:"中国最美乡村，春天油菜花海与秋天晒秋的摄影天堂",
+      bestTime:"3月-4月（油菜花）10月-11月（晒秋）", duration:"2-3天", budget:"800-1500元",
+      route:"婺源→篁岭→江湾→李坑→月亮湾→返程",
+      highlights:["篁岭晒秋","江岭油菜花","月亮湾晨雾","徽派古村"],
+      tips:["春季和秋季最美","景点分散建议包车","篁岭是必去精华"] }
+  ],
+  fujian: [
+    { name:"鼓浪屿", type:"热门", img:"images/50_鼓浪屿.jpg", desc:"海上花园万国建筑博物馆，钢琴之岛的浪漫时光",
+      bestTime:"3月-5月/10月-11月", duration:"1-2天", budget:"600-1200元",
+      route:"厦门→鼓浪屿→日光岩→菽庄花园→龙头路",
+      highlights:["日光岩","菽庄花园","万国建筑","龙头路小吃"],
+      tips:["船票需提前预订","岛上只能步行","避开节假日人少"] },
+    { name:"武夷山", type:"热门", img:"images/51_武夷山.jpg", desc:"世界双遗产，九曲溪竹筏漂流与岩茶大红袍的故乡",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"武夷山市→天游峰→九曲溪漂流→大红袍→返程",
+      highlights:["九曲溪竹筏","天游峰","大红袍母树","水帘洞"],
+      tips:["竹筏需提前预订","爬山较累做好防晒","品茶体验不容错过"] }
+  ],
+  taiwan: [
+    { name:"日月潭", type:"热门", img:"images/52_日月潭.jpg", desc:"台湾最大的天然湖泊，湖光山色如诗如画",
+      bestTime:"全年", duration:"1-2天", budget:"800-1500元",
+      route:"台中→日月潭→环湖骑行→玄光寺→返程",
+      highlights:["环湖骑行","游船赏景","玄光寺","向山游客中心"],
+      tips:["骑行是最佳游览方式","阿婆茶叶蛋很有名","清晨湖面最美"] },
+    { name:"九份老街", type:"小众", img:"images/53_九份老街.jpg", desc:"千与千寻灵感地，挂满红灯笼的山城老街面朝大海",
+      bestTime:"全年", duration:"半天-1天", budget:"300-600元",
+      route:"台北→九份→竖崎路→阿妹茶楼→黄金瀑布",
+      highlights:["竖崎路灯笼","阿妹茶楼","黄金博物馆","阴阳海"],
+      tips:["傍晚灯笼亮起最美","周末人很多建议平日去","芋圆必吃"] }
+  ],
+  guangdong: [
+    { name:"广州塔", type:"热门", img:"images/54_广州塔.jpg", desc:"小蛮腰的曼妙身姿，珠江新城天际线的绝对主角",
+      bestTime:"全年", duration:"半天", budget:"300-600元",
+      route:"花城广场→广州塔→珠江夜游→北京路",
+      highlights:["塔顶观景台","摩天轮","珠江夜游","城市夜景"],
+      tips:["提前购票有优惠","晚上灯光秀好看","塔顶摩天轮需排队"] },
+    { name:"丹霞山", type:"热门", img:"images/55_丹霞山.jpg", desc:"中国红石公园，丹霞地貌命名地，阳元石与阴元石的天造地设",
+      bestTime:"3月-5月/10月-12月", duration:"1-2天", budget:"400-800元",
+      route:"韶关→丹霞山→长老峰→阳元石→返程",
+      highlights:["长老峰日出","阳元石","翔龙湖","锦江游船"],
+      tips:["需要爬山体力要求中等","日出很美值得早起","夏季很热注意防暑"] }
+  ],
+  guangxi: [
+    { name:"桂林山水", type:"热门", img:"images/56_桂林山水.jpg", desc:"桂林山水甲天下，漓江两岸的喀斯特峰林如百里画卷",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1200-2000元",
+      route:"桂林→漓江漂流→阳朔→十里画廊→遇龙河",
+      highlights:["漓江竹筏","阳朔西街","遇龙河漂流","十里画廊骑行"],
+      tips:["漓江漂流选杨堤至兴坪段","阳朔适合多住几天","骑行是最好的探索方式"] },
+    { name:"涠洲岛", type:"小众", img:"images/57_涠洲岛.jpg", desc:"中国最年轻的火山岛，玻璃海与火山地貌的独特海岛",
+      bestTime:"4月-6月/10月-12月", duration:"2-3天", budget:"1000-2000元",
+      route:"北海→涠洲岛→鳄鱼山→滴水丹屏→五彩滩",
+      highlights:["鳄鱼山火山公园","五彩滩日出","滴水丹屏日落","海鲜市场"],
+      tips:["台风季7-9月注意天气","租电动车环岛最佳方式","海鲜自己去市场买来加工"] }
+  ],
+  hainan: [
+    { name:"三亚海滩", type:"热门", img:"images/58_三亚海滩.jpg", desc:"中国最美的热带海滩，椰风海韵的度假天堂",
+      bestTime:"10月-次年4月", duration:"3-5天", budget:"2000-5000元",
+      route:"三亚→亚龙湾→蜈支洲岛→天涯海角→免税店",
+      highlights:["亚龙湾","蜈支洲岛潜水","天涯海角","南山寺"],
+      tips:["旺季住宿贵需提前订","防晒必须做好","海鲜第一市场性价比高"] },
+    { name:"分界洲岛", type:"小众", img:"images/59_分界洲岛.jpg", desc:"海南南北气候分界线上的海岛，海水清澈适合潜水",
+      bestTime:"10月-次年5月", duration:"1天", budget:"500-1000元",
+      route:"三亚/万宁→分界洲岛→潜水→海豚表演→返程",
+      highlights:["海底观光","潜水体验","海豚表演","水上运动"],
+      tips:["比蜈支洲岛人少性价比高","潜水体验不错","需要坐船上岛"] }
+  ],
+  hongkong: [
+    { name:"维多利亚港", type:"热门", img:"images/60_维多利亚港.jpg", desc:"世界三大夜景之一，摩天大楼与港湾交织的东方之珠",
+      bestTime:"全年", duration:"半天-1天", budget:"300-800元",
+      route:"尖沙咀→星光大道→天星小轮→中环→太平山顶",
+      highlights:["幻彩咏香江灯光秀","天星小轮","太平山顶全景","星光大道"],
+      tips:["每晚8点有灯光秀","天星小轮是性价比最高的游览方式","太平山缆车排队较长"] },
+    { name:"南丫岛", type:"小众", img:"images/61_南丫岛.jpg", desc:"香港的后花园，离岛徒步与海鲜大餐的悠闲时光",
+      bestTime:"10月-次年4月", duration:"半天-1天", budget:"200-500元",
+      route:"中环码头→南丫岛榕树湾→索罟湾→海鲜→返程",
+      highlights:["徒步路线","洪圣爷湾海滩","海鲜大餐","离岛风情"],
+      tips:["适合半日或一日游","徒步难度低适合所有人","索罟湾海鲜有名"] }
+  ],
+  macau: [
+    { name:"大三巴牌坊", type:"热门", img:"images/62_大三巴牌坊.jpg", desc:"澳门的标志，巴洛克风格教堂遗址见证四百年中西交融",
+      bestTime:"全年", duration:"半天-1天", budget:"300-800元",
+      route:"拱北口岸→大三巴→议事亭前地→妈阁庙→威尼斯人",
+      highlights:["大三巴牌坊","议事亭前地","妈阁庙","威尼斯人"],
+      tips:["附近有很多手信店","钜记手信的杏仁饼不错","可与香港联游"] }
+  ],
+  sichuan: [
+    { name:"九寨沟", type:"热门", img:"images/63_九寨沟.jpg", desc:"人间仙境童话世界，五彩池与诺日朗瀑布的绝美山水",
+      bestTime:"9月-11月（秋季最佳）", duration:"1-2天", budget:"1000-2000元",
+      route:"成都→九寨沟→沟内游览→返程",
+      highlights:["五花海","五彩池","诺日朗瀑布","原始森林"],
+      tips:["需提前预约门票","秋季10月中下旬最美","景区内需坐观光车"] },
+    { name:"稻城亚丁", type:"热门", img:"images/64_稻城亚丁.jpg", desc:"蓝色星球上最后一片净土，三神山与牛奶海的极致风光",
+      bestTime:"5月-10月", duration:"2-3天", budget:"1500-3000元",
+      route:"成都→稻城→亚丁→冲古寺→洛绒牛场→牛奶海",
+      highlights:["仙乃日神山","牛奶海","五色海","洛绒牛场"],
+      tips:["海拔4000+注意高反","需要较好体力","景区内无补给自带干粮"] },
+    { name:"乐山大佛", type:"热门", img:"images/65_乐山大佛.jpg", desc:"世界最大石刻弥勒佛坐像，山是一尊佛佛是一座山",
+      bestTime:"4月-10月", duration:"半天-1天", budget:"300-500元",
+      route:"乐山市区→乐山大佛→凌云寺→返程",
+      highlights:["大佛全貌","凌云寺","九曲栈道","三江汇流"],
+      tips:["可坐船从江上看全景","栈道较窄需排队","乐山小吃很出名"] }
+  ],
+  chongqing: [
+    { name:"洪崖洞", type:"热门", img:"images/66_洪崖洞.jpg", desc:"千与千寻现实版，依山而建的吊脚楼群夜景如童话",
+      bestTime:"全年（夜景更佳）", duration:"半天", budget:"200-400元",
+      route:"解放碑→洪崖洞→长江索道→南山一棵树",
+      highlights:["洪崖洞夜景","长江索道","解放碑","南山夜景"],
+      tips:["晚上亮灯后最美","最佳拍照点在千厮门大桥","电梯排队很长建议走楼梯"] },
+    { name:"武隆天坑", type:"小众", img:"images/67_武隆天坑.jpg", desc:"《变形金刚4》取景地，天生三桥与天坑地缝的地质奇观",
+      bestTime:"4月-10月", duration:"1天", budget:"500-800元",
+      route:"重庆市区→武隆→天生三桥→龙水峡地缝→返程",
+      highlights:["天生三桥","天龙桥","天福官驿","龙水峡地缝"],
+      tips:["距市区约2.5小时车程","景区内步行较多","建议跟团或自驾"] }
+  ],
+  guizhou: [
+    { name:"黄果树瀑布", type:"热门", img:"images/68_黄果树瀑布.jpg", desc:"亚洲最大瀑布群，水帘洞穿越瀑布的独特体验",
+      bestTime:"6月-9月（水量最大）", duration:"1天", budget:"400-700元",
+      route:"贵阳→黄果树→陡坡塘→天星桥→返程",
+      highlights:["大瀑布水帘洞","陡坡塘瀑布","天星桥景区","银链坠潭"],
+      tips:["夏季水量大更壮观","水帘洞需穿雨衣","景区大需一整天"] },
+    { name:"千户苗寨", type:"热门", img:"images/69_千户苗寨.jpg", desc:"世界最大苗族聚居村寨，万家灯火点亮山谷的震撼夜景",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1000元",
+      route:"贵阳→凯里→西江千户苗寨→观景台→返程",
+      highlights:["苗寨全景夜景","苗族长桌宴","蜡染体验","银饰制作"],
+      tips:["一定要看夜景","观景台是最佳拍摄点","可体验苗族服饰"] }
+  ],
+  yunnan: [
+    { name:"丽江古城", type:"热门", img:"images/70_丽江古城.jpg", desc:"世界文化遗产，四方街与纳西族文化交织的浪漫古城",
+      bestTime:"4月-10月", duration:"2-3天", budget:"1000-2000元",
+      route:"丽江→古城→玉龙雪山→束河古镇→拉市海",
+      highlights:["四方街","木府","玉龙雪山","束河古镇","酒吧街"],
+      tips:["古城内住宿有特色","玉龙雪山需提前购票","海拔2400米注意高反"] },
+    { name:"大理洱海", type:"热门", img:"images/71_大理洱海.jpg", desc:"风花雪月之地，苍山洱海畔的慢生活令人向往",
+      bestTime:"3月-5月/9月-11月", duration:"2-3天", budget:"800-1500元",
+      route:"大理古城→洱海环湖→喜洲古镇→双廊→返程",
+      highlights:["环洱海骑行","喜洲白族民居","双廊","苍山索道"],
+      tips:["环洱海约120公里适合骑行或自驾","双廊海景客栈很赞","三月街有集市"] },
+    { name:"西双版纳", type:"热门", img:"images/72_西双版纳.jpg", desc:"中国唯一的热带雨林，傣族风情与东南亚文化交融",
+      bestTime:"11月-次年4月", duration:"3-5天", budget:"1500-2500元",
+      route:"景洪→热带植物园→野象谷→曼听公园→告庄",
+      highlights:["中科院植物园","野象谷","告庄星光夜市","傣族园"],
+      tips:["泼水节4月中旬最热闹","热带水果丰富便宜","注意防蚊虫"] }
+  ],
+  xizang: [
+    { name:"布达拉宫", type:"热门", img:"images/73_布达拉宫.jpg", desc:"世界屋脊上的宫殿，藏传佛教圣地与西藏最耀眼的地标",
+      bestTime:"5月-10月", duration:"半天-1天", budget:"500-1000元",
+      route:"拉萨市区→布达拉宫→大昭寺→八廓街",
+      highlights:["布达拉宫全景","大昭寺","八廓街转经","药王山观景"],
+      tips:["需提前预约门票","海拔3650米注意高反","殿内禁止拍照"] },
+    { name:"羊卓雍措", type:"小众", img:"images/74_羊卓雍措.jpg", desc:"西藏三大圣湖之一，碧蓝湖水如珊瑚枝般蜿蜒在群山之间",
+      bestTime:"6月-9月", duration:"半天-1天", budget:"300-600元",
+      route:"拉萨→羊卓雍措→环湖→返程",
+      highlights:["岗巴拉山口观全景","环湖自驾","湖畔拍照","经幡祈福"],
+      tips:["距拉萨约2小时车程","海拔4400+注意高反","天气变化快带厚衣服"] }
+  ],
+  shaanxi: [
+    { name:"兵马俑", type:"热门", img:"images/75_兵马俑.jpg", desc:"世界第八大奇迹，两千年前秦帝国的地下军团",
+      bestTime:"全年", duration:"半天-1天", budget:"400-700元",
+      route:"西安→兵马俑→华清池→返程",
+      highlights:["一号坑军阵","铜车马","三号坑指挥部","华清池"],
+      tips:["建议请导游讲解否则看不懂","距市区约1小时车程","可顺便游览华清池"] },
+    { name:"华山", type:"热门", img:"images/76_华山.jpg", desc:"奇险天下第一山，长空栈道与鹞子翻身的惊险刺激",
+      bestTime:"4月-10月", duration:"1-2天", budget:"600-1200元",
+      route:"西安→华山→北峰→西峰→南峰→东峰→返程",
+      highlights:["长空栈道","鹞子翻身","西峰日落","东峰日出"],
+      tips:["建议西上北下省体力","夜爬看日出需带头灯","恐高者慎入长空栈道"] }
+  ]
+};
+
+// ============ DATA MANAGER ============
+function getData() { let raw = localStorage.getItem('tripPlannerV2'); return raw ? JSON.parse(raw) : { users:{}, currentUser:null }; }
+function saveData(d) { localStorage.setItem('tripPlannerV2', JSON.stringify(d)); }
+function getUser(name) { return getData().users[name] || null; }
+function saveUser(name, userData) { let d = getData(); d.users[name] = userData; if (!d.currentUser) d.currentUser = name; saveData(d); }
+function deleteUser(name) { let d = getData(); delete d.users[name]; if (d.currentUser === name) d.currentUser = null; saveData(d); }
+function getCurrentUser() { return getData().currentUser; }
+function setCurrentUser(name) { let d = getData(); d.currentUser = name; saveData(d); }
+function getAllUsers() { return getData().users; }
+
+// ============ HELPERS ============
+
+// ============ ACCURATE SCENIC IMAGE LOADER ============
+// 改进点：不再用随机图源作为第一选择，而是优先从维基百科/维基共享资源读取该景点词条的真实缩略图。
+// 如果词条没有图片或网络失败，再按“景点名关键词”进入备用图源，最后用本地 SVG 占位，避免空白。
+
+// 手工校准：这些景点的百科词条首图容易匹配错，因此优先使用指定的 Wikimedia Commons 真实景点图。
+// 说明：通过 Special:FilePath 读取，可避免手写复杂的缩略图真实路径。
+const scenicDirectImageFiles = {
+  "武隆天坑":"Wulongtianshengsanqiao.JPG",
+  "沙坡头":"https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_900%2Ch_600/w_37%2Cx_6%2Cy_6%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/lv66ymnr8ozqzdrgrny1/%E6%B2%99%E5%9D%A1%E5%A4%B4.webp",
+  // 以下几个是用户二次指出的错误图，改为手工校准的固定图源，避免关键词/词条首图误匹配。
+  // 其中“扎尕那”使用新浪实拍图，“雾凇岛”改用用户指定百度百科图册中的 f2deb48f 图源；“沙坡头”改为更壮观的沙丘景观图。
+  "扎尕那":"https://k.sinaimg.cn/n/front/20171016/3jcZ-fymviyp1693822.jpg/w700d1q75cms.jpg",
+  "雾凇岛":"images/31_雾凇岛.jpg",
+  "额济纳胡杨林":"https://k.sinaimg.cn/n/spider20241031/0/w2048h1152/20241031/7428-2591602446d87f0961462437f18d40ab.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+  "涠洲岛":"https://dimg04.c-ctrip.com/images/1lo3112000kqv718p447D_R_800_600.jpg?proc=autoorient",
+  "日月潭":"Sun Moon Lake 日月潭 - panoramio (3).jpg",
+  "九份老街":"2008-03-08 Jiufen Old Street 03.jpg",
+  "武夷山":"Jiuqu Brook in Wuyi Mountains.jpg",
+  "庐山":"Mount Lu.jpg",
+  "朱家角古镇":"1 zhujiajiao ancient water town 2023.jpg",
+  "恩施大峡谷":"Enshi grand canyon.jpg",
+  "盘山":"Pan shan.jpg",
+  "青海湖":"Qinghai Lake 2016.jpg",
+  "青海湖":"Qinghai Lake 2016.jpg",
+  "翡翠湖":"Emerald Lake 01.jpg",
+  "喀纳斯湖":"Kanas Lake North XinJiang.jpg"
+};
+function commonsFileUrl(fileName, width=900) {
+  if (/^https?:\/\//i.test(fileName)) return fileName;
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(fileName)}?width=${width}`;
+}
+
+const scenicWikiTitles = {
+  "喀纳斯湖":"喀纳斯湖", "禾木村":"禾木村", "赛里木湖":"赛里木湖", "青海湖":"青海湖", "翡翠湖":"大柴旦翡翠湖", "茶卡盐湖":"茶卡盐湖",
+  "敦煌莫高窟":"莫高窟", "扎尕那":"扎尕那景区", "张掖丹霞":"张掖国家地质公园", "沙坡头":"沙坡头", "镇北堡影视城":"镇北堡西部影城",
+  "呼伦贝尔草原":"呼伦贝尔草原", "额济纳胡杨林":"额济纳胡杨林", "阿尔山":"阿尔山国家森林公园",
+  "故宫博物院":"北京故宫", "古北水镇":"古北水镇", "天津之眼":"天津之眼", "盘山":"盘山", "承德避暑山庄":"承德避暑山庄", "北戴河":"北戴河区",
+  "平遥古城":"平遥古城", "壶口瀑布":"壶口瀑布", "泰山":"泰山", "崂山":"崂山", "蓬莱阁":"蓬莱阁",
+  "大连老虎滩":"老虎滩海洋公园", "本溪水洞":"本溪水洞", "长白山天池":"长白山天池", "雾凇岛":"images/31_雾凇岛.jpg", "哈尔滨冰雪大世界":"哈尔滨冰雪大世界", "漠河北极村":"北极村",
+  "少林寺":"少林寺", "龙门石窟":"龙门石窟", "云台山":"云台山", "武当山":"武当山", "恩施大峡谷":"恩施大峡谷", "神农架":"神农架林区",
+  "张家界":"张家界国家森林公园", "凤凰古城":"凤凰古城", "外滩":"外滩", "朱家角古镇":"朱家角镇",
+  "苏州园林":"苏州古典园林", "瘦西湖":"瘦西湖", "西湖":"西湖", "千岛湖":"千岛湖", "黄山":"黄山", "宏村":"宏村", "庐山":"庐山", "婺源":"婺源县",
+  "鼓浪屿":"鼓浪屿", "武夷山":"武夷山", "日月潭":"日月潭", "九份老街":"九份", "广州塔":"广州塔", "丹霞山":"丹霞山",
+  "桂林山水":"漓江", "涠洲岛":"涠洲岛", "三亚海滩":"亚龙湾", "分界洲岛":"分界洲岛", "维多利亚港":"维多利亚港", "南丫岛":"南丫岛", "大三巴牌坊":"大三巴牌坊",
+  "九寨沟":"九寨沟风景名胜区", "稻城亚丁":"稻城亚丁", "乐山大佛":"乐山大佛", "洪崖洞":"洪崖洞", "武隆天坑":"武隆喀斯特旅游区",
+  "黄果树瀑布":"黄果树瀑布", "千户苗寨":"西江千户苗寨", "丽江古城":"丽江古城", "大理洱海":"洱海", "西双版纳":"西双版纳傣族自治州",
+  "布达拉宫":"布达拉宫", "羊卓雍措":"羊卓雍错", "兵马俑":"秦始皇兵马俑", "华山":"华山"
+};
+const scenicEnglishTitles = {
+  "翡翠湖":"Emerald Lake Qinghai", "古北水镇":"Gubei Water Town", "镇北堡影视城":"Zhenbeibao Western Film Studio", "扎尕那":"Zhagana Scenic Area", "额济纳胡杨林":"Ejina Populus Euphratica Forest Inner Mongolia",
+  "大连老虎滩":"Laohutan Ocean Park", "雾凇岛":"images/31_雾凇岛.jpg", "朱家角古镇":"Zhujiajiao", "三亚海滩":"Yalong Bay", "分界洲岛":"Boundary Island",
+  "南丫岛":"Lamma Island", "稻城亚丁":"Yading Nature Reserve", "洪崖洞":"Hongya Cave", "千户苗寨":"Xijiang Miao Village", "羊卓雍措":"Yamdrok Lake"
+};
+const scenicImageKeywords = {
+  "喀纳斯湖":"Kanas Lake Xinjiang China", "禾木村":"Hemu Village Xinjiang China", "赛里木湖":"Sayram Lake Xinjiang China", "青海湖":"Qinghai Lake China", "翡翠湖":"Dachaidan Emerald Lake Qinghai", "茶卡盐湖":"Chaka Salt Lake Qinghai",
+  "敦煌莫高窟":"Mogao Caves Dunhuang", "扎尕那":"Zhagana Gansu China mountain village", "张掖丹霞":"Zhangye Danxia National Geopark", "沙坡头":"Shapotou Ningxia", "镇北堡影视城":"Zhenbeibao Western Film Studio",
+  "呼伦贝尔草原":"Hulunbuir Grassland", "额济纳胡杨林":"Ejina Populus Euphratica Forest Inner Mongolia", "阿尔山":"Arxan National Forest Park",
+  "故宫博物院":"Forbidden City Beijing", "古北水镇":"Gubei Water Town", "天津之眼":"Tianjin Eye", "盘山":"Mount Panshan Tianjin", "承德避暑山庄":"Chengde Mountain Resort", "北戴河":"Beidaihe Beach",
+  "平遥古城":"Pingyao Ancient City", "壶口瀑布":"Hukou Waterfall", "泰山":"Mount Tai", "崂山":"Mount Laoshan Qingdao", "蓬莱阁":"Penglai Pavilion",
+  "大连老虎滩":"Dalian Laohutan Ocean Park", "本溪水洞":"Benxi Water Cave", "长白山天池":"Heaven Lake Changbai Mountain", "雾凇岛":"images/31_雾凇岛.jpg", "哈尔滨冰雪大世界":"Harbin Ice and Snow World", "漠河北极村":"Mohe Arctic Village",
+  "少林寺":"Shaolin Temple", "龙门石窟":"Longmen Grottoes", "云台山":"Yuntai Mountain Henan", "武当山":"Wudang Mountains", "恩施大峡谷":"Enshi Grand Canyon", "神农架":"Shennongjia Forest",
+  "张家界":"Zhangjiajie National Forest Park", "凤凰古城":"Fenghuang Ancient Town", "外滩":"The Bund Shanghai", "朱家角古镇":"Zhujiajiao Water Town",
+  "苏州园林":"Suzhou Classical Gardens", "瘦西湖":"Slender West Lake Yangzhou", "西湖":"West Lake Hangzhou", "千岛湖":"Qiandao Lake", "黄山":"Huangshan Mountain", "宏村":"Hongcun Anhui", "庐山":"Mount Lu", "婺源":"Wuyuan Jiangxi",
+  "鼓浪屿":"Gulangyu Island", "武夷山":"Wuyi Mountains", "日月潭":"Sun Moon Lake Taiwan", "九份老街":"Jiufen Old Street", "广州塔":"Canton Tower", "丹霞山":"Danxia Mountain Guangdong",
+  "桂林山水":"Li River Guilin", "涠洲岛":"Weizhou Island Guangxi", "三亚海滩":"Yalong Bay Sanya Beach", "分界洲岛":"Boundary Island Hainan", "维多利亚港":"Victoria Harbour Hong Kong", "南丫岛":"Lamma Island Hong Kong", "大三巴牌坊":"Ruins of Saint Paul's Macau",
+  "九寨沟":"Jiuzhaigou Valley", "稻城亚丁":"Daocheng Yading", "乐山大佛":"Leshan Giant Buddha", "洪崖洞":"Hongya Cave Chongqing", "武隆天坑":"Wulong Karst Three Natural Bridges",
+  "黄果树瀑布":"Huangguoshu Waterfall", "千户苗寨":"Xijiang Qianhu Miao Village", "丽江古城":"Lijiang Old Town", "大理洱海":"Erhai Lake Dali", "西双版纳":"Xishuangbanna rainforest",
+  "布达拉宫":"Potala Palace", "羊卓雍措":"Yamdrok Lake Tibet", "兵马俑":"Terracotta Army Xi'an", "华山":"Mount Hua"
+};
+const scenicWikiImageCache = {};
+function scenicQuery(name) { return scenicImageKeywords[name] || (name + ' 中国 景点 风景'); }
+function wikiTitlesFor(name) {
+  const list = [];
+  if (scenicWikiTitles[name]) list.push({lang:'zh', title: scenicWikiTitles[name]});
+  list.push({lang:'zh', title: name});
+  if (scenicEnglishTitles[name]) list.push({lang:'en', title: scenicEnglishTitles[name]});
+  return list.filter((v, i, arr) => arr.findIndex(x => x.lang === v.lang && x.title === v.title) === i);
+}
+function wikiSummaryUrl(lang, title) {
+  return `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+}
+async function fetchWikiImage(name) {
+  if (scenicWikiImageCache[name] !== undefined) return scenicWikiImageCache[name];
+  if (scenicDirectImageFiles[name]) {
+    const directUrl = commonsFileUrl(scenicDirectImageFiles[name], 900);
+    scenicWikiImageCache[name] = directUrl;
+    return directUrl;
+  }
+  const candidates = wikiTitlesFor(name);
+  for (const c of candidates) {
+    try {
+      const res = await fetch(wikiSummaryUrl(c.lang, c.title));
+      if (!res.ok) continue;
+      const data = await res.json();
+      const img = data.originalimage && data.originalimage.source ? data.originalimage.source : (data.thumbnail && data.thumbnail.source ? data.thumbnail.source : '');
+      if (img && !/\.svg($|\?)/i.test(img)) {
+        scenicWikiImageCache[name] = img;
+        return img;
+      }
+    } catch (e) {}
+  }
+  scenicWikiImageCache[name] = '';
+  return '';
+}
+function encodeSvgText(text) {
+  return String(text || '景点图片').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function scenicFallbackSvg(name) {
+  const title = encodeSvgText(name || '夏日旅行');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7FD8FF"/><stop offset=".55" stop-color="#8EDFB3"/><stop offset="1" stop-color="#FFE69A"/></linearGradient></defs>
+    <rect width="640" height="420" fill="url(#g)"/>
+    <circle cx="95" cy="82" r="48" fill="#FFD84A" opacity=".9"/>
+    <path d="M0 260 Q120 210 240 260 T480 260 T640 260 V420 H0Z" fill="#5BBEE8" opacity=".82"/>
+    <path d="M0 315 Q140 270 280 315 T640 315 V420 H0Z" fill="#4EC9B0" opacity=".9"/>
+    <text x="320" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="800" fill="#256D85">${title}</text>
+    <text x="320" y="238" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#256D85">Travel Photo Loading</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+}
+function getLocalScenicImage(name) {
+  // 纯本地图片模式：只从 provinceDestinations 中读取 img 字段，不再请求网络图片。
+  const scenicName = name || '';
+  for (const list of Object.values(provinceDestinations || {})) {
+    const found = list.find(d => d.name === scenicName);
+    if (found && found.img) return found.img;
+  }
+  return '';
+}
+function scenicImageCandidates(name) {
+  const localImg = getLocalScenicImage(name);
+  return localImg ? [localImg, scenicFallbackSvg(name)] : [scenicFallbackSvg(name)];
+}
+function handleScenicImgError(img) {
+  const name = img.dataset.scenicName || img.alt || '夏日旅行';
+  const idx = parseInt(img.dataset.fallbackIndex || '0', 10) + 1;
+  const list = scenicImageCandidates(name);
+  if (idx < list.length) {
+    img.dataset.fallbackIndex = String(idx);
+    img.src = list[idx];
+    if (idx === list.length - 1) img.classList.add('is-fallback');
+  } else {
+    img.onerror = null;
+    img.classList.add('is-fallback');
+    img.src = scenicFallbackSvg(name);
+  }
+}
+function setScenicImage(img, name) {
+  if (!img) return;
+  const scenicName = name || img.alt || '夏日旅行';
+  img.classList.remove('is-fallback');
+  img.dataset.scenicName = scenicName;
+  img.dataset.fallbackIndex = '0';
+  img.onerror = function(){ handleScenicImgError(this); };
+  img.style.display = 'block';
+
+  const localImg = getLocalScenicImage(scenicName);
+  if (localImg) {
+    img.src = localImg;
+  } else {
+    img.classList.add('is-fallback');
+    img.src = scenicFallbackSvg(scenicName);
+  }
+}
+function hydrateScenicImages(scope) {
+  (scope || document).querySelectorAll('img[data-scenic-name]').forEach(img => {
+    setScenicImage(img, img.dataset.scenicName || img.alt);
+  });
+}
+function prepareProvinceDestinationImages() {
+  // 本地图片模式下，候选图只保留本地路径与 SVG 兜底图。
+  Object.values(provinceDestinations).forEach(list => {
+    list.forEach(d => { d.imgCandidates = d.img ? [d.img, scenicFallbackSvg(d.name)] : [scenicFallbackSvg(d.name)]; });
+  });
+}
+const ratingEmojis = {1:'😫',2:'😣',3:'😟',4:'😕',5:'😐',6:'🙂',7:'😊',8:'😄',9:'🤩',10:'😍'};
+function getRatingClass(score) { if (score >= 7) return 'high'; if (score >= 4) return 'mid'; return 'low'; }
+
+// ============ RENDER MAP ============
+let currentModalProvince = null;
+
+
+async function renderMap() {
+  const el = document.getElementById('chinaMap');
+  if (!el) return;
+  const user = getCurrentUser();
+  const userData = user ? getUser(user) : null;
+  const ratings = userData ? (userData.ratings || {}) : {};
+  const notInterested = userData ? (userData.notInterested || []) : [];
+  el.innerHTML = '<div class="map-loading">正在加载真实省界地图...</div>';
+  const GEO_URLS = [
+    'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
+    'https://geo.datav.aliyun.com/areas_v3/bound/100000.json',
+    'https://cdn.jsdelivr.net/gh/longwosion/geojson-map-china@master/china.json'
+  ];
+  try {
+    const geojson = await loadChinaGeoJSON(GEO_URLS);
+    renderAccurateGeoJSONMap(el, geojson, ratings, notInterested);
+  } catch (err) {
+    console.warn('真实省界地图加载失败：', err);
+    el.innerHTML = '<div class="map-error"><strong>真实省界地图加载失败</strong><p>请确认网络可访问地图数据源后刷新页面。</p><button onclick="renderMap()">重新加载地图</button></div>';
+  }
+  updateRatingSummary();
+  renderDestinationList();
+}
+
+async function loadChinaGeoJSON(urls) {
+  let lastError = null;
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { cache: 'force-cache' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const first = text.indexOf('{');
+      const last = text.lastIndexOf('}');
+      if (first < 0 || last < 0) throw new Error('不是有效 JSON');
+      return JSON.parse(text.slice(first, last + 1));
+    } catch (e) { lastError = e; }
+  }
+  throw lastError || new Error('全部地图源加载失败');
+}
+function normalizeProvinceName(name) {
+  return String(name || '').replace(/特别行政区|维吾尔自治区|壮族自治区|回族自治区|自治区|省|市/g, '').replace(/香港岛|澳门半岛/g, '').trim();
+}
+const provinceNameToId = {'新疆':'xinjiang','西藏':'xizang','内蒙古':'neimenggu','青海':'qinghai','甘肃':'gansu','宁夏':'ningxia','陕西':'shaanxi','北京':'beijing','天津':'tianjin','河北':'hebei','山西':'shanxi','山东':'shandong','辽宁':'liaoning','吉林':'jilin','黑龙江':'heilongjiang','河南':'henan','湖北':'hubei','湖南':'hunan','上海':'shanghai','江苏':'jiangsu','浙江':'zhejiang','安徽':'anhui','江西':'jiangxi','福建':'fujian','台湾':'taiwan','广东':'guangdong','广西':'guangxi','海南':'hainan','香港':'hongkong','澳门':'macau','四川':'sichuan','重庆':'chongqing','贵州':'guizhou','云南':'yunnan'};
+function getFeatureProvinceId(feature) {
+  const props = feature.properties || {};
+  const rawName = props.name || props.NAME || props.fullname || props.fullName || props.Name || props.adname || '';
+  const n = normalizeProvinceName(rawName);
+  if (provinceNameToId[n]) return provinceNameToId[n];
+  for (const key in provinceNameToId) if (String(rawName).includes(key)) return provinceNameToId[key];
+  return null;
+}
+function renderAccurateGeoJSONMap(el, geojson, ratings, notInterested) {
+  const features = (geojson.features || []).filter(f => getFeatureProvinceId(f));
+  if (!features.length) throw new Error('地图数据中没有匹配到省级边界');
+  const width = 920, height = 690, pad = 28;
+  const points = [];
+  features.forEach(f => collectLonLat(f.geometry.coordinates, points));
+  const projected = points.map(([lon, lat]) => projectMercator(lon, lat));
+  const xs = projected.map(p => p[0]), ys = projected.map(p => p[1]);
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const scale = Math.min((width - pad * 2) / (maxX - minX), (height - pad * 2) / (maxY - minY));
+  const offsetX = (width - (maxX - minX) * scale) / 2;
+  const offsetY = (height - (maxY - minY) * scale) / 2;
+  const transform = (lon, lat) => { const [x, y] = projectMercator(lon, lat); return [offsetX + (x - minX) * scale, height - (offsetY + (y - minY) * scale)]; };
+  function clsForProvince(id) { if (ratings[id] && ratings[id].score !== undefined) { const s = ratings[id].score; if (s >= 7) return ' rated-high'; if (s >= 4) return ' rated-mid'; return ' rated-low'; } if (notInterested.includes(id)) return ' not-interested'; return ''; }
+  let svg = `<svg viewBox="0 0 ${width} ${height}" class="accurate-china-svg" role="img" aria-label="真实省级行政区边界中国地图"><defs><filter id="mapPaperShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#256D85" flood-opacity="0.20"/></filter></defs><rect x="0" y="0" width="${width}" height="${height}" rx="34" fill="#DDF6FF" opacity=".42"/><g class="map-paper-layer" filter="url(#mapPaperShadow)">`;
+  const labelData = [];
+  features.forEach(f => {
+    const id = getFeatureProvinceId(f), p = provinceMap[id];
+    if (!p) return;
+    const d = geometryToPath(f.geometry, transform);
+    if (!d) return;
+    svg += `<path class="province-shape${clsForProvince(id)}" d="${d}" data-id="${id}" onclick="openProvinceModal('${id}')"><title>${p.name}</title></path>`;
+    const c = getGeometryCentroid(f.geometry);
+    if (c) { const [lx, ly] = transform(c[0], c[1]); labelData.push({x: lx, y: ly, name: p.short, small: p.small || ['香港','澳门','上海','天津','北京','宁夏','海南'].includes(p.short)}); }
+  });
+  svg += '</g><g class="map-label-layer">';
+  labelData.forEach(l => { svg += `<text x="${l.x.toFixed(1)}" y="${l.y.toFixed(1)}" class="province-label${l.small ? ' small' : ''}">${l.name}</text>`; });
+  svg += '</g></svg>';
+  el.innerHTML = svg;
+}
+function projectMercator(lon, lat) { const x = lon; const y = Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI / 180) / 2)) * 180 / Math.PI; return [x, y]; }
+function collectLonLat(coords, out) { if (!Array.isArray(coords)) return; if (typeof coords[0] === 'number' && typeof coords[1] === 'number') { out.push(coords); return; } coords.forEach(c => collectLonLat(c, out)); }
+function geometryToPath(geometry, transform) { if (!geometry || !geometry.coordinates) return ''; const type = geometry.type; const polys = type === 'Polygon' ? [geometry.coordinates] : (type === 'MultiPolygon' ? geometry.coordinates : []); return polys.map(poly => poly.map(ring => ring.map((pt, i) => { const [x, y] = transform(pt[0], pt[1]); return (i ? 'L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2); }).join(' ') + ' Z').join(' ')).join(' '); }
+function getGeometryCentroid(geometry) { const pts = []; collectLonLat(geometry.coordinates, pts); if (!pts.length) return null; let sx = 0, sy = 0; pts.forEach(p => { sx += p[0]; sy += p[1]; }); return [sx / pts.length, sy / pts.length]; }
+function updateRatingSummary() {
+  const user = getCurrentUser();
+  const container = document.getElementById('ratingSummary');
+  const nameEl = document.getElementById('sidebarUserName');
+  if (!user) { nameEl.textContent = '评分摘要'; container.innerHTML = '<div class="empty-state">请先在"用户设置"中选择用户</div>'; return; }
+  nameEl.textContent = user + ' 的评分';
+  const userData = getUser(user);
+  if (!userData || (!userData.ratings && !userData.notInterested)) { container.innerHTML = '<div class="empty-state">尚未评分，点击地图开始</div>'; return; }
+  const ratings = userData.ratings || {};
+  const notInterested = userData.notInterested || [];
+  let html = '<div class="summary-count">已评分: ' + (Object.keys(ratings).length + notInterested.length) + ' / 34</div>';
+  provinceData.forEach(p => {
+    if (ratings[p.id] && ratings[p.id].score !== undefined) {
+      let s = ratings[p.id].score, cls = getRatingClass(s);
+      html += `<div class="rating-summary-item"><span>${p.short}</span><span class="rating-score ${cls}">${ratingEmojis[s]} ${s}分</span></div>`;
+    } else if (notInterested.includes(p.id)) {
+      html += `<div class="rating-summary-item"><span>${p.short}</span><span style="color:#a0aec0">🚫 不想去</span></div>`;
+    }
+  });
+  container.innerHTML = html || '<div class="empty-state">尚未评分</div>';
+}
+
+// ============ MODAL ============
+let currentGuideProvince = null;
+let currentGuideDest = null;
+
+function openProvinceModal(provinceId) {
+  if (!getCurrentUser()) { alert('请先在"用户设置"中选择或创建用户'); return; }
+  const p = provinceMap[provinceId];
+  if (!p) return;
+  currentModalProvince = provinceId;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalSubtitle').textContent = '点击旅游地卡片查看详细攻略，或直接评分';
+
+  // Render destination cards with images
+  const dests = provinceDestinations[provinceId] || [];
+  let destHtml = '';
+  if (dests.length > 0) {
+    destHtml = dests.map((d, i) => {
+      const typeClass = d.type === '热门' ? 'popular' : 'niche';
+      return `<button type="button" class="dest-card" onclick="event.stopPropagation();showGuide('${provinceId}',${i})">
+        <img class="dest-card-img" src="${d.img || scenicFallbackSvg(d.name)}" alt="${d.name}" data-scenic-name="${d.name}" data-fallback-index="0" loading="lazy" onerror="handleScenicImgError(this)">
+        <div class="dest-card-body">
+          <div class="dest-card-name">${d.name}<span class="dest-card-type ${typeClass}">${d.type}</span></div>
+          <div class="dest-card-desc">${d.desc}</div>
+          <div class="dest-card-hint">👉 点击查看详细攻略</div>
+        </div>
+      </button>`;
+    }).join('');
+  } else {
+    destHtml = '<p style="color:var(--muted);font-size:.88rem;">暂无目的地数据，敬请期待</p>';
+  }
+  document.getElementById('modalDestinations').innerHTML = destHtml;
+  hydrateScenicImages(document.getElementById('modalDestinations'));
+
+  document.getElementById('modalFoods').innerHTML = p.foods.map(f => `<span class="tag food">${f}</span>`).join('');
+
+  const userData = getUser(getCurrentUser());
+  const ratings = userData ? (userData.ratings || {}) : {};
+  const notInterested = userData ? (userData.notInterested || []) : [];
+  const existing = ratings[provinceId];
+  const isNotInterested = notInterested.includes(provinceId);
+
+  document.getElementById('notInterestedCheck').checked = isNotInterested;
+  document.getElementById('ratingSlider').disabled = isNotInterested;
+  if (isNotInterested) {
+    document.getElementById('ratingSlider').value = 5;
+    document.getElementById('ratingValue').textContent = '-';
+    document.getElementById('ratingEmoji').textContent = '🚫';
+  } else if (existing && existing.score !== undefined) {
+    document.getElementById('ratingSlider').value = existing.score;
+    updateRatingDisplay();
+  } else {
+    document.getElementById('ratingSlider').value = 5;
+    updateRatingDisplay();
+  }
+  document.getElementById('btnClear').style.display = (existing || isNotInterested) ? '' : 'none';
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function showGuide(provinceId, destIndex) {
+  const dests = provinceDestinations[provinceId];
+  if (!dests || !dests[destIndex]) return;
+  const d = dests[destIndex];
+  const p = provinceMap[provinceId];
+  currentGuideProvince = provinceId;
+  currentGuideDest = destIndex;
+
+  document.getElementById('guideTitle').textContent = d.name;
+  document.getElementById('guideSubtitle').textContent = (p ? p.name + ' · ' : '') + d.type + '推荐';
+  setScenicImage(document.getElementById('guideImg'), d.name);
+
+  document.getElementById('guideInfo').innerHTML = `
+    <span class="info-chip">📅 最佳时间：${d.bestTime}</span>
+    <span class="info-chip">⏱️ 建议时长：${d.duration}</span>
+    <span class="info-chip">💰 预算参考：${d.budget}</span>
+  `;
+
+  document.getElementById('guideRoute').textContent = d.route;
+
+  document.getElementById('guideHighlights').innerHTML = d.highlights.map(h => `<li>${h}</li>`).join('');
+
+  document.getElementById('guideTips').innerHTML = d.tips.map(t => `<li>${t}</li>`).join('');
+
+  document.getElementById('guideLinks').innerHTML = `
+    <a class="guide-link-btn mafengwo" target="_blank" href="https://www.mafengwo.cn/search/s.php?q=${encodeURIComponent(d.name)}">🧭 马蜂窝攻略</a>
+    <a class="guide-link-btn xiaohongshu" target="_blank" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(d.name)}">📕 小红书攻略</a>
+  `;
+
+  document.getElementById('guideOverlay').classList.add('show');
+}
+
+function closeGuide() {
+  document.getElementById('guideOverlay').classList.remove('show');
+  currentGuideProvince = null;
+  currentGuideDest = null;
+}
+
+function closeGuideAndRate() {
+  const provinceId = currentGuideProvince;
+  closeGuide();
+  if (provinceId) {
+    // Scroll to rating section in the still-open province modal
+    setTimeout(() => {
+      const slider = document.getElementById('ratingSlider');
+      if (slider) slider.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+  }
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); currentModalProvince = null; }
+function updateRatingDisplay() {
+  const v = parseInt(document.getElementById('ratingSlider').value);
+  document.getElementById('ratingValue').textContent = v;
+  document.getElementById('ratingEmoji').textContent = ratingEmojis[v] || '😐';
+}
+function onNotInterestedChange() {
+  const checked = document.getElementById('notInterestedCheck').checked;
+  document.getElementById('ratingSlider').disabled = checked;
+  document.getElementById('ratingValue').textContent = checked ? '-' : document.getElementById('ratingSlider').value;
+  document.getElementById('ratingEmoji').textContent = checked ? '🚫' : (ratingEmojis[document.getElementById('ratingSlider').value] || '😐');
+}
+
+function saveProvinceRating() {
+  if (!currentModalProvince) return;
+  const user = getCurrentUser(); if (!user) return;
+  let userData = getUser(user) || { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
+  if (!userData.ratings) userData.ratings = {};
+  if (!userData.notInterested) userData.notInterested = [];
+
+  if (document.getElementById('notInterestedCheck').checked) {
+    delete userData.ratings[currentModalProvince];
+    if (!userData.notInterested.includes(currentModalProvince)) userData.notInterested.push(currentModalProvince);
+  } else {
+    userData.notInterested = userData.notInterested.filter(x => x !== currentModalProvince);
+    userData.ratings[currentModalProvince] = { score: parseInt(document.getElementById('ratingSlider').value) };
+  }
+  saveUser(user, userData);
+  closeModal(); renderMap();
+}
+function clearProvinceRating() {
+  if (!currentModalProvince) return;
+  const user = getCurrentUser(); if (!user) return;
+  let userData = getUser(user); if (!userData) return;
+  if (!userData.ratings) userData.ratings = {};
+  if (!userData.notInterested) userData.notInterested = [];
+  delete userData.ratings[currentModalProvince];
+  userData.notInterested = userData.notInterested.filter(x => x !== currentModalProvince);
+  saveUser(user, userData);
+  closeModal(); renderMap();
+}
+
+// ============ USER SETUP ============
+const presetNames = ['张三','李四','王五','赵六','陈七','周八','吴九','郑十','钱十一'];
+
+function renderSetup() {
+  const users = getAllUsers(), userNames = Object.keys(users), current = getCurrentUser();
+  let chipsHtml = '';
+  presetNames.forEach(name => {
+    let cls = 'preset-chip';
+    if (name === current) cls += ' selected';
+    if (userNames.includes(name) && name !== current) cls += ' used';
+    chipsHtml += `<span class="${cls}" onclick="selectPresetUser('${name}')">${name}${userNames.includes(name) && name !== current ? ' ✓' : ''}</span>`;
+  });
+  document.getElementById('presetUsers').innerHTML = chipsHtml;
+
+  let listHtml = '';
+  userNames.forEach(name => {
+    const u = users[name];
+    const ratings = u.ratings || {}, notInterested = u.notInterested || [];
+    const rated = Object.keys(ratings).length + notInterested.length;
+    const hasTime = u.vacationStart ? ' ✓时间' : '';
+    listHtml += `<div class="user-list-item">
+      <span><strong>${name}</strong> ${name === current ? '◀ 当前' : ''} — 已评 ${rated}/34${hasTime}</span>
+      <div class="actions"><button onclick="switchToUser('${name}')">切换</button><button class="danger" onclick="deleteUserConfirm('${name}')">删除</button></div></div>`;
+  });
+  document.getElementById('userList').innerHTML = listHtml || '<div class="empty-state">暂无用户，请点击上方预设名或输入自定义姓名</div>';
+
+  const count = userNames.length;
+  document.getElementById('progressFill').style.width = (count/9*100)+'%';
+  document.getElementById('progressText').textContent = count+'/9';
+  document.getElementById('currentUserBadge').textContent = current || '未选择用户';
+  const badge = document.getElementById('resultsBadge');
+  if (count>0) { badge.style.display=''; badge.textContent=count+'/9'; } else badge.style.display='none';
+  updateAllTabs();
+}
+
+function selectPresetUser(name) {
+  let users = getAllUsers();
+  if (!users[name]) { users[name] = { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] }; saveData({ users, currentUser:name }); }
+  else setCurrentUser(name);
+  renderSetup(); renderMap(); renderTimeTab();
+}
+function addCustomUser() {
+  const input = document.getElementById('customNameInput'), name = input.value.trim();
+  if (!name) { alert('请输入用户名'); return; }
+  let users = getAllUsers();
+  if (users[name]) { alert('该用户名已存在'); return; }
+  users[name] = { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
+  saveData({ users, currentUser:name }); input.value = '';
+  renderSetup(); renderMap(); renderTimeTab();
+}
+function switchToUser(name) { setCurrentUser(name); renderSetup(); renderMap(); renderTimeTab(); }
+function deleteUserConfirm(name) { if (!confirm(`确定删除"${name}"及其所有数据？`)) return; deleteUser(name); renderSetup(); renderMap(); renderTimeTab(); }
+function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem('tripPlannerV2'); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
+
+// ============ TIME TAB ============
+let tempUnavailPeriods = [];
+
+function renderTimeTab() {
+  const user = getCurrentUser();
+  if (!user) { document.getElementById('vacationStart').value=''; document.getElementById('vacationEnd').value=''; document.getElementById('unavailPeriods').innerHTML='<div class="empty-state">请先选择用户</div>'; document.getElementById('timelineViz').innerHTML='<div class="empty-state">请先选择用户</div>'; return; }
+  const userData = getUser(user);
+  if (userData) { document.getElementById('vacationStart').value=userData.vacationStart||''; document.getElementById('vacationEnd').value=userData.vacationEnd||''; tempUnavailPeriods=JSON.parse(JSON.stringify(userData.unavailablePeriods||[])); }
+  else { document.getElementById('vacationStart').value=''; document.getElementById('vacationEnd').value=''; tempUnavailPeriods=[]; }
+  renderUnavailPeriods(); renderTimelineViz();
+}
+function renderUnavailPeriods() {
+  const container = document.getElementById('unavailPeriods');
+  if (tempUnavailPeriods.length===0) { container.innerHTML='<div style="color:var(--text-light);font-size:0.85rem;margin-bottom:8px">暂未添加无法出行时间段</div>'; return; }
+  container.innerHTML = tempUnavailPeriods.map((p,i)=>`<div class="unavail-period">
+    <input type="date" value="${p.start}" onchange="updateTempPeriod(${i},'start',this.value)">
+    <span>至</span><input type="date" value="${p.end}" onchange="updateTempPeriod(${i},'end',this.value)">
+    <button onclick="removeTempPeriod(${i})">删除</button></div>`).join('');
+}
+function addUnavailPeriod() { tempUnavailPeriods.push({start:'',end:''}); renderUnavailPeriods(); }
+function updateTempPeriod(i,k,v) { tempUnavailPeriods[i][k]=v; }
+function removeTempPeriod(i) { tempUnavailPeriods.splice(i,1); renderUnavailPeriods(); }
+function saveVacationDates() {
+  const user = getCurrentUser(); if (!user) { alert('请先选择用户'); return; }
+  let userData = getUser(user) || { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
+  userData.vacationStart=document.getElementById('vacationStart').value;
+  userData.vacationEnd=document.getElementById('vacationEnd').value;
+  saveUser(user,userData); renderTimelineViz();
+}
+function saveUnavailPeriods() {
+  const user = getCurrentUser(); if (!user) { alert('请先选择用户'); return; }
+  let userData = getUser(user) || { ratings:{}, notInterested:[], vacationStart:'', vacationEnd:'', unavailablePeriods:[] };
+  userData.unavailablePeriods = tempUnavailPeriods.filter(p=>p.start&&p.end);
+  saveUser(user,userData); renderUnavailPeriods(); renderTimelineViz();
+}
+function renderTimelineViz() {
+  const container = document.getElementById('timelineViz'), user = getCurrentUser();
+  if (!user) { container.innerHTML='<div class="empty-state">请先选择用户</div>'; return; }
+  const userData = getUser(user);
+  if (!userData||!userData.vacationStart||!userData.vacationEnd) { container.innerHTML='<div class="empty-state">请先设置假期日期</div>'; return; }
+  const start=new Date(userData.vacationStart), end=new Date(userData.vacationEnd);
+  if (start>=end) { container.innerHTML='<div class="empty-state">放假日期必须早于开学日期</div>'; return; }
+  const totalDays=Math.ceil((end-start)/(86400000));
+  const sortedPeriods=(userData.unavailablePeriods||[]).filter(p=>p.start&&p.end).sort((a,b)=>new Date(a.start)-new Date(b.start));
+  let html=`<div style="margin-bottom:8px;font-size:0.9rem">假期：${userData.vacationStart} 至 ${userData.vacationEnd}（共 ${totalDays} 天）</div>`;
+  let segments=[], current=new Date(start);
+  sortedPeriods.forEach(p=>{
+    let ps=new Date(p.start), pe=new Date(p.end);
+    if(pe<=start||ps>=end) return;
+    if(ps<start) ps=new Date(start); if(pe>end) pe=new Date(end);
+    if(ps>current) segments.push({type:'available',start:new Date(current),end:new Date(ps)});
+    segments.push({type:'unavailable',start:new Date(ps),end:new Date(pe)});
+    current=new Date(pe);
+  });
+  if(current<end) segments.push({type:'available',start:new Date(current),end:new Date(end)});
+  html+='<div class="time-overlap-bar">';
+  segments.forEach(seg=>{ let sd=Math.ceil((seg.end-seg.start)/86400000), pct=(sd/totalDays*100).toFixed(1); html+=`<div class="time-overlap-seg ${seg.type==='available'?'avail':'unavail'}" style="width:${pct}%">${pct>4?(seg.type==='available'?'✓':'✗'):''}</div>`; });
+  html+='</div><div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-light);margin-top:4px"><span>'+userData.vacationStart+'</span><span>'+userData.vacationEnd+'</span></div>';
+  html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>可出行</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>不可出行</span></div>';
+  container.innerHTML=html;
+}
+
+// ============ RESULTS TAB ============
+function renderResults() { renderRankingTable(); renderBarChart(); renderTimeOverlapAnalysis(); renderRecommendations(); }
+
+function renderRankingTable() {
+  const container=document.getElementById('rankingTable'), users=getAllUsers(), userNames=Object.keys(users);
+  if(userNames.length===0) { container.innerHTML='<div class="empty-state">暂无用户数据</div>'; return; }
+  let scores=provinceData.map(p=>{
+    let total=0,count=0,highest=0,lowest=10,ni=0;
+    userNames.forEach(name=>{ const u=users[name]; if(u.notInterested&&u.notInterested.includes(p.id)) ni++; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ let s=u.ratings[p.id].score; total+=s; count++; if(s>highest) highest=s; if(s<lowest) lowest=s; } });
+    return {id:p.id,name:p.short,fullName:p.name,avg:count>0?(total/count):0,count,highest,lowest:count>0?lowest:0,ni,totalVoters:userNames.length};
+  });
+  scores.sort((a,b)=>{ if(b.avg!==a.avg) return b.avg-a.avg; if(b.count!==a.count) return b.count-a.count; return a.ni-b.ni; });
+  let html='<table class="result-table"><thead><tr><th>#</th><th>目的地</th><th>平均分</th><th>想去</th><th>不想去</th><th>最高/最低</th></tr></thead><tbody>';
+  scores.forEach((s,i)=>{
+    let rc=i===0?'rank-1':(i===1?'rank-2':(i===2?'rank-3':''));
+    html+=`<tr><td><span class="rank-badge ${rc}">${i+1}</span></td><td><strong>${s.name}</strong></td><td><span class="rating-score ${s.avg>0?getRatingClass(Math.round(s.avg)):''}">${s.avg>0?s.avg.toFixed(1):'-'}</span></td><td>${s.count}/${s.totalVoters}</td><td>${s.ni||'0'}</td><td>${s.count>0?s.highest+'/'+s.lowest:'-'}</td></tr>`;
+  });
+  html+='</tbody></table>'; container.innerHTML=html;
+}
+
+function renderBarChart() {
+  const container=document.getElementById('barChart'), users=getAllUsers(), userNames=Object.keys(users);
+  if(userNames.length===0) { container.innerHTML='<div class="empty-state">暂无数据</div>'; return; }
+  let scores=provinceData.map(p=>{ let total=0,count=0; userNames.forEach(name=>{ const u=users[name]; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ total+=u.ratings[p.id].score; count++; } }); return {name:p.short,avg:count>0?(total/count):0,count}; });
+  scores.sort((a,b)=>b.avg-a.avg);
+  const colors=['#667eea','#764ba2','#f093fb','#4facfe','#43e97b','#fa709a','#fee140','#30cfd0','#a8c0ff','#3f2b96','#f6d365','#fda085','#84fab0','#8fd3f4','#cfd9df','#ff9a9e','#a18cd1','#fbc2eb','#84fab0','#8fd3f4','#a6c0fe','#f68084','#0ba360','#3cba92','#f5af19','#f12711','#667eea','#764ba2','#f093fb','#4facfe','#43e97b','#fa709a','#fee140','#30cfd0'];
+  container.innerHTML = scores.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'票':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
+  // Show top 15 only to avoid clutter
+  const top15 = scores.slice(0,15);
+  container.innerHTML = top15.map((s,i)=>`<div class="bar-row"><span class="bar-label">${s.name}</span><div class="bar-track"><div class="bar-fill" style="width:${s.avg>0?(s.avg/10*100):0}%;background:${colors[i]}">${s.count>0?s.count+'票':''}</div></div><span class="bar-score">${s.avg>0?s.avg.toFixed(1):'-'}</span></div>`).join('');
+  if (scores.length > 15) container.innerHTML += `<div style="text-align:center;color:var(--text-light);font-size:0.8rem;margin-top:8px">仅显示前 15 名，完整排名见左侧表格</div>`;
+}
+
+function formatDate(d) { return d.toISOString().split('T')[0]; }
+
+function renderTimeOverlapAnalysis() {
+  const container=document.getElementById('timeOverlapAnalysis'), users=getAllUsers();
+  const userNames=Object.keys(users).filter(n=>{ const u=users[n]; return u&&u.vacationStart&&u.vacationEnd; });
+  if(userNames.length<2) { container.innerHTML='<div class="empty-state">需要至少两人填写时间信息才能分析</div>'; return; }
+  let allStarts=userNames.map(n=>new Date(users[n].vacationStart)), allEnds=userNames.map(n=>new Date(users[n].vacationEnd));
+  let overallStart=new Date(Math.max(...allStarts)), overallEnd=new Date(Math.min(...allEnds));
+  let html='';
+  if(overallStart>=overallEnd) {
+    html+='<div class="no-data-banner"><strong style="color:#e53e3e">所有用户的假期没有重叠区间</strong><p style="font-size:0.85rem;color:var(--text-light);margin-top:4px">建议协调各自的放假/开学时间</p></div>';
+  } else {
+    let allUnavail=[];
+    userNames.forEach(name=>{ (users[name].unavailablePeriods||[]).forEach(p=>{ if(p.start&&p.end) allUnavail.push({start:new Date(p.start),end:new Date(p.end)}); }); });
+    allUnavail.sort((a,b)=>a.start-b.start);
+    let merged=[];
+    allUnavail.forEach(p=>{
+      if(p.end<=overallStart||p.start>=overallEnd) return;
+      let ps=p.start<overallStart?new Date(overallStart):new Date(p.start), pe=p.end>overallEnd?new Date(overallEnd):new Date(p.end);
+      if(merged.length===0) merged.push({start:ps,end:pe});
+      else { let last=merged[merged.length-1]; if(ps<=last.end){ if(pe>last.end) last.end=pe; } else merged.push({start:ps,end:pe}); }
+    });
+    let availSegments=[], current=new Date(overallStart);
+    merged.forEach(p=>{ if(p.start>current) availSegments.push({start:new Date(current),end:new Date(p.start)}); if(p.end>current) current=new Date(p.end); });
+    if(current<overallEnd) availSegments.push({start:new Date(current),end:new Date(overallEnd)});
+    const totalDays=Math.ceil((overallEnd-overallStart)/86400000);
+    html+=`<p style="font-size:0.9rem;margin-bottom:8px">共同假期范围：<strong>${formatDate(overallStart)}</strong> 至 <strong>${formatDate(overallEnd)}</strong>（${totalDays}天）</p>`;
+    html+='<div class="time-overlap-bar">';
+    let allSegs=[];
+    availSegments.forEach(s=>{ let sd=Math.ceil((s.end-s.start)/86400000); allSegs.push({type:'avail',start:s.start,days:sd,pct:(sd/totalDays*100).toFixed(1)}); });
+    merged.forEach(p=>{ let sd=Math.ceil((p.end-p.start)/86400000); allSegs.push({type:'unavail',start:p.start,days:sd,pct:(sd/totalDays*100).toFixed(1)}); });
+    allSegs.sort((a,b)=>a.start-b.start);
+
+    allSegs.forEach(seg=>{ let sd=seg.days; let pct=seg.pct; html+=`<div class="time-overlap-seg ${seg.type==='avail'?'avail':'unavail'}" style="width:${pct}%">${parseFloat(pct)>3?sd+'天':''}</div>`; });
+
+    html+='</div>';
+    html+='<div style="display:flex;gap:16px;font-size:0.8rem;margin-top:8px"><span><span style="display:inline-block;width:14px;height:14px;background:#48bb78;border-radius:3px;vertical-align:middle;margin-right:4px"></span>所有人可出行</span><span><span style="display:inline-block;width:14px;height:14px;background:#e53e3e;border-radius:3px;vertical-align:middle;margin-right:4px"></span>有人无法出行</span></div>';
+    if(availSegments.length>0){
+      let best=availSegments[0]; availSegments.forEach(s=>{ if((s.end-s.start)>(best.end-best.start)) best=s; });
+      let bestDays=Math.ceil((best.end-best.start)/86400000);
+      html+=`<div style="margin-top:12px;padding:12px;background:#f0fff4;border-radius:8px;border-left:4px solid #48bb78"><strong style="color:#276749">推荐出行窗口：${formatDate(best.start)} 至 ${formatDate(best.end)}</strong><span style="color:var(--text-light);font-size:0.85rem;margin-left:8px">（${bestDays}天，所有人都可用）</span></div>`;
+    }
+  }
+  html+='<h4 style="margin-top:16px;margin-bottom:8px">各用户时间线</h4>';
+  userNames.forEach(name=>{ const u=users[name]; html+=`<div style="margin-bottom:6px;font-size:0.85rem"><strong>${name}</strong>：${u.vacationStart} ~ ${u.vacationEnd}`; (u.unavailablePeriods||[]).forEach(p=>{ if(p.start&&p.end) html+=` <span style="color:#e53e3e">[不可:${p.start}~${p.end}]</span>`; }); html+='</div>'; });
+  container.innerHTML=html;
+}
+
+function renderRecommendations() {
+  const container=document.getElementById('recommendations'), users=getAllUsers(), userNames=Object.keys(users);
+  const ratedUsers=userNames.filter(n=>{ const u=users[n]; return (u.ratings&&Object.keys(u.ratings).length>0)||(u.notInterested&&u.notInterested.length>0); });
+  if(ratedUsers.length<1) { container.innerHTML='<div class="empty-state">需要至少一人完成评分</div>'; return; }
+  let scores=provinceData.map(p=>{ let total=0,count=0,ni=0; userNames.forEach(name=>{ const u=users[name]; if(u.notInterested&&u.notInterested.includes(p.id)) ni++; if(u.ratings&&u.ratings[p.id]&&u.ratings[p.id].score!==undefined){ total+=u.ratings[p.id].score; count++; } }); return {id:p.id,name:p.short,fullName:p.name,avg:count>0?(total/count):0,count,ni,score:count>0?(total/count)*(count/ratedUsers.length)-ni*2:-ni*2}; });
+  scores.sort((a,b)=>b.score-a.score);
+  const top5=scores.slice(0,5);
+  let html='';
+  top5.forEach((s,i)=>{
+    let tier=i===0?'gold':(i===1?'silver':(i===2?'bronze':''));
+    let medal=['🥇','🥈','🥉','4️⃣','5️⃣'][i];
+    html+=`<div class="recommendation-card ${tier}"><h4>${medal} ${s.name}（${s.fullName}）— 均分 ${s.avg>0?s.avg.toFixed(1):'N/A'}</h4><p style="font-size:0.85rem;color:var(--text-light)">${s.count}人想去，${s.ni}人不想去 — ${s.avg>=7?'强烈推荐！':s.avg>=5?'值得考虑':'可作为备选'}</p></div>`;
+  });
+  container.innerHTML=html;
+}
+
+
+// ============ DESTINATION LIST PICKER ============
+function getDestinationState(provinceId) {
+  const user = getCurrentUser();
+  if (!user) return { type:'unrated', label:'未评分', score:null };
+  const userData = getUser(user) || {};
+  const ratings = userData.ratings || {};
+  const notInterested = userData.notInterested || [];
+  if (notInterested.includes(provinceId)) return { type:'notInterested', label:'🚫 不想去', score:null };
+  if (ratings[provinceId] && ratings[provinceId].score !== undefined) {
+    const score = ratings[provinceId].score;
+    const type = score >= 7 ? 'high' : (score >= 4 ? 'mid' : 'low');
+    return { type, label:`${ratingEmojis[score] || ''} ${score}分`, score };
+  }
+  return { type:'unrated', label:'未评分', score:null };
+}
+
+function renderDestinationList() {
+  const list = document.getElementById('destinationList');
+  if (!list) return;
+  const user = getCurrentUser();
+  if (!user) {
+    list.innerHTML = '<div class="empty-state">请先在“用户设置”中选择用户</div>';
+    return;
+  }
+
+  const searchInput = document.getElementById('destinationSearch');
+  const filterSelect = document.getElementById('destinationFilter');
+  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  const filter = filterSelect ? filterSelect.value : 'all';
+
+  let items = provinceData.filter(p => {
+    const state = getDestinationState(p.id);
+    const haystack = [p.name, p.short, ...(p.attractions || []), ...(p.foods || [])].join(' ').toLowerCase();
+    const matchKeyword = !keyword || haystack.includes(keyword);
+    let matchFilter = true;
+    if (filter === 'unrated') matchFilter = state.type === 'unrated';
+    else if (filter === 'rated') matchFilter = state.score !== null;
+    else if (filter === 'high') matchFilter = state.type === 'high';
+    else if (filter === 'mid') matchFilter = state.type === 'mid';
+    else if (filter === 'low') matchFilter = state.type === 'low';
+    else if (filter === 'notInterested') matchFilter = state.type === 'notInterested';
+    return matchKeyword && matchFilter;
+  });
+
+  if (filter === 'rated') {
+    items.sort((a,b) => (getDestinationState(b.id).score || 0) - (getDestinationState(a.id).score || 0));
+  }
+
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty-state">没有找到匹配的目的地</div>';
+    return;
+  }
+
+  let html = `<div class="destination-list-count">找到 ${items.length} 个目的地 · 点击即可打开评分弹窗</div>`;
+  html += items.map(p => {
+    const state = getDestinationState(p.id);
+    const attractions = (p.attractions || []).slice(0,2).join(' / ');
+    const foods = (p.foods || []).slice(0,2).join(' / ');
+    return `<button type="button" class="destination-item" onclick="openProvinceModal('${p.id}')">
+      <div class="destination-item-head">
+        <div>
+          <div class="destination-name">${p.short}</div>
+          <div class="destination-full">${p.name}</div>
+        </div>
+        <span class="destination-status ${state.type}">${state.label}</span>
+      </div>
+      <div class="destination-meta">
+        <span class="destination-mini-tag">📍 ${attractions || '景点待补充'}</span>
+        <span class="destination-mini-tag">🍜 ${foods || '美食待补充'}</span>
+      </div>
+    </button>`;
+  }).join('');
+  list.innerHTML = html;
+}
+
+
+function updateAllTabs() { renderResults(); renderDestinationList(); }
+
+// ============ TAB SWITCHING ============
+document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',function(){ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); this.classList.add('active'); document.getElementById('tab-'+this.dataset.tab).classList.add('active'); if(this.dataset.tab==='results') renderResults(); if(this.dataset.tab==='map') renderMap(); if(this.dataset.tab==='time') renderTimeTab(); if(this.dataset.tab==='setup') renderSetup(); }); });
+
+// ============ INIT ============
+function init() {
+  renderSetup(); renderMap(); renderTimeTab(); renderResults();
+  document.getElementById('modalOverlay').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+  document.getElementById('guideOverlay').addEventListener('click',function(e){ if(e.target===this) closeGuide(); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      if(document.getElementById('guideOverlay').classList.contains('show')) closeGuide();
+      else closeModal();
+    }
+  });
+}
+init();
+</script>
+</body>
+</html>
