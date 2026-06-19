@@ -1391,6 +1391,176 @@ button,input,select,textarea{font-size:16px;}
   }
 }
 
+
+/* ===================== COLLABORATIVE GUIDE TAB ===================== */
+.guide-builder-layout{
+  display:grid;
+  grid-template-columns:minmax(320px, 0.9fr) minmax(420px, 1.2fr);
+  gap:28px;
+  align-items:start;
+}
+.guide-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.guide-form-label{
+  display:block;
+  margin:12px 0 7px;
+  color:var(--deep);
+  font-size:.9rem;
+  font-weight:900;
+}
+.guide-editor-card input,
+.guide-editor-card select,
+.guide-editor-card textarea,
+.guide-toolbar input,
+.guide-toolbar select{
+  width:100%;
+  padding:12px 15px;
+  border:3px solid rgba(91,190,232,.24);
+  border-radius:18px;
+  background:#fff;
+  color:var(--ink);
+  font-family:inherit;
+  font-size:0.95rem;
+  outline:none;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.8);
+}
+.guide-editor-card textarea{resize:vertical;min-height:120px;line-height:1.65;}
+.guide-editor-card input:focus,
+.guide-editor-card select:focus,
+.guide-editor-card textarea:focus,
+.guide-toolbar input:focus,
+.guide-toolbar select:focus{
+  border-color:var(--teal);
+  box-shadow:0 0 0 5px rgba(78,201,176,.13);
+}
+.guide-actions-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.guide-primary-btn,
+.guide-secondary-btn,
+.guide-toolbar button,
+.guide-delete-btn{
+  border:4px solid #fff;
+  border-radius:999px;
+  padding:11px 18px;
+  font-family:inherit;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 8px 0 rgba(37,109,133,.12),0 15px 20px rgba(37,109,133,.08);
+  transition:.2s ease;
+}
+.guide-primary-btn{background:linear-gradient(135deg,#4EC9B0,#5BBEE8);color:#fff;flex:1;}
+.guide-secondary-btn{background:#FFE69A;color:#256D85;}
+.guide-toolbar button{background:#FFB26B;color:#fff;white-space:nowrap;}
+.guide-delete-btn{background:#FFE9DF;color:#C75B50;padding:6px 12px;font-size:.78rem;box-shadow:none;border-width:3px;}
+.guide-primary-btn:hover,
+.guide-secondary-btn:hover,
+.guide-toolbar button:hover,
+.guide-delete-btn:hover{transform:translateY(-2px) scale(1.02);}
+.guide-toolbar{
+  display:grid;
+  grid-template-columns:1fr 150px auto;
+  gap:10px;
+  margin-bottom:16px;
+}
+.guide-day-section{
+  margin-bottom:18px;
+}
+.guide-day-title{
+  display:inline-block;
+  margin:0 0 12px;
+  padding:9px 16px;
+  border:4px solid #fff;
+  border-radius:999px;
+  background:#5BBEE8;
+  color:#fff;
+  font-weight:1000;
+  box-shadow:0 8px 0 rgba(37,109,133,.10);
+}
+.guide-card{
+  position:relative;
+  margin:0 0 12px;
+  padding:16px 16px 14px;
+  background:rgba(255,255,255,.78);
+  border:4px solid #fff;
+  border-radius:22px;
+  box-shadow:0 10px 0 rgba(37,109,133,.06),0 18px 24px rgba(37,109,133,.10);
+}
+.guide-card:nth-child(odd){transform:rotate(-.25deg);}
+.guide-card:nth-child(even){transform:rotate(.25deg);}
+.guide-card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:8px;
+}
+.guide-card-title{
+  margin:0;
+  color:var(--deep);
+  font-size:1.02rem;
+  font-weight:1000;
+}
+.guide-chip{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#E9FAFF;
+  color:#256D85;
+  font-size:.78rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.guide-card-content{
+  color:var(--ink);
+  font-size:.93rem;
+  line-height:1.75;
+  white-space:pre-wrap;
+}
+.guide-card-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:.8rem;
+  font-weight:700;
+}
+.guide-card-link{
+  color:#256D85;
+  font-weight:900;
+  text-decoration:none;
+  background:#FFF1C8;
+  border-radius:999px;
+  padding:5px 10px;
+}
+.guide-card-link:hover{text-decoration:underline;}
+@media(max-width:900px){
+  .guide-builder-layout{grid-template-columns:1fr;gap:20px;}
+  .guide-toolbar{grid-template-columns:1fr;gap:10px;}
+  .guide-form-grid{grid-template-columns:1fr;}
+  .guide-editor-card input,
+  .guide-editor-card select,
+  .guide-editor-card textarea,
+  .guide-toolbar input,
+  .guide-toolbar select{font-size:16px;}
+}
+@media(max-width:520px){
+  .guide-actions-row{flex-direction:column;}
+  .guide-primary-btn,.guide-secondary-btn{width:100%;}
+  .guide-card{padding:14px;border-radius:18px;}
+  .guide-card-head{flex-direction:column;align-items:flex-start;}
+}
+
 </style>
 
 <script>
@@ -1545,6 +1715,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
   <button class="tab-btn" data-tab="map">2. 目的地选择</button>
   <button class="tab-btn" data-tab="time">3. 时间协调</button>
   <button class="tab-btn" data-tab="results">4. 结果汇总 <span class="tab-badge" id="resultsBadge" style="display:none">0/0</span></button>
+  <button class="tab-btn" data-tab="guide">5. 共创攻略</button>
 </nav>
 
 <div class="container">
@@ -1645,6 +1816,74 @@ window.__supabaseSdkReady = new Promise(function(resolve){
   <div class="card"><h2>时间交集分析</h2><div id="timeOverlapAnalysis"></div></div>
   <div class="card"><h2>共同出行日历</h2><div id="groupCalendarViz"><div class="empty-state">需要至少两人填写时间信息</div></div></div>
   <div class="card"><h2>综合推荐 Top 5</h2><div id="recommendations"></div></div>
+</div>
+
+<!-- TAB 5: Collaborative Guide -->
+<div class="tab-content" id="tab-guide">
+  <div class="guide-builder-layout">
+    <div class="card guide-editor-card">
+      <h2>共同制作旅行攻略</h2>
+      <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:14px">
+        旅行团成员可以一起补充行程、景点、美食、住宿、交通和注意事项。内容会按旅行团代码隔离。
+      </p>
+
+      <div class="guide-form-grid">
+        <div>
+          <label class="guide-form-label">第几天</label>
+          <input id="guideDayInput" type="number" min="1" max="30" value="1" placeholder="例如：1">
+        </div>
+        <div>
+          <label class="guide-form-label">类型</label>
+          <select id="guideCategoryInput">
+            <option value="行程">行程</option>
+            <option value="景点">景点</option>
+            <option value="美食">美食</option>
+            <option value="住宿">住宿</option>
+            <option value="交通">交通</option>
+            <option value="预算">预算</option>
+            <option value="注意事项">注意事项</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="guide-form-label">标题</label>
+      <input id="guideTitleInput" type="text" maxlength="80" placeholder="例如：Day1 下午去武隆天坑">
+
+      <label class="guide-form-label">详细内容</label>
+      <textarea id="guideContentInput" rows="5" maxlength="800" placeholder="写清楚时间、地点、玩法、费用、集合点、注意事项等"></textarea>
+
+      <label class="guide-form-label">参考链接（可选）</label>
+      <input id="guideLinkInput" type="url" placeholder="可以粘贴马蜂窝、小红书、地图、酒店等链接">
+
+      <div class="guide-actions-row">
+        <button class="guide-primary-btn" onclick="addGuideItem()">添加到攻略</button>
+        <button class="guide-secondary-btn" onclick="clearGuideForm()">清空</button>
+      </div>
+    </div>
+
+    <div class="card guide-board-card">
+      <h2>旅行团攻略板</h2>
+      <div class="guide-toolbar">
+        <input id="guideSearchInput" type="text" placeholder="搜索攻略内容..." oninput="renderGuideBoard()">
+        <select id="guideFilterInput" onchange="renderGuideBoard()">
+          <option value="all">全部类型</option>
+          <option value="行程">行程</option>
+          <option value="景点">景点</option>
+          <option value="美食">美食</option>
+          <option value="住宿">住宿</option>
+          <option value="交通">交通</option>
+          <option value="预算">预算</option>
+          <option value="注意事项">注意事项</option>
+          <option value="其他">其他</option>
+        </select>
+        <button onclick="loadGuideItems(true)">刷新</button>
+      </div>
+      <div id="guideBoard">
+        <div class="empty-state">进入旅行团后即可共同编辑攻略</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div>
@@ -3348,7 +3587,7 @@ function renderDestinationList() {
 function updateAllTabs() { renderResults(); renderDestinationList(); }
 
 // ============ TAB SWITCHING ============
-document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',function(){ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); this.classList.add('active'); document.getElementById('tab-'+this.dataset.tab).classList.add('active'); if(this.dataset.tab==='results') renderResults(); if(this.dataset.tab==='map') renderMap(); if(this.dataset.tab==='time') renderTimeTab(); if(this.dataset.tab==='setup') renderSetup(); }); });
+document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',function(){ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); this.classList.add('active'); document.getElementById('tab-'+this.dataset.tab).classList.add('active'); if(this.dataset.tab==='results') renderResults(); if(this.dataset.tab==='map') renderMap(); if(this.dataset.tab==='time') renderTimeTab(); if(this.dataset.tab==='setup') renderSetup(); if(this.dataset.tab==='guide') loadGuideItems(false); }); });
 
 // ============ INIT ============
 function init() {
@@ -4065,6 +4304,251 @@ document.addEventListener('DOMContentLoaded', function(){
     document.documentElement.classList.add('mobile-lite');
   }
 });
+</script>
+
+
+<script>
+/* ===================== COLLABORATIVE GUIDE LOGIC ===================== */
+let guideItemsCache = [];
+
+function getGuideGroupCode(){
+  return (typeof travelGroupCode !== 'undefined' && travelGroupCode)
+    || sessionStorage.getItem('travel_group_code')
+    || localStorage.getItem('travel_group_code')
+    || '';
+}
+function getGuideLocalKey(){
+  return 'travelGuideItems_' + (getGuideGroupCode() || 'guest');
+}
+function getGuideLocalItems(){
+  try{
+    return JSON.parse(localStorage.getItem(getGuideLocalKey()) || '[]');
+  }catch(e){
+    return [];
+  }
+}
+function saveGuideLocalItems(items){
+  localStorage.setItem(getGuideLocalKey(), JSON.stringify(items || []));
+}
+function escapeGuideHtml(str){
+  return String(str || '')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'","&#39;");
+}
+function formatGuideDate(v){
+  if(!v) return '';
+  try{
+    return new Date(v).toLocaleString('zh-CN', { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+  }catch(e){
+    return '';
+  }
+}
+function clearGuideForm(){
+  const ids = ['guideTitleInput','guideContentInput','guideLinkInput'];
+  ids.forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+  const day = document.getElementById('guideDayInput');
+  if(day) day.value = '1';
+  const cat = document.getElementById('guideCategoryInput');
+  if(cat) cat.value = '行程';
+}
+async function addGuideItem(){
+  const group = getGuideGroupCode();
+  if(!group){
+    alert('请先登录并创建/加入旅行团，再编辑共同攻略。');
+    return;
+  }
+  if(typeof isAccountLoggedIn !== 'undefined' && !isAccountLoggedIn){
+    alert('请先登录账号。');
+    return;
+  }
+  const account = (typeof onlineAccount !== 'undefined' && onlineAccount) || getCurrentUser() || 'unknown';
+  const nickname = (typeof currentDisplayName === 'function' && currentDisplayName()) || account;
+  const dayNo = Math.max(1, parseInt(document.getElementById('guideDayInput')?.value || '1', 10));
+  const category = document.getElementById('guideCategoryInput')?.value || '其他';
+  const title = (document.getElementById('guideTitleInput')?.value || '').trim();
+  const content = (document.getElementById('guideContentInput')?.value || '').trim();
+  const link = (document.getElementById('guideLinkInput')?.value || '').trim();
+
+  if(!title){
+    alert('请填写攻略标题。');
+    return;
+  }
+  if(!content && !link){
+    alert('请填写详细内容或参考链接。');
+    return;
+  }
+
+  const item = {
+    id: 'local_' + Date.now(),
+    group_code: group,
+    account,
+    nickname,
+    day_no: dayNo,
+    category,
+    title,
+    content,
+    link,
+    created_at: new Date().toISOString()
+  };
+
+  try{
+    if(window.supabaseClient || (typeof supabaseClient !== 'undefined' && supabaseClient)){
+      const client = window.supabaseClient || supabaseClient;
+      const { data, error } = await client
+        .from('guide_items')
+        .insert([{
+          group_code: group,
+          account,
+          nickname,
+          day_no: dayNo,
+          category,
+          title,
+          content,
+          link
+        }])
+        .select('*')
+        .single();
+      if(error) throw error;
+      const items = getGuideLocalItems();
+      items.unshift(data || item);
+      saveGuideLocalItems(items);
+    }else{
+      const items = getGuideLocalItems();
+      items.unshift(item);
+      saveGuideLocalItems(items);
+    }
+    clearGuideForm();
+    await loadGuideItems(false);
+    alert('已添加到旅行团攻略。');
+  }catch(err){
+    console.warn('攻略保存失败：', err);
+    alert('攻略保存失败。请确认已创建 guide_items 表，并开放 RLS Policy。');
+  }
+}
+async function loadGuideItems(forceCloud=true){
+  const group = getGuideGroupCode();
+  if(!group){
+    guideItemsCache = [];
+    renderGuideBoard();
+    return;
+  }
+
+  let loaded = false;
+  if(forceCloud && (window.supabaseClient || (typeof supabaseClient !== 'undefined' && supabaseClient))){
+    try{
+      const client = window.supabaseClient || supabaseClient;
+      const { data, error } = await client
+        .from('guide_items')
+        .select('*')
+        .eq('group_code', group)
+        .order('day_no', { ascending:true })
+        .order('created_at', { ascending:true });
+      if(error) throw error;
+      guideItemsCache = data || [];
+      saveGuideLocalItems(guideItemsCache);
+      loaded = true;
+    }catch(err){
+      console.warn('攻略云端读取失败，使用本地缓存：', err);
+    }
+  }
+  if(!loaded){
+    guideItemsCache = getGuideLocalItems();
+  }
+  renderGuideBoard();
+}
+async function deleteGuideItem(id, account){
+  const current = (typeof onlineAccount !== 'undefined' && onlineAccount) || getCurrentUser() || '';
+  if(account && current && account !== current){
+    alert('只能删除自己添加的攻略内容。');
+    return;
+  }
+  if(!confirm('确定删除这条攻略吗？')) return;
+
+  try{
+    if(!String(id).startsWith('local_') && (window.supabaseClient || (typeof supabaseClient !== 'undefined' && supabaseClient))){
+      const client = window.supabaseClient || supabaseClient;
+      const { error } = await client
+        .from('guide_items')
+        .delete()
+        .eq('id', id)
+        .eq('account', current);
+      if(error) throw error;
+    }
+    const items = getGuideLocalItems().filter(x => String(x.id) !== String(id));
+    saveGuideLocalItems(items);
+    guideItemsCache = guideItemsCache.filter(x => String(x.id) !== String(id));
+    renderGuideBoard();
+  }catch(err){
+    console.warn('删除攻略失败：', err);
+    alert('删除失败，请检查权限。');
+  }
+}
+function renderGuideBoard(){
+  const board = document.getElementById('guideBoard');
+  if(!board) return;
+
+  const keyword = (document.getElementById('guideSearchInput')?.value || '').trim().toLowerCase();
+  const filter = document.getElementById('guideFilterInput')?.value || 'all';
+  let items = (guideItemsCache && guideItemsCache.length ? guideItemsCache : getGuideLocalItems()).slice();
+
+  if(filter !== 'all') items = items.filter(x => x.category === filter);
+  if(keyword){
+    items = items.filter(x =>
+      String(x.title || '').toLowerCase().includes(keyword) ||
+      String(x.content || '').toLowerCase().includes(keyword) ||
+      String(x.nickname || '').toLowerCase().includes(keyword) ||
+      String(x.category || '').toLowerCase().includes(keyword)
+    );
+  }
+
+  items.sort((a,b) => {
+    const da = Number(a.day_no || 1), db = Number(b.day_no || 1);
+    if(da !== db) return da - db;
+    return new Date(a.created_at || 0) - new Date(b.created_at || 0);
+  });
+
+  if(!items.length){
+    board.innerHTML = '<div class="empty-state">暂无攻略内容。可以先添加 Day1 行程、必吃美食、住宿建议或交通方案。</div>';
+    return;
+  }
+
+  const grouped = {};
+  items.forEach(item => {
+    const day = Number(item.day_no || 1);
+    if(!grouped[day]) grouped[day] = [];
+    grouped[day].push(item);
+  });
+
+  const current = (typeof onlineAccount !== 'undefined' && onlineAccount) || getCurrentUser() || '';
+  board.innerHTML = Object.keys(grouped).sort((a,b)=>Number(a)-Number(b)).map(day => {
+    const cards = grouped[day].map(item => {
+      const canDelete = current && item.account === current;
+      const link = item.link ? `<a class="guide-card-link" href="${escapeGuideHtml(item.link)}" target="_blank" rel="noopener noreferrer">打开参考链接</a>` : '';
+      const del = canDelete ? `<button class="guide-delete-btn" onclick="deleteGuideItem('${escapeGuideHtml(item.id)}','${escapeGuideHtml(item.account)}')">删除</button>` : '';
+      return `<div class="guide-card">
+        <div class="guide-card-head">
+          <div>
+            <h4 class="guide-card-title">${escapeGuideHtml(item.title)}</h4>
+            <span class="guide-chip">${escapeGuideHtml(item.category || '其他')}</span>
+          </div>
+          ${del}
+        </div>
+        <div class="guide-card-content">${escapeGuideHtml(item.content || '')}</div>
+        <div class="guide-card-meta">
+          <span>由 ${escapeGuideHtml(item.nickname || item.account || '成员')} 添加 · ${formatGuideDate(item.created_at)}</span>
+          ${link}
+        </div>
+      </div>`;
+    }).join('');
+    return `<section class="guide-day-section">
+      <h3 class="guide-day-title">Day ${escapeGuideHtml(day)}</h3>
+      ${cards}
+    </section>`;
+  }).join('');
+}
 </script>
 
 </body>
