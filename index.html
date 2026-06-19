@@ -908,6 +908,69 @@ body::after{display:none!important;}
   .group-login-card{padding:24px 18px;}
 }
 
+
+
+/* ===================== TIME OVERLAP VISUALIZATION + MOBILE OPTIMIZATION ===================== */
+.calendar-hint{color:var(--text-light);font-size:.88rem;margin:-2px 0 14px;line-height:1.6;}
+.overlap-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px;}
+.overlap-summary-card{background:rgba(255,255,255,.74);border:4px solid #fff;border-radius:22px;padding:14px 16px;box-shadow:0 8px 0 rgba(37,109,133,.08),0 14px 20px rgba(37,109,133,.08);}
+.overlap-summary-card strong{display:block;color:var(--deep);font-size:1.18rem;margin-top:4px;}
+.overlap-summary-card span{font-size:.78rem;color:var(--muted);font-weight:800;}
+.overlap-calendar{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:8px;margin-top:12px;}
+.overlap-day{position:relative;min-height:54px;border:3px solid #fff;border-radius:16px;padding:6px 4px;text-align:center;box-shadow:0 6px 0 rgba(37,109,133,.06);overflow:hidden;}
+.overlap-day .day-md{display:block;font-weight:1000;font-size:.82rem;color:#256D85;line-height:1.1;}
+.overlap-day .day-week{display:block;font-size:.68rem;color:rgba(37,109,133,.72);margin-top:2px;}
+.overlap-day .day-count{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;min-width:24px;height:20px;border-radius:999px;background:rgba(255,255,255,.7);font-size:.7rem;font-weight:900;color:#256D85;}
+.overlap-day.level-0{background:#F1F0EA;opacity:.62;}
+.overlap-day.level-1{background:#DBF6FF;}
+.overlap-day.level-2{background:#BEEFFF;}
+.overlap-day.level-3{background:#8EDFB3;}
+.overlap-day.level-4{background:#4EC9B0;}
+.overlap-day.best{outline:4px solid rgba(255,230,154,.92);outline-offset:1px;}
+.overlap-legend{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 6px;font-size:.78rem;color:var(--muted);font-weight:900;}
+.overlap-legend i{display:inline-block;width:16px;height:16px;border-radius:5px;border:2px solid #fff;vertical-align:-3px;margin-right:4px;}
+.member-time-list{margin-top:16px;display:grid;gap:8px;}
+.member-time-row{background:rgba(255,255,255,.66);border:3px solid #fff;border-radius:18px;padding:10px 12px;color:var(--ink);box-shadow:0 6px 0 rgba(37,109,133,.05);}
+.member-time-row strong{color:var(--deep);}
+.member-time-row small{display:block;color:var(--muted);margin-top:4px;line-height:1.5;}
+.mobile-quick-save{display:none;}
+@media(max-width:760px){
+  html{font-size:15px;}
+  body{padding-bottom:74px;}
+  .app-header{min-height:auto!important;padding:28px 14px 34px!important;display:block!important;text-align:center!important;}
+  .app-header h1{font-size:clamp(2rem,10vw,3.6rem)!important;margin-bottom:14px!important;}
+  .header-right{justify-content:center!important;gap:8px!important;}
+  .user-badge,.current-group-pill,.btn-reset-all{font-size:.78rem!important;padding:7px 10px!important;}
+  .tab-nav{position:fixed!important;left:0;right:0;bottom:0;top:auto!important;z-index:1000!important;padding:8px 8px calc(8px + env(safe-area-inset-bottom))!important;gap:6px!important;background:rgba(255,255,255,.92)!important;border-top:1px solid rgba(37,109,133,.12)!important;box-shadow:0 -10px 28px rgba(37,109,133,.13)!important;overflow-x:auto!important;}
+  .tab-btn{flex:0 0 auto!important;min-width:92px!important;padding:9px 10px!important;border-radius:18px!important;font-size:.76rem!important;white-space:nowrap!important;}
+  .container{padding:14px 10px 96px!important;}
+  .card,.map-container,.sidebar-card{border-radius:20px!important;padding:18px 14px 22px!important;margin-bottom:14px!important;}
+  .setup-grid,.time-layout,.results-grid,.map-layout{grid-template-columns:1fr!important;gap:14px!important;}
+  .date-input-row,.name-input-row,.destination-search-row,.unavail-period{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;}
+  .date-input-row input,.name-input-row input,.unavail-period input,.destination-tools input,.destination-tools select{min-height:44px;font-size:16px!important;}
+  button,.tab-btn,.destination-item,.dest-card{touch-action:manipulation;}
+  .modal{width:94vw!important;max-height:86vh!important;border-radius:24px!important;padding:20px 14px!important;}
+  .guide-modal{width:94vw!important;max-height:86vh!important;border-radius:24px!important;padding:18px 14px!important;}
+  .dest-grid{grid-template-columns:1fr!important;}
+  .dest-card{min-height:auto!important;}
+  .dest-card-img{height:160px!important;}
+  .overlap-summary-grid{grid-template-columns:1fr!important;gap:8px;}
+  .overlap-calendar{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;}
+  .overlap-day{min-height:50px;border-radius:14px;padding:5px 2px;}
+  .overlap-day .day-md{font-size:.74rem;}
+  .overlap-day .day-week{font-size:.62rem;}
+  .overlap-day .day-count{height:18px;min-width:22px;font-size:.64rem;}
+  .result-table{font-size:.78rem;min-width:650px;}
+  #rankingTableContainer{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .bar-row{grid-template-columns:54px 1fr 38px!important;gap:6px!important;font-size:.76rem!important;}
+  .group-login-card{width:96vw!important;max-height:92vh!important;overflow:auto!important;padding:24px 16px!important;}
+  .group-login-form{grid-template-columns:1fr!important;gap:14px!important;}
+}
+@media(max-width:420px){
+  .overlap-calendar{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .tab-btn{min-width:86px!important;font-size:.72rem!important;}
+}
+
 </style>
 
 <script>
@@ -962,7 +1025,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
 <div id="groupLoginOverlay" class="group-login-overlay">
   <div class="group-login-card">
     <h1 class="group-login-title">暑期出行决策助手</h1>
-    <p class="group-login-subtitle">先注册或登录账号，再创建/加入旅行团。昵称进入旅行团后可在“旅行团信息”中修改。(建议将浏览器界面缩小到百分之八十)</p>
+    <p class="group-login-subtitle">先注册或登录账号，再创建/加入旅行团。昵称进入旅行团后可在“旅行团信息”中修改。</p>
 
     <div class="group-login-form">
       <div class="group-login-section">
@@ -1084,7 +1147,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
     <div class="card">
       <h2>旅行团成员与填写进度</h2>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/0</strong></p>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/9</strong></p>
       <div class="user-list" id="userList"></div>
     </div>
   </div>
@@ -1150,6 +1213,11 @@ window.__supabaseSdkReady = new Promise(function(resolve){
   <div class="card" style="margin-top:20px">
     <h2>个人时间可视化</h2>
     <div id="timelineViz"><div class="empty-state">请先设置假期日期</div></div>
+  </div>
+  <div class="card group-overlap-card" style="margin-top:20px">
+    <h2>旅行团时间重合日历</h2>
+    <p class="calendar-hint">颜色越深，代表当天可出行的人越多。点击“结果统计”也可以看到推荐出行窗口。</p>
+    <div id="groupTimeOverlapViz"><div class="empty-state">需要至少两位成员填写时间信息</div></div>
   </div>
 </div>
 
@@ -1949,7 +2017,7 @@ async function syncFromCloud(forceClearLocal=false) {
     if (!nextData.currentUser || !nextData.users[nextData.currentUser]) {
       nextData.currentUser = Object.keys(nextData.users)[0] || null;
     }
-    saveData(nextData);
+    localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge();
     console.log('云端同步完成', { group, users: usersData, ratings: ratingsData });
   } catch (err) {
@@ -2021,20 +2089,8 @@ function scheduleCloudPush() {
 }
 
 // ============ DATA MANAGER ============
-function getTripDataKey(){
-  const g = (typeof travelGroupCode !== 'undefined' && travelGroupCode) ? travelGroupCode : (sessionStorage.getItem('travel_group_code') || localStorage.getItem('travel_group_code') || 'guest');
-  return 'tripPlannerV2_' + g;
-}
-function getData() {
-  const key = getTripDataKey();
-  let raw = localStorage.getItem(key);
-  return raw ? JSON.parse(raw) : { users:{}, currentUser:null };
-}
-function saveData(d) {
-  localStorage.setItem(getTripDataKey(), JSON.stringify(d));
-  renderCloudBadge();
-  scheduleCloudPush();
-}
+function getData() { let raw = localStorage.getItem('tripPlannerV2'); return raw ? JSON.parse(raw) : { users:{}, currentUser:null }; }
+function saveData(d) { localStorage.setItem('tripPlannerV2', JSON.stringify(d)); renderCloudBadge(); scheduleCloudPush(); }
 function getUser(name) { return getData().users[name] || null; }
 function saveUser(name, userData) { let d = getData(); d.users[name] = userData; if (!d.currentUser) d.currentUser = name; saveData(d); }
 function deleteUser(name) { let d = getData(); delete d.users[name]; if (d.currentUser === name) d.currentUser = null; saveData(d); }
@@ -2510,11 +2566,11 @@ function renderSetup() {
   document.getElementById('userList').innerHTML = listHtml || '<div class="empty-state">暂无用户，请点击上方预设名或输入自定义姓名</div>';
 
   const count = userNames.length;
-  document.getElementById('progressFill').style.width = (userNames.length ? (count/userNames.length*100) : 0)+'%';
-  document.getElementById('progressText').textContent = count+'/'+userNames.length;
+  document.getElementById('progressFill').style.width = (count/9*100)+'%';
+  document.getElementById('progressText').textContent = count+'/9';
   document.getElementById('currentUserBadge').textContent = current || '未选择用户';
   const badge = document.getElementById('resultsBadge');
-  if (count>0) { badge.style.display=''; badge.textContent=count+'/'+userNames.length; } else badge.style.display='none';
+  if (count>0) { badge.style.display=''; badge.textContent=count+'/9'; } else badge.style.display='none';
   updateAllTabs();
 }
 
@@ -2535,7 +2591,7 @@ function addCustomUser() {
 }
 function switchToUser(name) { setCurrentUser(name); renderSetup(); renderMap(); renderTimeTab(); }
 function deleteUserConfirm(name) { if (!confirm(`确定删除"${name}"及其所有数据？`)) return; deleteUser(name); renderSetup(); renderMap(); renderTimeTab(); }
-function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem(getTripDataKey()); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
+function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem('tripPlannerV2'); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
 
 // ============ TIME TAB ============
 let tempUnavailPeriods = [];
@@ -2907,10 +2963,10 @@ function init() {
 
 <script>
 /* ===================== STRICT REGISTER / LOGIN + GROUP FLOW ===================== */
-let travelGroupCode = sessionStorage.getItem('travel_group_code') || '';
-let onlineAccount = sessionStorage.getItem('travel_account') || localStorage.getItem('travel_account_saved') || '';
-let onlineNickname = sessionStorage.getItem('travel_nickname') || '';
-let isAccountLoggedIn = sessionStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
+let travelGroupCode = localStorage.getItem('travel_group_code') || '';
+let onlineAccount = localStorage.getItem('travel_account') || '';
+let onlineNickname = localStorage.getItem('travel_nickname') || '';
+let isAccountLoggedIn = localStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
 
 function normalizeAccount(v){
   return String(v || '').trim().replace(/\s+/g,'').toLowerCase();
@@ -2964,7 +3020,7 @@ function ensureCurrentLocalUser(){
     d.users[onlineAccount].displayName = onlineNickname || d.users[onlineAccount].displayName || onlineAccount;
   }
   d.currentUser = onlineAccount;
-  saveData(d);
+  localStorage.setItem('tripPlannerV2', JSON.stringify(d));
 }
 function updateGroupPill(){
   const pill = document.getElementById('currentGroupPill');
@@ -2989,7 +3045,7 @@ function renderCloudBadge(){
 
 async function findAccount(account){
   const { data, error } = await supabaseClient
-    .from('accounts')
+    .from('users')
     .select('*')
     .eq('account', account)
     .limit(1);
@@ -3012,21 +3068,26 @@ async function registerAccount(){
       alert('这个账号已经注册过了，请直接登录。');
       return;
     }
-    const { error } = await supabaseClient.from('accounts').insert([{ account, password }]);
+    const { error } = await supabaseClient.from('users').insert([{
+      account,
+      password,
+      name: account,
+      nickname: account,
+      group_code: '__no_group__'
+    }]);
     if(error) throw error;
 
     onlineAccount = account;
     onlineNickname = account;
     isAccountLoggedIn = true;
-    sessionStorage.setItem('travel_account', onlineAccount);
-    sessionStorage.setItem('travel_nickname', onlineNickname);
-    sessionStorage.setItem('travel_logged_in', 'true');
-    localStorage.setItem('travel_account_saved', onlineAccount);
+    localStorage.setItem('travel_account', onlineAccount);
+    localStorage.setItem('travel_nickname', onlineNickname);
+    localStorage.setItem('travel_logged_in', 'true');
     setLoginStatus(`注册成功，已登录 ${account}`, true);
     alert('注册成功！现在可以创建或加入旅行团。');
   }catch(e){
     console.error(e);
-    alert('注册失败。请检查 accounts 表是否有 account、password 字段，以及 RLS 权限。');
+    alert('注册失败。请检查 users 表是否有 account、password、nickname、name、group_code 字段，以及 RLS 权限。');
   }
 }
 
@@ -3049,12 +3110,11 @@ async function loginAccountOnly(){
       return;
     }
     onlineAccount = account;
-    onlineNickname = account;
+    onlineNickname = existing.nickname || existing.name || account;
     isAccountLoggedIn = true;
-    sessionStorage.setItem('travel_account', onlineAccount);
-    sessionStorage.setItem('travel_nickname', onlineNickname);
-    sessionStorage.setItem('travel_logged_in', 'true');
-    localStorage.setItem('travel_account_saved', onlineAccount);
+    localStorage.setItem('travel_account', onlineAccount);
+    localStorage.setItem('travel_nickname', onlineNickname);
+    localStorage.setItem('travel_logged_in', 'true');
     setLoginStatus(`已登录 ${account}`, true);
     alert('登录成功！请选择创建或加入旅行团。');
   }catch(e){
@@ -3077,6 +3137,7 @@ async function enterTravelGroup(mode){
       .from('users')
       .select('id,account')
       .eq('group_code', code)
+      .neq('group_code', '__no_group__')
       .limit(1);
     if(groupErr) throw groupErr;
 
@@ -3089,33 +3150,18 @@ async function enterTravelGroup(mode){
       return;
     }
 
-    const { data: memberExists, error: memberErr } = await supabaseClient
+    const { error: updateErr } = await supabaseClient
       .from('users')
-      .select('*')
-      .eq('account', onlineAccount)
-      .eq('group_code', code)
-      .limit(1);
-    if(memberErr) throw memberErr;
-
-    if(memberExists && memberExists.length > 0){
-      onlineNickname = memberExists[0].nickname || memberExists[0].name || onlineAccount;
-    }else{
-      const defaultNick = onlineNickname || onlineAccount;
-      const { error: insertErr } = await supabaseClient.from('users').insert([{
-        account: onlineAccount,
+      .update({
         group_code: code,
-        name: defaultNick,
-        nickname: defaultNick
-      }]);
-      if(insertErr) throw insertErr;
-      onlineNickname = defaultNick;
-    }
+        name: onlineNickname || onlineAccount,
+        nickname: onlineNickname || onlineAccount
+      })
+      .eq('account', onlineAccount);
+    if(updateErr) throw updateErr;
 
     travelGroupCode = code;
-    sessionStorage.setItem('travel_group_code', travelGroupCode);
-    sessionStorage.setItem('travel_account', onlineAccount);
-    sessionStorage.setItem('travel_nickname', onlineNickname);
-    localStorage.setItem('travel_account_saved', onlineAccount);
+    localStorage.setItem('travel_group_code', travelGroupCode);
     localStorage.removeItem('travel_user_name');
     ensureCurrentLocalUser();
 
@@ -3125,16 +3171,16 @@ async function enterTravelGroup(mode){
     await syncFromCloud(false);
   }catch(e){
     console.error(e);
-    alert('创建/加入旅行团失败。请检查 users 表字段、唯一约束和 RLS 权限。');
+    alert('创建/加入旅行团失败。请检查 users 表字段和 RLS 权限。');
   }
 }
 
 function logoutTravelGroup(){
   if(!confirm('确定退出当前账号吗？本机会返回登录界面。')) return;
-  sessionStorage.removeItem('travel_account');
-  sessionStorage.removeItem('travel_nickname');
-  sessionStorage.removeItem('travel_group_code');
-  sessionStorage.removeItem('travel_logged_in');
+  localStorage.removeItem('travel_account');
+  localStorage.removeItem('travel_nickname');
+  localStorage.removeItem('travel_group_code');
+  localStorage.removeItem('travel_logged_in');
   onlineAccount = '';
   onlineNickname = '';
   travelGroupCode = '';
@@ -3154,19 +3200,18 @@ async function updateMyNickname(){
   if(!newName){ alert('请输入新的昵称'); return; }
 
   onlineNickname = newName;
-  sessionStorage.setItem('travel_nickname', onlineNickname);
+  localStorage.setItem('travel_nickname', onlineNickname);
 
   const d = getData();
   if(d.users && d.users[onlineAccount]) d.users[onlineAccount].displayName = newName;
-  saveData(d);
+  localStorage.setItem('tripPlannerV2', JSON.stringify(d));
 
   try{
     if(supabaseClient){
       await supabaseClient
         .from('users')
         .update({ nickname:newName, name:newName })
-        .eq('account', onlineAccount)
-        .eq('group_code', travelGroupCode);
+        .eq('account', onlineAccount);
     }
   }catch(e){ console.warn(e); }
 
@@ -3221,7 +3266,7 @@ async function syncFromCloud(forceClearLocal=false){
     }
     nextData.currentUser = onlineAccount;
 
-    saveData(nextData);
+    localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge(); updateGroupPill();
   }catch(err){
     console.warn('云端同步失败：', err);
@@ -3239,7 +3284,6 @@ async function pushToCloudNow(){
     await supabaseClient
       .from('users')
       .update({ nickname: currentData.displayName || onlineNickname || onlineAccount, name: currentData.displayName || onlineNickname || onlineAccount })
-      .eq('group_code', travelGroupCode)
       .eq('account', onlineAccount);
 
     const { error: delErr } = await supabaseClient
@@ -3307,23 +3351,17 @@ function renderSetup(){
   const userList = document.getElementById('userList');
   if(userList) userList.innerHTML = listHtml || '<div class="empty-state">暂无成员。登录后会自动加入旅行团。</div>';
 
-  const totalMembers = userNames.length;
-  let finishedMembers = 0;
-  userNames.forEach(account => {
-    const u = users[account] || {};
-    const rated = Object.keys(u.ratings || {}).length + (u.notInterested || []).length;
-    if (rated > 0 || u.vacationStart) finishedMembers++;
-  });
+  const count = userNames.length;
   const fill = document.getElementById('progressFill');
   const text = document.getElementById('progressText');
-  if(fill) fill.style.width = (totalMembers ? Math.min(100, finishedMembers / totalMembers * 100) : 0) + '%';
-  if(text) text.textContent = finishedMembers + '/' + totalMembers;
+  if(fill) fill.style.width = Math.min(100, count/9*100) + '%';
+  if(text) text.textContent = count + '/9';
 
   const badge = document.getElementById('currentUserBadge');
   if(badge) badge.innerHTML = current ? `当前：<strong>${currentDisplayName()}</strong>` : '未登录';
   const resultsBadge = document.getElementById('resultsBadge');
   if(resultsBadge){
-    if(totalMembers>0){ resultsBadge.style.display=''; resultsBadge.textContent=finishedMembers+'/'+totalMembers; }
+    if(count>0){ resultsBadge.style.display=''; resultsBadge.textContent=count+'/9'; }
     else resultsBadge.style.display='none';
   }
   updateAllTabs();
@@ -3336,17 +3374,17 @@ function deleteUserConfirm(){ alert('在线版不建议在网页端删除旅行�
 
 function initOnlineApp(){
   initSupabaseClient();
-  onlineAccount = sessionStorage.getItem('travel_account') || localStorage.getItem('travel_account_saved') || '';
-  onlineNickname = sessionStorage.getItem('travel_nickname') || '';
-  travelGroupCode = sessionStorage.getItem('travel_group_code') || '';
-  isAccountLoggedIn = sessionStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
+  onlineAccount = localStorage.getItem('travel_account') || '';
+  onlineNickname = localStorage.getItem('travel_nickname') || '';
+  travelGroupCode = localStorage.getItem('travel_group_code') || '';
+  isAccountLoggedIn = localStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
 
   if(isAccountLoggedIn && onlineAccount && travelGroupCode){
     ensureCurrentLocalUser();
     hideGroupLogin();
   }else{
     travelGroupCode = '';
-    sessionStorage.removeItem('travel_group_code');
+    localStorage.removeItem('travel_group_code');
     showGroupLogin();
   }
   updateGroupPill();
@@ -3418,6 +3456,167 @@ window.addEventListener('error', function(e){
     console.warn('地图 GeoJSON 外链被拒绝访问，建议后续改为本地 china.json。');
   }
 }, true);
+</script>
+
+
+<script>
+/* ===================== ENHANCED TIME OVERLAP VISUALIZATION ===================== */
+function ymdLocal(d){
+  const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const y = x.getFullYear();
+  const m = String(x.getMonth()+1).padStart(2,'0');
+  const day = String(x.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function parseYMDLocal(s){
+  const [y,m,d] = String(s||'').split('-').map(Number);
+  return new Date(y, (m||1)-1, d||1);
+}
+function addDaysLocal(d,n){
+  const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  x.setDate(x.getDate()+n);
+  return x;
+}
+function diffDaysLocal(a,b){
+  const x = new Date(a.getFullYear(), a.getMonth(), a.getDate());
+  const y = new Date(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.ceil((y-x)/86400000);
+}
+function mdLabel(d){ return `${d.getMonth()+1}/${d.getDate()}`; }
+function weekLabel(d){ return ['日','一','二','三','四','五','六'][d.getDay()]; }
+function isUserAvailableOn(userData, day){
+  if(!userData || !userData.vacationStart || !userData.vacationEnd) return false;
+  const start = parseYMDLocal(userData.vacationStart);
+  const end = parseYMDLocal(userData.vacationEnd);
+  if(day < start || day >= end) return false;
+  const periods = userData.unavailablePeriods || [];
+  for(const p of periods){
+    if(!p.start || !p.end) continue;
+    const ps = parseYMDLocal(p.start), pe = parseYMDLocal(p.end);
+    if(day >= ps && day < pe) return false;
+  }
+  return true;
+}
+function buildOverlapDays(){
+  const users = getAllUsers();
+  const userNames = Object.keys(users).filter(n => users[n] && users[n].vacationStart && users[n].vacationEnd);
+  if(userNames.length === 0) return { userNames, days:[], minStart:null, maxEnd:null };
+  const starts = userNames.map(n => parseYMDLocal(users[n].vacationStart));
+  const ends = userNames.map(n => parseYMDLocal(users[n].vacationEnd));
+  const minStart = new Date(Math.min(...starts));
+  const maxEnd = new Date(Math.max(...ends));
+  const totalSpan = Math.max(0, Math.min(120, diffDaysLocal(minStart, maxEnd)));
+  const days = [];
+  for(let i=0;i<totalSpan;i++){
+    const day = addDaysLocal(minStart, i);
+    const availableUsers = userNames.filter(n => isUserAvailableOn(users[n], day));
+    days.push({ date: ymdLocal(day), day, count: availableUsers.length, total: userNames.length, users: availableUsers });
+  }
+  return { userNames, days, minStart, maxEnd };
+}
+function bestOverlapRun(days, requiredCount){
+  let best = null, cur = null;
+  days.forEach(item => {
+    if(item.count >= requiredCount && requiredCount > 0){
+      if(!cur) cur = { start:item, end:item, length:1 };
+      else { cur.end = item; cur.length++; }
+    }else{
+      if(cur && (!best || cur.length > best.length)) best = cur;
+      cur = null;
+    }
+  });
+  if(cur && (!best || cur.length > best.length)) best = cur;
+  return best;
+}
+function renderOverlapCalendar(containerId, compact=false){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const {userNames, days, minStart, maxEnd} = buildOverlapDays();
+  if(userNames.length < 2){
+    container.innerHTML = '<div class="empty-state">需要至少两位成员填写时间信息，才能看到旅行团时间重合日历</div>';
+    return;
+  }
+  const total = userNames.length;
+  const fullRun = bestOverlapRun(days, total);
+  const maxCount = days.reduce((m,d)=>Math.max(m,d.count),0);
+  const maxRun = fullRun || bestOverlapRun(days, maxCount);
+  const fullDays = days.filter(d=>d.count===total).length;
+  const partialDays = days.filter(d=>d.count>0).length;
+  let bestText = '暂无共同可出行日期';
+  if(maxRun){
+    const endExclusive = addDaysLocal(maxRun.end.day, 1);
+    bestText = `${ymdLocal(maxRun.start.day)} 至 ${ymdLocal(endExclusive)}（${maxRun.length}天，${maxRun.start.count}/${total}人可行）`;
+  }
+  let html = `
+    <div class="overlap-summary-grid">
+      <div class="overlap-summary-card"><span>已填写时间成员</span><strong>${total} 人</strong></div>
+      <div class="overlap-summary-card"><span>全员共同可出行</span><strong>${fullDays} 天</strong></div>
+      <div class="overlap-summary-card"><span>推荐窗口</span><strong style="font-size:.95rem;line-height:1.45">${bestText}</strong></div>
+    </div>
+    <div class="overlap-legend">
+      <span><i style="background:#F1F0EA"></i>无人可行</span>
+      <span><i style="background:#DBF6FF"></i>少数可行</span>
+      <span><i style="background:#BEEFFF"></i>部分可行</span>
+      <span><i style="background:#8EDFB3"></i>多数可行</span>
+      <span><i style="background:#4EC9B0"></i>全员可行</span>
+    </div>
+    <div class="overlap-calendar">`;
+  days.forEach(d=>{
+    const ratio = total ? d.count / total : 0;
+    const level = d.count === 0 ? 0 : (ratio < .34 ? 1 : (ratio < .67 ? 2 : (ratio < 1 ? 3 : 4)));
+    const isBest = maxRun && d.day >= maxRun.start.day && d.day <= maxRun.end.day;
+    html += `<div class="overlap-day level-${level}${isBest?' best':''}" title="${d.date}：${d.count}/${total}人可出行\n${d.users.join('、') || '无人'}">
+      <span class="day-md">${mdLabel(d.day)}</span>
+      <span class="day-week">周${weekLabel(d.day)}</span>
+      <span class="day-count">${d.count}/${total}</span>
+    </div>`;
+  });
+  html += '</div>';
+  if(!compact){
+    const users = getAllUsers();
+    html += '<div class="member-time-list">';
+    userNames.forEach(name=>{
+      const u = users[name];
+      const unavailable = (u.unavailablePeriods || []).filter(p=>p.start&&p.end).map(p=>`${p.start}~${p.end}`).join('；') || '无';
+      html += `<div class="member-time-row"><strong>${(u.displayName || name)}</strong><small>假期：${u.vacationStart} ~ ${u.vacationEnd}｜不可出行：${unavailable}</small></div>`;
+    });
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+const __oldRenderTimeTab = typeof renderTimeTab === 'function' ? renderTimeTab : null;
+renderTimeTab = function(){
+  if(__oldRenderTimeTab) __oldRenderTimeTab();
+  renderOverlapCalendar('groupTimeOverlapViz');
+};
+
+const __oldRenderTimeOverlapAnalysis = typeof renderTimeOverlapAnalysis === 'function' ? renderTimeOverlapAnalysis : null;
+renderTimeOverlapAnalysis = function(){
+  const container = document.getElementById('timeOverlapAnalysis');
+  if(!container) return;
+  renderOverlapCalendar('timeOverlapAnalysis');
+};
+
+const __oldSaveVacationDates = typeof saveVacationDates === 'function' ? saveVacationDates : null;
+saveVacationDates = function(){
+  if(__oldSaveVacationDates) __oldSaveVacationDates();
+  renderOverlapCalendar('groupTimeOverlapViz');
+  renderOverlapCalendar('timeOverlapAnalysis');
+};
+const __oldSaveUnavailPeriods = typeof saveUnavailPeriods === 'function' ? saveUnavailPeriods : null;
+saveUnavailPeriods = function(){
+  if(__oldSaveUnavailPeriods) __oldSaveUnavailPeriods();
+  renderOverlapCalendar('groupTimeOverlapViz');
+  renderOverlapCalendar('timeOverlapAnalysis');
+};
+
+setTimeout(function(){
+  try{
+    renderOverlapCalendar('groupTimeOverlapViz');
+    renderOverlapCalendar('timeOverlapAnalysis');
+  }catch(e){ console.warn('时间重合可视化初始化失败', e); }
+}, 800);
 </script>
 
 </body>
