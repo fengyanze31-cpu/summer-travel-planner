@@ -1084,7 +1084,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
     <div class="card">
       <h2>旅行团成员与填写进度</h2>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/9</strong></p>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:6px">进度：<strong id="progressText">0/0</strong></p>
       <div class="user-list" id="userList"></div>
     </div>
   </div>
@@ -1949,7 +1949,7 @@ async function syncFromCloud(forceClearLocal=false) {
     if (!nextData.currentUser || !nextData.users[nextData.currentUser]) {
       nextData.currentUser = Object.keys(nextData.users)[0] || null;
     }
-    localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
+    saveData(nextData);
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge();
     console.log('云端同步完成', { group, users: usersData, ratings: ratingsData });
   } catch (err) {
@@ -2021,8 +2021,20 @@ function scheduleCloudPush() {
 }
 
 // ============ DATA MANAGER ============
-function getData() { let raw = localStorage.getItem('tripPlannerV2'); return raw ? JSON.parse(raw) : { users:{}, currentUser:null }; }
-function saveData(d) { localStorage.setItem('tripPlannerV2', JSON.stringify(d)); renderCloudBadge(); scheduleCloudPush(); }
+function getTripDataKey(){
+  const g = (typeof travelGroupCode !== 'undefined' && travelGroupCode) ? travelGroupCode : (sessionStorage.getItem('travel_group_code') || localStorage.getItem('travel_group_code') || 'guest');
+  return 'tripPlannerV2_' + g;
+}
+function getData() {
+  const key = getTripDataKey();
+  let raw = localStorage.getItem(key);
+  return raw ? JSON.parse(raw) : { users:{}, currentUser:null };
+}
+function saveData(d) {
+  localStorage.setItem(getTripDataKey(), JSON.stringify(d));
+  renderCloudBadge();
+  scheduleCloudPush();
+}
 function getUser(name) { return getData().users[name] || null; }
 function saveUser(name, userData) { let d = getData(); d.users[name] = userData; if (!d.currentUser) d.currentUser = name; saveData(d); }
 function deleteUser(name) { let d = getData(); delete d.users[name]; if (d.currentUser === name) d.currentUser = null; saveData(d); }
@@ -2498,11 +2510,11 @@ function renderSetup() {
   document.getElementById('userList').innerHTML = listHtml || '<div class="empty-state">暂无用户，请点击上方预设名或输入自定义姓名</div>';
 
   const count = userNames.length;
-  document.getElementById('progressFill').style.width = (count/9*100)+'%';
-  document.getElementById('progressText').textContent = count+'/9';
+  document.getElementById('progressFill').style.width = (userNames.length ? (count/userNames.length*100) : 0)+'%';
+  document.getElementById('progressText').textContent = count+'/'+userNames.length;
   document.getElementById('currentUserBadge').textContent = current || '未选择用户';
   const badge = document.getElementById('resultsBadge');
-  if (count>0) { badge.style.display=''; badge.textContent=count+'/9'; } else badge.style.display='none';
+  if (count>0) { badge.style.display=''; badge.textContent=count+'/'+userNames.length; } else badge.style.display='none';
   updateAllTabs();
 }
 
@@ -2523,7 +2535,7 @@ function addCustomUser() {
 }
 function switchToUser(name) { setCurrentUser(name); renderSetup(); renderMap(); renderTimeTab(); }
 function deleteUserConfirm(name) { if (!confirm(`确定删除"${name}"及其所有数据？`)) return; deleteUser(name); renderSetup(); renderMap(); renderTimeTab(); }
-function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem('tripPlannerV2'); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
+function resetAllData() { if (!confirm('确定清除所有用户的全部数据吗？此操作不可恢复！')) return; localStorage.removeItem(getTripDataKey()); renderSetup(); renderMap(); renderTimeTab(); renderResults(); }
 
 // ============ TIME TAB ============
 let tempUnavailPeriods = [];
@@ -2895,10 +2907,10 @@ function init() {
 
 <script>
 /* ===================== STRICT REGISTER / LOGIN + GROUP FLOW ===================== */
-let travelGroupCode = localStorage.getItem('travel_group_code') || '';
-let onlineAccount = localStorage.getItem('travel_account') || '';
-let onlineNickname = localStorage.getItem('travel_nickname') || '';
-let isAccountLoggedIn = localStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
+let travelGroupCode = sessionStorage.getItem('travel_group_code') || '';
+let onlineAccount = sessionStorage.getItem('travel_account') || localStorage.getItem('travel_account_saved') || '';
+let onlineNickname = sessionStorage.getItem('travel_nickname') || '';
+let isAccountLoggedIn = sessionStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
 
 function normalizeAccount(v){
   return String(v || '').trim().replace(/\s+/g,'').toLowerCase();
@@ -2952,7 +2964,7 @@ function ensureCurrentLocalUser(){
     d.users[onlineAccount].displayName = onlineNickname || d.users[onlineAccount].displayName || onlineAccount;
   }
   d.currentUser = onlineAccount;
-  localStorage.setItem('tripPlannerV2', JSON.stringify(d));
+  saveData(d);
 }
 function updateGroupPill(){
   const pill = document.getElementById('currentGroupPill');
@@ -2977,7 +2989,7 @@ function renderCloudBadge(){
 
 async function findAccount(account){
   const { data, error } = await supabaseClient
-    .from('users')
+    .from('accounts')
     .select('*')
     .eq('account', account)
     .limit(1);
@@ -3000,26 +3012,21 @@ async function registerAccount(){
       alert('这个账号已经注册过了，请直接登录。');
       return;
     }
-    const { error } = await supabaseClient.from('users').insert([{
-      account,
-      password,
-      name: account,
-      nickname: account,
-      group_code: '__no_group__'
-    }]);
+    const { error } = await supabaseClient.from('accounts').insert([{ account, password }]);
     if(error) throw error;
 
     onlineAccount = account;
     onlineNickname = account;
     isAccountLoggedIn = true;
-    localStorage.setItem('travel_account', onlineAccount);
-    localStorage.setItem('travel_nickname', onlineNickname);
-    localStorage.setItem('travel_logged_in', 'true');
+    sessionStorage.setItem('travel_account', onlineAccount);
+    sessionStorage.setItem('travel_nickname', onlineNickname);
+    sessionStorage.setItem('travel_logged_in', 'true');
+    localStorage.setItem('travel_account_saved', onlineAccount);
     setLoginStatus(`注册成功，已登录 ${account}`, true);
     alert('注册成功！现在可以创建或加入旅行团。');
   }catch(e){
     console.error(e);
-    alert('注册失败。请检查 users 表是否有 account、password、nickname、name、group_code 字段，以及 RLS 权限。');
+    alert('注册失败。请检查 accounts 表是否有 account、password 字段，以及 RLS 权限。');
   }
 }
 
@@ -3042,11 +3049,12 @@ async function loginAccountOnly(){
       return;
     }
     onlineAccount = account;
-    onlineNickname = existing.nickname || existing.name || account;
+    onlineNickname = account;
     isAccountLoggedIn = true;
-    localStorage.setItem('travel_account', onlineAccount);
-    localStorage.setItem('travel_nickname', onlineNickname);
-    localStorage.setItem('travel_logged_in', 'true');
+    sessionStorage.setItem('travel_account', onlineAccount);
+    sessionStorage.setItem('travel_nickname', onlineNickname);
+    sessionStorage.setItem('travel_logged_in', 'true');
+    localStorage.setItem('travel_account_saved', onlineAccount);
     setLoginStatus(`已登录 ${account}`, true);
     alert('登录成功！请选择创建或加入旅行团。');
   }catch(e){
@@ -3069,7 +3077,6 @@ async function enterTravelGroup(mode){
       .from('users')
       .select('id,account')
       .eq('group_code', code)
-      .neq('group_code', '__no_group__')
       .limit(1);
     if(groupErr) throw groupErr;
 
@@ -3082,18 +3089,33 @@ async function enterTravelGroup(mode){
       return;
     }
 
-    const { error: updateErr } = await supabaseClient
+    const { data: memberExists, error: memberErr } = await supabaseClient
       .from('users')
-      .update({
+      .select('*')
+      .eq('account', onlineAccount)
+      .eq('group_code', code)
+      .limit(1);
+    if(memberErr) throw memberErr;
+
+    if(memberExists && memberExists.length > 0){
+      onlineNickname = memberExists[0].nickname || memberExists[0].name || onlineAccount;
+    }else{
+      const defaultNick = onlineNickname || onlineAccount;
+      const { error: insertErr } = await supabaseClient.from('users').insert([{
+        account: onlineAccount,
         group_code: code,
-        name: onlineNickname || onlineAccount,
-        nickname: onlineNickname || onlineAccount
-      })
-      .eq('account', onlineAccount);
-    if(updateErr) throw updateErr;
+        name: defaultNick,
+        nickname: defaultNick
+      }]);
+      if(insertErr) throw insertErr;
+      onlineNickname = defaultNick;
+    }
 
     travelGroupCode = code;
-    localStorage.setItem('travel_group_code', travelGroupCode);
+    sessionStorage.setItem('travel_group_code', travelGroupCode);
+    sessionStorage.setItem('travel_account', onlineAccount);
+    sessionStorage.setItem('travel_nickname', onlineNickname);
+    localStorage.setItem('travel_account_saved', onlineAccount);
     localStorage.removeItem('travel_user_name');
     ensureCurrentLocalUser();
 
@@ -3103,16 +3125,16 @@ async function enterTravelGroup(mode){
     await syncFromCloud(false);
   }catch(e){
     console.error(e);
-    alert('创建/加入旅行团失败。请检查 users 表字段和 RLS 权限。');
+    alert('创建/加入旅行团失败。请检查 users 表字段、唯一约束和 RLS 权限。');
   }
 }
 
 function logoutTravelGroup(){
   if(!confirm('确定退出当前账号吗？本机会返回登录界面。')) return;
-  localStorage.removeItem('travel_account');
-  localStorage.removeItem('travel_nickname');
-  localStorage.removeItem('travel_group_code');
-  localStorage.removeItem('travel_logged_in');
+  sessionStorage.removeItem('travel_account');
+  sessionStorage.removeItem('travel_nickname');
+  sessionStorage.removeItem('travel_group_code');
+  sessionStorage.removeItem('travel_logged_in');
   onlineAccount = '';
   onlineNickname = '';
   travelGroupCode = '';
@@ -3132,18 +3154,19 @@ async function updateMyNickname(){
   if(!newName){ alert('请输入新的昵称'); return; }
 
   onlineNickname = newName;
-  localStorage.setItem('travel_nickname', onlineNickname);
+  sessionStorage.setItem('travel_nickname', onlineNickname);
 
   const d = getData();
   if(d.users && d.users[onlineAccount]) d.users[onlineAccount].displayName = newName;
-  localStorage.setItem('tripPlannerV2', JSON.stringify(d));
+  saveData(d);
 
   try{
     if(supabaseClient){
       await supabaseClient
         .from('users')
         .update({ nickname:newName, name:newName })
-        .eq('account', onlineAccount);
+        .eq('account', onlineAccount)
+        .eq('group_code', travelGroupCode);
     }
   }catch(e){ console.warn(e); }
 
@@ -3198,7 +3221,7 @@ async function syncFromCloud(forceClearLocal=false){
     }
     nextData.currentUser = onlineAccount;
 
-    localStorage.setItem('tripPlannerV2', JSON.stringify(nextData));
+    saveData(nextData);
     renderSetup(); renderMap(); renderTimeTab(); renderResults(); renderDestinationList(); renderCloudBadge(); updateGroupPill();
   }catch(err){
     console.warn('云端同步失败：', err);
@@ -3216,6 +3239,7 @@ async function pushToCloudNow(){
     await supabaseClient
       .from('users')
       .update({ nickname: currentData.displayName || onlineNickname || onlineAccount, name: currentData.displayName || onlineNickname || onlineAccount })
+      .eq('group_code', travelGroupCode)
       .eq('account', onlineAccount);
 
     const { error: delErr } = await supabaseClient
@@ -3283,17 +3307,23 @@ function renderSetup(){
   const userList = document.getElementById('userList');
   if(userList) userList.innerHTML = listHtml || '<div class="empty-state">暂无成员。登录后会自动加入旅行团。</div>';
 
-  const count = userNames.length;
+  const totalMembers = userNames.length;
+  let finishedMembers = 0;
+  userNames.forEach(account => {
+    const u = users[account] || {};
+    const rated = Object.keys(u.ratings || {}).length + (u.notInterested || []).length;
+    if (rated > 0 || u.vacationStart) finishedMembers++;
+  });
   const fill = document.getElementById('progressFill');
   const text = document.getElementById('progressText');
-  if(fill) fill.style.width = Math.min(100, count/9*100) + '%';
-  if(text) text.textContent = count + '/9';
+  if(fill) fill.style.width = (totalMembers ? Math.min(100, finishedMembers / totalMembers * 100) : 0) + '%';
+  if(text) text.textContent = finishedMembers + '/' + totalMembers;
 
   const badge = document.getElementById('currentUserBadge');
   if(badge) badge.innerHTML = current ? `当前：<strong>${currentDisplayName()}</strong>` : '未登录';
   const resultsBadge = document.getElementById('resultsBadge');
   if(resultsBadge){
-    if(count>0){ resultsBadge.style.display=''; resultsBadge.textContent=count+'/9'; }
+    if(totalMembers>0){ resultsBadge.style.display=''; resultsBadge.textContent=finishedMembers+'/'+totalMembers; }
     else resultsBadge.style.display='none';
   }
   updateAllTabs();
@@ -3306,17 +3336,17 @@ function deleteUserConfirm(){ alert('在线版不建议在网页端删除旅行�
 
 function initOnlineApp(){
   initSupabaseClient();
-  onlineAccount = localStorage.getItem('travel_account') || '';
-  onlineNickname = localStorage.getItem('travel_nickname') || '';
-  travelGroupCode = localStorage.getItem('travel_group_code') || '';
-  isAccountLoggedIn = localStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
+  onlineAccount = sessionStorage.getItem('travel_account') || localStorage.getItem('travel_account_saved') || '';
+  onlineNickname = sessionStorage.getItem('travel_nickname') || '';
+  travelGroupCode = sessionStorage.getItem('travel_group_code') || '';
+  isAccountLoggedIn = sessionStorage.getItem('travel_logged_in') === 'true' && !!onlineAccount;
 
   if(isAccountLoggedIn && onlineAccount && travelGroupCode){
     ensureCurrentLocalUser();
     hideGroupLogin();
   }else{
     travelGroupCode = '';
-    localStorage.removeItem('travel_group_code');
+    sessionStorage.removeItem('travel_group_code');
     showGroupLogin();
   }
   updateGroupPill();
