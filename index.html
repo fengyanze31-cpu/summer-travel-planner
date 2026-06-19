@@ -908,6 +908,356 @@ body::after{display:none!important;}
   .group-login-card{padding:24px 18px;}
 }
 
+
+
+/* ===================== FINAL RESPONSIVE FIT FIX =====================
+   解决：桌面标题组件拥挤、弹窗内容过高、手机端必须缩放才能看全。
+   原则：不改变功能逻辑，只修布局流、弹窗尺寸、移动端触控与溢出。
+==================================================================== */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+body{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+*{max-width:100%;}
+button,input,select,textarea{font-size:16px;}
+
+/* Header: 取消绝对定位挤压，改为标题和状态区分层排列 */
+.app-header{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  place-items:center!important;
+  gap:18px!important;
+  min-height:auto!important;
+  padding:34px clamp(14px,4vw,56px) 72px!important;
+  overflow:visible!important;
+}
+.app-header::before{
+  inset:24px clamp(10px,8vw,120px) 34px!important;
+}
+.app-header h1{
+  width:min(100%,960px)!important;
+  max-width:960px!important;
+  margin:0 auto!important;
+  position:relative!important;
+  font-size:clamp(2.8rem,7.2vw,6.8rem)!important;
+  overflow:visible!important;
+}
+.app-header h1::before{left:clamp(-42px,-5vw,-12px)!important;top:8px!important;}
+.app-header h1::after{right:clamp(-42px,-5vw,-12px)!important;top:58px!important;}
+.app-header .header-right,
+.header-right{
+  position:relative!important;
+  right:auto!important;
+  bottom:auto!important;
+  z-index:8!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  width:auto!important;
+  max-width:min(94vw,980px)!important;
+  margin:0 auto!important;
+  padding:8px 10px!important;
+  transform:none!important;
+}
+.current-group-pill,.user-badge,.btn-reset-all{
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  line-height:1.35!important;
+}
+.app-header::after{
+  bottom:14px!important;
+  max-width:90vw!important;
+  white-space:normal!important;
+  text-align:center!important;
+}
+
+/* Main layout: 不让卡片/表格撑破视口 */
+.container{
+  width:min(100%,1400px)!important;
+  padding-left:clamp(10px,3vw,28px)!important;
+  padding-right:clamp(10px,3vw,28px)!important;
+}
+.card,.sidebar-card,.map-container,.modal,.guide-modal{
+  min-width:0!important;
+}
+.setup-grid,.time-layout,.results-grid,.map-layout{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+.result-table-wrap,.result-table{max-width:100%!important;}
+
+/* 目的地评分弹窗：桌面加宽并压缩景点卡片高度，评分区不用缩放就能看见 */
+.modal-overlay.show,.guide-overlay.show{
+  align-items:center!important;
+  justify-content:center!important;
+}
+.modal-overlay{
+  padding:12px!important;
+}
+.modal{
+  width:min(1120px,96vw)!important;
+  max-width:1120px!important;
+  max-height:calc(100dvh - 24px)!important;
+  overflow-y:auto!important;
+  padding:24px!important;
+  transform:none!important;
+  border-width:8px!important;
+  border-bottom-width:12px!important;
+  overscroll-behavior:contain!important;
+  scroll-padding-bottom:96px!important;
+}
+.modal h2{font-size:clamp(1.35rem,2vw,1.9rem)!important;}
+.modal-section{
+  margin-bottom:12px!important;
+  padding:12px!important;
+}
+.dest-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important;
+  gap:12px!important;
+  max-height:none!important;
+}
+.dest-card{
+  min-width:0!important;
+  border-width:4px!important;
+  border-radius:18px!important;
+}
+.dest-card-img{
+  height:clamp(92px,10vw,130px)!important;
+  aspect-ratio:16/9!important;
+}
+.dest-card-body{padding:10px 12px 12px!important;}
+.dest-card-name{font-size:.92rem!important;line-height:1.25!important;flex-wrap:wrap!important;}
+.dest-card-desc{
+  font-size:.76rem!important;
+  line-height:1.38!important;
+  display:-webkit-box!important;
+  -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
+  overflow:hidden!important;
+}
+.dest-card-hint{font-size:.68rem!important;}
+.rating-section{
+  margin-top:12px!important;
+  padding:14px!important;
+}
+.modal-actions{
+  position:sticky!important;
+  bottom:0!important;
+  z-index:20!important;
+  background:linear-gradient(180deg,rgba(255,253,248,.70),#FFFDF8 42%)!important;
+  padding-top:12px!important;
+  margin-top:12px!important;
+}
+.modal-actions button{min-height:44px!important;}
+
+/* 攻略弹窗也适配视口 */
+.guide-modal{
+  width:min(760px,96vw)!important;
+  max-height:calc(100dvh - 24px)!important;
+  overflow-y:auto!important;
+  transform:none!important;
+  padding:24px!important;
+  overscroll-behavior:contain!important;
+}
+.guide-modal .guide-img{
+  height:clamp(150px,24vw,230px)!important;
+}
+.guide-actions{
+  position:sticky!important;
+  bottom:0!important;
+  z-index:20!important;
+  background:linear-gradient(180deg,rgba(255,253,248,.70),#FFFDF8 42%)!important;
+  padding-top:10px!important;
+}
+
+/* Calendar: 手机不横向撑开 */
+.group-calendar-grid{
+  width:100%!important;
+  min-width:0!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))!important;
+}
+.group-calendar-scroll{max-width:100%!important;}
+
+/* Tablet */
+@media(max-width:1024px){
+  .app-header{padding-top:26px!important;padding-bottom:70px!important;}
+  .app-header h1{font-size:clamp(2.8rem,9.5vw,5.6rem)!important;}
+  .setup-grid,.time-layout,.results-grid,.map-layout{
+    grid-template-columns:1fr!important;
+  }
+  .modal{width:min(820px,96vw)!important;}
+  .dest-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))!important;}
+}
+
+/* Mobile: 所有元素按 100vw 内布局，不再需要缩小页面比例 */
+@media(max-width:760px){
+  body{background-attachment:scroll!important;}
+  .app-header{
+    padding:22px 10px 58px!important;
+    gap:12px!important;
+  }
+  .app-header::before{
+    inset:16px 8px 40px!important;
+    border-width:5px!important;
+  }
+  .app-header h1{
+    width:100%!important;
+    font-size:clamp(2.15rem,14vw,3.65rem)!important;
+    line-height:.92!important;
+    letter-spacing:.02em!important;
+  }
+  .title-line{
+    font-size:inherit!important;
+    overflow-wrap:anywhere!important;
+  }
+  .app-header h1::before,.app-header h1::after,
+  .poster-title::before,.poster-title::after{
+    display:none!important;
+  }
+  .app-header::after{
+    bottom:12px!important;
+    width:fit-content!important;
+    max-width:calc(100vw - 24px)!important;
+    padding:8px 14px!important;
+    border-width:4px!important;
+    font-size:.82rem!important;
+    letter-spacing:.08em!important;
+  }
+  .header-right{
+    width:calc(100vw - 24px)!important;
+    max-width:calc(100vw - 24px)!important;
+    padding:8px!important;
+    border-width:4px!important;
+    gap:6px!important;
+  }
+  .current-group-pill,.user-badge,.btn-reset-all{
+    flex:1 1 100%!important;
+    justify-content:center!important;
+    text-align:center!important;
+    padding:8px 10px!important;
+    font-size:.82rem!important;
+  }
+  .btn-change-group{margin-left:4px!important;}
+  .tab-nav{
+    width:100vw!important;
+    max-width:100vw!important;
+    padding:8px 10px 12px!important;
+    gap:8px!important;
+    overflow-x:auto!important;
+    justify-content:flex-start!important;
+  }
+  .tab-btn{
+    flex:0 0 auto!important;
+    min-width:max-content!important;
+    max-width:72vw!important;
+    white-space:nowrap!important;
+    padding:10px 12px!important;
+    font-size:.78rem!important;
+    border-width:4px!important;
+  }
+  .container{padding:12px 8px 52px!important;}
+  .card,.sidebar-card,.map-container{
+    padding:20px 14px 24px!important;
+    margin-bottom:18px!important;
+  }
+  .card h2,.map-container h2,.sidebar-card h3{
+    font-size:.92rem!important;
+    padding:8px 12px!important;
+    max-width:100%!important;
+    white-space:normal!important;
+  }
+  .name-input-row,.date-input-row,.unavail-period,.rating-slider-row{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:8px!important;
+  }
+  .name-input-row button,
+  button[onclick="saveVacationDates()"],
+  button[onclick="saveUnavailPeriods()"],
+  .btn-add-period{
+    width:100%!important;
+    min-height:44px!important;
+  }
+  .map-container svg{
+    border-width:8px!important;
+    border-bottom-width:22px!important;
+    transform:none!important;
+  }
+  .modal-overlay,.guide-overlay{
+    padding:0!important;
+    align-items:stretch!important;
+  }
+  .modal,.guide-modal{
+    width:100vw!important;
+    max-width:100vw!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    border-radius:0!important;
+    border-width:0!important;
+    padding:16px 12px 18px!important;
+  }
+  .modal::before,.guide-modal::before{display:none!important;}
+  .modal-section,.guide-section{
+    padding:10px!important;
+    border-radius:16px!important;
+  }
+  .dest-grid{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  .dest-card{
+    display:grid!important;
+    grid-template-columns:108px minmax(0,1fr)!important;
+    align-items:stretch!important;
+    min-height:106px!important;
+  }
+  .dest-card-img{
+    width:108px!important;
+    height:100%!important;
+    min-height:106px!important;
+    aspect-ratio:auto!important;
+  }
+  .dest-card-body{padding:9px 10px!important;}
+  .dest-card-desc{-webkit-line-clamp:2!important;}
+  .rating-value{font-size:1.35rem!important;}
+  .modal-actions,.guide-actions{
+    flex-direction:column!important;
+    gap:8px!important;
+    padding-bottom:max(8px,env(safe-area-inset-bottom))!important;
+  }
+  .result-table{
+    display:block!important;
+    width:100%!important;
+    overflow-x:auto!important;
+    white-space:nowrap!important;
+  }
+  .group-calendar-summary{gap:6px!important;}
+  .group-calendar-chip{
+    flex:1 1 100%!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  .calendar-month{padding:10px!important;border-width:4px!important;}
+  .calendar-weekdays,.calendar-days{gap:3px!important;}
+  .calendar-day{min-height:30px!important;border-radius:9px!important;font-size:.68rem!important;}
+}
+
+@media(max-width:380px){
+  .app-header h1{font-size:clamp(1.9rem,13.5vw,3rem)!important;}
+  .tab-btn{font-size:.74rem!important;padding:9px 10px!important;}
+  .dest-card{grid-template-columns:92px minmax(0,1fr)!important;}
+  .dest-card-img{width:92px!important;}
+}
+
 </style>
 
 <script>
@@ -968,7 +1318,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
       <div class="group-login-section">
         <h3>① 账号</h3>
         <label for="loginAccount">账号</label>
-        <input id="loginAccount" type="text" placeholder="例如: zhangsan">
+        <input id="loginAccount" type="text" placeholder="例如： zhangsan">
 
         <label for="loginPassword">密码</label>
         <input id="loginPassword" type="password" placeholder="注册时设置，登录时输入">
@@ -1061,7 +1411,7 @@ window.__supabaseSdkReady = new Promise(function(resolve){
   <button class="tab-btn active" data-tab="setup">1. 旅行团信息</button>
   <button class="tab-btn" data-tab="map">2. 目的地选择</button>
   <button class="tab-btn" data-tab="time">3. 时间协调</button>
-  <button class="tab-btn" data-tab="results">4. 结果汇总 <span class="tab-badge" id="resultsBadge" style="display:none">0/9</span></button>
+  <button class="tab-btn" data-tab="results">4. 结果汇总 <span class="tab-badge" id="resultsBadge" style="display:none">0/0</span></button>
 </nav>
 
 <div class="container">
