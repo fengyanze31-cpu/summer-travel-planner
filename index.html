@@ -1561,6 +1561,267 @@ button,input,select,textarea{font-size:16px;}
   .guide-card-head{flex-direction:column;align-items:flex-start;}
 }
 
+
+/* ===================== INTEGRATED COLLABORATIVE GUIDE BOARD ===================== */
+.guide-board-mode-tip{margin:0 0 16px;padding:12px 15px;border-radius:18px;background:#E9FAFF;color:#256D85;border:3px dashed rgba(91,190,232,.42);font-weight:800;line-height:1.65;}
+.integrated-day-card{position:relative;margin:0 0 22px;padding:20px;background:#FFFDF5;border:5px solid #fff;border-radius:28px;box-shadow:0 12px 0 rgba(91,190,232,.10),0 22px 34px rgba(37,109,133,.12);}
+.integrated-day-card::before{content:"";position:absolute;top:-14px;left:28px;width:86px;height:28px;background:rgba(255,230,154,.88);border:3px solid rgba(255,255,255,.82);border-radius:7px;transform:rotate(-5deg);}
+.integrated-day-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.integrated-day-title{display:inline-flex;align-items:center;gap:8px;margin:0;padding:10px 18px;border:5px solid #fff;border-radius:999px;background:linear-gradient(135deg,#4EC9B0,#5BBEE8);color:#fff;font-weight:1000;box-shadow:0 8px 0 rgba(37,109,133,.12);}
+.integrated-day-meta{color:#6E8991;font-size:.85rem;font-weight:800;}
+.integrated-guide-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:14px;}
+.integrated-block{min-height:92px;padding:14px;border-radius:22px;border:4px solid #fff;background:rgba(255,255,255,.72);box-shadow:0 8px 0 rgba(37,109,133,.06);}
+.integrated-block.full{grid-column:1 / -1;}
+.integrated-block-title{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:#256D85;font-size:.96rem;font-weight:1000;}
+.integrated-item{padding:10px 11px;margin:0 0 9px;border-radius:16px;background:#fff;border:2px solid rgba(91,190,232,.18);box-shadow:0 5px 0 rgba(37,109,133,.04);}
+.integrated-item:last-child{margin-bottom:0;}
+.integrated-item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px;}
+.integrated-item-title{margin:0;color:#234554;font-size:.95rem;font-weight:1000;}
+.integrated-item-author{color:#6E8991;font-size:.75rem;white-space:nowrap;font-weight:800;}
+.integrated-item-content{color:#385966;font-size:.88rem;line-height:1.65;white-space:pre-wrap;}
+.integrated-item-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.integrated-empty{color:#8AA0A8;font-size:.86rem;line-height:1.6;}
+.integrated-link{color:#256D85;font-weight:900;text-decoration:none;background:#FFF1C8;border-radius:999px;padding:4px 9px;font-size:.78rem;}
+.integrated-link:hover{text-decoration:underline;}
+.integrated-delete-btn{border:0;border-radius:999px;background:#FFE9DF;color:#C75B50;padding:5px 10px;font-size:.75rem;font-family:inherit;font-weight:900;cursor:pointer;}
+.integrated-summary-strip{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;}
+.integrated-summary-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:#fff;border:3px solid #fff;color:#256D85;box-shadow:0 5px 0 rgba(37,109,133,.05);font-size:.78rem;font-weight:900;}
+@media(max-width:900px){.integrated-guide-grid{grid-template-columns:1fr;}.integrated-block.full{grid-column:auto;}}
+@media(max-width:520px){.integrated-day-card{padding:16px 12px;border-radius:22px;}.integrated-block{padding:12px;border-radius:18px;}.integrated-day-header{align-items:flex-start;}.integrated-item-head{flex-direction:column;gap:3px;}.integrated-item-author{white-space:normal;}}
+
+
+/* ===================== ORGANIC CONNECTED GUIDE BOARD ===================== */
+.route-overview-card{
+  margin:0 0 18px;
+  padding:16px 18px;
+  border:5px solid #fff;
+  border-radius:24px;
+  background:linear-gradient(135deg,#E9FAFF,#FFF8D6);
+  box-shadow:0 10px 0 rgba(37,109,133,.08),0 18px 28px rgba(37,109,133,.10);
+}
+.route-overview-title{
+  margin:0 0 8px;
+  color:#256D85;
+  font-weight:1000;
+  font-size:1rem;
+}
+.route-overview-text{
+  color:#385966;
+  line-height:1.75;
+  font-weight:800;
+}
+.connected-day-card{
+  position:relative;
+  margin:0 0 26px;
+  padding:20px;
+  border:6px solid #fff;
+  border-radius:30px;
+  background:#FFFDF5;
+  box-shadow:0 14px 0 rgba(91,190,232,.10),0 24px 38px rgba(37,109,133,.13);
+}
+.connected-day-card::before{
+  content:"";
+  position:absolute;
+  top:-15px;
+  left:34px;
+  width:92px;
+  height:30px;
+  border:3px solid rgba(255,255,255,.8);
+  border-radius:8px;
+  background:rgba(255,230,154,.9);
+  transform:rotate(-5deg);
+}
+.connected-day-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+.connected-day-title{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:0;
+  padding:10px 18px;
+  border:5px solid #fff;
+  border-radius:999px;
+  background:linear-gradient(135deg,#4EC9B0,#5BBEE8);
+  color:#fff;
+  font-weight:1000;
+  box-shadow:0 8px 0 rgba(37,109,133,.12);
+}
+.connected-day-summary{
+  flex:1;
+  min-width:240px;
+  color:#456875;
+  line-height:1.7;
+  font-size:.9rem;
+  font-weight:800;
+  background:rgba(255,255,255,.62);
+  border:3px dashed rgba(91,190,232,.28);
+  border-radius:18px;
+  padding:10px 13px;
+}
+.connected-route-line{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:10px 0 18px;
+  padding-left:30px;
+}
+.connected-route-line::before{
+  content:"";
+  position:absolute;
+  left:11px;
+  top:18px;
+  bottom:18px;
+  width:6px;
+  border-radius:999px;
+  background:repeating-linear-gradient(180deg,#5BBEE8 0 12px,#4EC9B0 12px 24px);
+  box-shadow:0 0 0 4px #fff;
+}
+.timeline-step{
+  position:relative;
+  display:grid;
+  grid-template-columns:88px 1fr;
+  gap:10px;
+  align-items:start;
+  padding:12px 14px;
+  border:4px solid #fff;
+  border-radius:22px;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 7px 0 rgba(37,109,133,.05);
+}
+.timeline-step::before{
+  content:"";
+  position:absolute;
+  left:-28px;
+  top:18px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:#FFD84A;
+  border:5px solid #fff;
+  box-shadow:0 4px 0 rgba(37,109,133,.10);
+}
+.timeline-time{
+  color:#256D85;
+  font-weight:1000;
+  font-size:.88rem;
+}
+.timeline-main-title{
+  margin:0 0 5px;
+  color:#234554;
+  font-weight:1000;
+  font-size:.98rem;
+}
+.timeline-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:6px;
+}
+.timeline-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:#E9FAFF;
+  color:#256D85;
+  font-size:.75rem;
+  font-weight:900;
+}
+.timeline-content{
+  color:#385966;
+  line-height:1.65;
+  font-size:.88rem;
+  white-space:pre-wrap;
+}
+.connected-sections{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.connected-section{
+  padding:14px;
+  border:4px solid #fff;
+  border-radius:22px;
+  background:rgba(255,255,255,.68);
+  box-shadow:0 8px 0 rgba(37,109,133,.05);
+}
+.connected-section.full{
+  grid-column:1 / -1;
+}
+.connected-section h4{
+  margin:0 0 10px;
+  color:#256D85;
+  font-weight:1000;
+}
+.connected-mini-item{
+  margin:0 0 9px;
+  padding:10px 11px;
+  border-radius:16px;
+  background:#fff;
+  border:2px solid rgba(91,190,232,.18);
+}
+.connected-mini-title{
+  margin:0 0 5px;
+  font-size:.92rem;
+  color:#234554;
+  font-weight:1000;
+}
+.connected-mini-content{
+  color:#456875;
+  font-size:.85rem;
+  line-height:1.55;
+  white-space:pre-wrap;
+}
+.connected-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+  color:#6E8991;
+  font-size:.78rem;
+  font-weight:800;
+}
+.connected-link{
+  color:#256D85;
+  font-weight:900;
+  text-decoration:none;
+  background:#FFF1C8;
+  border-radius:999px;
+  padding:4px 9px;
+}
+.connected-delete-btn{
+  border:0;
+  border-radius:999px;
+  background:#FFE9DF;
+  color:#C75B50;
+  padding:5px 10px;
+  font-size:.75rem;
+  font-family:inherit;
+  font-weight:900;
+  cursor:pointer;
+}
+.guide-board-mode-tip strong{color:#2E6F57;}
+@media(max-width:900px){
+  .connected-sections{grid-template-columns:1fr;}
+  .connected-section.full{grid-column:auto;}
+}
+@media(max-width:520px){
+  .connected-day-card{padding:16px 12px;border-radius:22px;}
+  .timeline-step{grid-template-columns:1fr;padding:12px;}
+  .timeline-time{font-size:.82rem;}
+  .connected-route-line{padding-left:24px;}
+}
+
 </style>
 
 <script>
@@ -1845,7 +2106,25 @@ window.__supabaseSdkReady = new Promise(function(resolve){
             <option value="其他">其他</option>
           </select>
         </div>
+        <div>
+          <label class="guide-form-label">时间段</label>
+          <select id="guideTimeSlotInput">
+            <option value="上午">上午</option>
+            <option value="中午">中午</option>
+            <option value="下午">下午</option>
+            <option value="晚上">晚上</option>
+            <option value="全天">全天</option>
+            <option value="未定">未定</option>
+          </select>
+        </div>
+        <div>
+          <label class="guide-form-label">具体时间</label>
+          <input id="guideTimeTextInput" type="text" maxlength="40" placeholder="例如：09:00-11:30">
+        </div>
       </div>
+
+      <label class="guide-form-label">地点 / 位置</label>
+      <input id="guideLocationInput" type="text" maxlength="100" placeholder="例如：酒店、景区入口、某餐厅、车站">
 
       <label class="guide-form-label">标题</label>
       <input id="guideTitleInput" type="text" maxlength="80" placeholder="例如：Day1 下午去武隆天坑">
@@ -4347,12 +4626,14 @@ function formatGuideDate(v){
   }
 }
 function clearGuideForm(){
-  const ids = ['guideTitleInput','guideContentInput','guideLinkInput'];
+  const ids = ['guideTitleInput','guideContentInput','guideLinkInput','guideTimeTextInput','guideLocationInput'];
   ids.forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
   const day = document.getElementById('guideDayInput');
   if(day) day.value = '1';
   const cat = document.getElementById('guideCategoryInput');
   if(cat) cat.value = '行程';
+  const timeSlot = document.getElementById('guideTimeSlotInput');
+  if(timeSlot) timeSlot.value = '上午';
 }
 async function addGuideItem(){
   const group = getGuideGroupCode();
@@ -4368,6 +4649,9 @@ async function addGuideItem(){
   const nickname = (typeof currentDisplayName === 'function' && currentDisplayName()) || account;
   const dayNo = Math.max(1, parseInt(document.getElementById('guideDayInput')?.value || '1', 10));
   const category = document.getElementById('guideCategoryInput')?.value || '其他';
+  const timeSlot = document.getElementById('guideTimeSlotInput')?.value || '未定';
+  const timeText = (document.getElementById('guideTimeTextInput')?.value || '').trim();
+  const location = (document.getElementById('guideLocationInput')?.value || '').trim();
   const title = (document.getElementById('guideTitleInput')?.value || '').trim();
   const content = (document.getElementById('guideContentInput')?.value || '').trim();
   const link = (document.getElementById('guideLinkInput')?.value || '').trim();
@@ -4388,6 +4672,9 @@ async function addGuideItem(){
     nickname,
     day_no: dayNo,
     category,
+    time_slot: timeSlot,
+    time_text: timeText,
+    location,
     title,
     content,
     link,
@@ -4405,6 +4692,9 @@ async function addGuideItem(){
           nickname,
           day_no: dayNo,
           category,
+          time_slot: timeSlot,
+          time_text: timeText,
+          location,
           title,
           content,
           link
@@ -4486,6 +4776,78 @@ async function deleteGuideItem(id, account){
     alert('删除失败，请检查权限。');
   }
 }
+function guideIcon(category){
+  const map = {'行程':'🗓️','景点':'📍','美食':'🍜','住宿':'🏨','交通':'🚗','预算':'💰','注意事项':'⚠️','其他':'📝'};
+  return map[category] || '📝';
+}
+function timeSlotOrder(v){
+  const map = {'上午':1,'中午':2,'下午':3,'晚上':4,'全天':0,'未定':9};
+  return map[v] ?? 9;
+}
+function categoryOrder(v){
+  const map = {'交通':1,'行程':2,'景点':3,'美食':4,'住宿':5,'预算':6,'注意事项':7,'其他':8};
+  return map[v] || 99;
+}
+function routeVerb(category){
+  const map = {'交通':'前往','行程':'安排','景点':'游览','美食':'用餐','住宿':'入住','预算':'预算','注意事项':'提醒','其他':'补充'};
+  return map[category] || '安排';
+}
+function shortText(str, n=42){
+  str = String(str || '').replace(/\s+/g,' ').trim();
+  return str.length > n ? str.slice(0,n) + '…' : str;
+}
+function itemPlace(item){
+  return item.location || item.title || '';
+}
+function makeDayRouteSummary(dayItems){
+  const scenic = dayItems.filter(x => x.category === '景点').map(itemPlace);
+  const food = dayItems.filter(x => x.category === '美食').map(itemPlace);
+  const hotel = dayItems.filter(x => x.category === '住宿').map(itemPlace);
+  const transport = dayItems.filter(x => x.category === '交通').map(itemPlace);
+  const ordered = dayItems
+    .filter(x => ['交通','行程','景点','美食','住宿'].includes(x.category))
+    .sort((a,b)=> timeSlotOrder(a.time_slot)-timeSlotOrder(b.time_slot) || categoryOrder(a.category)-categoryOrder(b.category))
+    .map(x => `${x.time_slot || '未定'}${routeVerb(x.category)}「${shortText(itemPlace(x), 16)}」`);
+  let sentence = ordered.length ? ordered.join(' → ') : '今天还没有形成完整路线。';
+  const hints = [];
+  if(scenic.length && food.length) hints.push(`景点与餐饮已关联：${shortText(scenic[0],14)} 附近可安排 ${shortText(food[0],14)}。`);
+  if(transport.length && scenic.length) hints.push(`交通可衔接首个景点：${shortText(transport[0],14)} → ${shortText(scenic[0],14)}。`);
+  if(hotel.length) hints.push(`当天结束后可回到/入住：${shortText(hotel[0],18)}。`);
+  return sentence + (hints.length ? ' ' + hints.join(' ') : '');
+}
+function renderTimelineStep(item, current){
+  const canDelete = current && item.account === current;
+  const link = item.link ? `<a class="connected-link" href="${escapeGuideHtml(item.link)}" target="_blank" rel="noopener noreferrer">参考链接</a>` : '';
+  const del = canDelete ? `<button class="connected-delete-btn" onclick="deleteGuideItem('${escapeGuideHtml(item.id)}','${escapeGuideHtml(item.account)}')">删除</button>` : '';
+  const time = item.time_text || item.time_slot || '未定';
+  return `<div class="timeline-step">
+    <div class="timeline-time">${escapeGuideHtml(time)}</div>
+    <div>
+      <h5 class="timeline-main-title">${guideIcon(item.category)} ${escapeGuideHtml(item.title)}</h5>
+      <div class="timeline-meta">
+        <span class="timeline-pill">${escapeGuideHtml(item.category || '其他')}</span>
+        ${item.location ? `<span class="timeline-pill">📌 ${escapeGuideHtml(item.location)}</span>` : ''}
+        <span class="timeline-pill">👤 ${escapeGuideHtml(item.nickname || item.account || '成员')}</span>
+      </div>
+      <div class="timeline-content">${escapeGuideHtml(item.content || '')}</div>
+      <div class="connected-actions"><span>${formatGuideDate(item.created_at)}</span><span>${link} ${del}</span></div>
+    </div>
+  </div>`;
+}
+function renderMiniItems(items, current){
+  if(!items || !items.length) return '<div class="integrated-empty">暂无内容，成员可以继续补充。</div>';
+  return items.map(item => {
+    const canDelete = current && item.account === current;
+    const link = item.link ? `<a class="connected-link" href="${escapeGuideHtml(item.link)}" target="_blank" rel="noopener noreferrer">参考链接</a>` : '';
+    const del = canDelete ? `<button class="connected-delete-btn" onclick="deleteGuideItem('${escapeGuideHtml(item.id)}','${escapeGuideHtml(item.account)}')">删除</button>` : '';
+    return `<div class="connected-mini-item">
+      <h5 class="connected-mini-title">${guideIcon(item.category)} ${escapeGuideHtml(item.title)}</h5>
+      ${item.location ? `<div class="timeline-meta"><span class="timeline-pill">📌 ${escapeGuideHtml(item.location)}</span><span class="timeline-pill">${escapeGuideHtml(item.time_slot || '未定')}</span></div>` : ''}
+      <div class="connected-mini-content">${escapeGuideHtml(item.content || '')}</div>
+      <div class="connected-actions"><span>${escapeGuideHtml(item.nickname || item.account || '成员')} · ${formatGuideDate(item.created_at)}</span><span>${link} ${del}</span></div>
+    </div>`;
+  }).join('');
+}
 function renderGuideBoard(){
   const board = document.getElementById('guideBoard');
   if(!board) return;
@@ -4499,6 +4861,7 @@ function renderGuideBoard(){
     items = items.filter(x =>
       String(x.title || '').toLowerCase().includes(keyword) ||
       String(x.content || '').toLowerCase().includes(keyword) ||
+      String(x.location || '').toLowerCase().includes(keyword) ||
       String(x.nickname || '').toLowerCase().includes(keyword) ||
       String(x.category || '').toLowerCase().includes(keyword)
     );
@@ -4507,11 +4870,13 @@ function renderGuideBoard(){
   items.sort((a,b) => {
     const da = Number(a.day_no || 1), db = Number(b.day_no || 1);
     if(da !== db) return da - db;
-    return new Date(a.created_at || 0) - new Date(b.created_at || 0);
+    return timeSlotOrder(a.time_slot) - timeSlotOrder(b.time_slot)
+      || categoryOrder(a.category) - categoryOrder(b.category)
+      || new Date(a.created_at || 0) - new Date(b.created_at || 0);
   });
 
   if(!items.length){
-    board.innerHTML = '<div class="empty-state">暂无攻略内容。可以先添加 Day1 行程、必吃美食、住宿建议或交通方案。</div>';
+    board.innerHTML = '<div class="empty-state">暂无攻略内容。建议按“时间段 + 类型 + 地点”添加，比如：上午交通、上午景点、中午美食、晚上住宿，这样系统会自动串成路线。</div>';
     return;
   }
 
@@ -4523,31 +4888,52 @@ function renderGuideBoard(){
   });
 
   const current = (typeof onlineAccount !== 'undefined' && onlineAccount) || getCurrentUser() || '';
-  board.innerHTML = Object.keys(grouped).sort((a,b)=>Number(a)-Number(b)).map(day => {
-    const cards = grouped[day].map(item => {
-      const canDelete = current && item.account === current;
-      const link = item.link ? `<a class="guide-card-link" href="${escapeGuideHtml(item.link)}" target="_blank" rel="noopener noreferrer">打开参考链接</a>` : '';
-      const del = canDelete ? `<button class="guide-delete-btn" onclick="deleteGuideItem('${escapeGuideHtml(item.id)}','${escapeGuideHtml(item.account)}')">删除</button>` : '';
-      return `<div class="guide-card">
-        <div class="guide-card-head">
-          <div>
-            <h4 class="guide-card-title">${escapeGuideHtml(item.title)}</h4>
-            <span class="guide-chip">${escapeGuideHtml(item.category || '其他')}</span>
+
+  board.innerHTML = `
+    <div class="guide-board-mode-tip">
+      <strong>有机整合视图：</strong>攻略不再只是按天或按类型堆放，而是把“交通 → 景点 → 美食 → 住宿 → 注意事项”串成一条当天路线，并自动生成当天衔接说明。
+    </div>
+    ${Object.keys(grouped).sort((a,b)=>Number(a)-Number(b)).map(day => {
+      const dayItems = grouped[day].slice().sort((a,b)=> timeSlotOrder(a.time_slot)-timeSlotOrder(b.time_slot) || categoryOrder(a.category)-categoryOrder(b.category));
+      const timelineItems = dayItems.filter(x => ['交通','行程','景点','美食','住宿'].includes(x.category));
+      const otherItems = dayItems.filter(x => !['交通','行程','景点','美食','住宿'].includes(x.category));
+      const budgetItems = dayItems.filter(x => x.category === '预算');
+      const noteItems = dayItems.filter(x => x.category === '注意事项');
+      const memberCount = new Set(dayItems.map(x => x.account || x.nickname || '成员')).size;
+      const summary = makeDayRouteSummary(dayItems);
+      const placeCount = new Set(dayItems.map(x => x.location).filter(Boolean)).size;
+
+      return `<section class="connected-day-card">
+        <div class="connected-day-head">
+          <h3 class="connected-day-title">Day ${escapeGuideHtml(day)} 连贯旅行路线</h3>
+          <div class="connected-day-summary">${escapeGuideHtml(summary)}</div>
+        </div>
+        <div class="integrated-summary-strip">
+          <span class="integrated-summary-chip">🧩 ${dayItems.length} 条内容</span>
+          <span class="integrated-summary-chip">👥 ${memberCount} 位成员参与</span>
+          <span class="integrated-summary-chip">📌 ${placeCount} 个地点</span>
+          <span class="integrated-summary-chip">💰 ${budgetItems.length} 条预算</span>
+          <span class="integrated-summary-chip">⚠️ ${noteItems.length} 条提醒</span>
+        </div>
+
+        <div class="connected-route-line">
+          ${timelineItems.length ? timelineItems.map(item => renderTimelineStep(item, current)).join('') : '<div class="timeline-step"><div class="timeline-time">未定</div><div><h5 class="timeline-main-title">还没有形成路线</h5><div class="timeline-content">请先添加交通、景点、美食或住宿内容。</div></div></div>'}
+        </div>
+
+        <div class="connected-sections">
+          <div class="connected-section">
+            <h4>💰 预算与花费</h4>
+            ${renderMiniItems(budgetItems, current)}
           </div>
-          ${del}
+          <div class="connected-section">
+            <h4>⚠️ 注意事项</h4>
+            ${renderMiniItems(noteItems, current)}
+          </div>
+          ${otherItems.filter(x => !['预算','注意事项'].includes(x.category)).length ? `<div class="connected-section full"><h4>📝 其他补充</h4>${renderMiniItems(otherItems.filter(x => !['预算','注意事项'].includes(x.category)), current)}</div>` : ''}
         </div>
-        <div class="guide-card-content">${escapeGuideHtml(item.content || '')}</div>
-        <div class="guide-card-meta">
-          <span>由 ${escapeGuideHtml(item.nickname || item.account || '成员')} 添加 · ${formatGuideDate(item.created_at)}</span>
-          ${link}
-        </div>
-      </div>`;
-    }).join('');
-    return `<section class="guide-day-section">
-      <h3 class="guide-day-title">Day ${escapeGuideHtml(day)}</h3>
-      ${cards}
-    </section>`;
-  }).join('');
+      </section>`;
+    }).join('')}
+  `;
 }
 </script>
 
