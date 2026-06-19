@@ -1258,6 +1258,139 @@ button,input,select,textarea{font-size:16px;}
   .dest-card-img{width:92px!important;}
 }
 
+
+/* ===================== MOBILE LOGIN SCROLL FIX ===================== */
+/* 解决手机端登录界面内容超出屏幕但无法完整显示的问题 */
+@media (max-width: 768px){
+  html, body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+
+  .group-login-overlay{
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    display:block!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding:
+      max(16px, env(safe-area-inset-top))
+      12px
+      calc(96px + env(safe-area-inset-bottom))
+      12px!important;
+    align-items:initial!important;
+    justify-content:initial!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+  }
+
+  .group-login-overlay.hide{
+    display:none!important;
+  }
+
+  .group-login-card{
+    width:min(100%, 520px)!important;
+    max-width:100%!important;
+    min-height:auto!important;
+    margin:0 auto!important;
+    padding:22px 18px 120px!important;
+    border-radius:26px!important;
+    overflow:visible!important;
+    transform:none!important;
+    clip-path:none!important;
+  }
+
+  .group-login-form{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+
+  .group-login-section{
+    width:100%!important;
+    padding:20px 16px!important;
+    border-radius:24px!important;
+    overflow:visible!important;
+  }
+
+  .group-login-title{
+    font-size:clamp(2rem, 11vw, 3.4rem)!important;
+    line-height:1.05!important;
+    margin-bottom:10px!important;
+    word-break:keep-all!important;
+  }
+
+  .group-login-subtitle{
+    font-size:.95rem!important;
+    line-height:1.7!important;
+    margin-bottom:18px!important;
+  }
+
+  .group-login-section h3{
+    font-size:1.25rem!important;
+    margin-bottom:14px!important;
+  }
+
+  .group-login-section label{
+    font-size:.95rem!important;
+    margin-top:12px!important;
+  }
+
+  .group-login-section input{
+    height:52px!important;
+    font-size:16px!important; /* 防止 iOS/安卓自动放大 */
+    padding:12px 14px!important;
+    border-radius:18px!important;
+  }
+
+  .group-login-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:12px!important;
+    margin-top:16px!important;
+  }
+
+  .group-login-actions button{
+    width:100%!important;
+    min-height:54px!important;
+    font-size:1rem!important;
+    padding:12px 14px!important;
+    border-radius:999px!important;
+  }
+
+  .group-login-tip{
+    margin-top:18px!important;
+    margin-bottom:48px!important;
+    line-height:1.7!important;
+    font-size:.92rem!important;
+  }
+}
+
+/* 更小屏幕：进一步减少横向装饰导致的裁切 */
+@media (max-width: 430px){
+  .group-login-overlay{
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+
+  .group-login-card{
+    padding-left:14px!important;
+    padding-right:14px!important;
+    border-width:5px!important;
+    box-shadow:0 14px 0 rgba(91,190,232,.14),0 24px 46px rgba(37,109,133,.22)!important;
+  }
+
+  .group-login-section{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+}
+
 </style>
 
 <script>
